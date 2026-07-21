@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTAMA · AI-First 10x-Actieplan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#F6F1E8; --sand-2:#EFE7D8; --paper:#FFFFFF;
+    --ink:#211E18; --muted:#6C6353; --line:#E4D9C6;
+    --green:#243F35; --green-2:#2F5546; --terra:#C06B3A; --gold:#B0873E;
+    --ok:#2E7D5B;
+    --p1:#C06B3A; --p2:#B0873E; --p3:#243F35;
+    --must:#B4472B; --high:#B0873E; --mid:#7B8B84;
+    --shadow:0 1px 2px rgba(33,30,24,.04),0 8px 28px rgba(33,30,24,.06);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  section[id],header[id]{scroll-margin-top:76px}
+  body{margin:0;background:var(--sand);color:var(--ink);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Fraunces','Georgia',serif;font-weight:600;line-height:1.15;margin:0}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+  nav.top{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav.top .row{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:.34em;text-transform:uppercase}
+  .brand span{color:var(--terra)}
+  nav.top .links{display:flex;gap:18px;font-size:14px;font-weight:500}
+  nav.top .links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  nav.top .links a:hover{color:var(--green)}
+  @media(max-width:960px){nav.top .links{display:none}}
+
+  header.hero{background:radial-gradient(1200px 400px at 80% -10%,rgba(192,107,58,.10),transparent 60%),linear-gradient(180deg,var(--sand),var(--sand));padding:56px 0 30px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:38px;align-items:center}
+  @media(max-width:820px){.hero-grid{grid-template-columns:1fr;gap:26px}}
+  .hero h1{font-size:clamp(34px,5vw,54px);letter-spacing:-.5px;margin:14px 0 12px}
+  .hero p.lead{font-size:18px;color:#4c463b;max-width:56ch;margin:0 0 22px}
+  .hero .meta-row{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:500;box-shadow:var(--shadow)}
+  .chip b{color:var(--green)}
+  .ring-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;text-align:center}
+  .ring-wrap{position:relative;width:150px;height:150px;margin:6px auto 8px}
+  svg.ring{transform:rotate(-90deg)}
+  .ring-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring-num b{font-family:'Fraunces',serif;font-size:34px;line-height:1}
+  .ring-num small{font-size:12px;color:var(--muted);letter-spacing:.06em}
+  .ring-card .sub{font-size:13px;color:var(--muted)}
+  .ring-card .count{font-weight:600;color:var(--ink)}
+
+  section{padding:44px 0}
+  .sec-head{margin-bottom:22px}
+  .sec-head h2{font-size:clamp(24px,3.4vw,34px);margin:8px 0 6px}
+  .sec-head p{color:var(--muted);margin:0;max-width:72ch}
+
+  /* FOCUS / 10x */
+  .northstar{background:var(--green);color:#eee4d4;border-radius:18px;padding:34px 34px 30px;position:relative;overflow:hidden}
+  .northstar::after{content:"";position:absolute;right:-70px;top:-70px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(192,107,58,.30),transparent 70%)}
+  .northstar .eyebrow{color:var(--gold)}
+  .northstar h2{color:#fff;font-size:clamp(23px,3.2vw,32px);margin:8px 0 6px;position:relative;z-index:1}
+  .northstar .ns-sub{color:#d8cfbe;max-width:66ch;margin:0 0 22px;position:relative;z-index:1;font-size:15.5px}
+  .levers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:1}
+  @media(max-width:820px){.levers{grid-template-columns:1fr}}
+  .lever{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px 18px}
+  .lever .lnum{font-family:'Fraunces',serif;color:var(--gold);font-size:13px;font-weight:600;letter-spacing:.08em}
+  .lever h4{color:#fff;font-size:16px;margin:6px 0 4px}
+  .lever p{color:#cfc5b3;font-size:13.5px;margin:0}
+  .lever.primary{background:rgba(192,107,58,.22);border-color:rgba(192,107,58,.5)}
+  .lever.primary .lnum{color:#f3d9c4}
+
+  .bneck{display:flex;gap:12px;align-items:flex-start;background:#fbeee6;border:1px solid #eaccb6;border-left:4px solid var(--terra);border-radius:10px;padding:14px 18px;margin-top:18px}
+  .bneck .bi{font-size:18px;line-height:1.3}
+  .bneck b{color:#9a441f}
+  .bneck span{color:#6b4a37;font-size:14.5px}
+
+  .scorecard{margin-top:20px}
+  .funnel{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch}
+  .fstep{flex:1;min-width:120px;background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:12px 12px;box-shadow:var(--shadow);position:relative}
+  .fstep .fs-l{font-size:12.5px;font-weight:600;color:var(--green-2)}
+  .fstep .fs-m{font-size:11.5px;color:var(--muted);margin-top:3px}
+  .fstep.hot{border-color:#e3b591;background:#fff8f2}
+  .fstep.hot .fs-l{color:var(--terra)}
+  .fstep .tagm{position:absolute;top:-9px;right:8px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--terra);border-radius:999px;padding:2px 7px}
+  .fnote{font-size:13px;color:var(--muted);margin-top:10px}
+
+  .starthere{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  @media(max-width:820px){.starthere{grid-template-columns:1fr}}
+  .sh{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);text-decoration:none;transition:transform .15s,box-shadow .15s}
+  .sh:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(33,30,24,.10)}
+  .sh .shn{flex:none;width:26px;height:26px;border-radius:8px;background:var(--terra);color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .sh h4{font-size:14.5px;margin:0 0 3px}
+  .sh p{font-size:12.5px;color:var(--muted);margin:0}
+
+  .ctxwrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-top:8px}
+  .ctxwrap .prun{font-size:12.5px;color:#5f5647;padding:12px 16px;border-bottom:1px solid #ece2cf;background:#f3eddf}
+  .ctxwrap .prun b{color:var(--green-2)}
+
+  .howto{background:var(--green);color:#f3ede1;border-radius:var(--radius);padding:22px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:820px){.howto{grid-template-columns:1fr;gap:16px}}
+  .howto h4{color:#fff;font-size:16px;margin-bottom:4px}
+  .howto p{margin:0;font-size:14px;color:#d8cfbe}
+  .howto .n{font-family:'Fraunces',serif;color:var(--gold);font-size:14px;font-weight:600;letter-spacing:.1em}
+
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.phases{grid-template-columns:1fr}}
+  .phase{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);cursor:pointer;transition:transform .18s,box-shadow .18s;position:relative;overflow:hidden}
+  .phase:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(33,30,24,.10)}
+  .phase .bar-top{position:absolute;top:0;left:0;right:0;height:5px}
+  .phase[data-ph="p1"] .bar-top{background:var(--p1)} .phase[data-ph="p2"] .bar-top{background:var(--p2)} .phase[data-ph="p3"] .bar-top{background:var(--p3)}
+  .phase .tag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .phase[data-ph="p1"] .tag{color:var(--p1)} .phase[data-ph="p2"] .tag{color:var(--p2)} .phase[data-ph="p3"] .tag{color:var(--p3)}
+  .phase h3{font-size:20px;margin:8px 0 6px}
+  .phase p{font-size:14px;color:var(--muted);margin:0 0 16px;min-height:60px}
+  .mini{height:8px;background:var(--sand-2);border-radius:99px;overflow:hidden}
+  .mini > i{display:block;height:100%;width:0;border-radius:99px;transition:width .5s ease}
+  .phase[data-ph="p1"] .mini > i{background:var(--p1)} .phase[data-ph="p2"] .mini > i{background:var(--p2)} .phase[data-ph="p3"] .mini > i{background:var(--p3)}
+  .phase .mini-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px}
+  .phase .pick{margin-top:12px;font-size:13px;font-weight:600;color:var(--green);opacity:0;transition:opacity .2s}
+  .phase:hover .pick{opacity:1}
+
+  .controls{position:sticky;top:60px;z-index:40;background:rgba(246,241,232,.92);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin-bottom:24px;box-shadow:var(--shadow)}
+  .controls .grp{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .controls .grp + .grp{margin-top:10px}
+  .lbl{font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:600;margin-right:4px;min-width:74px}
+  .fbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;font-family:inherit}
+  .fbtn:hover{border-color:var(--green-2)}
+  .fbtn.active{background:var(--green);color:#fff;border-color:var(--green)}
+  .fbtn.tog.active{background:var(--terra);border-color:var(--terra)}
+  .fbtn.tog.must{border-color:var(--gold);color:var(--gold)}
+  .fbtn.tog.must.active{background:var(--gold);border-color:var(--gold);color:#fff}
+  .spacer{flex:1}
+  .cnt{font-size:13px;color:var(--muted)}
+  .cnt b{color:var(--ink)}
+  .ghost{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+
+  .pillar{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden}
+  .pillar.flag{border-color:#e6c9a6;box-shadow:0 1px 2px rgba(33,30,24,.04),0 10px 30px rgba(192,107,58,.10)}
+  .p-head{display:flex;gap:16px;align-items:flex-start;padding:22px 22px 16px}
+  .badge{flex:none;width:46px;height:46px;border-radius:12px;background:var(--green);color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:18px;display:flex;align-items:center;justify-content:center}
+  .pillar.flag .badge{background:var(--terra)}
+  .p-head .t{flex:1;min-width:0}
+  .p-head h3{font-size:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .flagtag{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--terra);border-radius:999px;padding:3px 9px}
+  .engine{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--green-2);border-radius:999px;padding:3px 9px}
+  .p-head .goal{color:var(--muted);font-size:14.5px;margin:5px 0 10px}
+  .toolchips{display:flex;flex-wrap:wrap;gap:6px}
+  .tchip{font-size:12px;background:var(--sand);border:1px solid var(--line);border-radius:7px;padding:3px 9px;color:#59503f}
+  .p-prog{flex:none;width:120px;text-align:right}
+  .p-prog .pct{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--green)}
+  .p-prog .mini{margin-top:6px;width:120px}
+  .p-prog .mini > i{background:var(--green)}
+  .p-prog .lbl2{font-size:12px;color:var(--muted);margin-top:5px}
+  @media(max-width:640px){.p-prog{display:none}}
+
+  .tasks{border-top:1px solid var(--line)}
+  .task{display:flex;gap:14px;align-items:flex-start;padding:14px 22px;border-bottom:1px solid #f0e9db;transition:background .15s}
+  .task:last-child{border-bottom:none}
+  .task:hover{background:#fbf8f1}
+  .task.done{background:#f7f6ee}
+  .cb{flex:none;margin-top:2px;width:22px;height:22px;border:2px solid var(--line);border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;background:#fff}
+  .cb:hover{border-color:var(--ok)}
+  .cb.on{background:var(--ok);border-color:var(--ok)}
+  .cb svg{width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;opacity:0;transition:opacity .15s}
+  .cb.on svg{opacity:1}
+  .task .body{flex:1;min-width:0}
+  .task .txt{font-size:15px;transition:color .15s}
+  .task.done .txt{color:#9a9182;text-decoration:line-through}
+  .task .metas{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+  .m{font-size:11.5px;font-weight:600;letter-spacing:.02em;border-radius:999px;padding:2px 9px;white-space:nowrap}
+  .m.owner{background:#eef2f0;color:var(--green-2)}
+  .m.pr-must{background:#f7e5df;color:var(--must)} .m.pr-high{background:#f5ecd8;color:#8f6c25} .m.pr-mid{background:#eef0ef;color:#5f6f68}
+  .m.ph{background:#fff;border:1px solid var(--line);color:var(--muted)}
+  .m.ph::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .m.ph.p1::before{background:var(--p1)} .m.ph.p2::before{background:var(--p2)} .m.ph.p3::before{background:var(--p3)}
+  .m.ef{background:#f2eee4;color:#6d6553}
+  .task .tls{font-size:11.5px;color:#a79b84}
+  .promptbtn{margin-left:auto;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:4px 13px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
+  .promptbtn:hover{background:var(--green);color:#fff}
+  .promptbtn.open{background:var(--green);color:#fff}
+  .ppanel{display:none;margin-top:12px;border:1px solid #e5dcc9;border-radius:11px;background:#fbf9f3;overflow:hidden}
+  .ppanel.open{display:block}
+  .prun{font-size:12.5px;color:#5f5647;padding:10px 14px;border-bottom:1px solid #ece2cf;background:#f3eddf}
+  .prun b{color:var(--green-2)}
+  .pbox{padding:14px 16px;font-size:13.5px;line-height:1.65;color:#2c2a24;white-space:pre-wrap}
+  .copyrow{display:flex;justify-content:flex-end;gap:8px;padding:0 14px 12px}
+  .copybtn{border:none;background:var(--green);color:#fff;border-radius:8px;padding:8px 15px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s}
+  .copybtn:hover{background:var(--green-2)}
+  .copybtn.done{background:var(--ok)}
+  .hidden{display:none!important}
+
+  .portal-note{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:20px;box-shadow:var(--shadow)}
+  .portal-note code{background:var(--sand-2);border-radius:5px;padding:1px 7px;font-size:12.5px;color:var(--terra)}
+  .portal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:820px){.portal-grid{grid-template-columns:1fr}}
+  .layer{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .layer .bar-top{position:absolute;top:0;left:0;right:0;height:5px}
+  .layer.public .bar-top{background:var(--gold)} .layer.private .bar-top{background:var(--green)}
+  .lhead{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+  .locktag{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+  .layer.public .locktag{background:#f5ecd8;color:#8f6c25}
+  .layer.private .locktag{background:#e7ede9;color:var(--green-2)}
+  .layer h3{font-size:20px;margin:2px 0}
+  .layer .sub{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .layer ul{list-style:none;padding:0;margin:0 0 14px}
+  .layer li{font-size:14px;padding:8px 0 8px 26px;border-top:1px solid #f0e9db;position:relative;color:#3f3a30}
+  .layer li:first-child{border-top:none}
+  .layer li::before{position:absolute;left:0;top:8px;font-size:13px}
+  .layer.public li::before{content:"◔";color:var(--gold)}
+  .layer.private li::before{content:"🔒";font-size:11px;top:9px}
+  .layer li b{color:var(--ink);font-weight:600}
+  .ldoel{font-size:13px;color:#5f5647;background:var(--sand);border-radius:9px;padding:10px 12px}
+  .ldoel b{color:var(--green-2)}
+  .portal-tech{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  @media(max-width:820px){.portal-tech{grid-template-columns:1fr}}
+  .tcard{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+  .tcard.chosen{border-color:#bcd0c4;background:#f5f9f6}
+  .tcard h4{font-size:15px;margin-bottom:8px;color:var(--green)}
+  .tcard p{font-size:13.5px;color:#4f4839;margin:0}
+  .tcard .pick2{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ok);border-radius:999px;padding:2px 8px;margin-left:6px}
+  .portal-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  @media(max-width:820px){.portal-phases{grid-template-columns:1fr}}
+  .pphase{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff;box-shadow:var(--shadow)}
+  .pphase .st{font-family:'Fraunces',serif;font-weight:600;color:var(--terra);font-size:13px;letter-spacing:.06em}
+  .pphase h4{font-size:15px;margin:6px 0 4px}
+  .pphase p{font-size:13px;color:var(--muted);margin:0}
+  .portal-prompt{margin-top:20px;border:1px solid #e5dcc9;border-radius:12px;background:#fbf9f3;overflow:hidden}
+
+  .tool-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:820px){.tool-cols{grid-template-columns:1fr}}
+  .tool-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .tool-card h3{font-size:18px;margin-bottom:4px}
+  .tool-card .hint{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .trow{display:flex;gap:12px;padding:10px 0;border-top:1px solid #f0e9db}
+  .trow:first-of-type{border-top:none}
+  .trow .nm{font-weight:600;font-size:14px;flex:none;width:120px}
+  .trow .ds{font-size:13.5px;color:#5b5344}
+  .tool-card.have .nm{color:var(--green-2)} .tool-card.add .nm{color:var(--terra)}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:820px){.kpis{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.kpis{grid-template-columns:1fr}}
+  .kpi{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+  .kpi.star{border-color:#e3b591;background:#fff8f2}
+  .kpi .k{font-size:13px;color:var(--muted);font-weight:600;min-height:38px}
+  .kpi .v{font-family:'Fraunces',serif;font-size:19px;color:var(--green);margin-top:8px;font-weight:600}
+  .kpi.star .v{color:var(--terra)}
+  .kpi .from{font-size:12px;color:#a79b84}
+
+  .investor{background:var(--green);color:#eee4d4;border-radius:18px;padding:40px;position:relative;overflow:hidden}
+  .investor::after{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(192,107,58,.28),transparent 70%)}
+  .investor .eyebrow{color:var(--gold)}
+  .investor h2{color:#fff;font-size:clamp(24px,3.4vw,34px);margin:10px 0 14px;max-width:22ch}
+  .investor p.big{font-size:17px;color:#e4dccb;max-width:60ch;margin:0 0 22px;position:relative;z-index:1}
+  .thesis{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;z-index:1}
+  @media(max-width:820px){.thesis{grid-template-columns:1fr}}
+  .th{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px 16px}
+  .th .d{width:9px;height:9px;border-radius:50%;background:var(--gold);margin-top:7px;flex:none}
+  .th b{color:#fff;font-weight:600} .th span{color:#cfc5b3;font-size:14px}
+
+  footer{padding:34px 0 60px;color:var(--muted);font-size:13px;text-align:center}
+  footer .brand{font-size:15px;letter-spacing:.3em;color:var(--ink);margin-bottom:8px}
+
+  .apply{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:820px){.apply{grid-template-columns:1fr}}
+  .acard{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+  .acard .an{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--green-2);border-radius:999px;padding:3px 10px;margin-bottom:8px}
+  .acard.cw .an{background:var(--terra)}
+  .acard h4{font-size:15px;margin:0 0 4px}
+  .acard p{font-size:13px;color:var(--muted);margin:0}
+  @media print{
+    nav.top,.controls,.phase .pick,.promptbtn,.copyrow{display:none!important}
+    body{background:#fff}
+    .task.hidden{display:flex!important}
+    .pillar.hidden{display:block!important}
+    .ppanel.open{display:block}
+    .pillar,.phase,.kpi,.tool-card,.investor,.layer,.tcard,.pphase,.sh,.lever,.fstep{box-shadow:none;break-inside:avoid}
+    section{padding:18px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap row">
+    <div class="brand">UT<span>A</span>MA</div>
+    <div class="links">
+      <a href="#overzicht">Overzicht</a>
+      <a href="#focus">10x-Focus</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#pijlers">Pijlers</a>
+      <a href="#portal">Portal</a>
+      <a href="#tools">Tools</a>
+      <a href="#investors">Investors</a>
+    </div>
+    <button class="fbtn" onclick="window.print()">Opslaan als PDF</button>
+  </div>
+</nav>
+
+<header class="hero" id="overzicht">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">AI-First 10x-Actieplan · 2026</div>
+      <h1>Van vastgoed­ontwikkelaar naar AI-first vastgoedplatform</h1>
+      <p class="lead">Eén draaiboek om UTAMA de komende 12 maanden naar <b>10x omzet en verkochte units</b> te brengen. De motor: meer van je leads closen (je grootste knelpunt), hogere waarde per deal en meer voorraad. Zeven pijlers, drie fases, en achter <b>elke taak een kant-en-klare Claude-prompt</b>.</p>
+      <div class="meta-row">
+        <span class="chip">Noord-ster: <b>10x omzet + units</b></span>
+        <span class="chip"><b>7</b>&nbsp;pijlers · 3 fases</span>
+        <span class="chip" id="chipTasks"><b>46</b>&nbsp;acties + prompts</span>
+        <span class="chip">Focus: <b>closing</b></span>
+      </div>
+    </div>
+    <div class="ring-card">
+      <div class="ring-wrap">
+        <svg class="ring" width="150" height="150" viewBox="0 0 150 150">
+          <circle cx="75" cy="75" r="60" fill="none" stroke="#EFE7D8" stroke-width="14"/>
+          <circle id="ringFg" cx="75" cy="75" r="60" fill="none" stroke="#2E7D5B" stroke-width="14" stroke-linecap="round" stroke-dasharray="376.99" stroke-dashoffset="376.99"/>
+        </svg>
+        <div class="ring-num"><b id="ringPct">0%</b><small>afgerond</small></div>
+      </div>
+      <div class="sub"><span class="count" id="doneCount">0</span> van <span id="totCount">46</span> acties voltooid</div>
+      <div class="sub" style="margin-top:6px">Vink taken af terwijl je ze uitvoert.</div>
+    </div>
+  </div>
+</header>
+
+<section id="focus" style="padding-top:34px">
+  <div class="wrap">
+    <div class="northstar">
+      <div class="eyebrow">De 10x-strategie</div>
+      <h2>Noord-ster: 10x omzet &amp; verkochte units in 12 maanden</h2>
+      <p class="ns-sub">Groei komt uit drie hefbomen. Ze staan op volgorde van snelheid: eerst meer halen uit wat je al binnenkrijgt, dan grotere deals, dan meer voorraad.</p>
+      <div class="levers">
+        <div class="lever primary"><div class="lnum">HEFBOOM 1 · NU</div><h4>Closing</h4><p>Meer van je leads omzetten naar getekende deals. Je grootste knelpunt — en de snelste 10x-winst.</p></div>
+        <div class="lever"><div class="lnum">HEFBOOM 2</div><h4>Waarde per deal</h4><p>Grotere en duurdere units, plus pakketten (furnishing, rental setup, upgrades) en betere marge.</p></div>
+        <div class="lever"><div class="lnum">HEFBOOM 3</div><h4>Voorraad</h4><p>Nieuwe projecten en land in de pipeline, zodat je meer units hébt om te verkopen.</p></div>
+      </div>
+      <div class="bneck">
+        <div class="bi">🎯</div>
+        <div><b>Je knelpunt is closing, niet leads.</b> <span>Daarom staat de Sales &amp; Closing-machine vooraan. Elk procent extra conversie van gesprek naar deal telt direct door in omzet en units — dáár zit de hefboom.</span></div>
+      </div>
+    </div>
+
+    <div class="scorecard">
+      <div class="sec-head" style="margin:26px 0 12px">
+        <div class="eyebrow">Wekelijkse groei-scorecard</div>
+        <h2 style="font-size:22px">Stuur op de conversie per stap</h2>
+        <p>Meet dit elke week. De 10x zit niet in één stap, maar in het stapelen van betere conversie — vooral van gesprek naar deal.</p>
+      </div>
+      <div class="funnel">
+        <div class="fstep"><div class="fs-l">Nieuwe leads</div><div class="fs-m">volume in</div></div>
+        <div class="fstep"><div class="fs-l">Calls geboekt</div><div class="fs-m">% van leads</div></div>
+        <div class="fstep hot"><div class="tagm">knelpunt</div><div class="fs-l">Calls gehouden</div><div class="fs-m">show-up %</div></div>
+        <div class="fstep hot"><div class="fs-l">Offertes uit</div><div class="fs-m">% na call</div></div>
+        <div class="fstep hot"><div class="fs-l">Deals gesloten</div><div class="fs-m">close-rate</div></div>
+        <div class="fstep"><div class="fs-l">Units verkocht</div><div class="fs-m">+ waarde/deal</div></div>
+        <div class="fstep"><div class="fs-l">Omzet</div><div class="fs-m">noord-ster</div></div>
+      </div>
+      <div class="fnote">Taak <b>t6</b> zet deze scorecard voor je op met streefgetallen en een wekelijkse review-prompt die de grootste lek aanwijst.</div>
+    </div>
+
+    <div class="sec-head" style="margin:30px 0 12px">
+      <div class="eyebrow">Start hier</div>
+      <h2 style="font-size:22px">Je kritieke pad — deze week</h2>
+      <p>Niet alles tegelijk. Deze zes acties raken direct je knelpunt (closing) en waarde per deal. Begin hier.</p>
+    </div>
+    <div class="starthere">
+      <a class="sh" href="#pijlers" onclick="filterPhase('all')"><div class="shn">1</div><div><h4>Call-prep &amp; closing kit</h4><p>Ashley · briefing, belscript &amp; bezwaarafhandeling per lead</p></div></a>
+      <a class="sh" href="#pijlers" onclick="filterPhase('all')"><div class="shn">2</div><div><h4>Bezwaar- &amp; enablement-kit</h4><p>Ashley · social proof, trust-assets, ‘waarom UTAMA’</p></div></a>
+      <a class="sh" href="#pijlers" onclick="filterPhase('all')"><div class="shn">3</div><div><h4>Follow-up cadence twijfelaars</h4><p>Ashley · meertalige nurture tot de deal</p></div></a>
+      <a class="sh" href="#pijlers" onclick="filterPhase('all')"><div class="shn">4</div><div><h4>Gepersonaliseerde investor-decks</h4><p>Team · closing-tool per deal</p></div></a>
+      <a class="sh" href="#pijlers" onclick="filterPhase('all')"><div class="shn">5</div><div><h4>ROI-calculator</h4><p>Team · vertrouwen &amp; onderbouwing bij de close</p></div></a>
+      <a class="sh" href="#pijlers" onclick="filterPhase('all')"><div class="shn">6</div><div><h4>Wekelijkse groei-scorecard</h4><p>Ashley · meet de conversie, vind de lek</p></div></a>
+    </div>
+
+    <div class="sec-head" style="margin:30px 0 12px">
+      <div class="eyebrow">Zet dit één keer op</div>
+      <h2 style="font-size:22px">Het UTAMA context-blok</h2>
+      <p>Plak dit één keer als instructie in een Claude Project (of bovenaan een chat). Daarna “kent” Claude UTAMA en zijn elke prompt hieronder korter, consistenter en scherper.</p>
+    </div>
+    <div class="ctxwrap">
+      <div class="prun"><b>Instructie voor je Claude Project:</b> plak dit als projectinstructie, dan hoef je de context niet telkens te herhalen.</div>
+      <div class="pbox" id="pb-context"></div>
+      <div class="copyrow"><button class="copybtn" onclick="copyBox('pb-context',this)">Kopieer context-blok</button></div>
+    </div>
+
+    <div class="sec-head" style="margin:30px 0 12px">
+      <div class="eyebrow">Zo pas je het toe</div>
+      <h2 style="font-size:22px">Waar draai je de prompts?</h2>
+      <p>De prompts blijven in dit plan — je kopieert ze wanneer je een taak oppakt, je hoeft ze nergens apart op te slaan. Draai ze op een van deze drie plekken:</p>
+    </div>
+    <div class="apply">
+      <div class="acard"><div class="an">Claude Project · standaard</div><h4>De meeste prompts</h4><p>Maak één gedeeld project “UTAMA” met het context-blok als instructie. Ideaal voor sales-scripts, content, brochures, decks en SOP's. Je hele team werkt in hetzelfde project met dezelfde context.</p></div>
+      <div class="acard cw"><div class="an">Cowork · met je data</div><h4>Als het je bestanden of tools raakt</h4><p>Gebruik Cowork (zoals deze sessie) voor taken die je Drive/Gmail/Moneybird/Perspective nodig hebben of code/bestanden opleveren: website &amp; portal bouwen, cashflow-dashboard, investor updates uit echte data, decks uit Drive.</p></div>
+      <div class="acard"><div class="an">Asana · bij de taak</div><h4>Voor je team</h4><p>Plak de prompt in de Asana-taak van de eigenaar, zodat Ashley, Joey of Lyla 'm direct bij de hand heeft bij de uitvoering.</p></div>
+    </div>
+    <div class="fnote" style="margin-top:12px">Terugkerende taken (scorecard <b>t6</b>, content <b>m2</b>, investor updates <b>i1</b>, projectstatus <b>o4</b>) kun je in Cowork als <b>geplande taak</b> wekelijks of maandelijks automatisch laten draaien.</div>
+  </div>
+</section>
+
+<section id="howto" style="padding-top:14px">
+  <div class="wrap">
+    <div class="howto">
+      <div><div class="n">01</div><h4>Begin bij je kritieke pad</h4><p>De zes ‘start hier’-acties raken je knelpunt (closing) direct. Daarna Fase 1 afmaken.</p></div>
+      <div><div class="n">02</div><h4>Voer uit met Claude</h4><p>Zet eerst het context-blok in een Claude Project. Klik dan bij een taak op “Claude-prompt”, kopieer en plak.</p></div>
+      <div><div class="n">03</div><h4>Meet wekelijks</h4><p>Vul de groei-scorecard, vind de grootste lek in de funnel en stuur bij. Herinvesteer bespaarde tijd in verkoop.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Roadmap</div>
+      <h2>Drie fases naar 10x</h2>
+      <p>Klik op een fase om de bijbehorende acties te tonen. Fase 1 draait om je knelpunt: closing.</p>
+    </div>
+    <div class="phases">
+      <div class="phase" data-ph="p1" onclick="filterPhase('p1')">
+        <div class="bar-top"></div>
+        <div class="tag">Fase 1 · Nu</div>
+        <h3>Closing-machine &amp; fundament</h3>
+        <p>0–90 dagen. Meer leads omzetten: bezwaar-kit, call-prep, follow-up, sales-tools (decks, ROI-calc), de scorecard, en het team op AI.</p>
+        <div class="mini"><i id="miniP1"></i></div>
+        <div class="mini-lbl"><span id="lblP1">0/0 acties</span><span>0–90 dagen</span></div>
+        <div class="pick">Toon acties →</div>
+      </div>
+      <div class="phase" data-ph="p2" onclick="filterPhase('p2')">
+        <div class="bar-top"></div>
+        <div class="tag">Fase 2 · Kwartaal 2–3</div>
+        <h3>Schaal, voorraad &amp; waarde</h3>
+        <p>3–6 maanden. Nieuwe Claude-website, dealflow voor nieuwe projecten, hogere waarde per deal, renders/video en finance-automatisering.</p>
+        <div class="mini"><i id="miniP2"></i></div>
+        <div class="mini-lbl"><span id="lblP2">0/0 acties</span><span>3–6 mnd</span></div>
+        <div class="pick">Toon acties →</div>
+      </div>
+      <div class="phase" data-ph="p3" onclick="filterPhase('p3')">
+        <div class="bar-top"></div>
+        <div class="tag">Fase 3 · 6–12 mnd</div>
+        <h3>Het AI-first bedrijf</h3>
+        <p>6–12 maanden. Investor portal live, kennisbank, live dashboards en governance — UTAMA draait op AI en schaalt zonder evenredige kosten.</p>
+        <div class="mini"><i id="miniP3"></i></div>
+        <div class="mini-lbl"><span id="lblP3">0/0 acties</span><span>6–12 mnd</span></div>
+        <div class="pick">Toon acties →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pijlers" style="padding-top:14px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Actieplan</div>
+      <h2>De zeven pijlers</h2>
+      <p>Op volgorde van impact op je noord-ster. Achter elke actie zit een kant-en-klare Claude-prompt — klik op “Claude-prompt”, kopieer 'm en plak in Claude (met het context-blok actief). Vink af wat je afrondt; je voortgang loopt automatisch mee.</p>
+    </div>
+
+    <div class="controls">
+      <div class="grp">
+        <span class="lbl">Fase</span>
+        <button class="fbtn active" data-phase="all" onclick="filterPhase('all')">Alle</button>
+        <button class="fbtn" data-phase="p1" onclick="filterPhase('p1')">Fase 1 · Nu</button>
+        <button class="fbtn" data-phase="p2" onclick="filterPhase('p2')">Fase 2</button>
+        <button class="fbtn" data-phase="p3" onclick="filterPhase('p3')">Fase 3</button>
+      </div>
+      <div class="grp">
+        <span class="lbl">Eigenaar</span>
+        <button class="fbtn active" data-owner="all" onclick="filterOwner('all')">Iedereen</button>
+        <button class="fbtn" data-owner="Steven" onclick="filterOwner('Steven')">Steven</button>
+        <button class="fbtn" data-owner="Ashley" onclick="filterOwner('Ashley')">Ashley</button>
+        <button class="fbtn" data-owner="Joey" onclick="filterOwner('Joey')">Joey</button>
+        <button class="fbtn" data-owner="Lyla" onclick="filterOwner('Lyla')">Lyla</button>
+        <button class="fbtn" data-owner="Roan" onclick="filterOwner('Roan')">Roan</button>
+        <button class="fbtn" data-owner="Team" onclick="filterOwner('Team')">Team</button>
+        <div class="spacer"></div>
+        <button class="fbtn tog must" id="mustTog" onclick="toggleMust()">★ Must-do</button>
+        <button class="fbtn tog" id="openTog" onclick="toggleOpen()">Alleen open</button>
+        <button class="fbtn ghost" onclick="resetAll()">Reset</button>
+      </div>
+      <div class="grp" style="margin-top:10px">
+        <span class="cnt" id="filterCnt">46 acties zichtbaar · 0 afgerond</span>
+      </div>
+    </div>
+
+    <div id="pillars"></div>
+  </div>
+</section>
+
+<section id="portal" style="padding-top:14px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Uitgewerkt · Speerpunt</div>
+      <h2>Investor Portal — de blauwdruk</h2>
+      <p>Eén portal op een subdomein van je site, met een strikte scheiding tussen wat iedereen mag zien en wat alleen jouw investeerders mogen zien. Je bouwt 'm lean, zelf, met Claude.</p>
+    </div>
+    <div class="portal-note">🌐 Subdomein: <code>invest.utamabali.com</code></div>
+
+    <div class="portal-grid">
+      <div class="layer public">
+        <div class="bar-top"></div>
+        <div class="lhead"><span class="locktag">Open · geen login</span></div>
+        <h3>Publieke laag</h3>
+        <div class="sub">Deelbaar en vindbaar — trekt en informeert leads.</div>
+        <ul>
+          <li><b>Brochures</b> per project (MOKA, Maison, Dune)</li>
+          <li><b>Beschikbare units &amp; richtprijzen</b> — algemeen overzicht</li>
+          <li><b>Hoe leasehold werkt</b> + FAQ</li>
+          <li><b>ROI-calculator</b> met scenario's</li>
+          <li><b>Conversational intake</b> / aanvraag die kwalificeert</li>
+        </ul>
+        <div class="ldoel"><b>Doel:</b> leads aantrekken, informeren en kwalificeren — mag door iedereen gezien en gedeeld worden.</div>
+      </div>
+      <div class="layer private">
+        <div class="bar-top"></div>
+        <div class="lhead"><span class="locktag">Afgeschermd · login</span></div>
+        <h3>Afgeschermde laag</h3>
+        <div class="sub">Per investeerder, achter een persoonlijke login.</div>
+        <ul>
+          <li><b>Bouwvoortgang</b> — foto's, mijlpalen, planning vs. realiteit</li>
+          <li><b>Documenten</b> — contract, leasehold agreement, betaalschema, facturen, KYC</li>
+          <li><b>Betaalstatus</b> — Combined Payment Plan &amp; volgende mijlpaal</li>
+          <li><b>Rendement-rapportage</b> — verwacht vs. werkelijk, later huurinkomsten</li>
+          <li><b>Maandelijkse project-updates</b> (gekoppeld aan taak i1)</li>
+          <li><b>Berichten &amp; support</b></li>
+        </ul>
+        <div class="ldoel"><b>Doel:</b> transparantie, vertrouwen en herinvestering — strikt privé, per investeerder afgeschermd.</div>
+      </div>
+    </div>
+
+    <div class="portal-tech">
+      <div class="tcard chosen"><h4>Bouwkeuze <span class="pick2">Gekozen</span></h4><p>Optie A — lean zelf bouwen met Claude: React/Next op Vercel (gratis tier) + Supabase voor login, database en documentopslag. Maximale controle, minimale kosten, past bij “fully Claude”.</p></div>
+      <div class="tcard"><h4>Toegang &amp; rollen</h4><p>Login per investeerder (magic link of e-mail + wachtwoord via Supabase Auth). Rollen: investeerder (ziet alleen eigen project) en UTAMA-admin (beheert alles). Toegang wordt gelogd.</p></div>
+      <div class="tcard"><h4>Data &amp; documenten</h4><p>Datamodel: investeerder ↔ project ↔ unit ↔ documenten/betalingen. KYC- en contractbestanden versleuteld; publieke en privé-data strikt gescheiden.</p></div>
+    </div>
+
+    <div class="portal-phases">
+      <div class="pphase"><div class="st">FASE A · MVP</div><h4>Beveiligde kern</h4><p>Login + per investeerder: documenten, betaalschema en bouwvoortgang (foto's &amp; mijlpalen).</p></div>
+      <div class="pphase"><div class="st">FASE B · Uitbreiding</div><h4>Updates &amp; rendement</h4><p>Automatische maandupdates in de portal en rendement-rapportage per project.</p></div>
+      <div class="pphase"><div class="st">FASE C · Self-service</div><h4>Autonoom &amp; schaalbaar</h4><p>Notificaties, nieuwe documenten self-service, en later een rental-/rendement-dashboard.</p></div>
+    </div>
+
+    <div class="portal-prompt">
+      <div class="prun"><b>Doe dit met Claude:</b> laat Claude de volledige portal-specificatie én een lean MVP (Claude + Supabase) opzetten.</div>
+      <div class="pbox" id="pb-portal"></div>
+      <div class="copyrow"><button class="copybtn" onclick="copyBox('pb-portal',this)">Kopieer portal-prompt</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Tool-stack</div>
+      <h2>Bouw voort op wat je al hebt</h2>
+      <p>Je hebt al een sterke basis. Het gaat er niet om alles te vervangen, maar om AI door je bestaande stack te weven en een paar gerichte tools toe te voegen — lean.</p>
+    </div>
+    <div class="tool-cols">
+      <div class="tool-card have">
+        <h3>Wat je al hebt</h3>
+        <div class="hint">Zet AI aan bovenop deze tools — de meeste kunnen vandaag al meer.</div>
+        <div class="trow"><div class="nm">Gene</div><div class="ds">AI-CRM &amp; sales-assistent. Laat het álle inbound kwalificeren, opvolgen en warme leads naar Ashley pushen.</div></div>
+        <div class="trow"><div class="nm">Perspective</div><div class="ds">Conversational funnels i.p.v. statische formulieren — kwalificeert budget, tijdlijn en doel.</div></div>
+        <div class="trow"><div class="nm">LeadEstate</div><div class="ds">Vastgoed-CRM voor pipeline en opvolging; koppel aan AI-leadscoring.</div></div>
+        <div class="trow"><div class="nm">Moneybird</div><div class="ds">Boekhouding met automatische herinneringen, documentherkenning en rapportage.</div></div>
+        <div class="trow"><div class="nm">Meta Ads</div><div class="ds">AI-creatives en copyvarianten; laat AI de best-performers rapporteren.</div></div>
+        <div class="trow"><div class="nm">Canva</div><div class="ds">AI-design voor brochures, socials en gepersonaliseerde investor-decks.</div></div>
+        <div class="trow"><div class="nm">SignRequest</div><div class="ds">E-signing in de closing-flow: van ‘ja’ naar getekend contract.</div></div>
+      </div>
+      <div class="tool-card add">
+        <h3>Aanraders om toe te voegen</h3>
+        <div class="hint">Gericht en lean ingezet vullen deze de laatste gaten naar AI-first.</div>
+        <div class="trow"><div class="nm">Claude / ChatGPT</div><div class="ds">Het AI-brein: sales-enablement, copy, analyse, rapportage — én je nieuwe website &amp; portal bouwen (i.p.v. Framer).</div></div>
+        <div class="trow"><div class="nm">Vercel + Supabase</div><div class="ds">Lean, goedkope basis om de Claude-website en investor portal zelf te hosten (auth, database, documenten).</div></div>
+        <div class="trow"><div class="nm">AI-renders / video</div><div class="ds">Off-plan units visueel tot leven brengen — walkthroughs en beelden vóór de bouw, sterke closing-tool.</div></div>
+        <div class="trow"><div class="nm">Asana</div><div class="ds">Projecthub voor taken, bouwprojecten en pipelines — met AI-samenvattingen en automatische taken uit e-mail.</div></div>
+        <div class="trow"><div class="nm">AI-notetaker</div><div class="ds">Automatische notulen en samenvattingen van sales- en projectcalls, direct in het CRM.</div></div>
+        <div class="trow"><div class="nm">AI-capture</div><div class="ds">Inkoopfacturen &amp; bonnen automatisch naar Moneybird met juist project en categorie.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kpi">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Meetlat</div>
+      <h2>Waar je op stuurt</h2>
+      <p>De sterretjes zijn je noord-ster en je knelpunt. Vul in taak t6 je nulmeting in zodat deze doelen op jouw echte cijfers staan.</p>
+    </div>
+    <div class="kpis" id="kpiGrid"></div>
+  </div>
+</section>
+
+<section id="investors" style="padding-top:14px">
+  <div class="wrap">
+    <div class="investor">
+      <div class="eyebrow">Voor investeerders</div>
+      <h2>Waarom AI-first UTAMA een sterkere investering maakt</h2>
+      <p class="big">UTAMA is niet zomaar een ontwikkelaar die villa's bouwt en verkoopt — het is een AI-first vastgoedplatform. Dezelfde AI die verkoop, marketing en administratie aandrijft, geeft investeerders een transparantie en service die de markt niet gewend is.</p>
+      <div class="thesis">
+        <div class="th"><div class="d"></div><div><b>Schaalbaar zonder evenredige kosten.</b> <span>AI doet leadopvolging, content, admin en rapportage — omzet groeit sneller dan de personeelskosten.</span></div></div>
+        <div class="th"><div class="d"></div><div><b>Superieure investeerderservaring.</b> <span>Realtime portal, proactieve maandupdates en volledige transparantie over bouw, betalingen en rendement.</span></div></div>
+        <div class="th"><div class="d"></div><div><b>Snellere verkoop.</b> <span>24/7 meertalige kwalificatie plus AI-visualisatie van off-plan units verkort de weg van lead naar contract.</span></div></div>
+        <div class="th"><div class="d"></div><div><b>Datagedreven besturing.</b> <span>Per-project P&amp;L, cashflow en risico's live inzichtelijk — beslissingen op basis van cijfers, niet gevoel.</span></div></div>
+        <div class="th"><div class="d"></div><div><b>Lagere operationele risico's.</b> <span>Minder handmatige fouten in finance, belasting en communicatie tussen NL, EN en Indonesië.</span></div></div>
+        <div class="th"><div class="d"></div><div><b>Een merk dat vooroploopt.</b> <span>AI-first positionering onderscheidt UTAMA in een drukke Bali-markt en trekt de volgende generatie investeerders.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">UTAMA</div>
+    <div>AI-First 10x-Actieplan · opgesteld op basis van je Drive, Gmail, Moneybird &amp; Perspective · juli 2026</div>
+    <div style="margin-top:6px">Tip: gebruik “Opslaan als PDF” om een momentopname te delen met je team of investeerders.</div>
+  </div>
+</footer>
+
+<script>
+const CONTEXT="Je bent een AI-assistent voor UTAMA (PT Bali Utama Property), een Bali-vastgoedbedrijf dat off-plan leasehold-villa's ontwikkelt en verkoopt aan buitenlandse investeerders (vooral NL/EU). Projecten: MOKA Villas, The Maison (Pererenan) en The Dune. Propositie: premium off-plan villa's met verhuurpotentie (Airbnb), leasehold 25-30 jaar met verlengopties, sterke ROI (richtlijn ~14-20%). Doelgroep: investeerders die passief inkomen en portefeuilleopbouw zoeken. Team: Steven (oprichter), Ashley (sales & closing — belt gekwalificeerde leads), Joey (content & social), Lyla (operations & finance), Roan (projecten & inkoop). Stack: Gene (AI-CRM), Perspective (funnels), Moneybird, Asana, Instagram/TikTok, Meta Ads, SignRequest, Canva. Noord-ster (12 maanden): omzet en verkochte units 10x'en. Grootste knelpunt: closing — er komen genoeg leads binnen, maar te weinig worden gesloten; prioriteer alles wat de conversie naar getekende deals verhoogt. Merktoon: premium, warm, transparant en vertrouwenwekkend, nooit pusherig. Talen: NL en EN (soms DE). Werkwijze: antwoord concreet en direct bruikbaar, en vraag door als essentiële input ontbreekt. Ik geef je zo taken uit ons AI-first plan; gebruik steeds deze context.";
+
+const PILLARS=[
+ {id:"sales",n:"Sales &amp; Closing",engine:true,goal:"Meer van je leads omzetten naar getekende deals — je grootste hefboom. Sneller, meertalig en met sterke bezwaarafhandeling.",tools:["Gene","Ashley","SignRequest","AI DM-bot"]},
+ {id:"growth",n:"Groei, Voorraad &amp; Deals",goal:"Meer units om te verkopen én meer waarde per deal: nieuwe projecten, feasibility, pakketten/upsells en herhaalomzet.",tools:["Claude","Feasibility-AI","KAMU"]},
+ {id:"investor",n:"Investor Experience",goal:"Van eerste klik tot kwartaalupdate één naadloze, AI-gedreven ervaring die vertrouwen wekt — en zo helpt closen.",tools:["Claude-site","Investor portal","ROI-calc","Decks"],flag:true},
+ {id:"marketing",n:"Marketing &amp; Content",goal:"Consistente content die leads én vertrouwen levert — reels, ads, renders en brochures — met minimale handmatige tijd.",tools:["Claude","Canva","AI-renders","Meta Ads"]},
+ {id:"ops",n:"Operations &amp; Projectmanagement",goal:"Bouwprojecten, leveranciers en taken strak, transparant en doorzoekbaar — minder losse mails.",tools:["Asana","AI-inbox","Slack AI"]},
+ {id:"finance",n:"Finance &amp; Administratie",goal:"Facturen, betalingen, belasting en rapportage grotendeels geautomatiseerd, foutloos en op tijd.",tools:["Moneybird","AI-capture"]},
+ {id:"team",n:"Team, Kennis &amp; AI-cultuur",goal:"Klein team, grote output — iedereen werkt AI-first met gedeelde kennis, een scorecard en heldere governance.",tools:["Claude","Prompt-bibliotheek","Scorecard"]}
+];
+
+const TASKS=[
+ // SALES & CLOSING
+ {id:"s2",pl:"sales",ph:"p1",o:"Steven",pr:"must",ef:"S",t:"Laat Gene álle inbound (funnel, mail, IG, WhatsApp) automatisch binnen 5 min beantwoorden, kwalificeren én warme leads naar Ashley pushen; fix de low-balance/credit-alerts.",tls:"Gene",
+  run:"Instelchecklist voor Gene + handoff naar Ashley.",
+  cl:"Rol: RevOps-consultant voor UTAMA. Doel: geen enkele lead laten liggen en warme leads meteen bij Ashley krijgen. Help me Gene (AI-CRM) zo instellen dat álle inbound — funnelaanvragen, e-mail, Instagram- en WhatsApp-berichten — binnen 5 minuten wordt beantwoord en gekwalificeerd. Lever: (1) een stap-voor-stap instelchecklist, (2) een eerste-reactie-template per kanaal in NL en EN, (3) de kwalificatiecriteria en het exacte moment + de manier waarop een warme lead automatisch aan Ashley wordt doorgezet (met briefing), en (4) een monitoring-opzet zodat een 'low balance/credit'-melding me nooit meer laat misgrijpen. Vraag door over mijn huidige Gene-setup."},
+ {id:"c1",pl:"sales",ph:"p1",o:"Ashley",pr:"must",ef:"M",t:"Bouw de bezwaar- &amp; sales-enablement kit: bezwaarbibliotheek, social proof, ‘waarom UTAMA’ en een trust-checklist voor elke call.",tls:"Claude",
+  run:"Bouw de kit; Ashley gebruikt 'm in elke call.",
+  cl:"Rol: sales-enablement-strateeg voor UTAMA. Doel: Ashley meer leads laten closen. Lever een complete kit: (1) een bezwaarbibliotheek met de 10 meest voorkomende bezwaren (veiligheid van leasehold, eigendom/juridisch, ROI-twijfel, bouw-/opleverrisico, timing, financiering, 'ik denk er nog over na') met per bezwaar een kort, eerlijk en overtuigend antwoord, (2) social-proof-assets (welke testimonials, cijfers, cases en garanties we tonen en waar), (3) een one-pager 'waarom UTAMA' met onze onderscheidende punten t.o.v. andere Bali-ontwikkelaars, en (4) een korte trust-checklist die Ashley in elk gesprek afwerkt. Vraag me eerst welke testimonials en cijfers ik al heb. Toon: eerlijk, transparant, nooit pusherig. Talen: NL en EN."},
+ {id:"a1",pl:"sales",ph:"p1",o:"Ashley",pr:"must",ef:"M",t:"Call-voorbereiding &amp; closing: AI maakt per gekwalificeerde lead een briefing + belscript en bezwaarafhandeling, klaar voor Ashley om te bellen.",tls:"Claude · Gene",
+  run:"Draai de call-prep-prompt vóór elk gesprek.",
+  cl:"Rol: sales-coach voor UTAMA. Zodra een lead door de AI is gekwalificeerd, gaat Ashley bellen. Lever: (1) een call-prep-prompt die uit de leadgegevens (budget, tijdlijn, doel, taal, bezwaren) een korte briefing maakt met de beste insteek, (2) een flexibel belscript (opening, discovery-vragen, waardeverhaal, voorstel, afspraak maken), (3) een bezwaar-bibliotheek met antwoorden op de meest voorkomende bezwaren (veiligheid van leasehold, twijfel over ROI, timing, financiering), en (4) een korte follow-up na de call in NL en EN. Toon: consultatief en vertrouwenwekkend, nooit pusherig."},
+ {id:"c2",pl:"sales",ph:"p1",o:"Lyla",pr:"high",ef:"M",t:"Van ‘ja’ naar getekend: directe gepersonaliseerde offerte → e-sign (SignRequest) → aanbetaling, met de wrijving eruit.",tls:"SignRequest · Claude",
+  run:"Zet de flow op; verkort de tijd tot handtekening.",
+  cl:"Rol: sales-operations-ontwerper voor UTAMA. Doel: de tijd en wrijving tussen 'ja' en een getekend contract met aanbetaling minimaliseren. Lever: (1) een stapsgewijze flow van akkoord tot getekend (gepersonaliseerde offerte, contract/leasehold agreement, e-sign via SignRequest, aanbetalingsinstructie, bevestiging), (2) een prompt die per deal in minuten een gepersonaliseerde offerte genereert (unit, prijs, Combined Payment Plan, opleverdatum, ROI-scenario) klaar om te versturen, (3) waar het nu vaak vertraagt en hoe we dat wegnemen, en (4) de begeleidende berichten in NL en EN. Vraag me hoe mijn huidige offerte-naar-contract proces loopt; markeer waar een mens moet controleren."},
+ {id:"c3",pl:"sales",ph:"p1",o:"Ashley",pr:"must",ef:"M",t:"Follow-up cadence voor twijfelaars (‘ik denk er nog over na’): meerdaags, meertalig, met afwisselende waardeprikkels tot de deal.",tls:"Gene · Claude",
+  run:"Zet de cadans in Gene; meertalig (NL/EN/DE).",
+  cl:"Rol: nurture-copywriter voor UTAMA. Doel: warme leads die nog niet gesloten hebben alsnog naar een deal bewegen. Lever een meerdaagse follow-up cadans (bijv. dag 0, 2, 5, 9, 14, 30) met per touchpoint: kanaal (WhatsApp/e-mail/DM), doel, en het volledige bericht in NL, EN en DE. Wissel waardeprikkels af: social proof, nieuwe bouwupdate/foto, ROI-herinnering, schaarste ('laatste unit') en een zachte concrete CTA (call/bezichtiging). Voeg een regel toe wanneer een lead 'koud' wordt en naar een langzamere lijst gaat. Toon: behulpzaam en persoonlijk, nooit opdringerig."},
+ {id:"s4",pl:"sales",ph:"p1",o:"Ashley",pr:"mid",ef:"S",t:"AI-notulen na elke salescall automatisch samengevat en als vervolgtaak/gegevens in het CRM.",tls:"AI-notetaker · Gene",
+  run:"Gebruik het sjabloon in je notetaker en CRM.",
+  cl:"Rol: sales-assistent voor UTAMA. Ontwerp een systeem om elke salescall automatisch samen te vatten en op te volgen. Lever: (1) een prompt die van een call-transcript een gestructureerde samenvatting maakt (situatie klant, budget, tijdlijn, bezwaren, koopsignalen, volgende stap), (2) een lijst met CRM-velden die ik daarna bijwerk, en (3) een concept-opvolgmail in NL en EN. Houd het kort en direct bruikbaar voor een Bali-vastgoed leasehold-context."},
+ {id:"s1",pl:"sales",ph:"p2",o:"Team",pr:"high",ef:"M",t:"Zet je ‘Bali Real Estate Investor’ DM-script om in een AI-assistent die IG/WhatsApp-leads kwalificeert (budget, tijdlijn, doel) en calls voor Ashley inboekt.",tls:"Gene · AI DM-bot",
+  run:"Plak de output als systeemprompt in Gene of je chatbot.",
+  cl:"Rol: sales-copywriter voor UTAMA. Hieronder mijn bestaande Instagram-DM-script: [plak je DM-script]. Bouw hieruit een complete AI-kwalificatie-assistent. Lever: (1) een systeemprompt/persona voor Gene of een chatbot, (2) een gespreksflow met vertakkingen voor 'beginnende investeerder', 'ervaren investeerder' en 'volgt voor inspiratie', (3) de kwalificatievragen die budget, tijdlijn en doel achterhalen, (4) wanneer en hoe een call voor Ashley wordt geboekt, en (5) drie voorbeelddialogen. Houd toon en aannames trouw aan mijn script."},
+ {id:"s6",pl:"sales",ph:"p2",o:"Ashley",pr:"mid",ef:"M",t:"Dagelijkse AI-leadscoring die je topkansen prioriteert en ‘koud geworden’ leads automatisch reactiveert.",tls:"Gene · LeadEstate",
+  run:"Draai de dagprompt op je leadexport.",
+  cl:"Rol: sales-analist voor UTAMA. Ontwerp een simpel maar effectief lead-scoringsmodel en een dagelijkse routine. Lever: (1) een scoringsmodel (budget, tijdlijn, betrokkenheid, fit) met punten en drempels voor heet/warm/koud, (2) een dagelijkse prompt die ik op mijn leadlijst draai om de top-kansen voor Ashley te prioriteren met per lead een korte reden, en (3) een reactiveringsbericht voor leads die 30+ dagen koud zijn. Vraag welk CRM-exportformaat ik heb (Gene/LeadEstate) en pas de prompt daarop aan."},
+ {id:"s3",pl:"sales",ph:"p2",o:"Team",pr:"mid",ef:"M",t:"Vervang statische contactformulieren door Perspective conversational funnels per project (MOKA, Maison, Dune).",tls:"Perspective",
+  run:"Bouw hiermee de funnels in Perspective.",
+  cl:"Rol: funnel-copywriter voor UTAMA. Schrijf voor elk project — MOKA Villas, The Maison en The Dune — een conversational funnel die een statisch contactformulier vervangt. Lever per project: de openingsvraag, 5–7 kwalificatiestappen (budget, tijdlijn, gebruik: eigen gebruik/verhuur/beide, ervaring), de logica en vertakkingen, micro-teksten die vertrouwen wekken, en een afsluitende CTA die een afspraak boekt. Toon: premium, warm, investeerder-gericht. Talen: NL en EN."},
+
+ // GROEI, VOORRAAD & DEALS
+ {id:"g3",pl:"growth",ph:"p1",o:"Roan",pr:"high",ef:"M",t:"Hogere waarde per deal: productiseer pakketten en upsells (furnishing via KAMU, rental setup &amp; management, upgrades) met een prijskaart.",tls:"Claude · KAMU",
+  run:"Productiseer de pakketten en prijskaart.",
+  cl:"Rol: product- en pricing-strateeg voor UTAMA. Doel: de gemiddelde waarde per deal verhogen. Lever: (1) een set productiseerde pakketten/upsells rond een villa-aankoop (furnishing via KAMU, rental setup & management, upgrades/uitbreidingen, garantie-/servicepakketten) met een duidelijke prijskaart en marge, (2) hoe en wanneer Ashley deze in het salesgesprek aanbiedt (bundels en tiers: good/better/best), (3) de verkoopteksten per pakket in NL en EN, en (4) welke pakketten terugkerende inkomsten opleveren. Vraag me welke diensten ik nu al lever en tegen welke kosten."},
+ {id:"g1",pl:"growth",ph:"p2",o:"Steven",pr:"high",ef:"M",t:"Deal- &amp; land-pipeline: AI vindt en screent nieuwe project-/land-kansen (locatie, prijs, potentie) tot een wekelijkse shortlist.",tls:"Claude",
+  run:"Draai wekelijks; bouw een kansen-shortlist.",
+  cl:"Rol: acquisitie-analist voor UTAMA (off-plan villa-ontwikkeling op Bali). Doel: een gestage pipeline van nieuwe project-/land-kansen. Lever: (1) een scorecard om kansen te beoordelen (area zoals Canggu/Seseh/Kedungu/Uluwatu, grondprijs, leasehold-jaren, bouwbaarheid, verwachte verkoopsnelheid, verhuurpotentie, risico), (2) een wekelijkse routine/prompt om kansen te verzamelen en te scoren tot een shortlist, (3) welke bronnen en signalen ik gebruik (agents, netwerk, listings), en (4) een go/verder-onderzoeken/skip-indeling. Vraag me naar mijn criteria (budget per project, gewenste unit-mix, doelmarge)."},
+ {id:"g2",pl:"growth",ph:"p2",o:"Steven",pr:"high",ef:"M",t:"AI-feasibility per kans: kosten, marge, verkoopsnelheid en risico → een onderbouwd go/no-go.",tls:"Claude · Moneybird",
+  run:"Draai per serieuze kans vóór commitment.",
+  cl:"Rol: development-financieel analist voor UTAMA. Doel: per kans een onderbouwd go/no-go. Lever: (1) een feasibility-model (grond, bouwkosten, furnishing, fees, tijdlijn → totale kostprijs; verwachte verkoopprijs per unit → marge en ROI; verkoopsnelheid en cashflow-fasering), (2) een risicoparagraaf (juridisch/leasehold, bouw, markt, valuta EUR/IDR), (3) een heldere aanbeveling met de 3 aannames die moeten kloppen, en (4) een korte investor-samenvatting. Vraag me om de kerncijfers; reken met realistische Bali-benchmarks en markeer aannames."},
+ {id:"g4",pl:"growth",ph:"p2",o:"Steven",pr:"mid",ef:"M",t:"Kapitaal &amp; partners: AI-pitchdeck en datapakket om nieuwe projecten te financieren (JV/co-investeerders).",tls:"Claude · pptx",
+  run:"Gebruik per project voor je financierings-pitch.",
+  cl:"Rol: capital-raising adviseur voor UTAMA. Doel: nieuwe projecten sneller financieren via partners/co-investeerders. Lever: (1) een structuur voor een project-financieringspitch (kans, markt, projectplan, cijfers/rendement, risico, deal-structuur, exit), (2) een prompt die per project een investor-/partnerdeck en one-pager genereert uit mijn projectcijfers, (3) welke deal-structuren gangbaar zijn (JV, preferred return, profit share) op hoofdlijnen, en (4) wat een serieuze partner wil zien. Markeer dat dit geen juridisch/financieel advies is en waar ik een adviseur inschakel. Talen: NL en EN."},
+ {id:"g5",pl:"growth",ph:"p2",o:"Ashley",pr:"mid",ef:"S",t:"Herhaalkopers &amp; referrals: programma voor een tweede unit + verwijzingen, met AI-outreach naar bestaande kopers.",tls:"Claude · Gene",
+  run:"Zet het programma + outreach op.",
+  cl:"Rol: loyalty- en referral-marketeer voor UTAMA. Doel: meer omzet uit bestaande kopers (tweede unit) en hun netwerk. Lever: (1) een simpel referral-programma (beloning, voorwaarden, hoe het werkt), (2) een 'tweede unit'-aanbod voor tevreden kopers, (3) AI-outreach-berichten naar bestaande kopers (NL/EN) op logische momenten (na oplevering, na eerste verhuurseizoen, bij een nieuw project), en (4) hoe Ashley dit opvolgt. Vraag me hoeveel kopers ik nu heb en in welke fase ze zitten. Toon: warm, waarderend, niet transactioneel."},
+
+ // INVESTOR EXPERIENCE
+ {id:"i4",pl:"investor",ph:"p1",o:"Team",pr:"high",ef:"M",t:"Gepersonaliseerde investor-decks die AI samenstelt uit je data (unit, prijs, Combined Payment Plan, rendement) — een closing-tool.",tls:"Claude · pptx",
+  run:"Vul de prompt per deal in; export als slides.",
+  cl:"Rol: investor-relations copywriter voor UTAMA. Maak een sjabloon voor een gepersonaliseerd investor-deck dat helpt closen. Lever: (1) een deck-outline (kans, Bali-markt, UTAMA en track record, het project, unit en prijs, betaalplan, ROI-scenario, volgende stap), (2) een prompt waarin ik het project, de unit, de prijs en het rendement invul en die de volledige slide-teksten genereert, en (3) een uitgewerkt voorbeeld voor een MOKA-unit. Sluit aan op mijn Combined Payment Plan en merkstijl. Talen: NL en EN."},
+ {id:"i3",pl:"investor",ph:"p1",o:"Team",pr:"high",ef:"M",t:"AI ROI- &amp; scenario-calculator (huur, bezetting, waardestijging) met leadcapture — onderbouwt vertrouwen bij de close.",tls:"Claude-site",
+  run:"Geef de formules + UI-spec aan jezelf/de bouwer.",
+  cl:"Rol: product-engineer voor UTAMA. Ontwerp een ROI- en scenario-calculator voor de website die ook helpt closen. Lever: (1) het rekenmodel (inputs: aankoopprijs, verwachte nachtprijs, bezetting, kosten, leasehold-jaren; outputs: jaarlijkse cashflow, ROI %, terugverdientijd), (2) realistische standaardwaarden voor Bali (Canggu/Seseh/Kedungu/Uluwatu), (3) een UI-spec (velden, sliders, resultaatweergave), en (4) hoe ik na de berekening het e-mailadres capture en naar mijn CRM stuur. Geef de formules zodat ik het als Claude-component direct kan bouwen."},
+ {id:"i1",pl:"investor",ph:"p1",o:"Lyla",pr:"must",ef:"M",t:"Automatische investor updates: AI stelt per project een maandelijkse update op (foto's, mijlpalen, planning) — jij keurt goed, systeem verstuurt.",tls:"Claude · Auto-updates",
+  run:"Gebruik als herbruikbaar update-sjabloon (NL/EN).",
+  cl:"Rol: investor-relations manager voor UTAMA. Bouw een systeem voor maandelijkse investor updates per project (MOKA, Maison, Dune). Lever: (1) een herbruikbaar sjabloon met vaste secties (voortgang en mijlpalen, foto's, planning, betalingen/cashflow, volgende stappen, risico's), (2) een prompt waarin ik ruwe input plak (updates van de aannemer, omschrijving van foto's, planning) en die er een nette, professionele update van maakt in NL en EN, en (3) een voorbeeldupdate. Toon: transparant, geruststellend, professioneel. Steven/UTAMA keurt goed vóór verzending."},
+ {id:"i2",pl:"investor",ph:"p2",o:"Steven",pr:"must",ef:"L",t:"Nieuwe website volledig met Claude bouwen (vervang Framer): conversational intake, meertalig, live projectstatus en ROI-calculator. Lean gehost.",tls:"Claude · Vercel",
+  run:"Prompt → Claude genereert de site; zelf hosten op Vercel.",
+  cl:"Rol: full-stack webbouwer die met mij meebouwt. Ik wil mijn Framer-website vervangen door een volledig met Claude gebouwde, AI-first website voor UTAMA op utamabali.com, lean gehost. Lever: (1) een sitemap en paginastructuur (home, projecten: MOKA/Maison/Dune, 'hoe leasehold werkt', over ons/track record, ROI-calculator, investor portal-login, contact), (2) volledige homepage-copy in NL en EN met een conversational intake in plaats van een formulier, (3) een lean technisch bouwplan (Next.js/React dat Claude genereert, hosten op Vercel gratis tier, meertaligheid, koppeling met invest.utamabali.com), (4) de eerste werkende paginacode om mee te starten, en (5) wat ik uit Framer meeneem (content, domein, SEO-redirects). Toon: premium en vertrouwenwekkend."},
+ {id:"i6",pl:"investor",ph:"p2",o:"Lyla",pr:"high",ef:"M",t:"AI-onboarding voor nieuwe investeerders: documenten verzamelen, e-sign via SignRequest, KYC-checklist — minder drop-off na ‘ja’.",tls:"SignRequest · Portal",
+  run:"Gebruik als onboarding-flow met checklists en mails.",
+  cl:"Rol: onboarding-ontwerper voor UTAMA. Ontwerp een soepele onboarding voor nieuwe investeerders die drop-off na 'ja' minimaliseert. Lever: (1) een stapsgewijze flow van 'ja' tot getekend contract (documenten verzamelen, e-sign via SignRequest, KYC, betaalmijlpalen), (2) een documentchecklist per stap, (3) de begeleidende e-mails/berichten in NL en EN, en (4) een KYC-/compliancechecklist afgestemd op een Indonesische PT-structuur. Houd het duidelijk en geruststellend; markeer waar een mens moet controleren."},
+ {id:"i5",pl:"investor",ph:"p3",o:"Steven",pr:"must",ef:"L",t:"Bouw de investor portal op invest.utamabali.com (lean, Claude + Supabase) met strikte scheiding publiek (brochures) vs. afgeschermd per investeerder. Zie de blauwdruk.",tls:"Claude · Supabase",
+  run:"Prompt → functionele spec + lean MVP (zie sectie Portal).",
+  cl:"Rol: full-stack bouwer die met mij meebouwt. Help me de UTAMA investor portal lean zelf bouwen op invest.utamabali.com met Claude + Supabase, met twee lagen: (A) een PUBLIEKE laag zonder login — projectbrochures, algemene beschikbaarheid en richtprijzen, 'hoe leasehold werkt', ROI-calculator en intake; en (B) een AFGESCHERMDE laag met login per investeerder — bouwvoortgang (foto's, mijlpalen, planning), documenten (contract, leasehold agreement, betaalschema/Combined Payment Plan, facturen, KYC), betaalstatus, rendement-rapportage en maandelijkse updates. Lever: (1) een functionele specificatie en informatie-architectuur met de exacte scheiding publiek/privé, (2) een datamodel (investeerder ↔ project ↔ unit ↔ documenten/betalingen) als Supabase-schema, (3) rollen, rechten en beveiliging (Supabase Auth + row-level security, versleuteling, toegang loggen), (4) een lean bouwplan met een concrete MVP en de eerste code, en (5) wat ik zelf kan en waar ik eventueel hulp nodig heb. Stel vragen als je iets over mijn documenten of projecten mist."},
+
+ // MARKETING & CONTENT
+ {id:"m1",pl:"marketing",ph:"p1",o:"Steven",pr:"high",ef:"S",t:"Leg één UTAMA merk- &amp; tone-of-voice prompt vast (brand kit) zodat alle AI-output — content, sales en investor — consistent klinkt.",tls:"Claude",
+  run:"Bewaar de output als vaste ‘UTAMA-stijl’ prompt.",
+  cl:"Rol: brand-strateeg voor UTAMA. Help me één centrale merk- en tone-of-voice-prompt vastleggen die ik voor álle AI-output (socials, brochures, mails, website, sales) hergebruik. Stel me eerst 6–8 scherpe vragen over ons merk, publiek (buitenlandse investeerders in Bali-vastgoed), waarden, do's en don'ts en gewenste toon. Lever daarna een herbruikbare 'UTAMA brand voice'-prompt met woorden die we wél/niet gebruiken, zinslengte en 3 voorbeeldzinnen in de juiste stijl. Talen: NL en EN."},
+ {id:"m2",pl:"marketing",ph:"p1",o:"Joey",pr:"high",ef:"M",t:"Content-engine: 5 reels/week (4 op je persoonlijke account, 1 zakelijk) met AI-scripts + captions op basis van je organic strategie en projecten.",tls:"Claude · Canva",
+  run:"Joey draait de weekprompt; jij levert het beeld aan.",
+  cl:"Rol: content-strateeg voor UTAMA en Steven. Bouw een wekelijkse content-engine. Output: 5 reels per week — 4 voor Steven's persoonlijke account (persoonlijk, educatief over Bali leasehold-investeren en het ondernemersleven) en 1 voor het zakelijke UTAMA-profiel (project/merk). Lever: (1) een herbruikbare weekprompt die per reel een haak, voice-over-script, on-screen tekst, benodigd beeld (dat Steven aanlevert) en caption + hashtags genereert, (2) 3 terugkerende rubrieken per profiel, en (3) één voorbeeldweek volledig uitgewerkt. Gebruik de 'UTAMA brand voice' en Steven's persoonlijke toon."},
+ {id:"j1",pl:"marketing",ph:"p1",o:"Joey",pr:"high",ef:"S",t:"Voice-over per video: Joey schrijft het script, jij neemt het op met je telefoon, Joey verhoogt de kwaliteit met AI.",tls:"Claude · AI-audio",
+  run:"Claude schrijft de VO-scripts; jij spreekt ze in.",
+  cl:"Rol: script-schrijver voor UTAMA. Schrijf voice-over-scripts voor Steven's persoonlijke reels (Bali leasehold-investeren). Lever per reel een script van 20-40 seconden in Steven's persoonlijke, authentieke stem: waardevol en concreet, met een sterke haak in de eerste 3 seconden en een subtiele call-to-action. Lever een batch van 5 scripts per week op basis van de contentplanning, met per script een titel, het VO-script en een notitie welk beeld erbij hoort. Houd het spreektaal en makkelijk in te spreken op de telefoon."},
+ {id:"j3",pl:"marketing",ph:"p1",o:"Joey",pr:"high",ef:"S",t:"Reageer op alle comments met een AI-assistent die in de juiste stem antwoordt en warme leads doorzet naar Ashley/Gene.",tls:"Claude · Gene",
+  run:"Reactie-assistent; hete leads doorzetten naar Ashley.",
+  cl:"Rol: community-manager voor UTAMA. Bouw een comment-response-assistent voor onze social profielen (Instagram, TikTok, YouTube, LinkedIn). Lever: (1) reactierichtlijnen en toon (persoonlijk, behulpzaam, in Steven's en de merkstem), (2) kant-en-klare antwoordsjablonen voor veelvoorkomende comments (prijs, hoe werkt leasehold, is het veilig, 'DM me'), meertalig NL en EN, (3) een regel die koop-/investeringsintentie herkent en zulke comments markeert om door te zetten naar Gene en Ashley met een DM-openingszin, en (4) welke comments je juist niet publiek beantwoordt."},
+ {id:"j2",pl:"marketing",ph:"p2",o:"Joey",pr:"mid",ef:"S",t:"Herplaats elke reel naar TikTok, YouTube Shorts en LinkedIn met platform-specifieke caption, haak en hashtags.",tls:"Claude",
+  run:"Draai de repurpose-prompt per video.",
+  cl:"Rol: multi-platform content-editor voor UTAMA. Ik geef je een reel (onderwerp, script, caption) en jij levert de geoptimaliseerde versie per platform: TikTok (haak, caption, hashtags, trend-tip), YouTube Shorts (titel, beschrijving, tags) en LinkedIn (professionele haak, langere caption gericht op investeerders, 3 hashtags). Behoud de kernboodschap maar pas toon en lengte aan per platform en doelgroep. Talen: NL en EN waar relevant."},
+ {id:"j4",pl:"marketing",ph:"p2",o:"Joey",pr:"mid",ef:"M",t:"Beheer en optimaliseer de profielen (bio, highlights, posttijden, best presterende hooks) op basis van wat werkt.",tls:"Claude",
+  run:"Maandelijkse optimalisatie-review met Claude.",
+  cl:"Rol: social-media-strateeg voor UTAMA. Help me de profielen van Steven (persoonlijk) en UTAMA (zakelijk) beheren en optimaliseren. Lever: (1) een geoptimaliseerde bio en highlight-structuur per profiel, gericht op Bali-vastgoedinvesteerders, (2) een maandelijkse optimalisatie-review-prompt die uit de statistieken (views, retentie, saves, volggroei, best presterende hooks) concrete verbeteracties haalt, (3) aanbevolen posttijden en -frequentie per platform, en (4) een simpel format om per week de resultaten bij te houden. Vraag welke statistieken beschikbaar zijn."},
+ {id:"m3",pl:"marketing",ph:"p2",o:"Joey",pr:"mid",ef:"M",t:"Automatiseer Meta Ads-creatives + copyvarianten met AI en laat AI wekelijks de best-performers rapporteren.",tls:"Meta Ads · Claude",
+  run:"Gebruik voor je ads-briefing en weekrapport.",
+  cl:"Rol: paid-media-specialist voor UTAMA. Help me AI inzetten voor mijn Meta Ads (Bali-vastgoed leadgen). Lever: (1) 5 advertentie-concepten (hoek, visual-idee, primaire tekst, kop, CTA) gericht op investeerders die passief inkomen zoeken, elk in NL en EN, (2) een A/B-testopzet, en (3) een wekelijkse rapportage-prompt die ik op mijn ads-cijfers draai om winnaars, verliezers en concrete optimalisaties te benoemen. Vraag welke KPI's ik aanlever (CPL, CTR, ROAS)."},
+ {id:"m5",pl:"marketing",ph:"p2",o:"Team",pr:"high",ef:"M",t:"AI stelt gepersonaliseerde brochures samen per lead (juiste unit, taal, ROI-scenario) uit één template.",tls:"Claude · Canva",
+  run:"Vul de prompt per lead in; opmaak in Canva.",
+  cl:"Rol: sales-marketeer voor UTAMA. Ontwerp een systeem voor gepersonaliseerde investeerdersbrochures. Lever: (1) een herbruikbare brochurestructuur (unit, locatie, prijs en betaalplan, ROI-scenario, waarom UTAMA), (2) een prompt waarin ik per lead de unit, taal en het budget invul en die de volledige brochuretekst genereert, en (3) een voorbeeld ingevuld voor een MOKA 3BR voor een Nederlandse investeerder. Sluit aan op mijn Combined Payment Plan-structuur en merkstijl."},
+ {id:"m4",pl:"marketing",ph:"p2",o:"Roan",pr:"high",ef:"L",t:"AI-renders &amp; video-walkthroughs van off-plan units zodat kopers het eindresultaat zien vóór de bouw — sterke closing-tool.",tls:"AI-renders · AI-video",
+  run:"Volg de werkwijze; gebruik de beeld/video-prompts.",
+  cl:"Rol: visualisatie-specialist voor UTAMA. Ik verkoop off-plan villa's (MOKA, Maison, Dune) en wil kopers het eindresultaat laten zien vóór de bouw, om te helpen closen. Geef me een praktische werkwijze om AI-renders en video-walkthroughs te maken van mijn plattegronden en schetsen. Lever: (1) welke stappen en type tools (image- en video-AI) ik gebruik, (2) kant-en-klare beeldprompts voor een premium tropische villa-stijl (interieur en exterieur, golden hour), (3) een script/structuur voor een 30–45s walkthrough-video met voice-over in NL en EN, en (4) tips om consistent bij mijn merk te blijven."},
+ {id:"m6",pl:"marketing",ph:"p3",o:"Team",pr:"mid",ef:"M",t:"AI-SEO/blog: maandelijkse gidsen (‘Bali leasehold uitgelegd’) die organisch investeerders aantrekken.",tls:"Claude",
+  run:"Gebruik voor je content-kalender en artikelen.",
+  cl:"Rol: SEO-contentstrateeg voor UTAMA, gericht op buitenlandse investeerders die zoeken op 'Bali villa investment / leasehold'. Lever: (1) 12 artikelonderwerpen met zoekintentie en voorbeeld-zoektermen, (2) een herbruikbare artikel-prompt (structuur, koppen, interne CTA naar een funnel), en (3) één volledig voorbeeldartikel van ~800 woorden ('Bali leasehold uitgelegd'). Toon: gezaghebbend maar toegankelijk, in EN en optioneel NL."},
+
+ // OPERATIONS
+ {id:"o1",pl:"ops",ph:"p1",o:"Lyla",pr:"high",ef:"M",t:"Centraliseer verspreide projectinfo (o.a. de ‘UTAMA Development Information’-sheets) in Asana als één AI-doorzoekbaar dashboard.",tls:"Asana",
+  run:"Bouw hiermee je Asana-structuur en migratie.",
+  cl:"Rol: operations-consultant voor UTAMA. Ik stap over op Asana als centrale projecthub. Mijn projectinfo staat verspreid over Google Sheets (o.a. 'UTAMA Development Information') en mappen. Lever: (1) een Asana-structuur (portfolio, projecten per villa/ontwikkeling, secties, aangepaste velden zoals status, mijlpaal, betaalstatus, eigenaar), (2) een lijst standaardtaken en mijlpalen voor een off-plan bouwproject van land tot oplevering, en (3) een plan om mijn bestaande sheets naar Asana te migreren. Vraag me om een voorbeeld van mijn sheet-kolommen en stem de velden daarop af."},
+ {id:"o2",pl:"ops",ph:"p1",o:"Lyla",pr:"high",ef:"M",t:"AI-inbox-assistent die aannemers-/leveranciersmails (KAMU, Mahez, Blueprint) samenvat en actiepunten in Asana zet.",tls:"AI-inbox · Asana",
+  run:"Gebruik de inbox-prompt; zet acties in Asana.",
+  cl:"Rol: project-assistent voor UTAMA. Help me leveranciers- en aannemersmail (KAMU Concepts, Mahez Studio, Bali Blueprint, LMATS) sneller verwerken. Lever: (1) een prompt die een e-mail of maildraad samenvat naar kern, beslissingen, actiepunten met eigenaar en deadline, en bedrag/betaalstatus indien relevant, (2) een format om die actiepunten als Asana-taken te noteren, en (3) suggesties om dit (semi-)automatisch te maken. Houd rekening met communicatie in Engels én Indonesisch."},
+ {id:"o3",pl:"ops",ph:"p1",o:"Team",pr:"mid",ef:"S",t:"AI-vertaling ID↔EN/NL voor leveranciers- en legal-communicatie (LMATS, IndoNed).",tls:"Claude",
+  run:"Gebruik als vaste vertaal-prompt met vakjargon.",
+  cl:"Rol: vertaler-assistent voor UTAMA tussen Indonesisch, Engels en Nederlands, specifiek voor bouw-, vastgoed- en legal/tax-communicatie (LMATS, IndoNed, notaris). Lever: (1) een vertaal-prompt die niet alleen vertaalt maar ook toon en beleefdheidsvorm behoudt en onduidelijke of risicovolle juridische termen markeert, (2) een mini-woordenlijst van veelvoorkomende bouw- en leasehold-termen ID↔EN↔NL, en (3) een variant die een binnenkomend Indonesisch bericht samenvat, vertaalt én een concept-antwoord voorstelt."},
+ {id:"o4",pl:"ops",ph:"p2",o:"Roan",pr:"high",ef:"M",t:"Wekelijkse AI-projectstatus per villa (planning vs. realiteit, betalingen, risico's) automatisch gegenereerd.",tls:"Asana · Claude",
+  run:"Draai de wekelijkse status-prompt.",
+  cl:"Rol: project-controller voor UTAMA. Ontwerp een wekelijkse projectstatus-routine per villa. Lever: (1) een prompt waarin ik ruwe input plak (voortgang, omschrijving van foto's, betalingen, issues) en die per project een strakke statusrapportage maakt: planning vs. realiteit, % voltooid, betaalstatus, top-3 risico's en acties, (2) een vast format zodat updates week-op-week vergelijkbaar zijn, en (3) een korte management-samenvatting over alle projecten heen. Koppelbaar aan Asana en aan de investor updates (i1)."},
+ {id:"o5",pl:"ops",ph:"p3",o:"Lyla",pr:"mid",ef:"M",t:"Standaardiseer SOP's en laat een AI-assistent ze beantwoorden voor het team.",tls:"Claude",
+  run:"Gebruik als SOP-generator en kennisassistent.",
+  cl:"Rol: operations-architect voor UTAMA. Help me de kernprocessen vastleggen als SOP's en er een AI-vraagbaak van maken. Lever: (1) een lijst van de 10 belangrijkste SOP's (bijv. nieuwe lead → contract, onboarding investeerder, betaalmijlpaal verwerken, maandafsluiting, oplevering villa), (2) een SOP-sjabloon, (3) één volledig uitgewerkte voorbeeld-SOP, en (4) hoe ik deze SOP's als kennisbank aan een AI-assistent voer zodat het team antwoorden krijgt. Stel vragen waar je mijn proces nog niet kent."},
+
+ // FINANCE
+ {id:"f1",pl:"finance",ph:"p1",o:"Steven",pr:"must",ef:"S",t:"Los de terugkerende ‘payment failure / low balance’-meldingen structureel op met proactieve AI-monitoring.",tls:"Moneybird",
+  run:"Gebruik als oorzaakanalyse + monitoring-opzet.",
+  cl:"Rol: finance-operations analist voor UTAMA. Ik krijg steeds 'payment failure'- en 'low balance'-meldingen (o.a. van Gene/wallet en Moneybird-incasso). Help me dit structureel oplossen. Lever: (1) een checklist om de oorzaken te achterhalen en op te lossen (kaart, saldo, auto-recharge, incasso-machtiging), (2) een preventieve opzet (buffer, waarschuwingsdrempels, wie krijgt welke melding), en (3) een korte maandelijkse controle-routine zodat betalingen nooit meer stilvallen. Vraag welke diensten precies falen en denk mee per dienst."},
+ {id:"f2",pl:"finance",ph:"p1",o:"Lyla",pr:"high",ef:"M",t:"Automatiseer factuur- en betaalherinneringen in Moneybird; AI stelt de maandafsluiting voor LMATS op.",tls:"Moneybird",
+  run:"Gebruik voor de Moneybird-workflow en het LMATS-pakket.",
+  cl:"Rol: administratie-assistent voor UTAMA. Help me facturatie en maandafsluiting in Moneybird stroomlijnen. Lever: (1) een opzet voor automatische factuur- en betaalherinneringen (timing, toon, NL/EN), (2) een maandafsluiting-checklist die het maandpakket voor mijn accountant LMATS klaarzet (welke documenten, in welke vorm), en (3) een prompt die van mijn ruwe maandcijfers een korte financiële samenvatting maakt. Vraag naar mijn factuurstromen (verkoop, inkoop, projecten) en stem de workflow daarop af."},
+ {id:"f3",pl:"finance",ph:"p2",o:"Lyla",pr:"high",ef:"M",t:"AI verwerkt inkoopfacturen/bonnen (KAMU, Blueprint, Mahez) automatisch naar Moneybird met juist project/categorie.",tls:"Moneybird · AI-capture",
+  run:"Gebruik als capture-workflow met coderegels.",
+  cl:"Rol: boekhoud-automatiseerder voor UTAMA. Ik wil inkoopfacturen en bonnen (KAMU, Bali Blueprint, Mahez, aannemers) automatisch en correct in Moneybird krijgen. Lever: (1) een werkwijze om facturen via AI/OCR in te lezen en te boeken op het juiste project en de juiste grootboek-/kostencategorie, (2) een set 'coderegels' (welke leverancier → welk project/categorie), en (3) een controleroutine tegen dubbele of foute boekingen. Houd rekening met EUR- en IDR-bedragen en meerdere projecten."},
+ {id:"f4",pl:"finance",ph:"p2",o:"Steven",pr:"high",ef:"M",t:"AI-cashflow- en projectrendement-dashboard (per-project P&amp;L, live EUR/IDR-koers) — zicht op omzet en marge per project.",tls:"Moneybird · Claude",
+  run:"Gebruik voor de dashboard-spec en rekenlogica.",
+  cl:"Rol: financieel analist voor UTAMA. Ontwerp een cashflow- en projectrendement-dashboard. Lever: (1) welke cijfers ik per project wil zien (begrote vs. werkelijke kosten, ontvangen betaalmijlpalen, marge, live EUR/IDR-koers) op basis van mijn project-P&L-structuur, (2) een overzicht op bedrijfsniveau (cashflow, verplichtingen, verwachte inkomsten uit de sales-pipeline), (3) de rekenlogica en formules, en (4) advies hoe ik dit lean bouw (Google Sheets of een simpele Claude-app) met een maandelijkse update-prompt. Ik lever mijn P&L-opzet aan."},
+ {id:"f5",pl:"finance",ph:"p3",o:"Steven",pr:"mid",ef:"M",t:"AI-vraagbaak voor Indonesische belasting/legal (op basis van LMATS-afspraken) als eerste hulplijn.",tls:"Claude",
+  run:"Gebruik als kennis-assistent (eerste hulplijn).",
+  cl:"Rol: kennis-assistent voor UTAMA voor Indonesische belasting- en legal-vragen rond mijn PT (leasehold, PMA/BKPM, PBB, huurbelasting), op basis van de afspraken en documenten van mijn adviseurs (LMATS, IndoNed). Lever: (1) een structuur om hun adviezen en afspraken als kennisbron vast te leggen, (2) een assistent-prompt die mijn vragen beantwoordt met de nadrukkelijke regel dat het geen definitief fiscaal/juridisch advies is en met vermelding wanneer ik LMATS moet raadplegen, en (3) een lijst standaardvragen die het moet kunnen beantwoorden. Wees juridisch voorzichtig en markeer onzekerheden."},
+
+ // TEAM
+ {id:"t1",pl:"team",ph:"p1",o:"Steven",pr:"high",ef:"S",t:"Rol Claude/ChatGPT uit voor het hele team (ik, Ashley, Joey, Lyla, Roan) met het UTAMA context-blok en een gedeelde prompt-bibliotheek.",tls:"Claude",
+  run:"Gebruik als uitrolplan met startbibliotheek.",
+  cl:"Rol: AI-adoptie-coach voor UTAMA. Help me AI (Claude/ChatGPT) uitrollen voor mijn hele team (ik, Ashley, Joey, Lyla, Roan). Lever: (1) een simpel uitrolplan (accounts, een gedeeld Claude Project met het UTAMA context-blok, 3 startgebruiksscenario's per rol), (2) een startprompt-bibliotheek met 10 kant-en-klare prompts verdeeld over sales/closing, content, operations en finance, en (3) een korte 'zo schrijf je een goede prompt'-uitleg van 1 pagina. Praktisch en direct bruikbaar."},
+ {id:"t2",pl:"team",ph:"p1",o:"Team",pr:"mid",ef:"S",t:"Wekelijks ‘AI-uur’: iedereen deelt één nieuwe workflow of automatisering.",tls:"",
+  run:"Gebruik als agenda en terugkerend format.",
+  cl:"Rol: facilitator voor UTAMA. Ontwerp een wekelijks 'AI-uur' om AI-adoptie te versnellen. Lever: (1) een vast agenda-format (wat werkte, demo van een nieuwe workflow, samen één probleem oplossen), (2) een terugkerende opdracht zodat iedereen elke week één nieuwe automatisering deelt, en (3) een simpele manier om die workflows te verzamelen in onze kennisbank. Houd het licht, praktisch en maximaal 60 minuten."},
+ {id:"t6",pl:"team",ph:"p1",o:"Ashley",pr:"high",ef:"S",t:"Wekelijkse groei-scorecard bijhouden: leads → calls → offertes → deals → units → omzet, met de conversie per stap.",tls:"Claude · Scorecard",
+  run:"Vul wekelijks; stuur op de conversie per stap.",
+  cl:"Rol: revenue-operations analist voor UTAMA. Doel: één wekelijkse scorecard die onze 10x-voortgang stuurt. Lever: (1) een scorecard-template met de funnel: nieuwe leads → calls geboekt → calls gehouden → offertes uit → deals gesloten → units verkocht → omzet, plus de conversie% per stap en de gemiddelde dealwaarde, (2) realistische wekelijkse streefgetallen om richting 10x in 12 maanden te groeien, (3) een wekelijkse review-prompt die uit mijn cijfers de grootste lek in de funnel aanwijst en 1-2 acties voorstelt (focus: call→deal, want dat is nu het knelpunt), en (4) een maand- en kwartaaloverzicht. Vraag me om mijn huidige cijfers als nulmeting."},
+ {id:"t3",pl:"team",ph:"p2",o:"Lyla",pr:"high",ef:"L",t:"Bouw een centrale kennisbank (‘UTAMA-brein’) die AI kan doorzoeken: projecten, prijzen, legal, SOP's.",tls:"Claude · Asana",
+  run:"Gebruik voor de structuur en het vulplan.",
+  cl:"Rol: knowledge-manager voor UTAMA. Help me een centrale, AI-doorzoekbare kennisbank opzetten ('UTAMA-brein'). Lever: (1) een informatiestructuur (projecten, prijzen en betaalplannen, legal/tax, SOP's, merk en content, leveranciers/contacten), (2) een prioriteitenlijst wat ik als eerste vul en waar dit het beste kan leven (koppelbaar aan Asana/Drive), (3) een naamgevings- en onderhoudsafspraak, en (4) hoe ik dit aan een AI-assistent koppel zodat het team antwoorden krijgt met bronverwijzing. Stel vragen over waar mijn info nu staat."},
+ {id:"t4",pl:"team",ph:"p2",o:"Steven",pr:"high",ef:"S",t:"Data &amp; governance: bepaal welke data AI wel/niet mag zien (investeerdersprivacy, legal).",tls:"",
+  run:"Gebruik als AI-gebruiksrichtlijn (1 pagina).",
+  cl:"Rol: AI-governance adviseur voor UTAMA. Stel een korte, praktische AI-gebruiksrichtlijn op. Lever: (1) welke data AI wél/niet mag zien (let op investeerdersgegevens, KYC, contracten, financiële data), (2) simpele regels voor het team (wat plak je wel/niet in AI, welke tools zijn goedgekeurd), (3) een korte checklist voor het delen van klant-/investeerdersdata, en (4) een verwerkings- en bewaarafspraak op hoofdlijnen. Houd het op 1 pagina en begrijpelijk voor niet-juristen; markeer waar ik juridisch advies moet inwinnen."},
+ {id:"t5",pl:"team",ph:"p3",o:"Steven",pr:"mid",ef:"S",t:"Meet bespaarde uren per pijler en herinvesteer die tijd in verkoop en groei.",tls:"",
+  run:"Gebruik als meet-template en kwartaalreview.",
+  cl:"Rol: productiviteits-analist voor UTAMA. Help me de opbrengst van dit AI-first plan meetbaar maken. Lever: (1) een simpel template om per pijler bespaarde uren en resultaten (leads, reactietijd, output) bij te houden, (2) een nulmeting-vragenlijst zodat ik weet waar ik nu sta, en (3) een kwartaal-review-prompt die uit mijn cijfers conclusies trekt en voorstelt waar ik de bespaarde tijd het beste herinvesteer (verkoop/groei). Koppel dit aan de groei-scorecard (t6)."}
+];
+
+const KPIS=[
+ {k:"Omzet (12 mnd)",v:"10x — de noord-ster",from:"vul je nulmeting in (t6)",star:true},
+ {k:"Verkochte units (12 mnd)",v:"10x",from:"meer voorraad + hogere conversie",star:true},
+ {k:"Gesprek → getekende deal",v:"grootste hefboom ↑",from:"jouw knelpunt: hier de winst",star:true},
+ {k:"Gem. waarde per deal",v:"omhoog",from:"upsells &amp; pakketten (g3)"},
+ {k:"Reactietijd op leads",v:"< 5 minuten",from:"nu: uren, handmatig"},
+ {k:"Nieuwe projecten in pipeline",v:"gestage flow",from:"nu: ad hoc (g1/g2)"},
+ {k:"Investor updates",v:"maandelijks, automatisch",from:"nu: handmatig / ad hoc"},
+ {k:"Admin- &amp; finance-tijd",v:"−8 uur / week",from:"AI doet het voorwerk"}
+];
+
+const PRLABEL={must:"Must-do",high:"Hoog",mid:"Medium"};
+const EFLABEL={S:"Klein",M:"Middel",L:"Groot"};
+const PHLABEL={p1:"Fase 1 · Nu",p2:"Fase 2 · 3–6 mnd",p3:"Fase 3 · 6–12 mnd"};
+
+const done=new Set();
+let fPhase="all",fOwner="all",openOnly=false,mustOnly=false;
+const CIRC=376.99;
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function buildPillars(){
+  const host=document.getElementById("pillars");
+  let html="";
+  PILLARS.forEach(p=>{
+    const chips=p.tools.map(t=>`<span class="tchip">${t}</span>`).join("");
+    const rows=TASKS.filter(t=>t.pl===p.id).map(t=>{
+      const tls=t.tls?`<span class="tls">${t.tls}</span>`:"";
+      return `<div class="task" data-id="${t.id}" data-ph="${t.ph}" data-owner="${t.o}" data-pr="${t.pr}">
+        <div class="cb" onclick="toggle('${t.id}')"><svg viewBox="0 0 14 14"><polyline points="2,7 6,11 12,3"/></svg></div>
+        <div class="body">
+          <div class="txt">${t.t}</div>
+          <div class="metas">
+            <span class="m owner">${t.o}</span>
+            <span class="m pr-${t.pr}">${PRLABEL[t.pr]}</span>
+            <span class="m ph ${t.ph}">${PHLABEL[t.ph]}</span>
+            <span class="m ef">Inspanning: ${EFLABEL[t.ef]}</span>
+            ${tls}
+            <button class="promptbtn" data-for="${t.id}" onclick="togglePrompt('${t.id}')">✦ Claude-prompt</button>
+          </div>
+          <div class="ppanel" id="pp-${t.id}">
+            <div class="prun"><b>Uitvoeren:</b> ${esc(t.run)}</div>
+            <div class="pbox" id="pb-${t.id}">${esc(t.cl)}</div>
+            <div class="copyrow"><button class="copybtn" onclick="copyBox('pb-${t.id}',this)">Kopieer prompt</button></div>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+    const flag=p.flag?`<span class="flagtag">Speerpunt</span>`:"";
+    const eng=p.engine?`<span class="engine">Groeimotor</span>`:"";
+    html+=`<div class="pillar ${p.flag?'flag':''}" data-pillar="${p.id}">
+      <div class="p-head">
+        <div class="badge">0${PILLARS.indexOf(p)+1}</div>
+        <div class="t">
+          <h3>${p.n} ${eng}${flag}</h3>
+          <div class="goal">${p.goal}</div>
+          <div class="toolchips">${chips}</div>
+        </div>
+        <div class="p-prog">
+          <div class="pct" id="pct-${p.id}">0%</div>
+          <div class="mini"><i id="mini-${p.id}"></i></div>
+          <div class="lbl2" id="lbl-${p.id}">0/0</div>
+        </div>
+      </div>
+      <div class="tasks">${rows}</div>
+    </div>`;
+  });
+  host.innerHTML=html;
+}
+function buildKpis(){
+  document.getElementById("kpiGrid").innerHTML=KPIS.map(x=>
+    `<div class="kpi ${x.star?'star':''}"><div class="k">${x.k}</div><div class="v">${x.v}</div><div class="from">${x.from}</div></div>`).join("");
+}
+function toggle(id){
+  if(done.has(id))done.delete(id);else done.add(id);
+  const row=document.querySelector('.task[data-id="'+id+'"]');
+  const on=done.has(id);
+  row.classList.toggle("done",on);
+  row.querySelector(".cb").classList.toggle("on",on);
+  saveProgress();
+  refresh();
+  if(openOnly)applyFilters();
+}
+function togglePrompt(id){
+  const p=document.getElementById('pp-'+id);
+  const open=p.classList.toggle('open');
+  const b=document.querySelector('.promptbtn[data-for="'+id+'"]');
+  if(b){b.classList.toggle('open',open);b.textContent=open?'✕ Verberg prompt':'✦ Claude-prompt';}
+}
+function fb(txt,ok){
+  try{const ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(e){}
+}
+function copyBox(id,btn){
+  const el=document.getElementById(id);if(!el)return;
+  const txt=el.textContent;
+  const ok=()=>{const o=btn.getAttribute('data-o')||btn.textContent;btn.setAttribute('data-o',o);btn.textContent='Gekopieerd ✓';btn.classList.add('done');
+    setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},1600);};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,()=>fb(txt,ok));}else{fb(txt,ok);}
+}
+function pct(a,b){return b?Math.round(a/b*100):0;}
+function refresh(){
+  const tot=TASKS.length,d=done.size;
+  document.getElementById("ringPct").textContent=pct(d,tot)+"%";
+  document.getElementById("ringFg").style.strokeDashoffset=CIRC*(1-d/tot);
+  document.getElementById("doneCount").textContent=d;
+  document.getElementById("totCount").textContent=tot;
+  ["p1","p2","p3"].forEach(ph=>{
+    const list=TASKS.filter(t=>t.ph===ph);const dd=list.filter(t=>done.has(t.id)).length;
+    document.getElementById("mini"+ph.toUpperCase()).style.width=pct(dd,list.length)+"%";
+    document.getElementById("lbl"+ph.toUpperCase()).textContent=dd+"/"+list.length+" acties";
+  });
+  PILLARS.forEach(p=>{
+    const list=TASKS.filter(t=>t.pl===p.id);const dd=list.filter(t=>done.has(t.id)).length;
+    document.getElementById("pct-"+p.id).textContent=pct(dd,list.length)+"%";
+    document.getElementById("mini-"+p.id).style.width=pct(dd,list.length)+"%";
+    document.getElementById("lbl-"+p.id).textContent=dd+"/"+list.length;
+  });
+  updateCnt();
+}
+function updateCnt(){
+  let vis=0,visDone=0;
+  document.querySelectorAll(".task").forEach(r=>{
+    if(!r.classList.contains("hidden")){vis++;if(r.classList.contains("done"))visDone++;}
+  });
+  document.getElementById("filterCnt").textContent=vis+" acties zichtbaar · "+visDone+" afgerond";
+}
+function applyFilters(){
+  document.querySelectorAll(".task").forEach(r=>{
+    const okP=fPhase==="all"||r.dataset.ph===fPhase;
+    const okO=fOwner==="all"||r.dataset.owner===fOwner;
+    const okOpen=!openOnly||!done.has(r.dataset.id);
+    const okMust=!mustOnly||r.dataset.pr==="must";
+    r.classList.toggle("hidden",!(okP&&okO&&okOpen&&okMust));
+  });
+  document.querySelectorAll(".pillar").forEach(pl=>{
+    const any=pl.querySelectorAll(".task:not(.hidden)").length>0;
+    pl.classList.toggle("hidden",!any);
+  });
+  updateCnt();
+}
+function filterPhase(ph){
+  fPhase=ph;
+  document.querySelectorAll("[data-phase]").forEach(b=>b.classList.toggle("active",b.dataset.phase===ph));
+  applyFilters();
+  document.getElementById("pijlers").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function filterOwner(o){
+  fOwner=o;
+  document.querySelectorAll("[data-owner]").forEach(b=>b.classList.toggle("active",b.dataset.owner===o));
+  applyFilters();
+}
+function toggleOpen(){
+  openOnly=!openOnly;
+  document.getElementById("openTog").classList.toggle("active",openOnly);
+  applyFilters();
+}
+function toggleMust(){
+  mustOnly=!mustOnly;
+  document.getElementById("mustTog").classList.toggle("active",mustOnly);
+  applyFilters();
+}
+function resetAll(){
+  if(!confirm("Alle afgevinkte taken wissen? Je opgeslagen voortgang gaat verloren."))return;
+  done.clear();
+  document.querySelectorAll(".task").forEach(r=>{r.classList.remove("done");r.querySelector(".cb").classList.remove("on");});
+  saveProgress();
+  refresh();applyFilters();
+}
+function saveProgress(){try{localStorage.setItem("utama_actieplan_v1",JSON.stringify([...done]));}catch(e){}}
+function loadProgress(){try{const raw=localStorage.getItem("utama_actieplan_v1");if(!raw)return;const valid=new Set(TASKS.map(t=>t.id));JSON.parse(raw).forEach(id=>{if(!valid.has(id))return;done.add(id);const row=document.querySelector('.task[data-id="'+id+'"]');if(row){row.classList.add("done");const cb=row.querySelector(".cb");if(cb)cb.classList.add("on");}});}catch(e){}}
+buildPillars();buildKpis();loadProgress();
+document.getElementById("pb-context").textContent=CONTEXT;
+document.getElementById("pb-portal").textContent=TASKS.find(t=>t.id==="i5").cl;
+refresh();
+</script>
+</body>
+</html>
