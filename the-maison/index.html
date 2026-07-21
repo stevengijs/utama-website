@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Maison, Pererenan | UTAMA</title>
+<meta name="description" content="The Maison: 6 design-villa's met 2 slaapkamers, privé plunge pool en rooftop lounge in Pererenan, Bali. Vanaf €210.000, circa 14% netto rendement. Volledig beheerd.">
+<meta property="og:title" content="The Maison, Pererenan | UTAMA">
+<meta property="og:description" content="6 design-villa's met 2 slaapkamers, privé plunge pool en rooftop lounge in Pererenan. Vanaf €210.000, circa 14% netto rendement. Volledig beheerd.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://invest.utamabali.com/the-maison">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap row">
+    <a class="brand" href="/">UT<span>A</span>MA</a>
+    <div class="links">
+      <a href="/" data-t="navProjects">Projecten</a>
+      <a href="#calc" data-t="navReturns">Rendement</a>
+      <a href="#how" data-t="navHow">Zo werkt het</a>
+      <a href="#contact" data-t="navContact">Contact</a>
+    </div>
+    <div class="lang">
+      <button id="btnNL" class="on" onclick="setLang('nl')">NL</button>
+      <button id="btnEN" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap inner">
+    <div class="eyebrow"><a href="/" style="color:var(--terra);text-decoration:none" data-t="back">Projecten</a> · Pererenan, Bali</div>
+    <h1>The Maison</h1>
+    <p data-t="mHeroSub">Zes design-villa's met 2 slaapkamers, privé plunge pool en rooftop lounge, in het hart van Pererenan. Volledig gemeubileerd en beheerd, gebouwd voor sterk verhuurrendement.</p>
+    <div class="btns">
+      <a href="#calc" class="btn" data-t="mHeroCta1">Bereken je rendement</a>
+      <a href="#contact" class="btn ghost" data-t="mHeroCta2">Ontvang de brochure</a>
+    </div>
+    <div class="trustrow">
+      <div><b>vanaf €210.000</b><span data-t="mt1">richtprijs, nu in verkoop</span></div>
+      <div><b>±14%</b><span data-t="mt2">netto rendement (realistisch)</span></div>
+      <div><b id="mAvail">4 van 6</b><span data-t="mt3">nog beschikbaar</span></div>
+    </div>
+  </div>
+</header>
+
+<section style="padding-top:34px">
+  <div class="wrap">
+    <div class="detail">
+      <div class="gallery" id="gallery"></div>
+      <div class="body">
+        <div class="d-head">
+          <div><h2>The Maison</h2><div class="loc">Pererenan, Bali</div><div style="margin-top:8px"><span class="pill" id="pill"></span></div></div>
+          <div class="d-price"><div class="p" id="dprice">vanaf €210.000</div><div class="a" data-t="mStatus">In verkoop · oplevering april 2027</div></div>
+        </div>
+        <div class="facts" id="facts"></div>
+        <div class="hl" id="hl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="calc" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="calcEyebrow">Rendement</div>
+      <h2 data-t="calcTitle">Bereken je rendement</h2>
+      <p data-t="calcSub">De aannames volgen de cijfers uit onze brochure. Pas ze aan naar jouw scenario. Eerlijk, geen opgeblazen beloftes.</p>
+    </div>
+    <div class="calc">
+      <div class="card">
+        <h3 data-t="assumpH">Aannames</h3>
+        <div class="csub" data-t="assumpSub">Voorgevuld op de brochure van The Maison.</div>
+        <div class="field">
+          <label data-t="fPrice">Prijs (vast)</label>
+          <div class="pricesel" id="pricesel"></div>
+        </div>
+        <div class="field"><label><span data-t="fNightly">Gem. nachtprijs</span> <span class="val" id="vNightly"></span></label><input type="range" id="nightly" min="150" max="220" step="5" value="175" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fOcc">Bezettingsgraad</span> <span class="val" id="vOcc"></span></label><input type="range" id="occ" min="60" max="100" step="1" value="85" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fCosts">Kosten &amp; beheer</span> <span class="val" id="vCosts"></span></label><input type="range" id="costs" min="35" max="55" step="1" value="43" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fHold">Aanhoudperiode</span> <span class="val" id="vHold"></span></label><input type="range" id="hold" min="1" max="30" step="1" value="5" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fGrowth">Geschatte waardegroei / jaar</span> <span class="val" id="vGrowth"></span></label><input type="range" id="growth" min="0" max="8" step="1" value="5" oninput="calc()"></div>
+      </div>
+      <div class="card results">
+        <h3 data-t="expected">Verwacht rendement</h3>
+        <div class="csub" data-t="perYear">Op jaarbasis, netto na alle kosten en beheer.</div>
+        <div class="big-yield"><div class="num" id="oYield">–</div><div class="lbl" data-t="netYield">netto rendement / jaar</div></div>
+        <div class="payback" id="oPayback"></div>
+        <div class="stat-grid">
+          <div class="stat"><div class="s-l" data-t="netMonth">Netto huur / maand</div><div class="s-v" id="oMonth">–</div></div>
+          <div class="stat"><div class="s-l" data-t="netYear">Netto huur / jaar</div><div class="s-v" id="oYear">–</div></div>
+        </div>
+        <div class="hold-block">
+          <div class="hb-h" id="oHoldH"></div>
+          <div class="hrow"><span data-t="rentTotal">Netto huurinkomsten</span><b id="oRent">–</b></div>
+          <div class="hrow"><span data-t="resaleProfit">Geschatte verkoopwinst</span><b id="oResale">–</b></div>
+          <div class="hrow big"><span data-t="totalReturn">Totaal rendement</span><b id="oTotalRet">–</b></div>
+        </div>
+        <div class="breakdown">
+          <div class="brow"><span data-t="grossYear">Bruto huurinkomsten / jaar</span><b id="oGross">–</b></div>
+          <div class="brow"><span data-t="lessCosts">Af: kosten &amp; beheer</span><b id="oCostAmt">–</b></div>
+          <div class="brow"><span data-t="totalInv">Totale investering</span><b id="oInv">–</b></div>
+        </div>
+        <div class="note-ext" id="oExt"></div>
+      </div>
+    </div>
+    <details class="assump">
+      <summary data-t="assumpTitle">Aannames &amp; transparantie</summary>
+      <ul>
+        <li data-t="a1">Bruto huurinkomsten = nachtprijs × 365 × bezettingsgraad. Alle bedragen in euro's.</li>
+        <li data-t="a2">Netto = bruto minus alle kosten: beheer, marketing, OTA-fees, schoonmaak, onderhoud, personeel en lokale belasting.</li>
+        <li data-t="a3">Cijfers zijn gebaseerd op de brochure van The Maison (House of Reservations-model, met deels directe boekingen).</li>
+        <li data-t="a4">Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei. Bij leasehold hangt de waarde ook af van de resterende looptijd. Indicatie, geen garantie.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="howEyebrow">Zo werkt het</div>
+      <h2 data-t="howTitle">Veilig investeren op afstand</h2>
+      <p data-t="howSub">Eerlijk en transparant, van contract tot verhuur.</p>
+    </div>
+    <div class="how">
+      <div class="hcard"><div class="n">01</div><h4 data-t="h1t">Leasehold, goed geregeld</h4><p data-t="h1p">Je least de grond (Hak Sewa) en bezit de villa. Standaard 30 jaar met contractueel gegarandeerde verlenging van 30 jaar, waterdicht vastgelegd in de notariële akte via een bevoegde PPAT.</p></div>
+      <div class="hcard"><div class="n">02</div><h4 data-t="h2t">Betalen per bouwmijlpaal</h4><p data-t="h2p">Je betaalt gespreid in euro's, gekoppeld aan opgeleverde mijlpalen, meestal 30 + 30 + 30 + 10%. De laatste 10% betaal je bij sleuteloverdracht. De voortgang volg je transparant met foto's en updates.</p></div>
+      <div class="hcard"><div class="n">03</div><h4 data-t="h3t">Volledig beheer &amp; verhuur</h4><p data-t="h3p">Rental management via House of Reservations (250+ villa's) regelt listing, boekingen, gasten, schoonmaak, onderhoud en belasting. Jij ontvangt inkomsten en rapportage.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2 data-t="ctaTitle">Ontvang de digitale brochure via WhatsApp</h2>
+      <p data-t="ctaSub">Laat je gegevens achter, dan sturen we je de brochure van The Maison direct via WhatsApp en bellen we je kort om je vragen te beantwoorden. Een aanbetaling van €5.000 reserveert een unit. Geen spam.</p>
+      <div class="cta-grid">
+        <input type="text" id="leadName" data-tp="name" placeholder="Je naam">
+        <input type="text" id="leadPhone" data-tp="phone" placeholder="Je WhatsApp-nummer">
+        <input type="email" id="leadEmail" data-tp="email" placeholder="Je e-mailadres">
+      </div>
+      <div class="cta-btns">
+        <button class="btn wa-btn" onclick="sendLead('wa')"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg><span data-t="ctaBtn">Verstuur via WhatsApp</span></button>
+        <button class="btn ghost2" onclick="sendLead('email')" data-t="ctaEmail">Of per e-mail</button>
+        <button class="btn ghost2" onclick="openCal()" data-t="ctaCall">Plan een gesprek</button>
+      </div>
+      <div class="cta-ok" id="ctaOk"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    UTAMA · <span data-t="footer">Investeren in Bali-vastgoed, transparant en zorgeloos.</span>
+    <div class="disc" data-t="disc">Deze site geeft indicatieve informatie en geen fiscaal of juridisch advies. Rendementen zijn schattingen, geen garanties. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.</div>
+    <button class="fab-wa" onclick="waDirect()" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg></button>
+  </div>
+</footer>
+
+<script>
+const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", calendly:"", locale:"nl-NL", currency:"EUR" };
+
+const MAISON = {
+  prices:[
+    {v:195000, l:{nl:"Pre-sale",en:"Pre-sale"}, s:{nl:"eerdere fase",en:"earlier phase"}},
+    {v:210000, l:{nl:"Nu",en:"Now"}, s:{nl:"huidige prijs",en:"current price"}, current:true},
+    {v:225000, l:{nl:"Vanaf 15 aug",en:"From Aug 15"}, s:{nl:"prijs stijgt",en:"price rises"}}
+  ],
+  unitsTotal:6, unitsSold:2,
+  facts:[
+    {l:{nl:"Type",en:"Type"}, v:{nl:"2 ensuite slaapkamers · 2 badkamers",en:"2 ensuite bedrooms · 2 bathrooms"}},
+    {l:{nl:"Woonoppervlak",en:"Living space"}, v:{nl:"115 m² (incl. 40 m² rooftop)",en:"115 m² (incl. 40 m² rooftop)"}},
+    {l:{nl:"Zwembad",en:"Pool"}, v:{nl:"Privé plunge pool",en:"Private plunge pool"}},
+    {l:{nl:"Extra",en:"Extra"}, v:{nl:"Rooftop lounge · outdoor kitchen",en:"Rooftop lounge · outdoor kitchen"}},
+    {l:{nl:"Start bouw",en:"Construction start"}, v:{nl:"Mei 2026",en:"May 2026"}},
+    {l:{nl:"Oplevering",en:"Completion"}, v:{nl:"April 2027",en:"April 2027"}},
+    {l:{nl:"Leasehold",en:"Leasehold"}, v:{nl:"30 + 30 jaar (gegarandeerd)",en:"30 + 30 years (guaranteed)"}},
+    {l:{nl:"Bouwgarantie",en:"Build warranty"}, v:{nl:"10 jaar",en:"10 years"}}
+  ],
+  highlights:{
+    nl:["Privé plunge pool en 40 m² rooftop lounge met jungle-uitzicht","Volledig gemeubileerd en direct verhuurklaar",
+        "Gated community van 6 villa's, 3 min van Pererenan Beach","2 ensuite slaapkamers, outdoor kitchen, open living",
+        "Orange C2-zone: legale short-stay verhuur","30 + 30 jaar leasehold met gegarandeerde verlenging (incl. PBG/SLF)",
+        "10 jaar bouwgarantie (Bali Prime Construction)","Volledig beheer via House of Reservations (250+ villa's)"],
+    en:["Private plunge pool and 40 m² rooftop lounge with jungle views","Fully furnished and rental-ready",
+        "Gated community of 6 villas, 3 min from Pererenan Beach","2 ensuite bedrooms, outdoor kitchen, open living",
+        "Orange C2 zone: legal short-stay rental","30 + 30 year leasehold with guaranteed extension (incl. PBG/SLF)",
+        "10-year build warranty (Bali Prime Construction)","Full management via House of Reservations (250+ villas)"]
+  },
+  images:[]  // zet ["/the-maison/img1.jpg", ...] of laat leeg voor placeholders
+};
+
+const T={
+ nl:{navProjects:"Projecten",navReturns:"Rendement",navHow:"Zo werkt het",navContact:"Contact",back:"Projecten",
+  mHeroSub:"Zes design-villa's met 2 slaapkamers, privé plunge pool en rooftop lounge, in het hart van Pererenan. Volledig gemeubileerd en beheerd, gebouwd voor sterk verhuurrendement.",
+  mHeroCta1:"Bereken je rendement",mHeroCta2:"Ontvang de brochure",mt1:"richtprijs, nu in verkoop",mt2:"netto rendement (realistisch)",mt3:"nog beschikbaar",mStatus:"In verkoop · oplevering april 2027",
+  calcEyebrow:"Rendement",calcTitle:"Bereken je rendement",calcSub:"De aannames volgen de cijfers uit onze brochure. Pas ze aan naar jouw scenario. Eerlijk, geen opgeblazen beloftes.",
+  assumpH:"Aannames",assumpSub:"Voorgevuld op de brochure van The Maison.",fPrice:"Prijs (vast)",fNightly:"Gem. nachtprijs",fOcc:"Bezettingsgraad",fCosts:"Kosten & beheer",fHold:"Aanhoudperiode",fGrowth:"Geschatte waardegroei / jaar",
+  expected:"Verwacht rendement",perYear:"Op jaarbasis, netto na alle kosten en beheer.",netYield:"netto rendement / jaar",netMonth:"Netto huur / maand",netYear:"Netto huur / jaar",
+  rentTotal:"Netto huurinkomsten",resaleProfit:"Geschatte verkoopwinst",totalReturn:"Totaal rendement",grossYear:"Bruto huurinkomsten / jaar",lessCosts:"Af: kosten & beheer",totalInv:"Totale investering",
+  assumpTitle:"Aannames & transparantie",
+  a1:"Bruto huurinkomsten = nachtprijs × 365 × bezettingsgraad. Alle bedragen in euro's.",
+  a2:"Netto = bruto minus alle kosten: beheer, marketing, OTA-fees, schoonmaak, onderhoud, personeel en lokale belasting.",
+  a3:"Cijfers zijn gebaseerd op de brochure van The Maison (House of Reservations-model, met deels directe boekingen).",
+  a4:"Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei. Bij leasehold hangt de waarde ook af van de resterende looptijd. Indicatie, geen garantie.",
+  howEyebrow:"Zo werkt het",howTitle:"Veilig investeren op afstand",howSub:"Eerlijk en transparant, van contract tot verhuur.",
+  h1t:"Leasehold, goed geregeld",h1p:"Je least de grond (Hak Sewa) en bezit de villa. Standaard 30 jaar met contractueel gegarandeerde verlenging van 30 jaar, waterdicht vastgelegd in de notariële akte via een bevoegde PPAT.",
+  h2t:"Betalen per bouwmijlpaal",h2p:"Je betaalt gespreid in euro's, gekoppeld aan opgeleverde mijlpalen, meestal 30 + 30 + 30 + 10%. De laatste 10% betaal je bij sleuteloverdracht. De voortgang volg je transparant met foto's en updates.",
+  h3t:"Volledig beheer & verhuur",h3p:"Rental management via House of Reservations (250+ villa's) regelt listing, boekingen, gasten, schoonmaak, onderhoud en belasting. Jij ontvangt inkomsten en rapportage.",
+  ctaTitle:"Ontvang de digitale brochure via WhatsApp",ctaSub:"Laat je gegevens achter, dan sturen we je de brochure van The Maison direct via WhatsApp en bellen we je kort om je vragen te beantwoorden. Een aanbetaling van €5.000 reserveert een unit. Geen spam.",
+  ctaBtn:"Verstuur via WhatsApp",ctaEmail:"Of per e-mail",ctaCall:"Plan een gesprek",name:"Je naam",phone:"Je WhatsApp-nummer",email:"Je e-mailadres",
+  footer:"Investeren in Bali-vastgoed, transparant en zorgeloos.",
+  disc:"Deze site geeft indicatieve informatie en geen fiscaal of juridisch advies. Rendementen zijn schattingen, geen garanties. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.",
+  yrs:"jaar",payback:"Terugverdiend in ± {x} jaar (alleen uit huur).",available:"Nog {x} van {y} beschikbaar",availShort:"{x} van {y}",render:"Render: voeg je beeld toe",
+  holdH:"Over {x} jaar aanhouden (bij {g}% waardegroei/jaar):",ext:"Leasehold 30 jaar met gegarandeerde verlenging van 30 jaar. Verlengen na 30 jaar kost ± 20% van de aankoopprijs (± {x}). Je kunt de villa ook eerder verkopen.",
+  fill:"Vul je naam en je WhatsApp of e-mail in.",okMsg:"Bedankt! We nemen snel contact met je op. Je ontvangt de brochure via WhatsApp.",roiLbl:"ROI"},
+ en:{navProjects:"Projects",navReturns:"Returns",navHow:"How it works",navContact:"Contact",back:"Projects",
+  mHeroSub:"Six design villas with 2 bedrooms, a private plunge pool and rooftop lounge, in the heart of Pererenan. Fully furnished and managed, built for strong rental returns.",
+  mHeroCta1:"Calculate your return",mHeroCta2:"Get the brochure",mt1:"guide price, selling now",mt2:"net yield (realistic)",mt3:"still available",mStatus:"Selling now · completion April 2027",
+  calcEyebrow:"Returns",calcTitle:"Calculate your return",calcSub:"The assumptions follow the figures from our brochure. Adjust them to your scenario. Honest, no inflated promises.",
+  assumpH:"Assumptions",assumpSub:"Pre-filled from The Maison brochure.",fPrice:"Price (fixed)",fNightly:"Avg. nightly rate",fOcc:"Occupancy rate",fCosts:"Costs & management",fHold:"Holding period",fGrowth:"Estimated value growth / year",
+  expected:"Expected return",perYear:"Per year, net of all costs and management.",netYield:"net yield / year",netMonth:"Net rent / month",netYear:"Net rent / year",
+  rentTotal:"Net rental income",resaleProfit:"Estimated resale profit",totalReturn:"Total return",grossYear:"Gross rental income / year",lessCosts:"Less: costs & management",totalInv:"Total investment",
+  assumpTitle:"Assumptions & transparency",
+  a1:"Gross rental income = nightly rate × 365 × occupancy. All amounts in euros.",
+  a2:"Net = gross minus all costs: management, marketing, OTA fees, cleaning, maintenance, staff and local tax.",
+  a3:"Figures are based on The Maison brochure (House of Reservations model, partly direct bookings).",
+  a4:"Resale value on holding uses the chosen annual value growth. For leasehold, value also depends on the remaining term. Indicative, not a guarantee.",
+  howEyebrow:"How it works",howTitle:"Invest safely, remotely",howSub:"Honest and transparent, from contract to rental.",
+  h1t:"Leasehold, properly structured",h1p:"You lease the land (Hak Sewa) and own the villa. Standard 30 years with a contractually guaranteed 30-year extension, watertight in the notarial deed via an authorised PPAT.",
+  h2t:"Pay per construction milestone",h2p:"You pay in stages in euros, tied to delivered milestones, usually 30 + 30 + 30 + 10%. The final 10% is paid at key handover. You follow progress transparently with photos and updates.",
+  h3t:"Full management & rental",h3p:"Rental management via House of Reservations (250+ villas) handles listing, bookings, guests, cleaning, maintenance and tax. You receive income and reporting.",
+  ctaTitle:"Get the digital brochure via WhatsApp",ctaSub:"Leave your details and we'll send The Maison brochure straight to your WhatsApp and give you a quick call to answer your questions. A €5,000 deposit reserves a unit. No spam.",
+  ctaBtn:"Send via WhatsApp",ctaEmail:"Or by email",ctaCall:"Book a call",name:"Your name",phone:"Your WhatsApp number",email:"Your email",
+  footer:"Investing in Bali real estate, transparent and hassle-free.",
+  disc:"This site provides indicative information and no tax or legal advice. Returns are estimates, not guarantees. Always have contracts checked by an authorised notary (PPAT) and your own adviser.",
+  yrs:"years",payback:"Paid back in ± {x} years (from rent alone).",available:"{x} of {y} still available",availShort:"{x} of {y}",render:"Render: add your image",
+  holdH:"Hold for {x} years (at {g}% value growth/year):",ext:"Leasehold 30 years with guaranteed 30-year extension. Extending after 30 years costs ± 20% of the purchase price (± {x}). You can also sell the villa earlier.",
+  fill:"Please enter your name and WhatsApp or email.",okMsg:"Thanks! We'll be in touch shortly. You'll receive the brochure via WhatsApp.",roiLbl:"ROI"}
+};
+let lang="nl", selPrice=210000;
+const el=id=>document.getElementById(id);
+function money(v){return new Intl.NumberFormat(CONFIG.locale,{style:"currency",currency:CONFIG.currency,maximumFractionDigits:0}).format(Math.round(v));}
+function pct(v){return new Intl.NumberFormat(CONFIG.locale,{style:"percent",minimumFractionDigits:1,maximumFractionDigits:1}).format(v);}
+function tr(s,o){let r=s;for(const k in o)r=r.replace("{"+k+"}",o[k]);return r;}
+function imgBlock(cls,label){return `<div class="g ${cls} ph-img ${cls==='big'?'':'alt'}"><span class="ph-tag">${label}</span></div>`;}
+
+function renderStatic(){
+  const avail=MAISON.unitsTotal-MAISON.unitsSold;
+  el('gallery').innerHTML = (MAISON.images&&MAISON.images.length)
+    ? `<div class="g big" style="background-image:url('${MAISON.images[0]}');background-size:cover;background-position:center"></div>`+[1,2,3,4].map(i=>MAISON.images[i]?`<div class="g" style="background-image:url('${MAISON.images[i]}');background-size:cover;background-position:center"></div>`:imgBlock('','')).join("")
+    : imgBlock('big',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render);
+  el('facts').innerHTML=MAISON.facts.map(f=>`<div class="fact"><div class="l">${f.l[lang]}</div><div class="v">${f.v[lang]}</div></div>`).join("");
+  el('hl').innerHTML=MAISON.highlights[lang].map(x=>`<div>${x}</div>`).join("");
+  el('pill').textContent=tr(T[lang].available,{x:avail,y:MAISON.unitsTotal});
+  el('mAvail').textContent=tr(T[lang].availShort,{x:avail,y:MAISON.unitsTotal});
+  el('pricesel').innerHTML=MAISON.prices.map(pr=>`<div class="pbtn ${pr.v===selPrice?'on':''}" onclick="setPrice(${pr.v})"><span class="pv">${money(pr.v)}</span><span class="ps">${pr.l[lang]} · ${pr.s[lang]}</span></div>`).join("");
+}
+function setPrice(v){ selPrice=v; el('dprice').textContent=(lang==='nl'?"vanaf ":"from ")+money(v); renderStatic(); calc(); }
+
+let last={};
+function calc(){
+  const price=selPrice, nightly=+el('nightly').value, occ=+el('occ').value/100, costs=+el('costs').value/100, hold=+el('hold').value, growth=+el('growth').value/100;
+  el('vNightly').textContent=money(nightly);
+  el('vOcc').textContent=Math.round(occ*100)+"%";
+  el('vCosts').textContent=Math.round(costs*100)+"%";
+  el('vHold').textContent=hold+" "+T[lang].yrs;
+  el('vGrowth').textContent=Math.round(growth*100)+"%";
+  const gross=nightly*365*occ, costAmt=gross*costs, net=gross-costAmt;
+  const y=price>0?net/price:0, month=net/12, payback=net>0?price/net:0;
+  el('oYield').textContent=pct(y);
+  el('oMonth').textContent=money(month);
+  el('oYear').textContent=money(net);
+  el('oGross').textContent=money(gross);
+  el('oCostAmt').textContent=money(costAmt);
+  el('oInv').textContent=money(price);
+  el('oPayback').textContent=tr(T[lang].payback,{x:payback>0?payback.toFixed(1):"–"});
+  const rentTotal=net*hold, resaleVal=price*Math.pow(1+growth,hold), resaleProfit=resaleVal-price, totalRet=rentTotal+resaleProfit, totalRoi=price>0?totalRet/price:0;
+  el('oHoldH').textContent=tr(T[lang].holdH,{x:hold,g:Math.round(growth*100)});
+  el('oRent').textContent=money(rentTotal);
+  el('oResale').textContent=money(resaleProfit);
+  el('oTotalRet').textContent=money(totalRet)+"  ("+pct(totalRoi)+" "+T[lang].roiLbl+")";
+  el('oExt').textContent=tr(T[lang].ext,{x:money(price*0.20)});
+  last={price:money(price),y:pct(y),net:money(net)};
+}
+function setLang(l){
+  lang=l; el('btnNL').classList.toggle('on',l==='nl'); el('btnEN').classList.toggle('on',l==='en'); document.documentElement.lang=l;
+  document.querySelectorAll('[data-t]').forEach(e=>{const k=e.getAttribute('data-t'); if(T[l][k]!==undefined)e.textContent=T[l][k];});
+  document.querySelectorAll('[data-tp]').forEach(e=>{const k=e.getAttribute('data-tp'); if(T[l][k]!==undefined)e.placeholder=T[l][k];});
+  el('dprice').textContent=(l==='nl'?"vanaf ":"from ")+money(selPrice);
+  renderStatic(); calc();
+}
+function fb(txt,ok){try{const ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(e){}}
+function sendLead(via){
+  const name=el('leadName').value.trim(), email=el('leadEmail').value.trim(), phone=el('leadPhone').value.trim();
+  const ok=el('ctaOk');
+  if(!name||(!email&&!phone)){ok.style.display="block";ok.textContent=T[lang].fill;return;}
+  const body=(lang==='nl'?"Nieuwe lead via de website: The Maison":"New lead via the website: The Maison")+"%0A"+
+    (lang==='nl'?"Naam":"Name")+": "+(name||"-")+"%0AWhatsApp: "+(phone||"-")+"%0AE-mail: "+(email||"-")+"%0A"+
+    (lang==='nl'?"Prijs":"Price")+": "+last.price+" · "+T[lang].netYield+": "+last.y;
+  if(via==='wa'){ window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+body,"_blank"); }
+  else{ const subj=encodeURIComponent(lang==='nl'?"Info-aanvraag The Maison":"Info request The Maison"); window.location.href="mailto:"+CONFIG.email+"?subject="+subj+"&body="+body; }
+  ok.style.display="block"; ok.textContent=T[lang].okMsg;
+}
+function openCal(){ if(CONFIG.calendly){window.open(CONFIG.calendly,"_blank");} else {sendLead('wa');} }
+function waDirect(){ const msg=(lang==='nl'?"Hi! Ik heb interesse in The Maison in Pererenan.":"Hi! I'm interested in The Maison in Pererenan."); window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg),"_blank"); }
+setLang('nl');
+</script>
+</body>
+</html>

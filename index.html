@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTAMA · Investeer in Bali-vastgoed</title>
+<meta name="description" content="Premium off-plan villa's op Bali: transparant, volledig beheerd en met sterk verhuurrendement. Bekijk onze projecten.">
+<meta property="og:title" content="UTAMA · Investeer in Bali-vastgoed">
+<meta property="og:description" content="Premium off-plan villa's op Bali, volledig beheerd. Bekijk onze projecten en bereken je rendement.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://invest.utamabali.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap row">
+    <a class="brand" href="/">UT<span>A</span>MA</a>
+    <div class="links">
+      <a href="#projects" data-t="navProjects">Projecten</a>
+      <a href="#how" data-t="navHow">Zo werkt het</a>
+      <a href="#contact" data-t="navContact">Contact</a>
+    </div>
+    <div class="lang">
+      <button id="btnNL" class="on" onclick="setLang('nl')">NL</button>
+      <button id="btnEN" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap inner">
+    <div class="eyebrow" data-t="heroEyebrow">Off-plan villa's op Bali</div>
+    <h1 data-t="heroTitle">Investeer in Bali-vastgoed, transparant en zorgeloos</h1>
+    <p data-t="heroSub">Premium villa's met sterk verhuurrendement, volledig gebouwd en beheerd. Van aankoop tot maandelijkse huurinkomsten regelen wij alles.</p>
+    <div class="btns">
+      <a href="#projects" class="btn" data-t="heroCta1">Bekijk de projecten</a>
+      <a href="#contact" class="btn ghost" data-t="heroCta2">Plan een gesprek</a>
+    </div>
+    <div class="trustrow">
+      <div><b>12-17%</b><span data-t="t1">verwacht jaarlijks rendement</span></div>
+      <div><b>±14%</b><span data-t="t2">netto rendement (realistisch)</span></div>
+      <div><b>100%</b><span data-t="t3">beheer &amp; verhuur geregeld</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="projEyebrow">Onze projecten</div>
+      <h2 data-t="projTitle">Beschikbare villa's</h2>
+      <p data-t="projSub">Klik op een project voor de details, de renders en een rendementsberekening op maat.</p>
+    </div>
+    <div class="pcards" id="pcards"></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="howEyebrow">Zo werkt het</div>
+      <h2 data-t="howTitle">Veilig investeren op afstand</h2>
+      <p data-t="howSub">Eerlijk en transparant, van contract tot verhuur.</p>
+    </div>
+    <div class="how">
+      <div class="hcard"><div class="n">01</div><h4 data-t="h1t">Leasehold, goed geregeld</h4><p data-t="h1p">Je least de grond (Hak Sewa) en bezit de villa. Standaard 30 jaar met contractueel gegarandeerde verlenging van 30 jaar, waterdicht vastgelegd in de notariële akte via een bevoegde PPAT.</p></div>
+      <div class="hcard"><div class="n">02</div><h4 data-t="h2t">Betalen per bouwmijlpaal</h4><p data-t="h2p">Je betaalt gespreid in euro's, gekoppeld aan opgeleverde mijlpalen, meestal 30 + 30 + 30 + 10%. De laatste 10% betaal je bij sleuteloverdracht. De voortgang volg je transparant met foto's en updates.</p></div>
+      <div class="hcard"><div class="n">03</div><h4 data-t="h3t">Volledig beheer &amp; verhuur</h4><p data-t="h3p">Ons beheerteam regelt listing, boekingen, gasten, schoonmaak, onderhoud en belasting. Jij ontvangt inkomsten en rapportage.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2 data-t="ctaTitle">Ontvang de digitale brochure via WhatsApp</h2>
+      <p data-t="ctaSub">Laat je gegevens achter, dan sturen we je de brochure direct via WhatsApp en bellen we je kort om je vragen te beantwoorden. Een aanbetaling van €5.000 reserveert een unit. Geen spam.</p>
+      <div class="cta-grid">
+        <input type="text" id="leadName" data-tp="name" placeholder="Je naam">
+        <input type="text" id="leadPhone" data-tp="phone" placeholder="Je WhatsApp-nummer">
+        <input type="email" id="leadEmail" data-tp="email" placeholder="Je e-mailadres">
+      </div>
+      <div class="cta-btns">
+        <button class="btn wa-btn" onclick="sendLead('wa')"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg><span data-t="ctaBtn">Verstuur via WhatsApp</span></button>
+        <button class="btn ghost2" onclick="sendLead('email')" data-t="ctaEmail">Of per e-mail</button>
+        <button class="btn ghost2" onclick="openCal()" data-t="ctaCall">Plan een gesprek</button>
+      </div>
+      <div class="cta-ok" id="ctaOk"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    UTAMA · <span data-t="footer">Investeren in Bali-vastgoed, transparant en zorgeloos.</span>
+    <button class="fab-wa" onclick="waDirect()" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg></button>
+  </div>
+</footer>
+
+<script>
+const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", calendly:"", locale:"nl-NL", currency:"EUR" };
+
+/* Projecten: elk project heeft een eigen pagina op /<link>. Voeg hier project #2 toe. */
+const PROJECTS = [
+  { id:"maison", name:"The Maison", link:"/the-maison",
+    loc:{nl:"Pererenan, Bali", en:"Pererenan, Bali"},
+    status:{nl:"In verkoop · oplevering april 2027", en:"Selling now · completion April 2027"},
+    priceFrom:210000, unitsTotal:6, unitsSold:2 }
+];
+
+const T={
+ nl:{navProjects:"Projecten",navHow:"Zo werkt het",navContact:"Contact",
+  heroEyebrow:"Off-plan villa's op Bali",heroTitle:"Investeer in Bali-vastgoed, transparant en zorgeloos",
+  heroSub:"Premium villa's met sterk verhuurrendement, volledig gebouwd en beheerd. Van aankoop tot maandelijkse huurinkomsten regelen wij alles.",
+  heroCta1:"Bekijk de projecten",heroCta2:"Plan een gesprek",
+  t1:"verwacht jaarlijks rendement",t2:"netto rendement (realistisch)",t3:"beheer & verhuur geregeld",
+  projEyebrow:"Onze projecten",projTitle:"Beschikbare villa's",projSub:"Klik op een project voor de details, de renders en een rendementsberekening op maat.",
+  howEyebrow:"Zo werkt het",howTitle:"Veilig investeren op afstand",howSub:"Eerlijk en transparant, van contract tot verhuur.",
+  h1t:"Leasehold, goed geregeld",h1p:"Je least de grond (Hak Sewa) en bezit de villa. Standaard 30 jaar met contractueel gegarandeerde verlenging van 30 jaar, waterdicht vastgelegd in de notariële akte via een bevoegde PPAT.",
+  h2t:"Betalen per bouwmijlpaal",h2p:"Je betaalt gespreid in euro's, gekoppeld aan opgeleverde mijlpalen, meestal 30 + 30 + 30 + 10%. De laatste 10% betaal je bij sleuteloverdracht. De voortgang volg je transparant met foto's en updates.",
+  h3t:"Volledig beheer & verhuur",h3p:"Ons beheerteam regelt listing, boekingen, gasten, schoonmaak, onderhoud en belasting. Jij ontvangt inkomsten en rapportage.",
+  ctaTitle:"Ontvang de digitale brochure via WhatsApp",ctaSub:"Laat je gegevens achter, dan sturen we je de brochure direct via WhatsApp en bellen we je kort om je vragen te beantwoorden. Een aanbetaling van €5.000 reserveert een unit. Geen spam.",
+  ctaBtn:"Verstuur via WhatsApp",ctaEmail:"Of per e-mail",ctaCall:"Plan een gesprek",name:"Je naam",phone:"Je WhatsApp-nummer",email:"Je e-mailadres",
+  footer:"Investeren in Bali-vastgoed, transparant en zorgeloos.",
+  from:"vanaf",available:"Nog {x} van {y} beschikbaar",more:"Bekijk project en rendement →",soon:"Volgend project binnenkort",
+  fill:"Vul je naam en je WhatsApp of e-mail in.",okMsg:"Bedankt! We nemen snel contact met je op. Je ontvangt de brochure via WhatsApp."},
+ en:{navProjects:"Projects",navHow:"How it works",navContact:"Contact",
+  heroEyebrow:"Off-plan villas in Bali",heroTitle:"Invest in Bali real estate, transparent and hassle-free",
+  heroSub:"Premium villas with strong rental returns, fully built and managed. From purchase to monthly rental income, we handle everything.",
+  heroCta1:"View the projects",heroCta2:"Book a call",
+  t1:"expected annual return",t2:"net yield (realistic)",t3:"management & rental handled",
+  projEyebrow:"Our projects",projTitle:"Available villas",projSub:"Click a project for details, renders and a tailored return calculation.",
+  howEyebrow:"How it works",howTitle:"Invest safely, remotely",howSub:"Honest and transparent, from contract to rental.",
+  h1t:"Leasehold, properly structured",h1p:"You lease the land (Hak Sewa) and own the villa. Standard 30 years with a contractually guaranteed 30-year extension, watertight in the notarial deed via an authorised PPAT.",
+  h2t:"Pay per construction milestone",h2p:"You pay in stages in euros, tied to delivered milestones, usually 30 + 30 + 30 + 10%. The final 10% is paid at key handover. You follow progress transparently with photos and updates.",
+  h3t:"Full management & rental",h3p:"Our management team handles listing, bookings, guests, cleaning, maintenance and tax. You receive income and reporting.",
+  ctaTitle:"Get the digital brochure via WhatsApp",ctaSub:"Leave your details and we'll send the brochure straight to your WhatsApp and give you a quick call to answer your questions. A €5,000 deposit reserves a unit. No spam.",
+  ctaBtn:"Send via WhatsApp",ctaEmail:"Or by email",ctaCall:"Book a call",name:"Your name",phone:"Your WhatsApp number",email:"Your email",
+  footer:"Investing in Bali real estate, transparent and hassle-free.",
+  from:"from",available:"{x} of {y} still available",more:"View project and returns →",soon:"Next project coming soon",
+  fill:"Please enter your name and WhatsApp or email.",okMsg:"Thanks! We'll be in touch shortly. You'll receive the brochure via WhatsApp."}
+};
+let lang="nl";
+const el=id=>document.getElementById(id);
+function money(v){return new Intl.NumberFormat(CONFIG.locale,{style:"currency",currency:CONFIG.currency,maximumFractionDigits:0}).format(Math.round(v));}
+function tr(s,o){let r=s;for(const k in o)r=r.replace("{"+k+"}",o[k]);return r;}
+
+function renderCards(){
+  let h="";
+  PROJECTS.forEach(p=>{
+    const avail=p.unitsTotal-p.unitsSold;
+    h+=`<a class="pcard" href="${p.link}">
+      <div class="img ph-img"><span class="badge">${p.status[lang]}</span></div>
+      <div class="pinfo">
+        <h3>${p.name}</h3><div class="loc">${p.loc[lang]}</div>
+        <div class="prow"><div class="price">${T[lang].from} ${money(p.priceFrom)}</div><div class="avail">${tr(T[lang].available,{x:avail,y:p.unitsTotal})}</div></div>
+        <div class="more">${T[lang].more}</div>
+      </div></a>`;
+  });
+  h+=`<div class="pcard soon">${T[lang].soon}</div>`;
+  el('pcards').innerHTML=h;
+}
+function setLang(l){
+  lang=l; el('btnNL').classList.toggle('on',l==='nl'); el('btnEN').classList.toggle('on',l==='en'); document.documentElement.lang=l;
+  document.querySelectorAll('[data-t]').forEach(e=>{const k=e.getAttribute('data-t'); if(T[l][k]!==undefined)e.textContent=T[l][k];});
+  document.querySelectorAll('[data-tp]').forEach(e=>{const k=e.getAttribute('data-tp'); if(T[l][k]!==undefined)e.placeholder=T[l][k];});
+  renderCards();
+}
+function fb(txt,ok){try{const ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(e){}}
+function sendLead(via){
+  const name=el('leadName').value.trim(), email=el('leadEmail').value.trim(), phone=el('leadPhone').value.trim();
+  const ok=el('ctaOk');
+  if(!name||(!email&&!phone)){ok.style.display="block";ok.textContent=T[lang].fill;return;}
+  const body=(lang==='nl'?"Nieuwe lead via de website":"New lead via the website")+"%0A"+
+    (lang==='nl'?"Naam":"Name")+": "+(name||"-")+"%0AWhatsApp: "+(phone||"-")+"%0AE-mail: "+(email||"-");
+  if(via==='wa'){ window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+body,"_blank"); }
+  else{ const subj=encodeURIComponent(lang==='nl'?"Info-aanvraag UTAMA":"Info request UTAMA"); window.location.href="mailto:"+CONFIG.email+"?subject="+subj+"&body="+body; }
+  ok.style.display="block"; ok.textContent=T[lang].okMsg;
+}
+function openCal(){ if(CONFIG.calendly){window.open(CONFIG.calendly,"_blank");} else {sendLead('wa');} }
+function waDirect(){ const msg=(lang==='nl'?"Hi! Ik heb interesse in jullie Bali-villa's.":"Hi! I'm interested in your Bali villas."); window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg),"_blank"); }
+setLang('nl');
+</script>
+</body>
+</html>
