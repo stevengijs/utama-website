@@ -10,8 +10,8 @@
  * Until both values below are filled in, submitLead() is a harmless no-op - * the site keeps working exactly as before (forms still show the success
  * animation), it just doesn't persist leads anywhere yet.
  */
-const SUPABASE_URL = "";
-const SUPABASE_ANON_KEY = "";
+const SUPABASE_URL = "https://gcpachivrwalsneuvlsa.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_P6qb3M4xQnPJGZkM-WFWdg_E9swz7Zn";
 
 let _sbClient = null;
 function getSupabaseClient(){
