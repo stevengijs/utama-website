@@ -37,9 +37,13 @@
   .gtrust svg{flex:none;margin-top:2px;color:var(--ok)}
   /* BROCHURE */
   .bwrap{max-width:1060px;margin:0 auto;padding:0 24px 80px}
-  .thanks{background:var(--green);color:#eee4d4;border-radius:16px;padding:22px 26px;margin:26px 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .thanks{background:var(--green);color:#eee4d4;border-radius:16px;padding:20px 24px;margin:26px 0;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .thanks .agent-photo{width:66px;height:66px;border-radius:50%;object-fit:cover;flex:none;border:2px solid rgba(255,255,255,.28)}
+  .thanks .agent-txt{flex:1;min-width:240px}
   .thanks h3{color:#fff;font-size:19px}
-  .thanks p{margin:3px 0 0;opacity:.9;font-size:14px;max-width:520px}
+  .thanks p{margin:4px 0 0;opacity:.92;font-size:14px;max-width:560px}
+  .thanks p b{color:#fff}
+  .thanks .wa{flex:none}
   .bhero{margin:8px 0 26px}
   .bhero .eb{color:var(--terra);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
   .bhero h1{font-size:44px;margin:6px 0 8px;line-height:1.05}
@@ -54,8 +58,8 @@
   .facts .f .l{color:var(--muted);font-size:14px}
   .facts .f .v{font-weight:600;font-size:14px;text-align:right}
   .hl{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .hl div{background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:13px 16px;font-size:14px;display:flex;gap:10px;align-items:flex-start}
-  .hl div::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--terra);margin-top:8px;flex:none}
+  .hl div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:15px 18px;font-size:14px;line-height:1.4;display:flex;gap:13px;align-items:center}
+  .hl div::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;background:var(--sand-2);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E7D5B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");background-size:14px;background-repeat:no-repeat;background-position:center}
   .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .pc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-align:center}
   .pc.cur{border-color:var(--terra);box-shadow:0 6px 20px rgba(192,107,58,.12)}
@@ -85,6 +89,18 @@
     .facts,.hl,.prices,.ret{grid-template-columns:1fr}
     .bhero h1{font-size:34px}
   }
+  .bgal .g{cursor:zoom-in;transition:transform .15s,box-shadow .15s}
+  .bgal .g:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.16)}
+  .lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(20,18,14,.93);padding:24px}
+  .lb.open{display:flex}
+  .lb img{max-width:94vw;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);object-fit:contain}
+  .lb .x{position:absolute;top:16px;right:22px;background:none;border:none;color:#fff;font-size:36px;line-height:1;cursor:pointer;opacity:.85}
+  .lb .x:hover{opacity:1}
+  .lb .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.14);border:none;color:#fff;width:50px;height:50px;border-radius:50%;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .lb .nav:hover{background:rgba(255,255,255,.28)}
+  .lb .prev{left:16px}.lb .next{right:16px}
+  .lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#eee;font-size:13px;opacity:.8}
+  @media(max-width:600px){ .lb .nav{width:42px;height:42px} }
 </style>
 </head>
 <body>
@@ -160,11 +176,12 @@
 <!-- BROCHURE -->
 <main class="bwrap" id="brochure" hidden>
   <div class="thanks">
-    <div>
+    <img class="agent-photo" src="/images/ashley.jpg" alt="Ashley Vermoten, Sales Manager UTAMA">
+    <div class="agent-txt">
       <h3 id="thName">Bedankt, hier is je brochure</h3>
-      <p>Hieronder vind je alles over The Maison. Wil je meteen je vragen stellen of een unit reserveren? Rond je aanvraag af via WhatsApp, dan reageren we snel.</p>
+      <p>Je persoonlijke contact is <b>Ashley Vermoten</b>, Sales Manager bij UTAMA. Ze helpt je graag met je vragen, de plattegronden of het reserveren van een unit. Stuur haar gerust een berichtje.</p>
     </div>
-    <a class="wa" id="waTop" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Rond af via WhatsApp</a>
+    <a class="wa" id="waTop" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Stuur Ashley een bericht</a>
   </div>
 
   <div class="bhero">
@@ -245,21 +262,28 @@
 
   <div class="bcta">
     <h2>Klaar voor de volgende stap?</h2>
-    <p>Stel je vragen, vraag de plattegronden op of reserveer een unit. We reageren snel en denken graag met je mee.</p>
+    <p>Ashley Vermoten, Sales Manager bij UTAMA, denkt graag met je mee. Stel je vragen, vraag de plattegronden op of reserveer een unit.</p>
     <div class="row">
-      <a class="wa" id="waBottom" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Praat met ons via WhatsApp</a>
+      <a class="wa" id="waBottom" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Praat met Ashley via WhatsApp</a>
     </div>
   </div>
 
   <div class="note" style="text-align:center;margin-top:24px">Deze brochure geeft indicatieve informatie en geen fiscaal of juridisch advies. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.</div>
 </main>
 
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+  <button class="x" onclick="closeLb()" aria-label="Sluiten">&times;</button>
+  <button class="nav prev" onclick="stepLb(-1)" aria-label="Vorige">&#8249;</button>
+  <img id="lbImg" src="" alt="The Maison render">
+  <button class="nav next" onclick="stepLb(1)" aria-label="Volgende">&#8250;</button>
+  <div class="cap" id="lbCap"></div>
+</div>
 <script>
 const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", leadEndpoint:"" };
 const el = id => document.getElementById(id);
 
 function buildWa(l){
-  const msg="Nieuwe brochure-aanvraag The Maison%0A%0A"+
+  const msg="Hi Ashley! Ik heb net de digitale brochure van The Maison bekeken en wil graag meer weten.%0A%0A"+
     "Naam: "+encodeURIComponent(l.name||'-')+"%0A"+
     "WhatsApp: "+encodeURIComponent(l.phone||'-')+"%0A"+
     "E-mail: "+encodeURIComponent(l.email||'-')+"%0A"+
@@ -288,6 +312,16 @@ function unlock(e){
 }
 // Kom je via de popup op de teaser? Dan is de lead al bekend en tonen we de brochure direct.
 try{ var _r=sessionStorage.getItem('maison_brochure_lead'); if(_r){ reveal(JSON.parse(_r)); } }catch(e){}
+
+// Lightbox: renders klikbaar en groot in beeld
+const GAL=[].slice.call(document.querySelectorAll('.bgal .g'));
+const GIMG=GAL.map(function(g){ const m=(g.style.backgroundImage||'').match(/url\(["']?(.*?)["']?\)/); return m?m[1]:''; });
+let lbIdx=0;
+GAL.forEach(function(g,i){ g.addEventListener('click',function(){ openLb(i); }); });
+function openLb(i){ lbIdx=i; el('lbImg').src=GIMG[i]; el('lbCap').textContent=(i+1)+' / '+GIMG.length; el('lb').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLb(){ el('lb').classList.remove('open'); document.body.style.overflow=''; }
+function stepLb(d){ lbIdx=(lbIdx+d+GIMG.length)%GIMG.length; el('lbImg').src=GIMG[lbIdx]; el('lbCap').textContent=(lbIdx+1)+' / '+GIMG.length; }
+document.addEventListener('keydown',function(e){ if(!el('lb').classList.contains('open'))return; if(e.key==='Escape')closeLb(); if(e.key==='ArrowRight')stepLb(1); if(e.key==='ArrowLeft')stepLb(-1); });
 </script>
 </body>
 </html>
