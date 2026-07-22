@@ -199,7 +199,14 @@ function sendLead(via){
 }
 function openCal(){ if(CONFIG.calendly){window.open(CONFIG.calendly,"_blank");} else {sendLead('wa');} }
 function waDirect(){ const msg=(lang==='nl'?"Hi! Ik heb interesse in The Maison in Pererenan.":"Hi! I'm interested in The Maison in Pererenan."); window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg),"_blank"); }
-function openBrochure(){ el('broModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function openBrochure(){
+  // Al eens ontgrendeld op dit toestel? Dan hoeft dit formulier niet nog eens -
+  // ga direct door naar de brochure, die zichzelf herkent via dezelfde opslag.
+  try{
+    if(localStorage.getItem('maison_brochure_lead')){ window.location.href="/the-maison/brochure/"; return; }
+  }catch(e){}
+  el('broModal').classList.add('open'); document.body.style.overflow='hidden';
+}
 function closeBrochure(){ el('broModal').classList.remove('open'); document.body.style.overflow=''; }
 function submitBrochure(e){
   e.preventDefault();
