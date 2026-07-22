@@ -139,19 +139,16 @@
 <section id="contact">
   <div class="wrap">
     <div class="cta">
-      <h2 data-t="ctaTitle">Ontvang de digitale brochure via WhatsApp</h2>
-      <p data-t="ctaSub">Laat je gegevens achter, dan sturen we je de brochure van The Maison direct via WhatsApp en bellen we je kort om je vragen te beantwoorden. Een aanbetaling van €5.000 reserveert een unit. Geen spam.</p>
-      <div class="cta-grid">
-        <input type="text" id="leadName" data-tp="name" placeholder="Je naam">
-        <input type="text" id="leadPhone" data-tp="phone" placeholder="Je WhatsApp-nummer">
-        <input type="email" id="leadEmail" data-tp="email" placeholder="Je e-mailadres">
+      <div class="cta-agent">
+        <img src="/images/ashley.jpg" alt="Ashley Vermoten, Sales Manager UTAMA">
+        <div><div class="cta-agent-name">Ashley Vermoten</div><div class="cta-agent-role" data-t="agentRole">Sales Manager, UTAMA</div></div>
       </div>
+      <h2 data-t="ctaTitle">Klaar voor de volgende stap?</h2>
+      <p data-t="ctaSub">Bekijk de volledige digitale brochure met alle renders, plattegronden, exacte prijzen en het rendementsmodel, of stel je vraag direct aan Ashley.</p>
       <div class="cta-btns">
-        <button class="btn wa-btn" onclick="sendLead('wa')"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg><span data-t="ctaBtn">Verstuur via WhatsApp</span></button>
-        <button class="btn ghost2" onclick="sendLead('email')" data-t="ctaEmail">Of per e-mail</button>
-        <button class="btn ghost2" onclick="openCal()" data-t="ctaCall">Plan een gesprek</button>
+        <button type="button" class="btn" onclick="openBrochure()" data-t="mHeroCta2">Bekijk volledige brochure</button>
+        <button type="button" class="btn wa-btn" onclick="waDirect()"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg><span data-t="ctaWa">Praat met Ashley via WhatsApp</span></button>
       </div>
-      <div class="cta-ok" id="ctaOk"></div>
     </div>
   </div>
 </section>
@@ -214,7 +211,8 @@ const T={
   h1t:"Leasehold, goed geregeld",h1p:"Je least de grond (Hak Sewa) en bezit de villa. Standaard 30 jaar met contractueel gegarandeerde verlenging van 30 jaar, waterdicht vastgelegd in de notariële akte via een bevoegde PPAT.",
   h2t:"Betalen per bouwmijlpaal",h2p:"Je betaalt gespreid in euro's, gekoppeld aan opgeleverde mijlpalen, meestal 30 + 30 + 30 + 10%. De laatste 10% betaal je bij sleuteloverdracht. De voortgang volg je transparant met foto's en updates.",
   h3t:"Volledig beheer & verhuur",h3p:"Rental management via House of Reservations (250+ villa's) regelt listing, boekingen, gasten, schoonmaak, onderhoud en belasting. Jij ontvangt inkomsten en rapportage.",
-  ctaTitle:"Ontvang de digitale brochure via WhatsApp",ctaSub:"Laat je gegevens achter, dan sturen we je de brochure van The Maison direct via WhatsApp en bellen we je kort om je vragen te beantwoorden. Een aanbetaling van €5.000 reserveert een unit. Geen spam.",
+  ctaTitle:"Klaar voor de volgende stap?",ctaSub:"Bekijk de volledige digitale brochure met alle renders, plattegronden, exacte prijzen en het rendementsmodel, of stel je vraag direct aan Ashley.",
+  ctaWa:"Praat met Ashley via WhatsApp",agentRole:"Sales Manager, UTAMA",
   ctaBtn:"Verstuur via WhatsApp",ctaEmail:"Of per e-mail",ctaCall:"Plan een gesprek",name:"Je naam",phone:"Je WhatsApp-nummer",email:"Je e-mailadres",
   footer:"Investeren in Bali-vastgoed, transparant en zorgeloos.",
   disc:"Deze site geeft indicatieve informatie en geen fiscaal of juridisch advies. Rendementen zijn schattingen, geen garanties. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.",
@@ -237,7 +235,8 @@ const T={
   h1t:"Leasehold, properly structured",h1p:"You lease the land (Hak Sewa) and own the villa. Standard 30 years with a contractually guaranteed 30-year extension, watertight in the notarial deed via an authorised PPAT.",
   h2t:"Pay per construction milestone",h2p:"You pay in stages in euros, tied to delivered milestones, usually 30 + 30 + 30 + 10%. The final 10% is paid at key handover. You follow progress transparently with photos and updates.",
   h3t:"Full management & rental",h3p:"Rental management via House of Reservations (250+ villas) handles listing, bookings, guests, cleaning, maintenance and tax. You receive income and reporting.",
-  ctaTitle:"Get the digital brochure via WhatsApp",ctaSub:"Leave your details and we'll send The Maison brochure straight to your WhatsApp and give you a quick call to answer your questions. A €5,000 deposit reserves a unit. No spam.",
+  ctaTitle:"Ready for the next step?",ctaSub:"View the full digital brochure with all renders, floor plans, exact prices and the return model, or ask Ashley directly.",
+  ctaWa:"Chat with Ashley on WhatsApp",agentRole:"Sales Manager, UTAMA",
   ctaBtn:"Send via WhatsApp",ctaEmail:"Or by email",ctaCall:"Book a call",name:"Your name",phone:"Your WhatsApp number",email:"Your email",
   footer:"Investing in Bali real estate, transparent and hassle-free.",
   disc:"This site provides indicative information and no tax or legal advice. Returns are estimates, not guarantees. Always have contracts checked by an authorised notary (PPAT) and your own adviser.",
@@ -382,6 +381,10 @@ setLang('nl');
   @keyframes cfall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(680deg);opacity:.85}}
   .gallery .g{cursor:zoom-in;transition:transform .15s,box-shadow .15s}
   .gallery .g:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.16)}
+  .cta-agent{display:flex;align-items:center;gap:12px;margin-bottom:16px;position:relative;z-index:1}
+  .cta-agent img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.32);flex:none}
+  .cta-agent-name{font-size:13.5px;font-weight:600;color:#fff}
+  .cta-agent-role{font-size:12px;color:#eee4d4;opacity:.8;margin-top:1px}
   .lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(20,18,14,.93);padding:24px}
   .lb.open{display:flex}
   .lb img{max-width:94vw;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);object-fit:contain}
