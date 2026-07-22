@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>UTAMA Investor Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/portal/portal.css">
+</head>
+<body>
+<div class="demo-banner">Demo-omgeving met <b>testdata</b>. Zo ziet een investeerder straks zijn eigen portal. Echte data en logins koppelen we via Supabase.</div>
+<div class="shell">
+  <aside class="side">
+    <a href="/" class="brand">UT<span>A</span>MA</a>
+    <nav id="nav">
+      <a class="active" data-panel="overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Overzicht</a>
+      <a data-panel="build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V8l6-4 6 4v13"/><path d="M10 21v-5h4v5"/></svg> Bouwvoortgang</a>
+      <a data-panel="pay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Betalingen</a>
+      <a data-panel="docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Documenten</a>
+      <a data-panel="returns"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg> Rendement</a>
+      <a data-panel="updates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Updates</a>
+    </nav>
+    <div class="who">
+      <div class="av" id="av">MdV</div>
+      <div>
+        <div class="nm" id="whoName">Mark de Vries</div>
+        <a class="lo" href="/portal/">Uitloggen</a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topline">
+      <div>
+        <div class="hello" id="hello">Welkom terug, Mark</div>
+        <h1 id="pageTitle">Overzicht</h1>
+      </div>
+      <div class="pagetag" id="pageTag">The Maison · Unit 3</div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="panel on" id="p-overview">
+      <div class="card">
+        <div class="unit">
+          <div class="uimg" style="background-image:url('/the-maison/images/maison-exterior.jpg')"></div>
+          <div class="uinfo">
+            <span class="badge build dot" id="uStatus">In aanbouw</span>
+            <h2 id="uTitle">The Maison, Unit 3</h2>
+            <div class="uloc" id="uLoc">2 slaapkamers · 115 m² · Pererenan, Bali</div>
+            <div class="stats">
+              <div class="stat"><div class="k" id="sPrice">EUR 210.000</div><div class="l">Aankoopprijs</div></div>
+              <div class="stat"><div class="k" id="sPaid">30%</div><div class="l">Voldaan</div></div>
+              <div class="stat"><div class="k" id="sProg">38%</div><div class="l">Bouwvoortgang</div></div>
+              <div class="stat"><div class="k" id="sHand">apr 2027</div><div class="l">Oplevering</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Bouwvoortgang</h3>
+        <div class="csub">Actuele fase van je unit.</div>
+        <div class="prog">
+          <div class="bar"><i id="ovBar" style="width:38%"></i></div>
+          <div class="pl"><span id="ovPhase">Nu: casco / constructie</span><span id="ovPct">38% voltooid</span></div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+        <div>
+          <h3 style="font-size:16px">Volgende betaling</h3>
+          <div class="csub" style="margin:2px 0 0" id="nextPay">Termijn 2 (30%) · EUR 63.000 · verwacht sep 2026</div>
+        </div>
+        <a class="btn ghost" data-goto="pay">Bekijk betaalschema</a>
+      </div>
+    </section>
+
+    <!-- BUILD -->
+    <section class="panel" id="p-build">
+      <div class="card">
+        <h3>Bouwfases</h3>
+        <div class="csub">Van contract tot sleuteloverdracht.</div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- PAYMENTS -->
+    <section class="panel" id="p-pay">
+      <div class="card">
+        <h3>Betaalschema</h3>
+        <div class="csub">Betaling per bouwmijlpaal (30 / 30 / 30 / 10).</div>
+        <table class="pay">
+          <thead><tr><th>Termijn</th><th>Deel</th><th>Bedrag</th><th>Verwacht</th><th>Status</th></tr></thead>
+          <tbody id="payBody"></tbody>
+          <tfoot><tr><td>Totaal</td><td id="payPctTot"></td><td class="amt" id="payTot"></td><td></td><td></td></tr></tfoot>
+        </table>
+      </div>
+      <div class="card" style="display:flex;gap:24px;flex-wrap:wrap">
+        <div><div class="pagetag">Voldaan</div><div style="font-family:'Fraunces',serif;font-size:22px;color:var(--ok)" id="paidSum"></div></div>
+        <div><div class="pagetag">Openstaand</div><div style="font-family:'Fraunces',serif;font-size:22px;color:var(--warn)" id="openSum"></div></div>
+      </div>
+    </section>
+
+    <!-- DOCS -->
+    <section class="panel" id="p-docs">
+      <div class="card">
+        <h3>Documenten</h3>
+        <div class="csub">Je contract, plattegronden, vergunningen en garanties.</div>
+        <div class="docs" id="docs"></div>
+      </div>
+    </section>
+
+    <!-- RETURNS -->
+    <section class="panel" id="p-returns">
+      <div class="card">
+        <h3>Verwacht rendement</h3>
+        <div class="csub">Indicatie op basis van het beheermodel (House of Reservations).</div>
+        <div class="ret">
+          <div class="r"><div class="rv" id="rGross"></div><div class="rl">Bruto huur per jaar</div></div>
+          <div class="r hl"><div class="rv" id="rNet"></div><div class="rl">Netto per jaar (na kosten)</div></div>
+          <div class="r"><div class="rv" id="rYield"></div><div class="rl">Netto rendement</div></div>
+        </div>
+        <div class="note" id="rNote"></div>
+      </div>
+    </section>
+
+    <!-- UPDATES -->
+    <section class="panel" id="p-updates">
+      <div class="card">
+        <h3>Updates</h3>
+        <div class="csub">Het laatste nieuws over je unit.</div>
+        <div class="feed" id="feed"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const DATA = {
+  investor:{ name:"Mark de Vries", initials:"MdV", email:"mark@voorbeeld.com" },
+  unit:{ project:"The Maison", unitLabel:"Unit 3", beds:2, size:"115 m²", loc:"Pererenan, Bali",
+    price:210000, status:"In aanbouw", handover:"apr 2027", progress:38 },
+  milestones:[
+    {t:"Reservering & contract", tm:"15 feb 2026", d:"Koopovereenkomst getekend en reservering voldaan.", st:"done"},
+    {t:"Fundering & grondwerk", tm:"maart 2026", d:"Fundering gestort en grondwerk afgerond, op schema.", st:"done"},
+    {t:"Casco / constructie", tm:"nu bezig", d:"Constructie eerste en tweede verdieping in uitvoering.", st:"now"},
+    {t:"Afbouw & installaties", tm:"gepland Q4 2026", d:"Wanden, tegelwerk, sanitair, keuken en elektra.", st:"plan"},
+    {t:"Oplevering & sleutel", tm:"april 2027", d:"Eindinspectie en sleuteloverdracht.", st:"plan"}
+  ],
+  payments:[
+    {t:"Termijn 1 · bij contract", pct:30, amt:63000, due:"15 feb 2026", st:"paid"},
+    {t:"Termijn 2 · bij casco", pct:30, amt:63000, due:"verwacht sep 2026", st:"open"},
+    {t:"Termijn 3 · bij afbouw", pct:30, amt:63000, due:"verwacht jan 2027", st:"plan"},
+    {t:"Termijn 4 · bij sleuteloverdracht", pct:10, amt:21000, due:"april 2027", st:"plan"}
+  ],
+  docs:[
+    {n:"Koopovereenkomst (leasehold)", m:"PDF · getekend 15 feb 2026"},
+    {n:"Brochure The Maison", m:"PDF · 4,2 MB"},
+    {n:"Plattegronden Unit 3", m:"PDF · begane grond, 1e, rooftop"},
+    {n:"PBG bouwvergunning", m:"PDF · afgegeven"},
+    {n:"Bouwgarantie 10 jaar", m:"PDF · garantiecertificaat"},
+    {n:"Betaalschema", m:"PDF · 30 / 30 / 30 / 10"}
+  ],
+  returns:{ gross:54300, net:30900, yield:14.7, nightly:175, occ:85 },
+  updates:[
+    {dt:"12 jun 2026", h:"Casco eerste verdieping gestort", p:"De betonvloer van de eerste verdieping is gestort. Volgende stap is de tweede verdieping en de rooftop-constructie."},
+    {dt:"28 mrt 2026", h:"Fundering afgerond", p:"Grondwerk en fundering zijn volledig afgerond, ruim op schema. Foto's staan bij je documenten."},
+    {dt:"15 feb 2026", h:"Welkom in je portal", p:"Je contract is getekend en je reservering is verwerkt. Welkom bij The Maison."}
+  ]
+};
+const eur = n => "€"+n.toLocaleString("nl-NL");
+const el = id => document.getElementById(id);
+
+// header + overview
+el('whoName').textContent=DATA.investor.name;
+el('av').textContent=DATA.investor.initials;
+el('hello').textContent="Welkom terug, "+DATA.investor.name.split(" ")[0];
+el('pageTag').textContent=DATA.unit.project+" · "+DATA.unit.unitLabel;
+el('uStatus').textContent=DATA.unit.status;
+el('uTitle').textContent=DATA.unit.project+", "+DATA.unit.unitLabel;
+el('uLoc').textContent=DATA.unit.beds+" slaapkamers · "+DATA.unit.size+" · "+DATA.unit.loc;
+el('sPrice').textContent=eur(DATA.unit.price);
+el('sProg').textContent=DATA.unit.progress+"%";
+el('sHand').textContent=DATA.unit.handover;
+el('ovBar').style.width=DATA.unit.progress+"%";
+el('ovPct').textContent=DATA.unit.progress+"% voltooid";
+
+// payments
+const paid=DATA.payments.filter(p=>p.st==='paid').reduce((s,p)=>s+p.amt,0);
+const tot=DATA.payments.reduce((s,p)=>s+p.amt,0);
+const paidPct=Math.round(paid/tot*100);
+el('sPaid').textContent=paidPct+"%";
+const nextP=DATA.payments.find(p=>p.st!=='paid');
+if(nextP) el('nextPay').textContent=nextP.t+" ("+nextP.pct+"%) · "+eur(nextP.amt)+" · "+nextP.due;
+el('payBody').innerHTML=DATA.payments.map(p=>{
+  const cls=p.st==='paid'?'paid':(p.st==='open'?'open':'plan');
+  const lbl=p.st==='paid'?'Betaald':(p.st==='open'?'Openstaand':'Gepland');
+  return `<tr><td>${p.t}</td><td>${p.pct}%</td><td class="amt">${eur(p.amt)}</td><td>${p.due}</td><td><span class="pill ${cls}">${lbl}</span></td></tr>`;
+}).join("");
+el('payTot').textContent=eur(tot);
+el('payPctTot').textContent="100%";
+el('paidSum').textContent=eur(paid);
+el('openSum').textContent=eur(tot-paid);
+
+// timeline
+el('timeline').innerHTML=DATA.milestones.map(m=>{
+  const cls=m.st==='done'?'done':(m.st==='now'?'now':'');
+  const st=m.st==='done'?'<span class="st s-done">Voltooid</span>':(m.st==='now'?'<span class="st s-now">Bezig</span>':'<span class="st s-plan">Gepland</span>');
+  const ic=m.st==='done'?'&#10003;':'';
+  return `<div class="tl ${cls}"><div class="mk"><div class="cir">${ic}</div><div class="ln"></div></div><div class="tc"><h4>${m.t}</h4><div class="tm">${m.tm}</div><div class="td">${m.d}</div></div>${st}</div>`;
+}).join("");
+
+// docs
+el('docs').innerHTML=DATA.docs.map(d=>`<div class="doc"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><div><div class="dn">${d.n}</div><div class="dm">${d.m}</div></div><a class="dl" href="#" onclick="return false">Download</a></div>`).join("");
+
+// returns
+const R=DATA.returns;
+el('rGross').textContent=eur(R.gross);
+el('rNet').textContent=eur(R.net);
+el('rYield').textContent=R.yield.toLocaleString("nl-NL")+"%";
+el('rNote').textContent="Schatting op basis van ± "+eur(R.nightly)+" per nacht en "+R.occ+"% bezetting, na beheer- en exploitatiekosten. Dit is een indicatie op basis van het beheermodel, geen garantie. Werkelijke resultaten volgen zodra je unit operationeel is.";
+
+// updates
+el('feed').innerHTML=DATA.updates.map(u=>`<div class="item"><div class="dt">${u.dt}</div><div><h4>${u.h}</h4><p>${u.p}</p></div></div>`).join("");
+
+// nav
+const titles={overview:"Overzicht",build:"Bouwvoortgang",pay:"Betalingen",docs:"Documenten",returns:"Rendement",updates:"Updates"};
+function show(name){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  el('p-'+name).classList.add('on');
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active',a.dataset.panel===name));
+  el('pageTitle').textContent=titles[name]||"";
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>show(a.dataset.panel)));
+document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.goto)));
+</script>
+</body>
+</html>
