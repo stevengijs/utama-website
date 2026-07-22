@@ -214,6 +214,12 @@ function submitBrochure(e){
   const budget=el('bmBudget').value, when=el('bmWhen').value;
   if(!name||!phone||!email||!budget||!when){ el('bmErr').style.display='block'; return false; }
   const lead={ project:"The Maison", name, phone, email, budget, when };
+  // localStorage = blijft bewaard op dit toestel, ook een dag later of in een nieuw
+  // tabblad - dat is wat openBrochure() hierboven checkt om het formulier over te
+  // slaan. sessionStorage blijft ernaast bestaan als eenmalige hand-off naar de
+  // brochurepagina (die zelf ook al naar localStorage kijkt, dus dit is redundant
+  // maar onschadelijk).
+  try{ localStorage.setItem('maison_brochure_lead', JSON.stringify(lead)); }catch(err){}
   try{ sessionStorage.setItem('maison_brochure_lead', JSON.stringify(lead)); }catch(err){}
   submitLead({ ...lead, lang }).catch(()=>{});
   showBrochureSuccess(name);
