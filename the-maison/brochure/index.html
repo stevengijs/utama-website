@@ -115,7 +115,8 @@
   .scen-wrap{margin-top:26px}
   .scen-h{font-size:15px;font-weight:600;color:var(--green-2);margin-bottom:10px}
   .scen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .scc{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-align:center}
+  .scc{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-align:center;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+  .scc:hover{border-color:var(--terra)}
   .scc.cur{border-color:var(--terra);box-shadow:0 6px 20px rgba(192,107,58,.12)}
   .scl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
   .scc.cur .scl{color:var(--terra)}
@@ -287,13 +288,13 @@
     <div class="calc">
       <div class="card">
         <h3>Aannames</h3>
-        <div class="csub">Voorgevuld op de brochure van The Maison.</div>
+        <div class="csub">Voorgevuld met de cijfers van The Maison.</div>
         <div class="field"><label>Prijs (vast)</label><div class="pricesel" id="bPricesel"></div></div>
         <div class="field"><label><span>Gem. nachtprijs</span> <span class="val" id="bVNightly"></span></label><input type="range" id="bNightly" min="150" max="220" step="5" value="175" oninput="bcalc()"></div>
         <div class="field"><label><span>Bezettingsgraad</span> <span class="val" id="bVOcc"></span></label><input type="range" id="bOcc" min="60" max="100" step="1" value="85" oninput="bcalc()"></div>
         <div class="field"><label><span>Kosten &amp; beheer</span> <span class="val" id="bVCosts"></span></label><input type="range" id="bCosts" min="35" max="55" step="1" value="43" oninput="bcalc()"></div>
         <div class="field"><label><span>Aanhoudperiode</span> <span class="val" id="bVHold"></span></label><input type="range" id="bHold" min="1" max="30" step="1" value="5" oninput="bcalc()"></div>
-        <div class="field"><label><span>Geschatte waardegroei / jaar</span> <span class="val" id="bVGrowth"></span></label><input type="range" id="bGrowth" min="0" max="8" step="1" value="5" oninput="bcalc()"></div>
+        <div class="field"><label><span>Geschatte waardegroei / jaar</span> <span class="val" id="bVGrowth"></span></label><div class="field-note">Vast, gebaseerd op marktdata voor deze regio</div></div>
       </div>
       <div class="card results">
         <h3>Verwacht rendement</h3>
@@ -323,18 +324,14 @@
       <ul>
         <li>Bruto huurinkomsten = nachtprijs × 365 × bezettingsgraad. Alle bedragen in euro's.</li>
         <li>Netto = bruto minus alle kosten: beheer, marketing, OTA-fees, schoonmaak, onderhoud, personeel en lokale belasting.</li>
-        <li>Cijfers zijn gebaseerd op de brochure van The Maison (House of Reservations-model, met deels directe boekingen).</li>
-        <li>Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei. Bij leasehold hangt de waarde ook af van de resterende looptijd. Indicatie, geen garantie.</li>
+        <li>Cijfers zijn gebaseerd op het rendementsmodel van The Maison (House of Reservations, met deels directe boekingen).</li>
+        <li>Verkoopwaarde bij aanhouden gebruikt een vaste jaarlijkse waardegroei van 5%, gebaseerd op marktdata voor vergelijkbare locaties aan de westkust van Bali. Bij leasehold hangt de waarde ook af van de resterende looptijd. Indicatie, geen garantie.</li>
       </ul>
     </details>
     <div class="scen-wrap">
-      <div class="scen-h">Drie scenario's uit onze brochure</div>
-      <div class="scen">
-        <div class="scc"><div class="scl">Voorzichtig</div><div class="scv">12,3%</div><div class="scs">70% bezetting · €165/nacht</div><div class="scb">Terugverdiend in 8,1 jaar</div></div>
-        <div class="scc cur"><div class="scl">Realistisch</div><div class="scv">14,7%</div><div class="scs">85% bezetting · €175/nacht</div><div class="scb">Terugverdiend in 6,8 jaar</div></div>
-        <div class="scc"><div class="scl">Optimistisch</div><div class="scv">18,7%</div><div class="scs">90% bezetting · €205/nacht</div><div class="scb">Terugverdiend in 5,4 jaar</div></div>
-      </div>
-      <p class="note">Nettorendement per jaar, per scenario, inclusief beheer- en operationele kosten (House of Reservations-model, deels directe boekingen). Schattingen, geen garanties. Reken hierboven je eigen scenario door.</p>
+      <div class="scen-h">Drie scenario's voor The Maison</div>
+      <div class="scen" id="bScenGrid"></div>
+      <p class="note">Nettorendement per jaar, per scenario, inclusief beheer- en operationele kosten (House of Reservations-model, deels directe boekingen). Schattingen, geen garanties. Klik op een scenario om de rekentool hierboven aan te passen.</p>
     </div>
   </div>
 
@@ -464,20 +461,48 @@ function unlock(e){
 try{ var _r=sessionStorage.getItem('maison_brochure_lead'); if(_r){ reveal(JSON.parse(_r)); } }catch(e){}
 
 // ROI-calculator
+const GROWTH_RATE = 0.05; /* fixed annual value-growth assumption, based on market data for Pererenan/west Bali (not user-adjustable) */
 const BPRICES=[
   {v:195000, l:"Pre-sale", s:"eerdere fase"},
   {v:210000, l:"Nu", s:"huidige prijs", current:true},
   {v:225000, l:"Vanaf 15 aug", s:"prijs stijgt"}
 ];
 let bSelPrice=210000;
+const BSCENARIOS=[
+  {label:"Voorzichtig", occ:70, nightly:165},
+  {label:"Realistisch", occ:85, nightly:175, current:true},
+  {label:"Optimistisch", occ:90, nightly:205}
+];
+let bSelScenario=BSCENARIOS.findIndex(function(s){return s.current;});
 function bMoney(v){ return new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Math.round(v)); }
 function bPct(v){ return new Intl.NumberFormat('nl-NL',{style:'percent',minimumFractionDigits:1,maximumFractionDigits:1}).format(v); }
 function renderBPricesel(){
   el('bPricesel').innerHTML = BPRICES.map(pr=>`<div class="pbtn ${pr.v===bSelPrice?'on':''}" onclick="bSetPrice(${pr.v})"><span class="pv">${bMoney(pr.v)}</span><span class="ps">${pr.l} · ${pr.s}</span></div>`).join("");
 }
 function bSetPrice(v){ bSelPrice=v; renderBPricesel(); bcalc(); }
+function bApplyScenario(i){
+  bSelScenario=i;
+  const s=BSCENARIOS[i];
+  el('bNightly').value=s.nightly;
+  el('bOcc').value=s.occ;
+  bcalc();
+}
+function bRenderScenarios(){
+  const price=bSelPrice, costs=+el('bCosts').value/100;
+  el('bScenGrid').innerHTML = BSCENARIOS.map(function(s,i){
+    const gross=s.nightly*365*(s.occ/100), net=gross*(1-costs);
+    const roi=price>0?net/price*100:0, payback=net>0?price/net:0;
+    return `
+    <div class="scc ${i===bSelScenario?'cur':''}" onclick="bApplyScenario(${i})">
+      <div class="scl">${s.label}</div>
+      <div class="scv">${roi.toFixed(1).replace('.',',')}%</div>
+      <div class="scs">${s.occ}% bezetting · €${s.nightly}/nacht</div>
+      <div class="scb">Terugverdiend in ${payback.toFixed(1).replace('.',',')} jaar</div>
+    </div>`;
+  }).join("");
+}
 function bcalc(){
-  const price=bSelPrice, nightly=+el('bNightly').value, occ=+el('bOcc').value/100, costs=+el('bCosts').value/100, hold=+el('bHold').value, growth=+el('bGrowth').value/100;
+  const price=bSelPrice, nightly=+el('bNightly').value, occ=+el('bOcc').value/100, costs=+el('bCosts').value/100, hold=+el('bHold').value, growth=GROWTH_RATE;
   el('bVNightly').textContent=bMoney(nightly);
   el('bVOcc').textContent=Math.round(occ*100)+"%";
   el('bVCosts').textContent=Math.round(costs*100)+"%";
@@ -498,6 +523,7 @@ function bcalc(){
   el('bOResale').textContent=bMoney(resaleProfit);
   el('bOTotalRet').textContent=bMoney(totalRet)+"  ("+bPct(totalRoi)+" ROI)";
   el('bOExt').textContent="Leasehold 30 jaar met gegarandeerde verlenging van 30 jaar. Verlengen na 30 jaar kost ± 20% van de aankoopprijs (± "+bMoney(price*0.20)+"). Je kunt de villa ook eerder verkopen.";
+  bRenderScenarios();
 }
 renderBPricesel();
 bcalc();

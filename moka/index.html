@@ -100,7 +100,7 @@
   <div class="wrap inner">
     <div class="eyebrow"><a href="/" style="color:var(--terra);text-decoration:none" data-t="back">Projecten</a> · Kedungu, Bali</div>
     <h1>MOKA</h1>
-    <p data-t="heroSub">Boutique community met eigen café, wellness club en rooftop pool lounge, 600 meter van het strand in Kedungu. Drie woningtypes in één project, volledig gemeubileerd en beheerd.</p>
+    <p data-t="heroSub">Boutique community met eigen café, wellness club en rooftop pool lounge, 600 meter van het strand in Kedungu. Drie woningtypes in één project: jij bezit, wij ontwikkelen en beheren, volledig voor je geregeld.</p>
     <div class="btns">
       <button type="button" class="btn" onclick="openBrochure()" data-t="heroCta2">Vraag de laatste unit aan</button>
       <a href="#calc" class="btn ghost" data-t="heroCta1">Bereken je rendement</a>
@@ -184,7 +184,7 @@
         <div class="field"><label><span data-t="fOcc">Bezettingsgraad</span> <span class="val" id="vOcc"></span></label><input type="range" id="occ" min="60" max="100" step="1" value="85" oninput="calc()"></div>
         <div class="field"><label><span data-t="fCosts">Kosten &amp; beheer</span> <span class="val" id="vCosts"></span></label><input type="range" id="costs" min="16" max="35" step="1" value="25" oninput="calc()"></div>
         <div class="field"><label><span data-t="fHold">Aanhoudperiode</span> <span class="val" id="vHold"></span></label><input type="range" id="hold" min="1" max="30" step="1" value="5" oninput="calc()"></div>
-        <div class="field"><label><span data-t="fGrowth">Geschatte waardegroei / jaar</span> <span class="val" id="vGrowth"></span></label><input type="range" id="growth" min="0" max="8" step="1" value="5" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fGrowth">Geschatte waardegroei / jaar</span> <span class="val" id="vGrowth"></span></label><div class="field-note" data-t="fGrowthNote">Vast, gebaseerd op marktdata voor deze regio</div></div>
       </div>
       <div class="card results">
         <h3 data-t="expected">Verwacht rendement</h3>
@@ -237,31 +237,31 @@
 <section id="how">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow" data-t="howEyebrow">Zo werkt het</div>
-      <h2 data-t="howTitle">Veilig investeren op afstand</h2>
-      <p data-t="howSub">Eerlijk en transparant, van contract tot verhuur.</p>
+      <div class="eyebrow" data-t="howEyebrow">Volledige ontzorging</div>
+      <h2 data-t="howTitle">Jij bezit het. Wij runnen het.</h2>
+      <p data-t="howSub">Eerlijk en transparant, van contract tot maandelijkse cashflow.</p>
     </div>
     <div class="how steps4">
-      <div class="hcard"><div class="n">01</div><h4 data-t="h1t">Leasehold, goed geregeld</h4><ul>
+      <div class="hcard"><div class="n">01</div><h4 data-t="h1t">Je grond, juridisch waterdicht</h4><ul>
         <li data-t="h1li1">Je least de grond, in een apart leasecontract los van de bouw</li>
         <li data-t="h1li2">30 jaar, met contractueel gegarandeerde verlenging van nog 30 jaar</li>
       </ul></div>
-      <div class="hcard"><div class="n">02</div><h4 data-t="hBuildT">Wij bouwen MOKA</h4><ul>
-        <li data-t="hBuildLi1">Ons eigen bouwteam bouwt en levert MOKA op, van fundering tot afwerking</li>
-        <li data-t="hBuildLi2">We werken met een vast netwerk van de beste onderaannemers op Bali</li>
+      <div class="hcard"><div class="n">02</div><h4 data-t="hBuildT">Wij begeleiden, jij kijkt mee</h4><ul>
+        <li data-t="hBuildLi1">Wij ontwikkelen MOKA en selecteren een ervaren, onafhankelijke aannemer voor de uitvoering</li>
+        <li data-t="hBuildLi2">Wij bewaken kwaliteit, planning en budget gedurende de hele bouw</li>
         <li data-t="hBuildLi3">Los bouwcontract, gescheiden van je leasecontract voor de grond</li>
         <li data-t="hBuildLi4">Jij volgt de voortgang op afstand mee met foto's en video's</li>
       </ul></div>
-      <div class="hcard"><div class="n">03</div><h4 data-t="h2t">Betalen in 4 termijnen</h4><ul>
+      <div class="hcard"><div class="n">03</div><h4 data-t="h2t">Vier termijnen, geen verrassingen</h4><ul>
         <li data-t="h2li1">60% bij de notariële ondertekening</li>
         <li data-t="h2li2">20% na 3 maanden, 10% na 6 maanden</li>
         <li data-t="h2li3">10% bij sleuteloverdracht</li>
         <li data-t="h2li4">Een aanbetaling van €5.000 reserveert een unit</li>
       </ul></div>
-      <div class="hcard"><div class="n">04</div><h4 data-t="h3t">Volledig beheer &amp; verhuur</h4><ul>
+      <div class="hcard"><div class="n">04</div><h4 data-t="h3t">Wij beheren, jij ontvangt</h4><ul>
         <li data-t="h3li1">Verhuurbeheer kost 15% van de netto-omzet (na 3% OTA-commissie)</li>
         <li data-t="h3li2">Operationele kosten indicatief ± €635/maand (stroom, water, schoonmaak, onderhoud)</li>
-        <li data-t="h3li3">Jij ontvangt inkomsten en maandelijkse rapportage</li>
+        <li data-t="h3li3">Jij ontvangt maandelijks inkomsten en rapportage, zonder gedoe</li>
       </ul></div>
     </div>
   </div>
@@ -344,6 +344,7 @@
 <script src="/supabase-client.js"></script>
 <script>
 const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", locale:"nl-NL", currency:"EUR" };
+const GROWTH_RATE = 0.05; /* fixed annual value-growth assumption, based on market data for Kedungu/west Bali (not user-adjustable) */
 
 /* MOKA: 15 units, 3 woningtypes. Cijfers geverifieerd tegen de MOKA-brochure (Google Drive, juli 2026). */
 const UNITS = [
@@ -456,15 +457,15 @@ const T={
   loc3l:"Surfen",loc3v:"3 van Bali's beste surfspots vlakbij",loc4l:"Ontwikkeling",loc4v:"Naast projecten van Ciputra Group",
   loc5l:"Bereikbaarheid",loc5v:"Geplande metrohalte bij Tanah Lot",loc6l:"Groeimarkt",loc6v:"Volgende hotspot na Canggu en Pererenan",
   calcEyebrow:"Rendement",calcTitle:"Bereken je rendement",calcSub:"De aannames volgen de cijfers uit de MOKA-brochure. Pas ze aan naar jouw scenario. Eerlijk, geen opgeblazen beloftes.",
-  assumpH:"Aannames",fPrice:"Prijs",fNightly:"Gem. nachtprijs",fOcc:"Bezettingsgraad",fCosts:"Kosten & beheer",fHold:"Aanhoudperiode",fGrowth:"Geschatte waardegroei / jaar",
+  assumpH:"Aannames",fPrice:"Prijs",fNightly:"Gem. nachtprijs",fOcc:"Bezettingsgraad",fCosts:"Kosten & beheer",fHold:"Aanhoudperiode",fGrowth:"Geschatte waardegroei / jaar",fGrowthNote:"Vast, gebaseerd op marktdata voor deze regio",
   expected:"Verwacht rendement",perYear:"Op jaarbasis, netto na alle kosten en beheer.",netYield:"netto rendement / jaar",netMonth:"Netto huur / maand",netYear:"Netto huur / jaar",
   rentTotal:"Netto huurinkomsten",resaleProfit:"Geschatte verkoopwinst",totalReturn:"Totaal rendement",grossYear:"Bruto huurinkomsten / jaar",lessCosts:"Af: kosten & beheer",totalInv:"Totale investering",
-  resaleNote:"Veel investeerders verhuren enkele jaren en verkopen daarna met winst. De verkoopwinst is het verschil tussen de geschatte verkoopwaarde (op basis van de gekozen waardegroei) en de aankoopprijs.",
+  resaleNote:"Veel investeerders verhuren enkele jaren en verkopen daarna met winst. De verkoopwinst is het verschil tussen de geschatte verkoopwaarde (op basis van de gemiddelde marktwaardegroei in de regio) en de aankoopprijs.",
   assumpTitle:"Aannames & transparantie",
   a1:"Bruto huurinkomsten = nachtprijs × 365 × bezettingsgraad. Alle bedragen in euro's.",
   a2:"Netto = bruto minus alle kosten: operationele kosten, verhuurbeheer (15% van de netto-omzet na 3% OTA-commissie), onderhoud en lokale belasting.",
   a3:"Cijfers per woningtype zijn gebaseerd op de brochure van MOKA.",
-  a4:"Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei, bewust conservatief ingeschat. Indicatie, geen garantie.",
+  a4:"Verkoopwaarde bij aanhouden gebruikt een vaste jaarlijkse waardegroei van 5%, gebaseerd op marktdata voor vergelijkbare locaties aan de westkust van Bali. Indicatie, geen garantie.",
   scenH:"Drie scenario's uit de MOKA-brochure",scenNote:"Nettorendement per jaar, exclusief verkoopwinst. Schattingen uit de brochure, geen garanties. Klik op een scenario om de rekentool hierboven aan te passen.",
   calcCtaTitle:"Wil je deze cijfers naast plattegronden en exacte specificaties zien?",calcCtaSub:"Vraag de laatste beschikbare Signature Villa aan en ontvang alle renders, plattegronden en het complete rendementsmodel via Ashley.",calcCtaBtn:"Vraag de laatste unit aan →",
   howEyebrow:"Zo werkt het",howTitle:"Veilig investeren op afstand",howSub:"Eerlijk en transparant, van contract tot verhuur.",
@@ -498,15 +499,15 @@ const T={
   loc3l:"Surfing",loc3v:"3 of Bali's best surf breaks nearby",loc4l:"Development",loc4v:"Next to Ciputra Group developments",
   loc5l:"Accessibility",loc5v:"Planned metro stop at Tanah Lot",loc6l:"Growth market",loc6v:"Next hotspot after Canggu and Pererenan",
   calcEyebrow:"Returns",calcTitle:"Calculate your return",calcSub:"The assumptions follow the figures from the MOKA brochure. Adjust them to your scenario. Honest, no inflated promises.",
-  assumpH:"Assumptions",fPrice:"Price",fNightly:"Avg. nightly rate",fOcc:"Occupancy rate",fCosts:"Costs & management",fHold:"Holding period",fGrowth:"Estimated value growth / year",
+  assumpH:"Assumptions",fPrice:"Price",fNightly:"Avg. nightly rate",fOcc:"Occupancy rate",fCosts:"Costs & management",fHold:"Holding period",fGrowth:"Estimated value growth / year",fGrowthNote:"Fixed, based on market data for this region",
   expected:"Expected return",perYear:"Per year, net of all costs and management.",netYield:"net yield / year",netMonth:"Net rent / month",netYear:"Net rent / year",
   rentTotal:"Net rental income",resaleProfit:"Estimated resale profit",totalReturn:"Total return",grossYear:"Gross rental income / year",lessCosts:"Less: costs & management",totalInv:"Total investment",
-  resaleNote:"Many investors rent out for a few years and then sell at a profit. The resale profit is the difference between the estimated resale value (based on the chosen value growth) and the purchase price.",
+  resaleNote:"Many investors rent out for a few years and then sell at a profit. The resale profit is the difference between the estimated resale value (based on average market value growth in the region) and the purchase price.",
   assumpTitle:"Assumptions & transparency",
   a1:"Gross rental income = nightly rate × 365 × occupancy. All amounts in euros.",
   a2:"Net = gross minus all costs: operating costs, rental management (15% of net revenue after 3% OTA commission), maintenance and local tax.",
   a3:"Figures per home type are based on the MOKA brochure.",
-  a4:"Resale value on holding uses the chosen annual value growth, deliberately conservative. Indicative, not a guarantee.",
+  a4:"Resale value on holding uses a fixed annual value growth of 5%, based on market data for comparable locations on Bali's west coast. Indicative, not a guarantee.",
   scenH:"Three scenarios from the MOKA brochure",scenNote:"Net yield per year, excluding resale profit. Brochure estimates, not guarantees. Click a scenario to update the calculator above.",
   calcCtaTitle:"Want to see these figures alongside floor plans and exact specifications?",calcCtaSub:"Ask about the last available Signature Villa and get all renders, floor plans and the complete return model from Ashley.",calcCtaBtn:"Ask about the last unit →",
   howEyebrow:"How it works",howTitle:"Invest safely, remotely",howSub:"Honest and transparent, from contract to rental.",
@@ -615,7 +616,7 @@ function renderNightlyPins(scenarios){
 window.addEventListener('resize', ()=>renderNightlyPins(currentUnit().scenarios));
 function calc(){
   const u=currentUnit();
-  const price=u.price, nightly=+el('nightly').value, occ=+el('occ').value/100, costs=+el('costs').value/100, hold=+el('hold').value, growth=+el('growth').value/100;
+  const price=u.price, nightly=+el('nightly').value, occ=+el('occ').value/100, costs=+el('costs').value/100, hold=+el('hold').value, growth=GROWTH_RATE;
   el('vPrice').textContent=money(price);
   el('vNightly').textContent=money(nightly);
   el('vOcc').textContent=Math.round(occ*100)+"%";
