@@ -27,9 +27,15 @@
   .referr{background:#fbeee6;border:1px solid #f0d4c2;border-radius:12px;padding:14px 16px;font-size:14px;color:#a3512a;margin-top:14px}
   .refeyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:700}
 
-  .linkbox{display:flex;gap:8px;margin:6px 0 22px}
+  .linkbox{display:flex;gap:8px;margin:6px 0 14px}
   .linkbox input{flex:1;padding:13px 14px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:14px;background:var(--sand);color:var(--ink)}
   .linkbox button{flex:none}
+
+  .sharerow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+  .sharebtn{display:inline-flex;align-items:center;gap:8px;font-size:14px;padding:11px 18px}
+  .sharebtn svg{width:16px;height:16px;flex:none}
+  .sharebtn.wa{background:#25D366;color:#fff}
+  .sharebtn.wa:hover{background:#1fbd5a}
 
   .refstats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:26px}
   .refstat{background:var(--sand);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
@@ -91,6 +97,14 @@
         <button class="btn" id="copyLinkBtn" type="button">Kopieer</button>
       </div>
 
+      <div class="sharerow" id="shareRow">
+        <button class="btn sharebtn wa" id="waShareBtn" type="button">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg>
+          Deel via WhatsApp
+        </button>
+        <button class="btn ghost sharebtn" id="nativeShareBtn" type="button" style="display:none">Meer opties...</button>
+      </div>
+
       <div class="refstats">
         <div class="refstat"><div class="v" id="statVisits">0</div><div class="l">Bezoeken via je link</div></div>
         <div class="refstat"><div class="v" id="statCount">0</div><div class="l">Vrienden aangemeld</div></div>
@@ -123,6 +137,27 @@ function statusLabel(s){
   return { text:'In afwachting', cls:'pending' };
 }
 
+function shareMessage(){
+  return "Hoi! Ik investeer in vastgoedprojecten van UTAMA op Bali en dacht dat dit ook iets voor jou kan zijn. Neem gerust een kijkje:";
+}
+
+function wireShareButtons(link){
+  document.getElementById('waShareBtn').onclick = function(){
+    const text = shareMessage() + " " + link;
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  };
+
+  const nativeBtn = document.getElementById('nativeShareBtn');
+  if(navigator.share){
+    nativeBtn.style.display = 'inline-flex';
+    nativeBtn.onclick = function(){
+      navigator.share({ title: 'UTAMA', text: shareMessage(), url: link }).catch(()=>{});
+    };
+  } else {
+    nativeBtn.style.display = 'none';
+  }
+}
+
 async function renderLoggedIn(){
   document.getElementById('loadingState').style.display = 'none';
   document.getElementById('loggedOutState').style.display = 'none';
@@ -137,6 +172,7 @@ async function renderLoggedIn(){
 
   const link = window.location.origin + '/?ref=' + stats.code;
   document.getElementById('refLinkInput').value = link;
+  wireShareButtons(link);
   document.getElementById('statVisits').textContent = stats.visits || 0;
 
   const refs = stats.referrals || [];
