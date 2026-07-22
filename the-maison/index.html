@@ -26,6 +26,7 @@
       <a href="/" data-t="navProjects">Projecten</a>
       <a href="#calc" data-t="navReturns">Rendement</a>
       <a href="#how" data-t="navHow">Zo werkt het</a>
+      <a href="#location" data-t="navLocation">Locatie</a>
       <a href="#contact" data-t="navContact">Contact</a>
     </div>
     <div class="lang">
@@ -171,6 +172,20 @@
   </div>
 </section>
 
+<section id="location">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="locEyebrow">Locatie</div>
+      <h2 data-t="locTitle">3 minuten van Pererenan Beach</h2>
+      <p data-t="locSub">The Maison ligt in het hart van Pererenan, omringd door rijstvelden en op korte afstand van de cafés, restaurants en surfspots van de westkust.</p>
+    </div>
+    <div class="loc-map">
+      <iframe src="https://maps.google.com/maps?q=-8.641934,115.130826&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Locatie van The Maison, Pererenan"></iframe>
+    </div>
+    <a class="btn ghost loc-btn" href="https://maps.app.goo.gl/cWGrCgHWLDVpgCcW8" target="_blank" rel="noopener" data-t="locBtn">Bekijk op Google Maps →</a>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <div class="cta">
@@ -239,7 +254,7 @@ const SCENARIOS=[
 ];
 
 const T={
- nl:{navProjects:"Projecten",navReturns:"Rendement",navHow:"Zo werkt het",navContact:"Contact",back:"Projecten",
+ nl:{navProjects:"Projecten",navReturns:"Rendement",navHow:"Zo werkt het",navLocation:"Locatie",navContact:"Contact",back:"Projecten",
   mHeroSub:"Zes design-villa's met 2 slaapkamers, privé plunge pool en rooftop lounge, in het hart van Pererenan. Jij bezit de villa, wij ontwikkelen, beheren en verhuren hem voor je.",
   mHeroCta1:"Bereken je rendement",mHeroCta2:"Bekijk volledige brochure",mt1:"richtprijs, nu in verkoop",mt2:"netto rendement (realistisch)",mt3:"al verkocht",mStatus:"In verkoop · oplevering april 2027",
   calcEyebrow:"Rendement",calcTitle:"Bereken je rendement",calcSub:"De aannames zijn gebaseerd op reële cijfers voor The Maison. Pas ze aan naar jouw scenario. Eerlijk, geen opgeblazen beloftes.",
@@ -272,8 +287,9 @@ const T={
   recentSold:"{x} verkocht",
   scenH:"Drie scenario's voor The Maison",scenNote:"Nettorendement per jaar, exclusief verkoopwinst. Schattingen, geen garanties. Klik op een scenario om de rekentool hierboven aan te passen.",
   scOcc:"bezetting",scNight:"nacht",scPay:"Terugverdiend in",
-  calcCtaTitle:"Wil je deze cijfers naast plattegronden en exacte specificaties zien?",calcCtaSub:"De volledige digitale brochure bevat alle renders, plattegronden, het betaalschema en het complete rendementsmodel.",calcCtaBtn:"Bekijk de volledige brochure →"},
- en:{navProjects:"Projects",navReturns:"Returns",navHow:"How it works",navContact:"Contact",back:"Projects",
+  calcCtaTitle:"Wil je deze cijfers naast plattegronden en exacte specificaties zien?",calcCtaSub:"De volledige digitale brochure bevat alle renders, plattegronden, het betaalschema en het complete rendementsmodel.",calcCtaBtn:"Bekijk de volledige brochure →",
+  locEyebrow:"Locatie",locTitle:"3 minuten van Pererenan Beach",locSub:"The Maison ligt in het hart van Pererenan, omringd door rijstvelden en op korte afstand van de cafés, restaurants en surfspots van de westkust.",locBtn:"Bekijk op Google Maps →"},
+ en:{navProjects:"Projects",navReturns:"Returns",navHow:"How it works",navLocation:"Location",navContact:"Contact",back:"Projects",
   mHeroSub:"Six design villas with 2 bedrooms, a private plunge pool and rooftop lounge, in the heart of Pererenan. You own the villa, we develop, manage and rent it out for you.",
   mHeroCta1:"Calculate your return",mHeroCta2:"View full brochure",mt1:"guide price, selling now",mt2:"net yield (realistic)",mt3:"already sold",mStatus:"Selling now · completion April 2027",
   calcEyebrow:"Returns",calcTitle:"Calculate your return",calcSub:"The assumptions are based on real figures for The Maison. Adjust them to your scenario. Honest, no inflated promises.",
@@ -306,7 +322,8 @@ const T={
   recentSold:"{x} sold",
   scenH:"Three scenarios for The Maison",scenNote:"Net yield per year, excluding resale profit. Estimates, not guarantees. Click a scenario to update the calculator above.",
   scOcc:"occupancy",scNight:"night",scPay:"Paid back in",
-  calcCtaTitle:"Want to see these figures alongside floor plans and exact specifications?",calcCtaSub:"The full digital brochure includes all renders, floor plans, the payment schedule and the complete return model.",calcCtaBtn:"View the full brochure →"}
+  calcCtaTitle:"Want to see these figures alongside floor plans and exact specifications?",calcCtaSub:"The full digital brochure includes all renders, floor plans, the payment schedule and the complete return model.",calcCtaBtn:"View the full brochure →",
+  locEyebrow:"Location",locTitle:"3 minutes from Pererenan Beach",locSub:"The Maison sits in the heart of Pererenan, surrounded by rice fields and a short ride from the west coast's cafés, restaurants and surf spots.",locBtn:"View on Google Maps →"}
 };
 let lang="nl", selPrice=210000;
 const el=id=>document.getElementById(id);
@@ -504,6 +521,10 @@ setLang('nl');
   .lb .prev{left:16px}.lb .next{right:16px}
   .lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#eee;font-size:13px;opacity:.8}
   @media(max-width:600px){ .lb .nav{width:42px;height:42px} }
+  .loc-map{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:18px}
+  .loc-map iframe{width:100%;height:380px;border:0;display:block}
+  .loc-btn{display:inline-flex}
+  @media(max-width:600px){.loc-map iframe{height:280px}}
 </style>
 <div class="modal-ov" id="broModal" onclick="if(event.target===this)closeBrochure()">
   <div class="modal" role="dialog" aria-modal="true">
