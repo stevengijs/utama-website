@@ -764,12 +764,19 @@ function unlock(e){
   const budget=el('qBudget').value, when=el('qWhen').value;
   if(!name||!phone||!email||!budget||!when){ el('qErr').style.display='block'; return false; }
   const lead={ project:"The Maison", name, phone, email, budget, when };
+  try{ localStorage.setItem('maison_brochure_lead', JSON.stringify(lead)); }catch(err){}
   submitLead({ ...lead, lang:"nl" }).catch(()=>{});
   reveal(lead);
   return false;
 }
-// Kom je via de popup op de teaser? Dan is de lead al bekend en tonen we de brochure direct.
-try{ var _r=sessionStorage.getItem('maison_brochure_lead'); if(_r){ reveal(JSON.parse(_r)); } }catch(e){}
+// Al eens ontgrendeld op dit toestel (of kom je via de popup op de teaser)? Dan tonen we
+// de brochure meteen weer, zonder het formulier opnieuw te vragen. localStorage blijft ook
+// na een refresh of het sluiten van het tabblad bewaard; sessionStorage is de eenmalige
+// hand-off vanaf de teaserpagina.
+try{
+  var _r = localStorage.getItem('maison_brochure_lead') || sessionStorage.getItem('maison_brochure_lead');
+  if(_r){ reveal(JSON.parse(_r)); }
+}catch(e){}
 
 // ROI-calculator
 const GROWTH_RATE = 0.05; /* fixed annual value-growth assumption, based on market data for Pererenan/west Bali (not user-adjustable) */
