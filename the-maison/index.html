@@ -103,6 +103,7 @@
           <div class="hrow"><span data-t="rentTotal">Netto huurinkomsten</span><b id="oRent">–</b></div>
           <div class="hrow"><span data-t="resaleProfit">Geschatte verkoopwinst</span><b id="oResale">–</b></div>
           <div class="hrow big"><span data-t="totalReturn">Totaal rendement</span><b id="oTotalRet">–</b></div>
+          <p class="note-ext" data-t="resaleNote" style="margin-top:10px">Veel investeerders verhuren de villa enkele jaren en verkopen daarna met winst. De verkoopwinst is het verschil tussen de geschatte verkoopwaarde (op basis van de gekozen waardegroei) en de aankoopprijs.</p>
         </div>
         <div class="breakdown">
           <div class="brow"><span data-t="grossYear">Bruto huurinkomsten / jaar</span><b id="oGross">–</b></div>
@@ -144,10 +145,28 @@
       <p data-t="howSub">Eerlijk en transparant, van contract tot verhuur.</p>
     </div>
     <div class="how steps4">
-      <div class="hcard"><div class="n">01</div><h4 data-t="h1t">Leasehold, goed geregeld</h4><p data-t="h1p">Je least de grond (Hak Sewa), standaard 30 jaar met contractueel gegarandeerde verlenging van 30 jaar, waterdicht vastgelegd in de notariële akte via een bevoegde PPAT.</p></div>
-      <div class="hcard"><div class="n">02</div><h4 data-t="hBuildT">Wij bouwen je villa</h4><p data-t="hBuildP">Ons eigen bouwteam ontwerpt en bouwt je villa van fundering tot afwerking, geen losse externe aannemer. Jij volgt elke fase op afstand mee met foto's en video's, wij bewaken kwaliteit en planning.</p></div>
-      <div class="hcard"><div class="n">03</div><h4 data-t="h2t">Betalen per bouwmijlpaal</h4><p data-t="h2p">Je betaalt gespreid in euro's, gekoppeld aan opgeleverde bouwmijlpalen, meestal 30 + 30 + 30 + 10%. De laatste 10% betaal je bij sleuteloverdracht. Elke termijn wordt pas gefactureerd nadat de bijbehorende bouwfase is voltooid en met foto- en videoverslag is aangetoond.</p></div>
-      <div class="hcard"><div class="n">04</div><h4 data-t="h3t">Volledig beheer &amp; verhuur</h4><p data-t="h3p">Na oplevering regelt rental management via House of Reservations (250+ villa's) listing, boekingen, gasten, schoonmaak, onderhoud en belasting. Jij ontvangt inkomsten en rapportage.</p></div>
+      <div class="hcard"><div class="n">01</div><h4 data-t="h1t">Leasehold, goed geregeld</h4><ul>
+        <li data-t="h1li1">Je least de grond (Hak Sewa), in een apart leasecontract los van de bouw</li>
+        <li data-t="h1li2">Standaard 30 jaar, met contractueel gegarandeerde verlenging van nog 30 jaar</li>
+        <li data-t="h1li3">Waterdicht vastgelegd in de notariële akte via een bevoegde PPAT</li>
+      </ul></div>
+      <div class="hcard"><div class="n">02</div><h4 data-t="hBuildT">Wij bouwen je villa</h4><ul>
+        <li data-t="hBuildLi1">Ons eigen bouwteam ontwerpt en begeleidt de bouw, van fundering tot afwerking</li>
+        <li data-t="hBuildLi2">We werken met een vast netwerk van de beste onderaannemers op Bali</li>
+        <li data-t="hBuildLi3">Los bouwcontract, gescheiden van je leasecontract voor de grond</li>
+        <li data-t="hBuildLi4">Jij volgt elke fase op afstand mee met foto's en video's</li>
+      </ul></div>
+      <div class="hcard"><div class="n">03</div><h4 data-t="h2t">Betalen per bouwmijlpaal</h4><ul>
+        <li data-t="h2li1">Gespreide betaling in euro's, gekoppeld aan bouwmijlpalen</li>
+        <li data-t="h2li2">Meestal 30 + 30 + 30 + 10%, de laatste 10% bij sleuteloverdracht</li>
+        <li data-t="h2li3">Elke termijn pas gefactureerd na een voltooide bouwfase</li>
+        <li data-t="h2li4">Altijd aangetoond met foto- en videoverslag</li>
+      </ul></div>
+      <div class="hcard"><div class="n">04</div><h4 data-t="h3t">Volledig beheer &amp; verhuur</h4><ul>
+        <li data-t="h3li1">Na oplevering regelt rental management (House of Reservations, 250+ villa's) listing, boekingen en gasten</li>
+        <li data-t="h3li2">Ook schoonmaak, onderhoud en belasting geregeld</li>
+        <li data-t="h3li3">Jij ontvangt inkomsten en rapportage</li>
+      </ul></div>
     </div>
   </div>
 </section>
@@ -225,16 +244,21 @@ const T={
   assumpH:"Aannames",assumpSub:"Voorgevuld op de brochure van The Maison.",fPrice:"Prijs (vast)",fNightly:"Gem. nachtprijs",fOcc:"Bezettingsgraad",fCosts:"Kosten & beheer",fHold:"Aanhoudperiode",fGrowth:"Geschatte waardegroei / jaar",
   expected:"Verwacht rendement",perYear:"Op jaarbasis, netto na alle kosten en beheer.",netYield:"netto rendement / jaar",netMonth:"Netto huur / maand",netYear:"Netto huur / jaar",
   rentTotal:"Netto huurinkomsten",resaleProfit:"Geschatte verkoopwinst",totalReturn:"Totaal rendement",grossYear:"Bruto huurinkomsten / jaar",lessCosts:"Af: kosten & beheer",totalInv:"Totale investering",
+  resaleNote:"Veel investeerders verhuren de villa enkele jaren en verkopen daarna met winst. De verkoopwinst is het verschil tussen de geschatte verkoopwaarde (op basis van de gekozen waardegroei) en de aankoopprijs.",
   assumpTitle:"Aannames & transparantie",
   a1:"Bruto huurinkomsten = nachtprijs × 365 × bezettingsgraad. Alle bedragen in euro's.",
   a2:"Netto = bruto minus alle kosten: beheer, marketing, OTA-fees, schoonmaak, onderhoud, personeel en lokale belasting.",
   a3:"Cijfers zijn gebaseerd op de brochure van The Maison (House of Reservations-model, met deels directe boekingen).",
   a4:"Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei. Bij leasehold hangt de waarde ook af van de resterende looptijd. Indicatie, geen garantie.",
   howEyebrow:"Zo werkt het",howTitle:"Veilig investeren op afstand",howSub:"Eerlijk en transparant, van contract tot verhuur.",
-  h1t:"Leasehold, goed geregeld",h1p:"Je least de grond (Hak Sewa), standaard 30 jaar met contractueel gegarandeerde verlenging van 30 jaar, waterdicht vastgelegd in de notariële akte via een bevoegde PPAT.",
-  hBuildT:"Wij bouwen je villa",hBuildP:"Ons eigen bouwteam ontwerpt en bouwt je villa van fundering tot afwerking, geen losse externe aannemer. Jij volgt elke fase op afstand mee met foto's en video's, wij bewaken kwaliteit en planning.",
-  h2t:"Betalen per bouwmijlpaal",h2p:"Je betaalt gespreid in euro's, gekoppeld aan opgeleverde bouwmijlpalen, meestal 30 + 30 + 30 + 10%. De laatste 10% betaal je bij sleuteloverdracht. Elke termijn wordt pas gefactureerd nadat de bijbehorende bouwfase is voltooid en met foto- en videoverslag is aangetoond.",
-  h3t:"Volledig beheer & verhuur",h3p:"Na oplevering regelt rental management via House of Reservations (250+ villa's) listing, boekingen, gasten, schoonmaak, onderhoud en belasting. Jij ontvangt inkomsten en rapportage.",
+  h1t:"Leasehold, goed geregeld",
+  h1li1:"Je least de grond (Hak Sewa), in een apart leasecontract los van de bouw",h1li2:"Standaard 30 jaar, met contractueel gegarandeerde verlenging van nog 30 jaar",h1li3:"Waterdicht vastgelegd in de notariële akte via een bevoegde PPAT",
+  hBuildT:"Wij bouwen je villa",
+  hBuildLi1:"Ons eigen bouwteam ontwerpt en begeleidt de bouw, van fundering tot afwerking",hBuildLi2:"We werken met een vast netwerk van de beste onderaannemers op Bali",hBuildLi3:"Los bouwcontract, gescheiden van je leasecontract voor de grond",hBuildLi4:"Jij volgt elke fase op afstand mee met foto's en video's",
+  h2t:"Betalen per bouwmijlpaal",
+  h2li1:"Gespreide betaling in euro's, gekoppeld aan bouwmijlpalen",h2li2:"Meestal 30 + 30 + 30 + 10%, de laatste 10% bij sleuteloverdracht",h2li3:"Elke termijn pas gefactureerd na een voltooide bouwfase",h2li4:"Altijd aangetoond met foto- en videoverslag",
+  h3t:"Volledig beheer & verhuur",
+  h3li1:"Na oplevering regelt rental management (House of Reservations, 250+ villa's) listing, boekingen en gasten",h3li2:"Ook schoonmaak, onderhoud en belasting geregeld",h3li3:"Jij ontvangt inkomsten en rapportage",
   ctaTitle:"Klaar voor de volgende stap?",ctaSub:"Bekijk de volledige digitale brochure met alle renders, plattegronden, exacte prijzen en het rendementsmodel, of stel je vraag direct aan Ashley.",
   ctaWa:"Praat met Ashley via WhatsApp",agentRole:"Sales Manager, UTAMA",
   ctaBtn:"Verstuur via WhatsApp",ctaEmail:"Of per e-mail",ctaCall:"Plan een gesprek",name:"Je naam",phone:"Je WhatsApp-nummer",email:"Je e-mailadres",
@@ -243,7 +267,7 @@ const T={
   yrs:"jaar",payback:"Terugverdiend in ± {x} jaar (alleen uit huur).",available:"{sold} van {y} verkocht · nog {x} beschikbaar",availShort:"{x} van {y}",render:"Render: voeg je beeld toe",
   holdH:"Over {x} jaar aanhouden (bij {g}% waardegroei/jaar):",ext:"Leasehold 30 jaar met gegarandeerde verlenging van 30 jaar. Verlengen na 30 jaar kost ± 20% van de aankoopprijs (± {x}). Je kunt de villa ook eerder verkopen.",
   fill:"Vul je naam en je WhatsApp of e-mail in.",okMsg:"Bedankt! We nemen snel contact met je op. Je ontvangt de brochure via WhatsApp.",roiLbl:"ROI",
-  recentSold:"{x} verkocht in de afgelopen maand",
+  recentSold:"{x} verkocht",
   scenH:"Drie scenario's uit de brochure van The Maison",scenNote:"Nettorendement per jaar, exclusief verkoopwinst. Schattingen uit de brochure, geen garanties. Klik op een scenario om de rekentool hierboven aan te passen.",
   scOcc:"bezetting",scNight:"nacht",scPay:"Terugverdiend in",
   calcCtaTitle:"Wil je deze cijfers naast plattegronden en exacte specificaties zien?",calcCtaSub:"De volledige digitale brochure bevat alle renders, plattegronden, het betaalschema en het complete rendementsmodel.",calcCtaBtn:"Bekijk de volledige brochure →"},
@@ -254,16 +278,21 @@ const T={
   assumpH:"Assumptions",assumpSub:"Pre-filled from The Maison brochure.",fPrice:"Price (fixed)",fNightly:"Avg. nightly rate",fOcc:"Occupancy rate",fCosts:"Costs & management",fHold:"Holding period",fGrowth:"Estimated value growth / year",
   expected:"Expected return",perYear:"Per year, net of all costs and management.",netYield:"net yield / year",netMonth:"Net rent / month",netYear:"Net rent / year",
   rentTotal:"Net rental income",resaleProfit:"Estimated resale profit",totalReturn:"Total return",grossYear:"Gross rental income / year",lessCosts:"Less: costs & management",totalInv:"Total investment",
+  resaleNote:"Many investors rent out the villa for a few years and then sell it at a profit. The resale profit is the difference between the estimated resale value (based on the chosen value growth) and the purchase price.",
   assumpTitle:"Assumptions & transparency",
   a1:"Gross rental income = nightly rate × 365 × occupancy. All amounts in euros.",
   a2:"Net = gross minus all costs: management, marketing, OTA fees, cleaning, maintenance, staff and local tax.",
   a3:"Figures are based on The Maison brochure (House of Reservations model, partly direct bookings).",
   a4:"Resale value on holding uses the chosen annual value growth. For leasehold, value also depends on the remaining term. Indicative, not a guarantee.",
   howEyebrow:"How it works",howTitle:"Invest safely, remotely",howSub:"Honest and transparent, from contract to rental.",
-  h1t:"Leasehold, properly structured",h1p:"You lease the land (Hak Sewa), standard 30 years with a contractually guaranteed 30-year extension, watertight in the notarial deed via an authorised PPAT.",
-  hBuildT:"We build your villa",hBuildP:"Our own in-house build team designs and builds your villa from foundation to finishing, no loose third-party contractor. You follow every phase remotely with photos and videos, we manage quality and schedule.",
-  h2t:"Pay per construction milestone",h2p:"You pay in stages in euros, tied to delivered construction milestones, usually 30 + 30 + 30 + 10%. The final 10% is paid at key handover. Every instalment is only invoiced once that construction phase is complete and shown with photo and video proof.",
-  h3t:"Full management & rental",h3p:"After handover, rental management via House of Reservations (250+ villas) handles listing, bookings, guests, cleaning, maintenance and tax. You receive income and reporting.",
+  h1t:"Leasehold, properly structured",
+  h1li1:"You lease the land (Hak Sewa), under a separate contract from the construction",h1li2:"Standard 30 years, with a contractually guaranteed 30-year extension",h1li3:"Watertight in the notarial deed via an authorised PPAT",
+  hBuildT:"We build your villa",
+  hBuildLi1:"Our own in-house team designs and oversees the build, from foundation to finishing",hBuildLi2:"We work with a trusted network of Bali's best subcontractors",hBuildLi3:"A separate construction contract, apart from your land lease contract",hBuildLi4:"You follow every phase remotely with photos and videos",
+  h2t:"Pay per construction milestone",
+  h2li1:"Staged payment in euros, tied to construction milestones",h2li2:"Usually 30 + 30 + 30 + 10%, the final 10% at key handover",h2li3:"Each instalment only invoiced once that phase is complete",h2li4:"Always shown with photo and video proof",
+  h3t:"Full management & rental",
+  h3li1:"After handover, rental management (House of Reservations, 250+ villas) handles listing, bookings and guests",h3li2:"Cleaning, maintenance and tax are covered too",h3li3:"You receive income and reporting",
   ctaTitle:"Ready for the next step?",ctaSub:"View the full digital brochure with all renders, floor plans, exact prices and the return model, or ask Ashley directly.",
   ctaWa:"Chat with Ashley on WhatsApp",agentRole:"Sales Manager, UTAMA",
   ctaBtn:"Send via WhatsApp",ctaEmail:"Or by email",ctaCall:"Book a call",name:"Your name",phone:"Your WhatsApp number",email:"Your email",
@@ -272,7 +301,7 @@ const T={
   yrs:"years",payback:"Paid back in ± {x} years (from rent alone).",available:"{sold} of {y} sold · {x} left",availShort:"{x} of {y}",render:"Render: add your image",
   holdH:"Hold for {x} years (at {g}% value growth/year):",ext:"Leasehold 30 years with guaranteed 30-year extension. Extending after 30 years costs ± 20% of the purchase price (± {x}). You can also sell the villa earlier.",
   fill:"Please enter your name and WhatsApp or email.",okMsg:"Thanks! We'll be in touch shortly. You'll receive the brochure via WhatsApp.",roiLbl:"ROI",
-  recentSold:"{x} sold in the past month",
+  recentSold:"{x} sold",
   scenH:"Three scenarios from The Maison brochure",scenNote:"Net yield per year, excluding resale profit. Brochure estimates, not guarantees. Click a scenario to update the calculator above.",
   scOcc:"occupancy",scNight:"night",scPay:"Paid back in",
   calcCtaTitle:"Want to see these figures alongside floor plans and exact specifications?",calcCtaSub:"The full digital brochure includes all renders, floor plans, the payment schedule and the complete return model.",calcCtaBtn:"View the full brochure →"}
@@ -304,16 +333,20 @@ function applyScenario(i){
   el('nightly').value=s.nightly;
   el('occ').value=s.occ;
   calc();
-  renderScenarios();
 }
 function renderScenarios(){
-  el('scenGrid').innerHTML = SCENARIOS.map((s,i)=>`
+  const price=selPrice, costs=+el('costs').value/100;
+  el('scenGrid').innerHTML = SCENARIOS.map((s,i)=>{
+    const gross=s.nightly*365*(s.occ/100), net=gross*(1-costs);
+    const roi=price>0?net/price*100:0, payback=net>0?price/net:0;
+    return `
     <div class="scc ${i===selScenario?'cur':''}" onclick="applyScenario(${i})">
       <div class="scl">${s.label[lang]}</div>
-      <div class="scv">${s.roi.toFixed(1).replace('.',lang==='nl'?',':'.')}%</div>
+      <div class="scv">${roi.toFixed(1).replace('.',lang==='nl'?',':'.')}%</div>
       <div class="scs">${s.occ}% ${T[lang].scOcc} · €${s.nightly}/${T[lang].scNight}</div>
-      <div class="scb">${T[lang].scPay} ${s.payback.toFixed(1).replace('.',lang==='nl'?',':'.')} ${T[lang].yrs}</div>
-    </div>`).join("");
+      <div class="scb">${T[lang].scPay} ${payback.toFixed(1).replace('.',lang==='nl'?',':'.')} ${T[lang].yrs}</div>
+    </div>`;
+  }).join("");
 }
 
 let last={};
@@ -340,13 +373,14 @@ function calc(){
   el('oTotalRet').textContent=money(totalRet)+"  ("+pct(totalRoi)+" "+T[lang].roiLbl+")";
   el('oExt').textContent=tr(T[lang].ext,{x:money(price*0.20)});
   last={price:money(price),y:pct(y),net:money(net)};
+  renderScenarios();
 }
 function setLang(l){
   lang=l; el('btnNL').classList.toggle('on',l==='nl'); el('btnEN').classList.toggle('on',l==='en'); document.documentElement.lang=l;
   document.querySelectorAll('[data-t]').forEach(e=>{const k=e.getAttribute('data-t'); if(T[l][k]!==undefined)e.textContent=T[l][k];});
   document.querySelectorAll('[data-tp]').forEach(e=>{const k=e.getAttribute('data-tp'); if(T[l][k]!==undefined)e.placeholder=T[l][k];});
   el('dprice').textContent=(l==='nl'?"vanaf ":"from ")+money(selPrice);
-  renderStatic(); calc(); renderScenarios();
+  renderStatic(); calc();
 }
 function fb(txt,ok){try{const ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(e){}}
 function sendLead(via){
