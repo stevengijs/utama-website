@@ -48,18 +48,25 @@
   .thanks p{margin:4px 0 0;opacity:.92;font-size:14px;max-width:560px}
   .thanks p b{color:#fff}
   .thanks .wa{flex:none}
-  .bhero{margin:8px 0 26px}
+  .bhero{margin:8px 0 22px}
   .bhero .eb{color:var(--terra);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
   .bhero h1{font-size:44px;margin:6px 0 4px;line-height:1.05}
   .bhero-sub{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:var(--green-2);margin:0 0 14px}
-  .bhero p{color:var(--muted);font-size:16px;max-width:660px;margin:0 0 12px}
+  .bhero p{color:var(--muted);font-size:16px;max-width:680px;margin:0 0 12px}
   .bhero p:last-child{margin-bottom:0}
+  .invest-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 30px}
+  .invest-facts .f2{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .invest-facts .f2 .k{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--green)}
+  .invest-facts .f2 .l{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+  .invest-facts .f2 .tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--terra);margin-top:5px}
+  @media(max-width:820px){.invest-facts{grid-template-columns:1fr 1fr}}
   .bgal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:200px;gap:10px;margin:24px 0 34px}
   .bgal .g{background-size:cover;background-position:center;border-radius:12px}
   .bgal .g.big{grid-row:span 2;grid-column:span 1}
   .sec{margin:34px 0}
   .sec h2{font-size:26px;margin-bottom:16px}
-  .sec>p{font-size:15px;line-height:1.65;max-width:700px;margin:0 0 14px;color:var(--ink)}
+  .sec .sec-num{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+  .sec>p{font-size:15px;line-height:1.65;max-width:720px;margin:0 0 14px;color:var(--ink)}
   .sec>p:last-of-type{margin-bottom:16px}
   .facts{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
   .facts .f{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
@@ -79,8 +86,8 @@
   .nearby-group:last-of-type{margin-bottom:0}
   .nearby-cat{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--terra);margin-bottom:8px}
   .hl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
-  .hl div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:15px 18px;font-size:14px;line-height:1.4;display:flex;gap:13px;align-items:center}
-  .hl div::before{content:"";position:static;left:auto;width:22px;height:22px;flex:none;border-radius:50%;background-color:var(--sand-2);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E7D5B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");background-size:14px;background-repeat:no-repeat;background-position:center}
+  .hl div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:15px 18px;font-size:13.5px;line-height:1.5;display:flex;gap:13px;align-items:flex-start}
+  .hl div::before{content:"";position:static;left:auto;top:2px;width:22px;height:22px;flex:none;border-radius:50%;background-color:var(--sand-2);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E7D5B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");background-size:14px;background-repeat:no-repeat;background-position:center}
   .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .pc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-align:center}
   .pc.cur{border-color:var(--terra);box-shadow:0 6px 20px rgba(192,107,58,.12)}
@@ -114,6 +121,27 @@
   .wa.ghost{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff}
   .wa.ghost svg{fill:#fff}
   .note{font-size:12.5px;color:var(--muted);margin-top:20px}
+  /* fact / assumption legend */
+  .legend{background:var(--sand);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0 22px}
+  .legend .lh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green-2);margin-bottom:10px}
+  .legend .li{display:flex;gap:10px;font-size:13.5px;line-height:1.5;padding:6px 0;border-top:1px solid var(--line)}
+  .legend .li:first-of-type{border-top:none;padding-top:0}
+  .legend .li b{flex:none;width:150px;color:var(--ink)}
+  .legend .li span{color:var(--muted)}
+  @media(max-width:640px){.legend .li{flex-direction:column;gap:2px}.legend .li b{width:auto}}
+  .yield-table{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:20px}
+  .yield-table .yr{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--paper);font-size:14px}
+  .yield-table .yr:last-child{border-bottom:none}
+  .yield-table .yr.tot{background:var(--sand-2);font-weight:700}
+  .yield-table .yr .yl{color:var(--ink)}
+  .yield-table .yr .ytag{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-left:8px}
+  .yield-table .yr .yv{font-weight:700;color:var(--green-2);font-variant-numeric:tabular-nums}
+  .risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:820px){.risk-grid{grid-template-columns:1fr}}
+  .rcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .rcard h4{font-size:15px;margin-bottom:6px;color:var(--ink)}
+  .rcard h4 .rn{color:var(--terra);margin-right:6px}
+  .rcard p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.55}
   @media(max-width:820px){
     .gate{grid-template-columns:1fr}.gate .gv{min-height:180px}
     .bgal{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.bgal .g.big{grid-column:span 2;grid-row:span 1}
@@ -148,6 +176,7 @@
   @media(max-width:820px){.scen{grid-template-columns:1fr}}
   /* team + faq */
   .team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .team.cols2{grid-template-columns:repeat(2,1fr)}
   @media(max-width:820px){.team{grid-template-columns:1fr}}
   .tcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
   .tcard .n{font-family:'Fraunces',serif;color:var(--terra);font-weight:600;font-size:13px;letter-spacing:.05em;text-transform:uppercase}
@@ -176,7 +205,7 @@
 <body>
 <nav class="bnav">
   <a href="/" class="brand">UT<span>A</span>MA</a>
-  <span class="tag">Proefversie · tone of voice</span>
+  <span class="tag">Proefversie · tone of voice (investor-first)</span>
   <a href="/the-maison" class="back">&larr; Terug naar The Maison</a>
 </nav>
 
@@ -185,15 +214,15 @@
   <div class="gv" style="background-image:url('/the-maison/images/maison-exterior.jpg')">
     <div class="vt">
       <div class="eb">The Maison · Pererenan, Bali</div>
-      <h2>Zes villa's in het hart van Pererenan</h2>
-      <p>Bekijk de plattegronden, de actuele prijzen, het rendementsmodel en alle voorwaarden. We sturen je gegevens door naar Ashley, zodat ze je meteen persoonlijk kan helpen.</p>
+      <h2>Bekijk de volledige investeringscase</h2>
+      <p>Rendementsmodel, juridische structuur, bouwplanning en risicobeheersing — helder en onderbouwd, in één brochure.</p>
     </div>
   </div>
   <div class="gf">
     <div class="gcard">
       <div class="eb">Digitale brochure</div>
       <h1>Eén laatste stap</h1>
-      <div class="sub">Laat hieronder je gegevens achter. Dan sturen we je meteen door naar de volledige brochure van The Maison, en neemt Ashley contact met je op om verder te helpen.</div>
+      <div class="sub">Laat hieronder je gegevens achter. Dan ontvang je direct de volledige investeringscase van The Maison, inclusief rendementsmodel en juridische structuur. Ashley neemt daarna contact met je op om eventuele vragen te beantwoorden.</div>
       <form id="gform" onsubmit="return unlock(event)">
         <div class="gfield">
           <label for="qName">Naam</label>
@@ -234,7 +263,7 @@
           </div>
         </div>
         <div class="gerr" id="qErr">Vul je naam, WhatsApp-nummer en e-mailadres in.</div>
-        <button class="btn gsubmit" type="submit">Bekijk de brochure van The Maison</button>
+        <button class="btn gsubmit" type="submit">Bekijk de investeringscase</button>
         <div class="gtrust">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
           <span>Geen spam. We gebruiken je gegevens alleen om je de juiste informatie te sturen en je vragen te beantwoorden.</span>
@@ -249,18 +278,26 @@
   <div class="thanks">
     <img class="agent-photo" src="/images/ashley.jpg" alt="Ashley Vermoten, Sales Manager UTAMA">
     <div class="agent-txt">
-      <h3 id="thName">Bedankt, hier is je brochure</h3>
-      <p>Je persoonlijke contactpersoon is <b>Ashley Vermoten</b>, Sales Manager bij UTAMA. Ze helpt je graag wanneer je vragen hebt over The Maison: de plattegronden, de beschikbare units, de contracten en de manier waarop een reservering werkt. Je hoeft dus niet direct een beslissing te nemen, stuur haar gerust eerst een bericht om te kijken of The Maison bij je past.</p>
+      <h3 id="thName">Bedankt, hier is je investeringscase</h3>
+      <p>Je persoonlijke contactpersoon is <b>Ashley Vermoten</b>, Sales Manager bij UTAMA. Zij kan de aannames in het rendementsmodel toelichten, de juridische structuur doornemen en je vragen beantwoorden over beschikbare units en reservering.</p>
     </div>
     <a class="wa" id="waTop" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Stuur Ashley een bericht</a>
   </div>
 
+  <!-- 1. INVESTERINGSCASE -->
   <div class="bhero">
-    <div class="eb">The Maison · Pererenan, Bali</div>
+    <div class="eb">Investeringscase · The Maison, Pererenan</div>
     <h1>The Maison</h1>
-    <div class="bhero-sub">Zes villa's in het hart van Pererenan</div>
-    <p>Met The Maison bouwen we zes volledig gemeubileerde designvilla's op een van de interessantste locaties van Bali: midden in Pererenan en op ongeveer drie minuten van het strand. Iedere villa krijgt twee ensuite slaapkamers, een privézwembad en een rooftop lounge van ongeveer 40 m².</p>
-    <p>Het doel is om een woning te ontwikkelen die niet alleen mooi is om zelf te gebruiken, maar vooral goed functioneert als verhuurvilla. The Maison is sinds 15 mei 2026 in aanbouw en we verwachten de villa's in april 2027 op te leveren. Op dit moment zijn nog 4 van de 6 villa's beschikbaar.</p>
+    <div class="bhero-sub">Een kleinschalige villa-ontwikkeling met een onderbouwde verhuurcase</div>
+    <p>The Maison is een ontwikkeling van zes volledig gemeubileerde, verhuurklare villa's in Pererenan, Bali. Iedere keuze in ontwerp, locatie en beheer is gemaakt met het oog op de commerciële prestaties van de woning, niet alleen op de uitstraling.</p>
+    <p>Bij een aankoopprijs van €210.000 verwachten we, op basis van het realistische scenario (85% bezetting, €175 gemiddelde nachtprijs), een netto verhuurrendement van circa 14,7% per jaar. Dit is een prognose op basis van het beheermodel van House of Reservations, geen garantie. The Maison is sinds 15 mei 2026 in aanbouw, met een verwachte oplevering in april 2027.</p>
+  </div>
+
+  <div class="invest-facts">
+    <div class="f2"><div class="k">€210.000</div><div class="l">Aankoopprijs</div><div class="tag">Feit</div></div>
+    <div class="f2"><div class="k">±14,7%</div><div class="l">Verwacht netto rendement / jaar</div><div class="tag">Prognose</div></div>
+    <div class="f2"><div class="k">15 mei 2026</div><div class="l">Start bouw</div><div class="tag">Feit</div></div>
+    <div class="f2"><div class="k">4 van de 6</div><div class="l">Villa's nog beschikbaar</div><div class="tag">Feit</div></div>
   </div>
 
   <div class="bgal">
@@ -271,147 +308,29 @@
     <div class="g" style="background-image:url('/the-maison/images/maison-bathroom.jpg')"></div>
   </div>
 
-  <div class="sec">
-    <h2>Wat we met The Maison aan het bouwen zijn</h2>
-    <p>Voor The Maison hebben we bewust gekozen voor een kleinschalig project van slechts zes villa's. Geen groot resort met tientallen woningen, maar een gated community waarin iedere villa voldoende privacy heeft. Tegelijkertijd profiteer je wel van professioneel beheer, een herkenbaar concept en gedeelde voorzieningen rondom het project.</p>
-    <p style="margin-bottom:0">Iedere villa bestaat uit:</p>
-    <div class="hl">
-      <div>Twee ensuite slaapkamers en twee badkamers</div>
-      <div>Een woonoppervlakte van circa 115 m²</div>
-      <div>Een privé plunge pool</div>
-      <div>Een rooftop lounge van ongeveer 40 m²</div>
-      <div>Een outdoor kitchen</div>
-      <div>Een open living</div>
-      <div>Volledig meubilair en interieur</div>
-      <div>Een verhuurklare oplevering</div>
-    </div>
-    <p style="margin-top:16px">De woningen worden ontwikkeld voor de internationale verhuurmarkt, maar je kunt de villa uiteraard ook zelf gebruiken.</p>
-  </div>
-
-  <div class="sec">
-    <h2>Waarom we voor Pererenan hebben gekozen</h2>
-    <p>Pererenan ligt direct naast Canggu, maar voelt nog steeds rustiger en exclusiever aan. Tegelijkertijd vind je er inmiddels veel van de beste restaurants, koffiezaken, sportscholen en wellnessconcepten van Bali.</p>
-    <p>Vanaf The Maison ben je binnen enkele minuten bij het strand, terwijl populaire gebieden zoals Batu Bolong, Berawa en Seseh gemakkelijk bereikbaar blijven. Voor verhuurders is dat belangrijk: gasten willen rust en privacy, maar willen niet ver hoeven reizen voor restaurants, beachclubs of het strand.</p>
-    <div class="loc-map">
-      <iframe src="https://maps.google.com/maps?q=-8.641934,115.130826&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Locatie van The Maison, Pererenan"></iframe>
-    </div>
-    <a class="btn ghost" style="margin:-4px 0 18px" href="https://maps.app.goo.gl/cWGrCgHWLDVpgCcW8" target="_blank" rel="noopener">Bekijk The Maison op Google Maps →</a>
-    <div class="nearby-group">
-      <div class="nearby-cat">Strand &amp; beachclubs</div>
-      <div class="facts">
-        <div class="f"><span class="l">Pererenan Beach</span><span class="v">3 min</span></div>
-        <div class="f"><span class="l">La Brisa Beach Club</span><span class="v">6 min</span></div>
-        <div class="f"><span class="l">Batu Bolong</span><span class="v">8 min</span></div>
-        <div class="f"><span class="l">Finns / Atlas Beach Club</span><span class="v">15 min</span></div>
-      </div>
-    </div>
-    <div class="nearby-group">
-      <div class="nearby-cat">Eten &amp; koffie</div>
-      <div class="facts">
-        <div class="f"><span class="l">Woods Pererenan</span><span class="v">2 min</span></div>
-        <div class="f"><span class="l">Bokashi</span><span class="v">2 min</span></div>
-        <div class="f"><span class="l">St. Ali Bali</span><span class="v">3 min</span></div>
-        <div class="f"><span class="l">Penny Lane</span><span class="v">4 min</span></div>
-      </div>
-    </div>
-    <div class="nearby-group">
-      <div class="nearby-cat">Fitness &amp; wellness</div>
-      <div class="facts">
-        <div class="f"><span class="l">Shelter Pererenan</span><span class="v">2 min</span></div>
-        <div class="f"><span class="l">Alchemy Yoga</span><span class="v">3 min</span></div>
-        <div class="f"><span class="l">Obsidian Gym</span><span class="v">4 min</span></div>
-        <div class="f"><span class="l">Body Factory Bali</span><span class="v">5 min</span></div>
-      </div>
-    </div>
-    <p class="note">Reistijden zijn per scooter, vanaf The Maison.</p>
-  </div>
-
-  <div class="sec">
-    <h2>We zijn al aan het bouwen</h2>
-    <p>The Maison is geen project dat alleen op papier bestaat. De bouw is op 15 mei 2026 gestart en wordt uitgevoerd door Bali Prime Construction. Tijdens de bouw controleren we de voortgang dagelijks op locatie, en daarnaast vindt er wekelijks bouwoverleg plaats met de aannemer, architect en het projectteam. Als investeerder kun je de ontwikkeling van het project volgen via foto's, video's en onze live bouwcamera.</p>
-    <div class="facts">
-      <div class="f"><span class="l">Start bouw</span><span class="v">15 mei 2026</span></div>
-      <div class="f"><span class="l">Verwachte oplevering</span><span class="v">April 2027</span></div>
-      <div class="f"><span class="l">Aantal villa's</span><span class="v">6</span></div>
-      <div class="f"><span class="l">Beschikbaar</span><span class="v">Nog 4 villa's</span></div>
-      <div class="f"><span class="l">Leasehold</span><span class="v">30 + 30 jaar (gegarandeerd)</span></div>
-      <div class="f"><span class="l">Bouwgarantie</span><span class="v">10 jaar</span></div>
-    </div>
-    <div class="build-banner">
-      <div class="bb-icon">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 0 1 16 0"/><path d="M2 19h20"/><path d="M12 6v4"/><circle cx="12" cy="4" r="1.6" fill="currentColor" stroke="none"/></svg>
-      </div>
-      <div class="bb-body">
-        <div class="bb-eyebrow">Bouwstatus</div>
-        <div class="bb-title"><span class="dot"></span>In aanbouw sinds 15 mei 2026</div>
-      </div>
-      <a class="bb-cam" id="bbCam" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="15" height="14" rx="2.5"/><path d="M23 7.5l-7 4.5 7 4.5v-9z"/></svg>
-        Live bouwcamera
-      </a>
-    </div>
-  </div>
-
-  <div class="sec">
-    <h2>Zo hebben we de investering opgebouwd</h2>
-    <p>Bij UTAMA vinden we het belangrijk dat de grond, de bouw en de betalingen duidelijk van elkaar gescheiden zijn. Daarom werkt The Maison niet met één algemeen contract waarin alles door elkaar staat. Je sluit een apart leasecontract voor de grond en een apart bouwcontract voor de ontwikkeling van de villa. Hierdoor is duidelijk welk bedrag waarvoor wordt betaald en welke rechten en verplichtingen iedere partij heeft.</p>
-    <div class="how steps4">
-      <div class="hcard"><div class="n">01</div><h4>Je krijgt het leaseholdrecht op de grond</h4>
-        <p>Je least de grond via Hak Sewa. De eerste leaseperiode bedraagt 30 jaar. In de notariële akte wordt daarnaast vastgelegd dat je het recht hebt om de lease met nog eens 30 jaar te verlengen. De afspraken worden vastgelegd door een bevoegde Indonesische notaris en PPAT.</p>
-      </div>
-      <div class="hcard"><div class="n">02</div><h4>Wij begeleiden de volledige ontwikkeling</h4>
-        <p>UTAMA ontwikkelt en coördineert het project. We selecteren de aannemer, bewaken de planning en controleren de kwaliteit van de uitvoering. De bouw wordt uitgevoerd door Bali Prime Construction en het architectonische ontwerp is afkomstig van Mahez Studio. Tijdens de bouw houden we je op de hoogte met foto's, video's en bouwrapportages.</p>
-      </div>
-      <div class="hcard"><div class="n">03</div><h4>Je betaalt op basis van de voortgang</h4>
-        <p>Je betaalt de villa niet volledig vooruit. De betalingen worden verspreid over verschillende bouwmijlpalen. Een nieuwe termijn wordt pas gefactureerd wanneer de afgesproken bouwfase is bereikt. Bij iedere termijn ontvang je bewijs van de voortgang in de vorm van foto's en video's.</p>
-      </div>
-      <div class="hcard"><div class="n">04</div><h4>Na oplevering wordt alles voor je beheerd</h4>
-        <p>Na de oplevering kan House of Reservations de volledige verhuur van de woning verzorgen. Zij regelen onder andere:</p>
-        <ul>
-          <li>De plaatsing op verhuurplatforms</li>
-          <li>Prijsoptimalisatie</li>
-          <li>Boekingen en communicatie met gasten</li>
-          <li>Check-ins en check-outs</li>
-          <li>Schoonmaak</li>
-          <li>Onderhoud en operationele zaken</li>
-          <li>Maandelijkse financiële rapportages</li>
-        </ul>
-        <p style="margin-top:8px">Je ontvangt vervolgens iedere maand de opbrengsten en een duidelijk overzicht van de prestaties van je villa.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <h2>Betaling per bouwmijlpaal</h2>
-    <p>De betalingen zijn gekoppeld aan de daadwerkelijke voortgang van de bouw.</p>
-    <div class="paybar">
-      <div class="payseg"><div class="pp">30%</div><div class="pl">Bij ondertekening van het contract</div><div class="pa">€63.000</div></div>
-      <div class="payseg"><div class="pp">30%</div><div class="pl">Wanneer het casco gereed is</div><div class="pa">€63.000</div></div>
-      <div class="payseg"><div class="pp">30%</div><div class="pl">Tijdens de afbouw</div><div class="pa">€63.000</div></div>
-      <div class="payseg"><div class="pp">10%</div><div class="pl">Bij sleuteloverdracht</div><div class="pa">€21.000</div></div>
-    </div>
-    <p class="note" style="margin-top:12px">De bedragen hierboven zijn gebaseerd op een aankoopprijs van €210.000. Iedere termijn wordt pas gefactureerd nadat de bijbehorende bouwfase is voltooid en met foto's en video's is aangetoond.</p>
-  </div>
-
-  <div class="sec">
-    <h2>De huidige prijs van The Maison</h2>
-    <p>We verhogen de prijs tijdens de ontwikkeling van het project in verschillende stappen.</p>
-    <div class="prices">
-      <div class="pc"><div class="pv">€195.000</div><div class="pl">Pre-sale</div><div class="ps">prijs tijdens de eerdere fase</div></div>
-      <div class="pc cur"><div class="pv">€210.000</div><div class="pl">Huidige prijs</div><div class="ps">nu beschikbaar</div></div>
-      <div class="pc"><div class="pv">€225.000</div><div class="pl">Vanaf 15 augustus</div><div class="ps">prijs stijgt</div></div>
-    </div>
-    <p class="note" style="margin-top:14px">Op dit moment zijn nog vier van de zes villa's beschikbaar. Met een aanbetaling van €5.000 kun je een specifieke unit tijdelijk van de markt laten halen. Deze aanbetaling wordt volledig in mindering gebracht op de aankoopprijs.</p>
-    <div class="price-ctas">
-      <a class="wa" id="waAvailable" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Bekijk de beschikbare units</a>
-      <a class="btn ghost" id="waReserve1" target="_blank" rel="noopener">Reserveer een unit</a>
-    </div>
-  </div>
-
+  <!-- 2. RENDEMENT EN AANNAMES -->
   <div class="sec" id="calc">
-    <h2>Het verwachte verhuurrendement</h2>
-    <p>We vinden het belangrijk om rendement niet mooier voor te stellen dan het is. Daarom rekenen we niet alleen met de huurprijs en bezetting, maar trekken we ook de verwachte beheer- en operationele kosten van de inkomsten af. Op basis van het realistische scenario verwachten we een netto verhuurrendement van ongeveer 14,7% per jaar, met een terugverdientijd van ongeveer 6,8 jaar op basis van alleen de huurinkomsten.</p>
-    <p class="note" style="margin-top:-4px;margin-bottom:18px">Pas de aannames hieronder gerust aan naar je eigen scenario.</p>
+    <div class="sec-num">02 · Rendement</div>
+    <h2>Verwachte netto-opbrengst en zichtbare aannames</h2>
+    <p>We vinden het belangrijk om rendement niet mooier voor te stellen dan het is. Daarom rekenen we niet alleen met de huurprijs en bezetting, maar trekken we ook de verwachte beheer- en operationele kosten (inclusief de lokale belasting van 10%) van de inkomsten af.</p>
+    <div class="yield-table">
+      <div class="yr"><span class="yl">Aankoopprijs</span><span class="yv">€210.000</span></div>
+      <div class="yr"><span class="yl">Gemiddelde nachtprijs<span class="ytag">Prognose</span></span><span class="yv">€175</span></div>
+      <div class="yr"><span class="yl">Bezettingsgraad<span class="ytag">Prognose</span></span><span class="yv">85%</span></div>
+      <div class="yr"><span class="yl">Bruto verhuuromzet / jaar<span class="ytag">Berekend</span></span><span class="yv">€54.294</span></div>
+      <div class="yr"><span class="yl">Beheer, operationele kosten &amp; belastingen<span class="ytag">Prognose · 43%</span></span><span class="yv">€23.346</span></div>
+      <div class="yr tot"><span class="yl">Netto verhuurinkomsten / jaar</span><span class="yv">€30.947</span></div>
+      <div class="yr tot"><span class="yl">Verwacht netto rendement<span class="ytag">Prognose, geen garantie</span></span><span class="yv">14,7% / jaar</span></div>
+    </div>
+    <p class="note" style="margin-top:-6px">Bovenstaande is het realistische scenario. Hieronder pas je de aannames zelf aan.</p>
+    <div class="legend">
+      <div class="lh">Wat is feit, wat is aanname?</div>
+      <div class="li"><b>Vaststaand feit</b><span>Aankoopprijs, startdatum bouw, leaseperiode van 30 jaar</span></div>
+      <div class="li"><b>Contractuele afspraak</b><span>Betaalschema per bouwmijlpaal, 10 jaar bouwgarantie, gegarandeerde verlenging van de lease met 30 jaar</span></div>
+      <div class="li"><b>Prognose</b><span>Gemiddelde nachtprijs, bezettingsgraad, netto rendement</span></div>
+      <div class="li"><b>Marktverwachting</b><span>Geschatte waardegroei van 5% per jaar, gebaseerd op historische en regionale marktdata</span></div>
+      <div class="li"><b>Geen garantie</b><span>Rendement en waardeontwikkeling zijn nooit gegarandeerd</span></div>
+    </div>
     <div class="calc">
       <div class="card">
         <h3>Aannames</h3>
@@ -456,28 +375,170 @@
       </ul>
     </details>
     <div class="scen-wrap">
-      <div class="scen-h">Drie mogelijke verhuurscenario's</div>
-      <p class="note" style="margin-top:0">Omdat niet ieder jaar hetzelfde verloopt, laten we drie scenario's zien.</p>
+      <div class="scen-h">Voorzichtig, realistisch en optimistisch scenario</div>
+      <p class="note" style="margin-top:0">Omdat niet ieder jaar hetzelfde verloopt, tonen we drie scenario's in plaats van één enkel cijfer.</p>
       <div class="scen" id="bScenGrid"></div>
-      <p class="note">De berekeningen zijn inclusief het verwachte beheer en de operationele kosten volgens het model van House of Reservations, waarbij ook een gedeelte van de boekingen rechtstreeks kan binnenkomen. Schattingen, geen garanties. Klik op een scenario om de rekentool hierboven aan te passen.</p>
+      <p class="note">Inclusief het verwachte beheer en de operationele kosten volgens het model van House of Reservations, waarbij ook een gedeelte van de boekingen rechtstreeks kan binnenkomen. Schattingen, geen garanties. Klik op een scenario om de rekentool hierboven aan te passen.</p>
     </div>
   </div>
 
+  <!-- 3. LOCATIE EN VERHUURVRAAG -->
   <div class="sec">
-    <h2>Het team achter The Maison</h2>
-    <p>Een goed project begint voor ons niet bij een mooie render, maar bij de mensen die het daadwerkelijk moeten ontwerpen, bouwen en beheren.</p>
-    <div class="team">
-      <div class="tcard"><div class="n">Architectuur</div><h4>Mahez Studio</h4><p>Mahez Studio is verantwoordelijk voor het architectonische ontwerp van The Maison. Bij het ontwerp is niet alleen gekeken naar uitstraling, maar ook naar comfort, onderhoud en verhuurbaarheid. Zo zijn de villa's efficiënt ingedeeld en beschikt iedere woning over twee volwaardige ensuite slaapkamers en een ruime rooftop lounge.</p></div>
-      <div class="tcard"><div class="n">Bouw</div><h4>Bali Prime Construction</h4><p>De bouw wordt uitgevoerd door Bali Prime Construction, een Duits geleide aannemer die meer dan honderd villa's en appartementen op Bali heeft opgeleverd. We hebben wekelijks overleg met het bouwteam en de werkzaamheden worden dagelijks op locatie gecontroleerd. Op de constructie geldt een bouwgarantie van tien jaar.</p></div>
-      <div class="tcard"><div class="n">Verhuurbeheer</div><h4>House of Reservations</h4><p>Na oplevering kan de villa worden beheerd door House of Reservations. Zij beheren meer dan 250 villa's op Bali en hebben een groot eigen bereik via sociale media, met meer dan 200.000 volgers op Instagram en meer dan één miljoen volgers op TikTok. Zij verzorgen het volledige proces, van marketing en boekingen tot gastenservice, schoonmaak, onderhoud en maandelijkse rapportages.</p></div>
+    <div class="sec-num">03 · Locatie</div>
+    <h2>Locatie en onderbouwing van de verhuurvraag</h2>
+    <p>Pererenan is een van de gebieden op Bali met de sterkste groei in short-stay vraag, direct naast Canggu maar rustiger en met meer beschikbare grond. De nabijheid van strand, horeca, koffie en wellness is een van de belangrijkste selectiecriteria van internationale gasten bij het boeken van een villa, en ondersteunt daarmee zowel de bezettingsgraad als de nachtprijs die The Maison kan vragen.</p>
+    <p>Vanaf The Maison ben je binnen enkele minuten bij het strand, terwijl populaire gebieden zoals Batu Bolong, Berawa en Seseh gemakkelijk bereikbaar blijven. Dat combineert twee dingen die gasten zoeken en waar ze voor betalen: rust en privacy op de villa zelf, zonder ver te hoeven reizen voor voorzieningen.</p>
+    <div class="loc-map">
+      <iframe src="https://maps.google.com/maps?q=-8.641934,115.130826&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Locatie van The Maison, Pererenan"></iframe>
     </div>
+    <a class="btn ghost" style="margin:-4px 0 18px" href="https://maps.app.goo.gl/cWGrCgHWLDVpgCcW8" target="_blank" rel="noopener">Bekijk The Maison op Google Maps →</a>
+    <div class="nearby-group">
+      <div class="nearby-cat">Strand &amp; beachclubs</div>
+      <div class="facts">
+        <div class="f"><span class="l">Pererenan Beach</span><span class="v">3 min</span></div>
+        <div class="f"><span class="l">La Brisa Beach Club</span><span class="v">6 min</span></div>
+        <div class="f"><span class="l">Batu Bolong</span><span class="v">8 min</span></div>
+        <div class="f"><span class="l">Finns / Atlas Beach Club</span><span class="v">15 min</span></div>
+      </div>
+    </div>
+    <div class="nearby-group">
+      <div class="nearby-cat">Eten &amp; koffie</div>
+      <div class="facts">
+        <div class="f"><span class="l">Woods Pererenan</span><span class="v">2 min</span></div>
+        <div class="f"><span class="l">Bokashi</span><span class="v">2 min</span></div>
+        <div class="f"><span class="l">St. Ali Bali</span><span class="v">3 min</span></div>
+        <div class="f"><span class="l">Penny Lane</span><span class="v">4 min</span></div>
+      </div>
+    </div>
+    <div class="nearby-group">
+      <div class="nearby-cat">Fitness &amp; wellness</div>
+      <div class="facts">
+        <div class="f"><span class="l">Shelter Pererenan</span><span class="v">2 min</span></div>
+        <div class="f"><span class="l">Alchemy Yoga</span><span class="v">3 min</span></div>
+        <div class="f"><span class="l">Obsidian Gym</span><span class="v">4 min</span></div>
+        <div class="f"><span class="l">Body Factory Bali</span><span class="v">5 min</span></div>
+      </div>
+    </div>
+    <p class="note">Reistijden zijn per scooter, vanaf The Maison.</p>
   </div>
 
+  <!-- 4. JURIDISCHE STRUCTUUR -->
   <div class="sec">
-    <h2>De juridische basis</h2>
+    <div class="sec-num">04 · Juridisch</div>
+    <h2>Juridische structuur en rechten van de koper</h2>
+    <p>Bij UTAMA vinden we het belangrijk dat de grond, de bouw en de betalingen duidelijk van elkaar gescheiden zijn. Je sluit daarom een apart leasecontract voor de grond en een apart bouwcontract voor de ontwikkeling van de villa, zodat helder is welk bedrag waarvoor wordt betaald en welke rechten en verplichtingen iedere partij heeft.</p>
+    <p>Je least de grond via Hak Sewa, de gangbare leaseconstructie voor buitenlandse investeerders op Bali. De eerste leaseperiode bedraagt 30 jaar. In de notariële akte wordt daarnaast contractueel vastgelegd dat je het recht hebt om de lease met nog eens 30 jaar te verlengen. De afspraken worden vastgelegd door een bevoegde Indonesische notaris en PPAT.</p>
     <p>The Maison ligt in een Orange C2-zone. Binnen deze bestemming is commerciële accommodatie en short-stayverhuur toegestaan, mits de vereiste vergunningen aanwezig zijn. De ontwikkeling is inclusief de benodigde PBG- en SLF-documentatie.</p>
-    <p>Je least de grond voor een eerste periode van 30 jaar. Het recht op een aanvullende periode van 30 jaar wordt contractueel vastgelegd in de notariële akte. Na de eerste periode kost de verlenging naar verwachting ongeveer 20% van de oorspronkelijke aankoopprijs. Bij een aankoopprijs van €210.000 komt dat neer op circa €42.000.</p>
-    <p>Je hoeft uiteraard niet dertig jaar te wachten. De villa kan gedurende de leaseperiode worden verkocht aan een nieuwe eigenaar.</p>
+    <p>Na de eerste periode kost de verlenging naar verwachting ongeveer 20% van de oorspronkelijke aankoopprijs. Bij een aankoopprijs van €210.000 komt dat neer op circa €42.000. Je hoeft niet dertig jaar te wachten om iets met de villa te doen: de woning kan gedurende de leaseperiode worden verkocht aan een nieuwe eigenaar (zie exitstrategie hieronder).</p>
+  </div>
+
+  <!-- 5. BOUWKWALITEIT, PLANNING EN BETALINGSMIJLPALEN -->
+  <div class="sec">
+    <div class="sec-num">05 · Uitvoering</div>
+    <h2>Bouwkwaliteit, planning en betalingsmijlpalen</h2>
+    <p>The Maison is geen project dat alleen op papier bestaat. De bouw is op 15 mei 2026 gestart en wordt uitgevoerd door Bali Prime Construction. Tijdens de bouw controleren we de voortgang dagelijks op locatie, en vindt er wekelijks bouwoverleg plaats met de aannemer, architect en het projectteam. Als investeerder kun je de ontwikkeling volgen via foto's, video's en onze live bouwcamera.</p>
+    <div class="facts">
+      <div class="f"><span class="l">Start bouw</span><span class="v">15 mei 2026</span></div>
+      <div class="f"><span class="l">Verwachte oplevering</span><span class="v">April 2027</span></div>
+      <div class="f"><span class="l">Aantal villa's</span><span class="v">6</span></div>
+      <div class="f"><span class="l">Beschikbaar</span><span class="v">Nog 4 villa's</span></div>
+      <div class="f"><span class="l">Leasehold</span><span class="v">30 + 30 jaar (gegarandeerd)</span></div>
+      <div class="f"><span class="l">Bouwgarantie</span><span class="v">10 jaar</span></div>
+    </div>
+    <div class="build-banner">
+      <div class="bb-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 0 1 16 0"/><path d="M2 19h20"/><path d="M12 6v4"/><circle cx="12" cy="4" r="1.6" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="bb-body">
+        <div class="bb-eyebrow">Bouwstatus</div>
+        <div class="bb-title"><span class="dot"></span>In aanbouw sinds 15 mei 2026</div>
+      </div>
+      <a class="bb-cam" id="bbCam" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="15" height="14" rx="2.5"/><path d="M23 7.5l-7 4.5 7 4.5v-9z"/></svg>
+        Live bouwcamera
+      </a>
+    </div>
+    <p style="margin-top:22px">UTAMA ontwikkelt en coördineert het project: we selecteren de aannemer, bewaken de planning en controleren de kwaliteit van de uitvoering. Zo blijft de bouw op schema en volgens specificatie, wat het risico op vertraging of tegenvallende kwaliteit beperkt.</p>
+    <div class="team cols2">
+      <div class="tcard"><div class="n">Architectuur</div><h4>Mahez Studio</h4><p>Verantwoordelijk voor het architectonische ontwerp. Er is niet alleen gekeken naar uitstraling, maar ook naar comfort, onderhoud en verhuurbaarheid, met een efficiënte indeling die bijdraagt aan de exploitatie van de woning.</p></div>
+      <div class="tcard"><div class="n">Bouw</div><h4>Bali Prime Construction</h4><p>Een Duits geleide aannemer die meer dan honderd villa's en appartementen op Bali heeft opgeleverd. Wekelijks overleg en dagelijkse controle op locatie, met een bouwgarantie van tien jaar op de constructie.</p></div>
+    </div>
+    <h3 style="font-size:18px;margin:28px 0 4px">Betaling per bouwmijlpaal</h3>
+    <p style="margin-bottom:10px">Je betaalt de villa niet volledig vooruit. De betalingen worden gespreid over de bouw en gekoppeld aan aantoonbare voortgang, wat het financiële risico voor jou als investeerder beperkt.</p>
+    <div class="paybar">
+      <div class="payseg"><div class="pp">30%</div><div class="pl">Bij ondertekening van het contract</div><div class="pa">€63.000</div></div>
+      <div class="payseg"><div class="pp">30%</div><div class="pl">Wanneer het casco gereed is</div><div class="pa">€63.000</div></div>
+      <div class="payseg"><div class="pp">30%</div><div class="pl">Tijdens de afbouw</div><div class="pa">€63.000</div></div>
+      <div class="payseg"><div class="pp">10%</div><div class="pl">Bij sleuteloverdracht</div><div class="pa">€21.000</div></div>
+    </div>
+    <p class="note" style="margin-top:12px">Bedragen bij een aankoopprijs van €210.000. Iedere termijn wordt pas gefactureerd nadat de bijbehorende bouwfase is voltooid en met foto's en video's is aangetoond.</p>
+  </div>
+
+  <!-- 6. VERHUUR- EN OPERATIONEEL BEHEER -->
+  <div class="sec">
+    <div class="sec-num">06 · Beheer</div>
+    <h2>Verhuur- en operationeel beheer</h2>
+    <p>Na oplevering kan House of Reservations de volledige verhuur van de woning verzorgen. Professioneel beheer is direct van invloed op de commerciële prestaties van een villa: consistente prijsstelling, snelle respons op gasten en goed onderhoud vertalen zich in hogere bezetting, betere beoordelingen en uiteindelijk een hoger rendement.</p>
+    <p>Zij regelen onder andere:</p>
+    <div class="hl">
+      <div>De plaatsing op verhuurplatforms en prijsoptimalisatie per seizoen</div>
+      <div>Boekingen en communicatie met gasten</div>
+      <div>Check-ins, check-outs en gastenservice</div>
+      <div>Schoonmaak, onderhoud en operationele zaken</div>
+      <div>Maandelijkse financiële rapportages</div>
+      <div>Organisch bereik via eigen social-mediakanalen</div>
+    </div>
+    <div class="team" style="max-width:520px;margin-top:18px">
+      <div class="tcard"><div class="n">Verhuurbeheer</div><h4>House of Reservations</h4><p>Beheert meer dan 250 villa's op Bali en heeft een groot eigen bereik via sociale media, met meer dan 200.000 volgers op Instagram en meer dan één miljoen volgers op TikTok — een kanaal dat bijdraagt aan organische zichtbaarheid en boekingen naast de gangbare verhuurplatforms.</p></div>
+    </div>
+    <p style="margin-top:18px">Je ontvangt maandelijks de opbrengsten en een duidelijk overzicht van de prestaties van je villa, zodat je op ieder moment weet hoe je investering presteert.</p>
+  </div>
+
+  <!-- 7. RISICO'S -->
+  <div class="sec">
+    <div class="sec-num">07 · Risico's</div>
+    <h2>Risico's en hoe UTAMA deze beperkt</h2>
+    <p>Zoals bij elke vastgoedinvestering zijn er risico's verbonden aan The Maison. We benoemen ze liever expliciet dan dat we ze verzwijgen, inclusief hoe we ze beperken.</p>
+    <div class="risk-grid">
+      <div class="rcard"><h4><span class="rn">01</span>Bouwrisico</h4><p>Vertraging of kwaliteitsproblemen zijn een risico bij elk ontwikkelingsproject. We beperken dit met wekelijks bouwoverleg, dagelijkse controle op locatie, betaling per bouwmijlpaal (je betaalt pas na een aangetoonde fase) en 10 jaar bouwgarantie op de constructie.</p></div>
+      <div class="rcard"><h4><span class="rn">02</span>Verhuurrisico</h4><p>De daadwerkelijke bezetting en nachtprijs kunnen afwijken van de prognose door seizoen, markt of concurrentie. Daarom tonen we naast het realistische ook een voorzichtig scenario, en werkt het project met een beheerder met een trackrecord van 250+ villa's.</p></div>
+      <div class="rcard"><h4><span class="rn">03</span>Juridisch risico</h4><p>Vastgoed op Bali wordt door buitenlandse investeerders geleased (Hak Sewa), niet in volledig eigendom verkregen. We beperken dit door de leaseovereenkomst notarieel vast te leggen via een bevoegde PPAT, met een contractueel gegarandeerde verlenging van 30 jaar.</p></div>
+      <div class="rcard"><h4><span class="rn">04</span>Continuïteitsrisico</h4><p>Je leasecontract en bouwcontract staan juridisch los van UTAMA als onderneming. Mocht UTAMA ooit niet meer bestaan, dan blijven je rechten op de grond notarieel gedocumenteerd en kan het beheer door een andere partij worden overgenomen.</p></div>
+      <div class="rcard"><h4><span class="rn">05</span>Waarderisico bij doorverkoop</h4><p>Waardeontwikkeling van vastgoed is nooit gegarandeerd en hangt af van de markt en de resterende leaseperiode. Onze inschatting van 5% waardegroei per jaar is gebaseerd op historische en regionale marktdata, niet op een garantie.</p></div>
+      <div class="rcard"><h4><span class="rn">06</span>Wisselkoersrisico</h4><p>Aankoop, betaling en rendement lopen in euro's, maar de onderliggende exploitatie vindt plaats in Indonesische rupiah. Wisselkoersschommelingen kunnen de operationele kosten en het uiteindelijke rendement licht beïnvloeden.</p></div>
+    </div>
+  </div>
+
+  <!-- 8. EXITSTRATEGIE -->
+  <div class="sec">
+    <div class="sec-num">08 · Exit</div>
+    <h2>Exitstrategie en doorverkoop</h2>
+    <p>Je bent niet verplicht om de villa dertig jaar aan te houden. Je kunt de woning gedurende de leaseperiode verkopen op het moment dat jou uitkomt, en bent daarbij volledig vrij in de keuze van verkoopmethode: zelfstandig, via een willekeurige makelaar, of met hulp van UTAMA. Schakel je ons in, dan rekenen we 4% commissie en benaderen we ons eigen netwerk van kopers.</p>
+    <p>Bij een aankoopprijs van €210.000, een aanhoudperiode van 5 jaar en de aannames uit het realistische scenario (inclusief 5% geschatte waardegroei per jaar) komt het totale geschatte rendement uit op circa €212.756, oftewel 101,3% ROI over de gehele periode: €154.737 aan netto huurinkomsten plus €58.019 geschatte verkoopwinst. Dit is een prognose op basis van marktdata, geen garantie.</p>
+    <p>Kenmerken zoals het onderscheidende ontwerp, de rooftop lounge en de ligging nabij het strand dragen bij aan de courantheid van de villa: ze maken de woning aantrekkelijker voor een volgende koper op het moment dat je besluit te verkopen.</p>
+  </div>
+
+  <!-- 9. LIFESTYLE ALS AANVULLEND VOORDEEL -->
+  <div class="sec">
+    <div class="sec-num">09 · Lifestyle</div>
+    <h2>Lifestyle en eigen gebruik als aanvullend voordeel</h2>
+    <p>The Maison is in de eerste plaats ontwikkeld als investering. Tegelijkertijd is elke ontwerpkeuze gemaakt met het oog op de commerciële prestaties van de woning: een villa die aantrekkelijk is om in te verblijven, presteert doorgaans ook beter als verhuurobject.</p>
+    <div class="hl">
+      <div>De twee volwaardige ensuite slaapkamers maken de villa geschikt voor zowel gezinnen als twee afzonderlijke koppels, waardoor een bredere verhuurdoelgroep kan worden aangesproken.</div>
+      <div>De rooftop van circa 40 m² creëert extra leefruimte en een onderscheidend element voor de listing, gastbeleving en positionering tegenover concurrerende villa's.</div>
+      <div>De ligging op enkele minuten van het strand sluit aan op een van de belangrijkste selectiecriteria van short-stay gasten en ondersteunt de verhuurbaarheid van de woning.</div>
+      <div>De privé plunge pool onderscheidt de villa van gedeelde-zwembad concepten en is voor veel gasten een doorslaggevend keuzecriterium bij het boeken, wat de bezettingsgraad ten goede komt.</div>
+      <div>De outdoor kitchen en open living sluiten aan op de verwachtingen van internationale gasten, wat bijdraagt aan hogere gastbeoordelingen en herhaalboekingen.</div>
+      <div>Door de villa volledig gemeubileerd en verhuurklaar op te leveren, kan de woning direct na oplevering worden verhuurd, zonder aanvullende investering of vertraging in de eerste inkomsten.</div>
+      <div>De kleinschalige, besloten opzet van zes villa's biedt meer privacy dan een groot resort, een kenmerk waar internationale gasten steeds vaker expliciet naar zoeken.</div>
+      <div>Een herkenbaar, samenhangend ontwerp over alle zes de villa's versterkt de merkidentiteit van het project, wat de zichtbaarheid en positionering op verhuurplatforms ten goede komt.</div>
+    </div>
+    <p style="margin-top:16px">Je kunt de villa ook zelf gebruiken. Om de verhuurprestaties te beschermen, wordt eigen gebruik afgestemd met de verhuurbeheerder, zodat de woning primair beschikbaar blijft voor gasten en het rendement op peil blijft.</p>
+    <p class="note" style="margin-top:0">Op dit moment zijn nog vier van de zes villa's beschikbaar, vanaf €210.000. Met een aanbetaling van €5.000 kun je een specifieke unit tijdelijk van de markt laten halen; dit bedrag wordt volledig in mindering gebracht op de aankoopprijs.</p>
+    <div class="price-ctas">
+      <a class="wa" id="waAvailable" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Bekijk de beschikbare units</a>
+      <a class="btn ghost" id="waReserve1" target="_blank" rel="noopener">Reserveer een unit</a>
+    </div>
   </div>
 
   <div class="sec">
@@ -523,8 +584,8 @@
       <img class="agent-photo2" src="/images/ashley.jpg" alt="Ashley Vermoten, Sales Manager UTAMA">
       <div><div class="agent-name">Ashley Vermoten</div><div class="agent-role">Sales Manager, UTAMA</div></div>
     </div>
-    <h2>Klaar om verder te kijken?</h2>
-    <p>Een investering in Bali moet je niet alleen baseren op een brochure of een rendementsberekening. Daarom neemt Ashley je graag persoonlijk mee in het project. Ze kan je de plattegronden sturen, de beschikbare units laten zien en uitleggen hoe de contracten en betalingen zijn opgebouwd. Daarna kun je zelf bepalen of The Maison bij je past.</p>
+    <h2>Klaar om de cijfers te bespreken?</h2>
+    <p>Een investeringsbeslissing baseer je niet alleen op een brochure of een rendementsberekening. Ashley neemt je graag persoonlijk mee door het rendementsmodel, de juridische structuur en de beschikbare units, zodat je zelf kunt bepalen of The Maison bij jouw investeringsdoelen past.</p>
     <div class="row">
       <a class="wa" id="waBottom" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Praat met Ashley via WhatsApp</a>
       <a class="wa ghost" id="waPlans" target="_blank" rel="noopener">Ontvang de plattegronden</a>
@@ -551,7 +612,7 @@ const el = id => document.getElementById(id);
 if(el('bbCam')) el('bbCam').href="https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent("Hi Ashley! Mag ik de link naar de live bouwcamera van The Maison?");
 
 function buildWa(l){
-  const msg="Hi Ashley! Ik heb net de digitale brochure van The Maison bekeken en wil graag meer weten.%0A%0A"+
+  const msg="Hi Ashley! Ik heb net de investeringscase van The Maison bekeken en wil graag meer weten.%0A%0A"+
     "Naam: "+encodeURIComponent(l.name||'-')+"%0A"+
     "WhatsApp: "+encodeURIComponent(l.phone||'-')+"%0A"+
     "E-mail: "+encodeURIComponent(l.email||'-')+"%0A"+
@@ -563,7 +624,7 @@ function reveal(l){
   l=l||{};
   const wa=buildWa(l);
   ['waTop','waBottom','waAvailable','waReserve1','waReserve2','waPlans'].forEach(function(id){ if(el(id)) el(id).href=wa; });
-  if(l.name) el('thName').textContent="Bedankt "+l.name.split(" ")[0]+", hier is je brochure";
+  if(l.name) el('thName').textContent="Bedankt "+l.name.split(" ")[0]+", hier is je investeringscase";
   el('gate').style.display='none';
   el('brochure').hidden=false;
   window.scrollTo({top:0,behavior:'instant'});
