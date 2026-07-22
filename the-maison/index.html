@@ -60,7 +60,20 @@
           <div class="d-price"><div class="p" id="dprice">vanaf €210.000</div><div class="a" data-t="mStatus">In verkoop · oplevering april 2027</div></div>
         </div>
         <div class="hl" id="hl"></div>
-        <button type="button" class="btn" style="margin-top:22px" onclick="openBrochure()" data-t="mHeroCta2">Bekijk volledige brochure</button>
+        <div class="build-banner">
+          <div class="bb-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 0 1 16 0"/><path d="M2 19h20"/><path d="M12 6v4"/><circle cx="12" cy="4" r="1.6" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div class="bb-body">
+            <div class="bb-eyebrow" data-t="bbEyebrow">Bouwstatus</div>
+            <div class="bb-title"><span class="dot"></span><span data-t="bbTitle">In aanbouw sinds 15 mei 2026</span></div>
+          </div>
+          <a class="bb-cam" id="bbCam" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="15" height="14" rx="2.5"/><path d="M23 7.5l-7 4.5 7 4.5v-9z"/></svg>
+            <span data-t="bbCam">Live bouwcamera</span>
+          </a>
+        </div>
+        <button type="button" class="btn" style="margin-top:16px" onclick="openBrochure()" data-t="mHeroCta2">Bekijk volledige brochure</button>
       </div>
     </div>
   </div>
@@ -134,7 +147,8 @@ const T={
   disc:"Deze site geeft indicatieve informatie en geen fiscaal of juridisch advies. Rendementen zijn schattingen, geen garanties. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.",
   available:"{sold} van {y} verkocht · nog {x} beschikbaar",availShort:"{x} van {y}",render:"Render: voeg je beeld toe",
   recentSold:"{x} verkocht",
-  calcCtaTitle:"Benieuwd naar je exacte rendement?",calcCtaSub:"In de volledige brochure vind je de interactieve rekentool, drie scenario's en het complete rendementsmodel van The Maison.",calcCtaBtn:"Bekijk de volledige brochure →"},
+  calcCtaTitle:"Benieuwd naar je exacte rendement?",calcCtaSub:"In de volledige brochure vind je de interactieve rekentool, drie scenario's en het complete rendementsmodel van The Maison.",calcCtaBtn:"Bekijk de volledige brochure →",
+  bbEyebrow:"Bouwstatus",bbTitle:"In aanbouw sinds 15 mei 2026",bbCam:"Live bouwcamera"},
  en:{navProjects:"Projects",navContact:"Contact",back:"Projects",
   mHeroSub:"Six design villas with 2 bedrooms, a private plunge pool and rooftop lounge, in the heart of Pererenan. You own the villa, we develop, manage and rent it out for you.",
   mHeroCta1:"Chat on WhatsApp",mHeroCta2:"View full brochure",mt1:"guide price, selling now",mt2:"net yield (realistic)",mt3:"already sold",mStatus:"Selling now · completion April 2027",
@@ -144,7 +158,8 @@ const T={
   disc:"This site provides indicative information and no tax or legal advice. Returns are estimates, not guarantees. Always have contracts checked by an authorised notary (PPAT) and your own adviser.",
   available:"{sold} of {y} sold · {x} left",availShort:"{x} of {y}",render:"Render: add your image",
   recentSold:"{x} sold",
-  calcCtaTitle:"Curious about your exact return?",calcCtaSub:"The full brochure includes the interactive calculator, three scenarios and the complete return model for The Maison.",calcCtaBtn:"View the full brochure →"}
+  calcCtaTitle:"Curious about your exact return?",calcCtaSub:"The full brochure includes the interactive calculator, three scenarios and the complete return model for The Maison.",calcCtaBtn:"View the full brochure →",
+  bbEyebrow:"Construction status",bbTitle:"Under construction since 15 May 2026",bbCam:"Live construction camera"}
 };
 let lang="nl";
 const el=id=>document.getElementById(id);
@@ -159,6 +174,7 @@ function renderStatic(){
     : imgBlock('big',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render);
   el('hl').innerHTML=MAISON.highlights[lang].slice(0,3).map(x=>`<div>${x}</div>`).join("");
   el('pill').textContent=tr(T[lang].available,{x:avail,y:MAISON.unitsTotal,sold:MAISON.unitsSold});
+  el('bbCam').href="https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(lang==='nl'?"Hi Ashley! Mag ik de link naar de live bouwcamera van The Maison?":"Hi Ashley! Could I get the link to The Maison's live construction camera?");
   el('momentum').textContent = MAISON.recentSold ? tr(T[lang].recentSold,{x:MAISON.recentSold}) : '';
   el('mAvail').textContent=tr(T[lang].availShort,{x:MAISON.unitsSold,y:MAISON.unitsTotal});
   el('dprice').textContent=(lang==='nl'?"vanaf ":"from ")+money(CURRENT_PRICE);
@@ -259,6 +275,16 @@ setLang('nl');
   .cta-agent-name{font-size:13.5px;font-weight:600;color:#fff}
   .cta-agent-role{font-size:12px;color:#eee4d4;opacity:.8;margin-top:1px}
   .momentum{font-size:12px;font-weight:700;color:var(--terra);background:#fbf1e9;border-radius:999px;padding:5px 12px}
+  .build-banner{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#FBF1E9,#F3ECD9);border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;margin-top:20px;flex-wrap:wrap}
+  .bb-icon{flex:none;width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--terra);box-shadow:var(--shadow)}
+  .bb-body{flex:1;min-width:170px}
+  .bb-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terra)}
+  .bb-title{font-size:14.5px;font-weight:700;color:var(--ink);margin-top:3px;display:flex;align-items:center;gap:8px}
+  .bb-title .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none;box-shadow:0 0 0 0 rgba(46,125,91,.5);animation:bbpulse 1.6s ease-in-out infinite}
+  @keyframes bbpulse{0%{box-shadow:0 0 0 0 rgba(46,125,91,.5)}70%{box-shadow:0 0 0 7px rgba(46,125,91,0)}100%{box-shadow:0 0 0 0 rgba(46,125,91,0)}}
+  .bb-cam{display:inline-flex;align-items:center;gap:7px;background:var(--green);color:#fff;padding:10px 16px;border-radius:999px;font-size:13.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex:none}
+  .bb-cam:hover{background:var(--green-2)}
+  @media(max-width:560px){.build-banner{flex-direction:column;align-items:flex-start}.bb-cam{width:100%;justify-content:center}}
   .calc-cta{margin-top:0;background:#FBF1E9;border:1px solid var(--line);border-radius:16px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .calc-cta h3{font-size:18px;margin-bottom:6px;max-width:46ch;font-family:'Fraunces',serif;font-weight:600}
   .calc-cta p{color:var(--muted);font-size:13.5px;margin:0;max-width:50ch}

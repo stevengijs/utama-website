@@ -60,6 +60,16 @@
   .facts .f{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
   .facts .f .l{color:var(--ink);font-size:14.5px;font-weight:500}
   .facts .f .v{font-weight:700;font-size:12.5px;color:var(--green-2);background:var(--paper);border:1px solid var(--line);padding:4px 12px;border-radius:999px;white-space:nowrap}
+  .build-banner{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#FBF1E9,#F3ECD9);border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;margin-top:18px;flex-wrap:wrap}
+  .bb-icon{flex:none;width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--terra);box-shadow:var(--shadow)}
+  .bb-body{flex:1;min-width:170px}
+  .bb-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terra)}
+  .bb-title{font-size:14.5px;font-weight:700;color:var(--ink);margin-top:3px;display:flex;align-items:center;gap:8px}
+  .bb-title .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none;animation:bbpulse 1.6s ease-in-out infinite}
+  @keyframes bbpulse{0%{box-shadow:0 0 0 0 rgba(46,125,91,.5)}70%{box-shadow:0 0 0 7px rgba(46,125,91,0)}100%{box-shadow:0 0 0 0 rgba(46,125,91,0)}}
+  .bb-cam{display:inline-flex;align-items:center;gap:7px;background:var(--green);color:#fff;padding:10px 16px;border-radius:999px;font-size:13.5px;font-weight:600;text-decoration:none;white-space:nowrap;flex:none}
+  .bb-cam:hover{background:var(--green-2)}
+  @media(max-width:560px){.build-banner{flex-direction:column;align-items:flex-start}.bb-cam{width:100%;justify-content:center}}
   .nearby-group{margin-bottom:22px}
   .nearby-group:last-of-type{margin-bottom:0}
   .nearby-cat{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--terra);margin-bottom:8px}
@@ -257,10 +267,23 @@
       <div class="f"><span class="l">Woonoppervlak</span><span class="v">115 m² (incl. 40 m² rooftop)</span></div>
       <div class="f"><span class="l">Zwembad</span><span class="v">Privé plunge pool</span></div>
       <div class="f"><span class="l">Extra</span><span class="v">Rooftop lounge · outdoor kitchen</span></div>
-      <div class="f"><span class="l">Start bouw</span><span class="v">Mei 2026</span></div>
+      <div class="f"><span class="l">Start bouw</span><span class="v">15 mei 2026</span></div>
       <div class="f"><span class="l">Oplevering</span><span class="v">April 2027</span></div>
       <div class="f"><span class="l">Leasehold</span><span class="v">30 + 30 jaar (gegarandeerd)</span></div>
       <div class="f"><span class="l">Bouwgarantie</span><span class="v">10 jaar</span></div>
+    </div>
+    <div class="build-banner">
+      <div class="bb-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 0 1 16 0"/><path d="M2 19h20"/><path d="M12 6v4"/><circle cx="12" cy="4" r="1.6" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="bb-body">
+        <div class="bb-eyebrow">Bouwstatus</div>
+        <div class="bb-title"><span class="dot"></span>In aanbouw sinds 15 mei 2026</div>
+      </div>
+      <a class="bb-cam" id="bbCam" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="15" height="14" rx="2.5"/><path d="M23 7.5l-7 4.5 7 4.5v-9z"/></svg>
+        Live bouwcamera
+      </a>
     </div>
   </div>
 
@@ -481,6 +504,7 @@
 <script>
 const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com" };
 const el = id => document.getElementById(id);
+if(el('bbCam')) el('bbCam').href="https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent("Hi Ashley! Mag ik de link naar de live bouwcamera van The Maison?");
 
 function buildWa(l){
   const msg="Hi Ashley! Ik heb net de digitale brochure van The Maison bekeken en wil graag meer weten.%0A%0A"+
