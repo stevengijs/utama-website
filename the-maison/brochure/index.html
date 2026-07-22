@@ -258,32 +258,36 @@
 const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", leadEndpoint:"" };
 const el = id => document.getElementById(id);
 
+function buildWa(l){
+  const msg="Nieuwe brochure-aanvraag The Maison%0A%0A"+
+    "Naam: "+encodeURIComponent(l.name||'-')+"%0A"+
+    "WhatsApp: "+encodeURIComponent(l.phone||'-')+"%0A"+
+    "E-mail: "+encodeURIComponent(l.email||'-')+"%0A"+
+    "Budget: "+encodeURIComponent(l.budget||'-')+"%0A"+
+    "Koophorizon: "+encodeURIComponent(l.when||'-');
+  return "https://wa.me/"+CONFIG.whatsapp+"?text="+msg;
+}
+function reveal(l){
+  l=l||{};
+  const wa=buildWa(l);
+  el('waTop').href=wa; el('waBottom').href=wa;
+  if(l.name) el('thName').textContent="Bedankt "+l.name.split(" ")[0]+", hier is je brochure";
+  el('gate').style.display='none';
+  el('brochure').hidden=false;
+  window.scrollTo({top:0,behavior:'instant'});
+}
 function unlock(e){
   e.preventDefault();
   const name=el('qName').value.trim(), phone=el('qPhone').value.trim(), email=el('qEmail').value.trim();
   const budget=el('qBudget').value, when=el('qWhen').value;
   if(!name||!phone||!email||!budget||!when){ el('qErr').style.display='block'; return false; }
-  const lead={ project:"The Maison", name, phone, email, budget, when, ts:new Date().toISOString() };
-  // Lead doorzetten naar endpoint zodra gekoppeld (Supabase / CRM)
-  if(CONFIG.leadEndpoint){
-    try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){}
-  }
-  // WhatsApp-handoff met alle kwalificatiegegevens
-  const msg="Nieuwe brochure-aanvraag The Maison%0A%0A"+
-    "Naam: "+encodeURIComponent(name)+"%0A"+
-    "WhatsApp: "+encodeURIComponent(phone)+"%0A"+
-    "E-mail: "+encodeURIComponent(email)+"%0A"+
-    "Budget: "+encodeURIComponent(budget)+"%0A"+
-    "Koophorizon: "+encodeURIComponent(when);
-  const wa="https://wa.me/"+CONFIG.whatsapp+"?text="+msg;
-  el('waTop').href=wa; el('waBottom').href=wa;
-  el('thName').textContent="Bedankt "+name.split(" ")[0]+", hier is je brochure";
-  // Toon brochure
-  el('gate').style.display='none';
-  el('brochure').hidden=false;
-  window.scrollTo({top:0,behavior:'instant'});
+  const lead={ project:"The Maison", name, phone, email, budget, when };
+  if(CONFIG.leadEndpoint){ try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){} }
+  reveal(lead);
   return false;
 }
+// Kom je via de popup op de teaser? Dan is de lead al bekend en tonen we de brochure direct.
+try{ var _r=sessionStorage.getItem('maison_brochure_lead'); if(_r){ reveal(JSON.parse(_r)); } }catch(e){}
 </script>
 </body>
 </html>

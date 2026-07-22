@@ -109,7 +109,7 @@ const PROJECTS = [
   { id:"maison", name:"The Maison", link:"/the-maison",
     loc:{nl:"Pererenan, Bali", en:"Pererenan, Bali"},
     status:{nl:"In verkoop · oplevering april 2027", en:"Selling now · completion April 2027"},
-    priceFrom:210000, unitsTotal:6, unitsSold:2 }
+    priceFrom:210000, unitsTotal:6, unitsSold:2, img:"/the-maison/images/maison-exterior.jpg" }
 ];
 
 const T={
@@ -153,8 +153,10 @@ function renderCards(){
   let h="";
   PROJECTS.forEach(p=>{
     const avail=p.unitsTotal-p.unitsSold;
+    const imgCls=p.img?'img':'img ph-img';
+    const imgStyle=p.img?`background-image:url('${p.img}');background-size:cover;background-position:center`:'';
     h+=`<a class="pcard" href="${p.link}">
-      <div class="img ph-img"><span class="badge">${p.status[lang]}</span></div>
+      <div class="${imgCls}" style="${imgStyle}"><span class="badge">${p.status[lang]}</span></div>
       <div class="pinfo">
         <h3>${p.name}</h3><div class="loc">${p.loc[lang]}</div>
         <div class="prow"><div class="price">${T[lang].from} ${money(p.priceFrom)}</div><div class="avail">${tr(T[lang].available,{x:avail,y:p.unitsTotal})}</div></div>

@@ -39,7 +39,7 @@
     <p data-t="mHeroSub">Zes design-villa's met 2 slaapkamers, privé plunge pool en rooftop lounge, in het hart van Pererenan. Volledig gemeubileerd en beheerd, gebouwd voor sterk verhuurrendement.</p>
     <div class="btns">
       <a href="#calc" class="btn" data-t="mHeroCta1">Bereken je rendement</a>
-      <a href="/the-maison/brochure" class="btn ghost" data-t="mHeroCta2">Vraag de digitale brochure aan</a>
+      <button type="button" class="btn ghost" onclick="openBrochure()" data-t="mHeroCta2">Bekijk volledige brochure</button>
     </div>
     <div class="trustrow">
       <div><b>vanaf €210.000</b><span data-t="mt1">richtprijs, nu in verkoop</span></div>
@@ -165,7 +165,7 @@
 </footer>
 
 <script>
-const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", calendly:"", locale:"nl-NL", currency:"EUR" };
+const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", calendly:"", locale:"nl-NL", currency:"EUR", leadEndpoint:"" };
 
 const MAISON = {
   prices:[
@@ -200,7 +200,7 @@ const MAISON = {
 const T={
  nl:{navProjects:"Projecten",navReturns:"Rendement",navHow:"Zo werkt het",navContact:"Contact",back:"Projecten",
   mHeroSub:"Zes design-villa's met 2 slaapkamers, privé plunge pool en rooftop lounge, in het hart van Pererenan. Volledig gemeubileerd en beheerd, gebouwd voor sterk verhuurrendement.",
-  mHeroCta1:"Bereken je rendement",mHeroCta2:"Vraag de digitale brochure aan",mt1:"richtprijs, nu in verkoop",mt2:"netto rendement (realistisch)",mt3:"nog beschikbaar",mStatus:"In verkoop · oplevering april 2027",
+  mHeroCta1:"Bereken je rendement",mHeroCta2:"Bekijk volledige brochure",mt1:"richtprijs, nu in verkoop",mt2:"netto rendement (realistisch)",mt3:"nog beschikbaar",mStatus:"In verkoop · oplevering april 2027",
   calcEyebrow:"Rendement",calcTitle:"Bereken je rendement",calcSub:"De aannames volgen de cijfers uit onze brochure. Pas ze aan naar jouw scenario. Eerlijk, geen opgeblazen beloftes.",
   assumpH:"Aannames",assumpSub:"Voorgevuld op de brochure van The Maison.",fPrice:"Prijs (vast)",fNightly:"Gem. nachtprijs",fOcc:"Bezettingsgraad",fCosts:"Kosten & beheer",fHold:"Aanhoudperiode",fGrowth:"Geschatte waardegroei / jaar",
   expected:"Verwacht rendement",perYear:"Op jaarbasis, netto na alle kosten en beheer.",netYield:"netto rendement / jaar",netMonth:"Netto huur / maand",netYear:"Netto huur / jaar",
@@ -223,7 +223,7 @@ const T={
   fill:"Vul je naam en je WhatsApp of e-mail in.",okMsg:"Bedankt! We nemen snel contact met je op. Je ontvangt de brochure via WhatsApp.",roiLbl:"ROI"},
  en:{navProjects:"Projects",navReturns:"Returns",navHow:"How it works",navContact:"Contact",back:"Projects",
   mHeroSub:"Six design villas with 2 bedrooms, a private plunge pool and rooftop lounge, in the heart of Pererenan. Fully furnished and managed, built for strong rental returns.",
-  mHeroCta1:"Calculate your return",mHeroCta2:"Request the digital brochure",mt1:"guide price, selling now",mt2:"net yield (realistic)",mt3:"still available",mStatus:"Selling now · completion April 2027",
+  mHeroCta1:"Calculate your return",mHeroCta2:"View full brochure",mt1:"guide price, selling now",mt2:"net yield (realistic)",mt3:"still available",mStatus:"Selling now · completion April 2027",
   calcEyebrow:"Returns",calcTitle:"Calculate your return",calcSub:"The assumptions follow the figures from our brochure. Adjust them to your scenario. Honest, no inflated promises.",
   assumpH:"Assumptions",assumpSub:"Pre-filled from The Maison brochure.",fPrice:"Price (fixed)",fNightly:"Avg. nightly rate",fOcc:"Occupancy rate",fCosts:"Costs & management",fHold:"Holding period",fGrowth:"Estimated value growth / year",
   expected:"Expected return",perYear:"Per year, net of all costs and management.",netYield:"net yield / year",netMonth:"Net rent / month",netYear:"Net rent / year",
@@ -311,7 +311,79 @@ function sendLead(via){
 }
 function openCal(){ if(CONFIG.calendly){window.open(CONFIG.calendly,"_blank");} else {sendLead('wa');} }
 function waDirect(){ const msg=(lang==='nl'?"Hi! Ik heb interesse in The Maison in Pererenan.":"Hi! I'm interested in The Maison in Pererenan."); window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg),"_blank"); }
+function openBrochure(){ el('broModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeBrochure(){ el('broModal').classList.remove('open'); document.body.style.overflow=''; }
+function submitBrochure(e){
+  e.preventDefault();
+  const name=el('bmName').value.trim(), phone=el('bmPhone').value.trim(), email=el('bmEmail').value.trim();
+  const budget=el('bmBudget').value, when=el('bmWhen').value;
+  if(!name||!phone||!email||!budget||!when){ el('bmErr').style.display='block'; return false; }
+  const lead={ project:"The Maison", name, phone, email, budget, when };
+  try{ sessionStorage.setItem('maison_brochure_lead', JSON.stringify(lead)); }catch(err){}
+  if(CONFIG.leadEndpoint){ try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){} }
+  window.location.href="/the-maison/brochure/";
+  return false;
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeBrochure(); });
 setLang('nl');
 </script>
+<style>
+  .modal-ov{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(33,30,24,.4);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+  .modal-ov.open{display:flex}
+  .modal{background:var(--paper);border:1px solid var(--line);border-radius:18px;max-width:470px;width:100%;padding:30px 30px 26px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.32);max-height:92vh;overflow:auto}
+  .modal .x{position:absolute;top:12px;right:15px;background:none;border:none;font-size:24px;line-height:1;color:var(--muted);cursor:pointer}
+  .modal .x:hover{color:var(--ink)}
+  .modal .eb{color:var(--terra);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+  .modal h3{font-size:24px;margin-bottom:6px;font-family:'Fraunces',serif;font-weight:600}
+  .modal .msub{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .mfield{margin-bottom:12px}
+  .mfield label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:5px}
+  .mfield input,.mfield select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;background:var(--paper);color:var(--ink)}
+  .mfield input:focus,.mfield select:focus{outline:none;border-color:var(--green)}
+  .mrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .merr{color:#b5462b;font-size:13px;margin:3px 0 0;display:none}
+  .mtrust{margin-top:12px;font-size:12px;color:var(--muted)}
+  @media(max-width:520px){ .mrow{grid-template-columns:1fr} }
+</style>
+<div class="modal-ov" id="broModal" onclick="if(event.target===this)closeBrochure()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="x" onclick="closeBrochure()" aria-label="Sluiten">&times;</button>
+    <div class="eb">Digitale brochure</div>
+    <h3>Bekijk de volledige brochure</h3>
+    <div class="msub">Laat je gegevens achter, dan open je direct de volledige brochure van The Maison, afgestemd op jouw situatie.</div>
+    <form onsubmit="return submitBrochure(event)">
+      <div class="mfield"><label>Naam</label><input id="bmName" type="text" placeholder="Je volledige naam" required></div>
+      <div class="mrow">
+        <div class="mfield"><label>WhatsApp-nummer</label><input id="bmPhone" type="tel" placeholder="+31 6 ..." required></div>
+        <div class="mfield"><label>E-mailadres</label><input id="bmEmail" type="email" placeholder="jij@voorbeeld.com" required></div>
+      </div>
+      <div class="mrow">
+        <div class="mfield"><label>Budget</label>
+          <select id="bmBudget" required>
+            <option value="" disabled selected>Kies je budget</option>
+            <option>Tot &euro;200.000</option>
+            <option>&euro;200.000 - &euro;250.000</option>
+            <option>&euro;250.000 - &euro;350.000</option>
+            <option>&euro;350.000 of meer</option>
+            <option>Nog niet zeker</option>
+          </select>
+        </div>
+        <div class="mfield"><label>Wanneer wil je kopen?</label>
+          <select id="bmWhen" required>
+            <option value="" disabled selected>Kies je horizon</option>
+            <option>Zo snel mogelijk</option>
+            <option>Binnen 3 maanden</option>
+            <option>3 tot 6 maanden</option>
+            <option>6 tot 12 maanden</option>
+            <option>Ik ori&euml;nteer me nog</option>
+          </select>
+        </div>
+      </div>
+      <div class="merr" id="bmErr">Vul je naam, WhatsApp-nummer en e-mailadres in.</div>
+      <button class="btn" style="width:100%;justify-content:center;margin-top:6px" type="submit">Bekijk de brochure</button>
+      <div class="mtrust">Geen spam. We gebruiken je gegevens alleen om je de juiste informatie te sturen en je vragen te beantwoorden.</div>
+    </form>
+  </div>
+</div>
 </body>
 </html>
