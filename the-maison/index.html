@@ -198,6 +198,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="/supabase-client.js"></script>
+<script src="/calc-shared.js"></script>
 <script>
 const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", calendly:"", locale:"nl-NL", currency:"EUR" };
 const GROWTH_RATE = 0.05; /* fixed annual value-growth assumption, based on market data for Pererenan/west Bali (not user-adjustable) */
@@ -338,8 +339,7 @@ function applyScenario(i){
 function renderScenarios(){
   const price=selPrice, costs=+el('costs').value/100;
   el('scenGrid').innerHTML = SCENARIOS.map((s,i)=>{
-    const gross=s.nightly*365*(s.occ/100), net=gross*(1-costs);
-    const roi=price>0?net/price*100:0, payback=net>0?price/net:0;
+    const {roi, payback}=roiCalc(price, s.nightly, s.occ/100, costs);
     return `
     <div class="scc ${i===selScenario?'cur':''}" onclick="applyScenario(${i})">
       <div class="scl">${s.label[lang]}</div>
@@ -348,20 +348,9 @@ function renderScenarios(){
       <div class="scb">${T[lang].scPay} ${payback.toFixed(1).replace('.',lang==='nl'?',':'.')} ${T[lang].yrs}</div>
     </div>`;
   }).join("");
-  renderNightlyPins(SCENARIOS);
+  renderScenarioPins(el('nightly'), el('nightlyPins'), SCENARIOS, selScenario, 'applyScenario', money, lang);
 }
-function renderNightlyPins(scenarios){
-  const slider=el('nightly'), pins=el('nightlyPins');
-  if(!slider||!pins) return;
-  const min=+slider.min, max=+slider.max, w=slider.offsetWidth, thumb=20;
-  if(!w) return;
-  pins.innerHTML = scenarios.map((s,i)=>{
-    const p = max>min ? (s.nightly-min)/(max-min) : 0;
-    const x = thumb/2 + p*(w-thumb);
-    return `<div class="pin ${i===selScenario?'cur':''}" style="left:${x}px" data-lbl="${s.label[lang]}" title="${s.label[lang]}: ${money(s.nightly)}" onclick="applyScenario(${i})"></div>`;
-  }).join("");
-}
-window.addEventListener('resize', ()=>renderNightlyPins(SCENARIOS));
+window.addEventListener('resize', ()=>renderScenarioPins(el('nightly'), el('nightlyPins'), SCENARIOS, selScenario, 'applyScenario', money, lang));
 
 let last={};
 function calc(){
@@ -371,8 +360,9 @@ function calc(){
   el('vCosts').textContent=Math.round(costs*100)+"%";
   el('vHold').textContent=hold+" "+T[lang].yrs;
   el('vGrowth').textContent=Math.round(growth*100)+"%";
-  const gross=nightly*365*occ, costAmt=gross*costs, net=gross-costAmt;
-  const y=price>0?net/price:0, month=net/12, payback=net>0?price/net:0;
+  const {gross, net, roi, payback}=roiCalc(price, nightly, occ, costs);
+  const costAmt=gross-net;
+  const y=roi/100, month=net/12;
   el('oYield').textContent=pct(y);
   el('oMonth').textContent=money(month);
   el('oYear').textContent=money(net);

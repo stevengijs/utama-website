@@ -290,7 +290,7 @@
         <h3>Aannames</h3>
         <div class="csub">Voorgevuld met de cijfers van The Maison.</div>
         <div class="field"><label>Prijs (vast)</label><div class="pricesel" id="bPricesel"></div></div>
-        <div class="field"><label><span>Gem. nachtprijs</span> <span class="val" id="bVNightly"></span></label><input type="range" id="bNightly" min="150" max="220" step="5" value="175" oninput="bcalc()"></div>
+        <div class="field"><label><span>Gem. nachtprijs</span> <span class="val" id="bVNightly"></span></label><div class="slider-wrap"><input type="range" id="bNightly" min="150" max="220" step="5" value="175" oninput="bcalc()"><div class="slider-pins" id="bNightlyPins"></div></div></div>
         <div class="field"><label><span>Bezettingsgraad</span> <span class="val" id="bVOcc"></span></label><input type="range" id="bOcc" min="60" max="100" step="1" value="85" oninput="bcalc()"></div>
         <div class="field"><label><span>Kosten &amp; beheer</span> <span class="val" id="bVCosts"></span></label><input type="range" id="bCosts" min="35" max="55" step="1" value="43" oninput="bcalc()"></div>
         <div class="field"><label><span>Aanhoudperiode</span> <span class="val" id="bVHold"></span></label><input type="range" id="bHold" min="1" max="30" step="1" value="5" oninput="bcalc()"></div>
@@ -425,6 +425,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="/supabase-client.js"></script>
+<script src="/calc-shared.js"></script>
 <script>
 const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com" };
 const el = id => document.getElementById(id);
@@ -446,6 +447,7 @@ function reveal(l){
   el('gate').style.display='none';
   el('brochure').hidden=false;
   window.scrollTo({top:0,behavior:'instant'});
+  if(typeof bcalc==='function') bcalc(); /* the ROI panel is hidden (width 0) until now, so pins etc. need a re-render once visible */
 }
 function unlock(e){
   e.preventDefault();
@@ -490,17 +492,18 @@ function bApplyScenario(i){
 function bRenderScenarios(){
   const price=bSelPrice, costs=+el('bCosts').value/100;
   el('bScenGrid').innerHTML = BSCENARIOS.map(function(s,i){
-    const gross=s.nightly*365*(s.occ/100), net=gross*(1-costs);
-    const roi=price>0?net/price*100:0, payback=net>0?price/net:0;
+    const r=roiCalc(price, s.nightly, s.occ/100, costs);
     return `
     <div class="scc ${i===bSelScenario?'cur':''}" onclick="bApplyScenario(${i})">
       <div class="scl">${s.label}</div>
-      <div class="scv">${roi.toFixed(1).replace('.',',')}%</div>
+      <div class="scv">${r.roi.toFixed(1).replace('.',',')}%</div>
       <div class="scs">${s.occ}% bezetting · €${s.nightly}/nacht</div>
-      <div class="scb">Terugverdiend in ${payback.toFixed(1).replace('.',',')} jaar</div>
+      <div class="scb">Terugverdiend in ${r.payback.toFixed(1).replace('.',',')} jaar</div>
     </div>`;
   }).join("");
+  renderScenarioPins(el('bNightly'), el('bNightlyPins'), BSCENARIOS, bSelScenario, 'bApplyScenario', bMoney, null);
 }
+window.addEventListener('resize', function(){ renderScenarioPins(el('bNightly'), el('bNightlyPins'), BSCENARIOS, bSelScenario, 'bApplyScenario', bMoney, null); });
 function bcalc(){
   const price=bSelPrice, nightly=+el('bNightly').value, occ=+el('bOcc').value/100, costs=+el('bCosts').value/100, hold=+el('bHold').value, growth=GROWTH_RATE;
   el('bVNightly').textContent=bMoney(nightly);
@@ -508,8 +511,9 @@ function bcalc(){
   el('bVCosts').textContent=Math.round(costs*100)+"%";
   el('bVHold').textContent=hold+" jaar";
   el('bVGrowth').textContent=Math.round(growth*100)+"%";
-  const gross=nightly*365*occ, costAmt=gross*costs, net=gross-costAmt;
-  const y=price>0?net/price:0, month=net/12, payback=net>0?price/net:0;
+  const {gross, net, roi, payback}=roiCalc(price, nightly, occ, costs);
+  const costAmt=gross-net;
+  const y=roi/100, month=net/12;
   el('bOYield').textContent=bPct(y);
   el('bOMonth').textContent=bMoney(month);
   el('bOYear').textContent=bMoney(net);
