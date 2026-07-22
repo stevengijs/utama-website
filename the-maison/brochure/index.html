@@ -132,17 +132,9 @@
   .bcta .agent-photo2{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.35)}
   .bcta .agent-name{font-size:13.5px;font-weight:600;color:#fff}
   .bcta .agent-role{font-size:12px;color:#eee4d4;opacity:.75;margin-top:1px}
-  /* PDF / print */
-  .pdfbtn{display:inline-flex;align-items:center;gap:7px;background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;font-family:inherit;font-weight:600;font-size:13.5px;border-radius:9px;padding:9px 15px;cursor:pointer}
-  .pdfbtn:hover{background:rgba(255,255,255,.12)}
+  /* Printen/PDF-export van de brochure is bewust uitgeschakeld, zie .noprint hieronder */
   @media print{
-    .bnav,.lb,.gate,#waTop,.pdfbtn{display:none !important}
-    .thanks{background:#fff !important;color:var(--ink) !important;border:1px solid var(--line)}
-    .thanks h3,.thanks p,.thanks p b{color:var(--ink) !important}
-    .bcta{background:#fff !important;color:var(--ink) !important;border:1px solid var(--line)}
-    .bcta h2,.bcta p{color:var(--ink) !important}
-    .results{background:#fff !important;color:var(--ink) !important;border:1px solid var(--line)}
-    .results h3,.big-yield .num,.hrow b,.stat .s-v{color:var(--ink) !important}
+    body{display:none !important}
   }
 </style>
 </head>
@@ -225,7 +217,6 @@
       <p>Je persoonlijke contact is <b>Ashley Vermoten</b>, Sales Manager bij UTAMA. Ze helpt je graag met je vragen, de plattegronden of het reserveren van een unit. Stuur haar gerust een berichtje.</p>
     </div>
     <a class="wa" id="waTop" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Stuur Ashley een bericht</a>
-    <button class="pdfbtn" onclick="window.print()" type="button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>Download als PDF</button>
   </div>
 
   <div class="bhero">
@@ -396,7 +387,7 @@
       </details>
       <details>
         <summary>Wat gebeurt er als de bouw vertraging oploopt?</summary>
-        <p>De bouw wordt uitgevoerd door Bali Prime Construction, een Duits geleide aannemer met 100+ opgeleverde villa's in Bali. Er is wekelijks bouwoverleg en dagelijkse controle op locatie, met 10 jaar bouwgarantie op het resultaat.</p>
+        <p>De bouw wordt uitgevoerd door Bali Prime Construction, een Duits geleide aannemer met 100+ opgeleverde villa's in Bali. Er is wekelijks bouwoverleg en dagelijkse controle op locatie, met 10 jaar bouwgarantie op het resultaat. UTAMA draagt hierbij ook zelf verantwoordelijkheid: bij vertraging in oplevering wordt het misgelopen huurinkomen dat je anders per dag had ontvangen, aan je terugbetaald voor elke dag vertraging. Dit leggen we notarieel vast in het contract, zodat het afdwingbaar is en niet alleen een belofte blijft.</p>
       </details>
       <details>
         <summary>Kan ik mijn villa weer verkopen?</summary>

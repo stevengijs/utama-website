@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOKA, Kedungu | UTAMA</title>
+<meta name="description" content="MOKA: boutique community met café, wellness club en rooftop pool lounge in Kedungu, Bali. 3BR villa's, 2BR townhouses en 1BR appartementen, vanaf €135.000, tot 17% netto rendement.">
+<meta property="og:title" content="MOKA, Kedungu | UTAMA">
+<meta property="og:description" content="Boutique community in Kedungu, Bali. 15 units, 3 woningtypes, volledig beheerd. Nog 1 unit beschikbaar.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://invest.utamabali.com/moka">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .unitsel{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}
+  .unitsel .pbtn{min-width:150px}
+  .unitsel .pbtn .ps.sold{color:var(--muted)}
+  .unitsel .pbtn .ps.last{color:var(--terra);font-weight:700}
+  .cta-agent{display:flex;align-items:center;gap:12px;margin-bottom:16px;position:relative;z-index:1}
+  .cta-agent img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.32);flex:none}
+  .cta-agent-name{font-size:13.5px;font-weight:600;color:#fff}
+  .cta-agent-role{font-size:12px;color:#eee4d4;opacity:.8;margin-top:1px}
+  .modal-ov{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(33,30,24,.4);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+  .modal-ov.open{display:flex}
+  .modal{background:var(--paper);border:1px solid var(--line);border-radius:18px;max-width:470px;width:100%;padding:30px 30px 26px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.32);max-height:92vh;overflow:auto}
+  .modal .x{position:absolute;top:12px;right:15px;background:none;border:none;font-size:24px;line-height:1;color:var(--muted);cursor:pointer}
+  .modal .x:hover{color:var(--ink)}
+  .modal .eb{color:var(--terra);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+  .modal h3{font-size:24px;margin-bottom:6px;font-family:'Fraunces',serif;font-weight:600}
+  .modal .msub{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .mfield{margin-bottom:12px}
+  .mfield label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:5px}
+  .mfield input,.mfield select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;background:var(--paper);color:var(--ink)}
+  .mfield input:focus,.mfield select:focus{outline:none;border-color:var(--green)}
+  .mrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .merr{color:#b5462b;font-size:13px;margin:3px 0 0;display:none}
+  .mtrust{margin-top:12px;font-size:12px;color:var(--muted)}
+  @media(max-width:520px){ .mrow{grid-template-columns:1fr} }
+  .msuccess{text-align:center;padding:16px 6px 8px}
+  .checkwrap{width:82px;height:82px;margin:4px auto 14px;animation:pop .45s ease}
+  .chk{width:82px;height:82px}
+  .chk circle{fill:none;stroke:var(--ok);stroke-width:3;opacity:.22}
+  .chk path{fill:none;stroke:var(--ok);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .5s .18s ease forwards}
+  .msuccess h3{font-family:'Fraunces',serif;font-weight:600;font-size:26px;margin-bottom:6px}
+  .msuccess p{color:var(--muted);font-size:14.5px;margin:0 auto;max-width:330px}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+  .confetti{position:absolute;top:-12px;border-radius:2px;opacity:.9;z-index:1;animation-name:cfall;animation-timing-function:cubic-bezier(.3,.6,.4,1);animation-fill-mode:forwards}
+  @keyframes cfall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(680deg);opacity:.85}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap row">
+    <a class="brand" href="/">UT<span>A</span>MA</a>
+    <div class="links">
+      <a href="/" data-t="navProjects">Projecten</a>
+      <a href="#calc" data-t="navReturns">Rendement</a>
+      <a href="#how" data-t="navHow">Zo werkt het</a>
+      <a href="#contact" data-t="navContact">Contact</a>
+    </div>
+    <div class="lang">
+      <button id="btnNL" class="on" onclick="setLang('nl')">NL</button>
+      <button id="btnEN" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap inner">
+    <div class="eyebrow"><a href="/" style="color:var(--terra);text-decoration:none" data-t="back">Projecten</a> · Kedungu, Bali</div>
+    <h1>MOKA</h1>
+    <p data-t="heroSub">Boutique community met eigen café, wellness club en rooftop pool lounge, 600 meter van het strand in Kedungu. Drie woningtypes in één project, volledig gemeubileerd en beheerd.</p>
+    <div class="btns">
+      <a href="#calc" class="btn" data-t="heroCta1">Bereken je rendement</a>
+      <button type="button" class="btn ghost" onclick="openBrochure()" data-t="heroCta2">Vraag de laatste unit aan</button>
+    </div>
+    <div class="trustrow">
+      <div><b id="tAvail">1 van 15</b><span data-t="t1">units nog beschikbaar</span></div>
+      <div><b>vanaf €325.000</b><span data-t="t2">laatste beschikbare unit</span></div>
+      <div><b>±14-17%</b><span data-t="t3">netto rendement (realistisch)</span></div>
+    </div>
+  </div>
+</header>
+
+<section style="padding-top:34px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="unitsEyebrow">Woningtypes</div>
+      <h2 data-t="unitsTitle">15 units, drie manieren om in MOKA te investeren</h2>
+      <p data-t="unitsSub">MOKA telt 7 Signature Villa's, 4 Boutique Villa's en 4 Boutique Appartementen. Kies een type voor de details en het rendement.</p>
+    </div>
+    <div class="unitsel" id="unitSel"></div>
+    <div class="detail">
+      <div class="gallery" id="gallery"></div>
+      <div class="body">
+        <div class="d-head">
+          <div><h2 id="uName">Signature Villa</h2><div class="loc" id="uSub">3 slaapkamers · pool villa</div><div style="margin-top:8px"><span class="pill" id="pill"></span></div></div>
+          <div class="d-price"><div class="p" id="dprice">€325.000</div><div class="a" id="dstatus"></div></div>
+        </div>
+        <div class="facts" id="facts"></div>
+        <div class="hl" id="hl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lifestyle">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="lifeEyebrow">MOKA leefstijl</div>
+      <h2 data-t="lifeTitle">Meer dan een woning, een boutique community</h2>
+      <p data-t="lifeSub">Alle eigenaren en gasten hebben gratis toegang tot de gedeelde voorzieningen op het terrein.</p>
+    </div>
+    <div class="how">
+      <div class="hcard"><div class="n" data-t="l1n">01</div><h4 data-t="l1t">MOKA House Café</h4><p data-t="l1p">Een levendig café op het terrein, de ontmoetingsplek voor bewoners en gasten.</p></div>
+      <div class="hcard"><div class="n" data-t="l2n">02</div><h4 data-t="l2t">Wellness &amp; Fitness Club</h4><p data-t="l2p">Sportschool en wellnessfaciliteiten, vrij te gebruiken door eigenaren en hun gasten.</p></div>
+      <div class="hcard"><div class="n" data-t="l3n">03</div><h4 data-t="l3t">Sunset Rooftop &amp; Pool Lounge</h4><p data-t="l3p">Gedeeld rooftop zwembad met loungeplekken, populair bij gasten en goed voor de bezetting.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="location">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="locEyebrow">Locatie</div>
+      <h2 data-t="locTitle">Waarom Kedungu</h2>
+      <p data-t="locSub">De opvolger van Canggu en Pererenan, met strikte toeristische bestemmingsplanning.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="l" data-t="loc1l">Strand</div><div class="v" data-t="loc1v">600 meter (Kedungu Beach)</div></div>
+      <div class="fact"><div class="l" data-t="loc2l">Zonering</div><div class="v" data-t="loc2v">Pink Zone, strikte toeristische bestemming</div></div>
+      <div class="fact"><div class="l" data-t="loc3l">Surfen</div><div class="v" data-t="loc3v">3 van Bali's beste surfspots vlakbij</div></div>
+      <div class="fact"><div class="l" data-t="loc4l">Ontwikkeling</div><div class="v" data-t="loc4v">Naast projecten van Ciputra Group</div></div>
+      <div class="fact"><div class="l" data-t="loc5l">Bereikbaarheid</div><div class="v" data-t="loc5v">Geplande metrohalte bij Tanah Lot</div></div>
+      <div class="fact"><div class="l" data-t="loc6l">Groeimarkt</div><div class="v" data-t="loc6v">Volgende hotspot na Canggu en Pererenan</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="calc" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="calcEyebrow">Rendement</div>
+      <h2 data-t="calcTitle">Bereken je rendement</h2>
+      <p data-t="calcSub">De aannames volgen de cijfers uit de MOKA-brochure. Pas ze aan naar jouw scenario. Eerlijk, geen opgeblazen beloftes.</p>
+    </div>
+    <div class="calc">
+      <div class="card">
+        <h3 data-t="assumpH">Aannames</h3>
+        <div class="csub" id="assumpSub">Voorgevuld op de brochure van MOKA.</div>
+        <div class="field"><label><span data-t="fPrice">Prijs</span> <span class="val" id="vPrice"></span></label></div>
+        <div class="field"><label><span data-t="fNightly">Gem. nachtprijs</span> <span class="val" id="vNightly"></span></label><input type="range" id="nightly" min="150" max="220" step="5" value="175" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fOcc">Bezettingsgraad</span> <span class="val" id="vOcc"></span></label><input type="range" id="occ" min="60" max="100" step="1" value="85" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fCosts">Kosten &amp; beheer</span> <span class="val" id="vCosts"></span></label><input type="range" id="costs" min="16" max="35" step="1" value="25" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fHold">Aanhoudperiode</span> <span class="val" id="vHold"></span></label><input type="range" id="hold" min="1" max="30" step="1" value="5" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fGrowth">Geschatte waardegroei / jaar</span> <span class="val" id="vGrowth"></span></label><input type="range" id="growth" min="0" max="8" step="1" value="5" oninput="calc()"></div>
+      </div>
+      <div class="card results">
+        <h3 data-t="expected">Verwacht rendement</h3>
+        <div class="csub" data-t="perYear">Op jaarbasis, netto na alle kosten en beheer.</div>
+        <div class="big-yield"><div class="num" id="oYield">–</div><div class="lbl" data-t="netYield">netto rendement / jaar</div></div>
+        <div class="payback" id="oPayback"></div>
+        <div class="stat-grid">
+          <div class="stat"><div class="s-l" data-t="netMonth">Netto huur / maand</div><div class="s-v" id="oMonth">–</div></div>
+          <div class="stat"><div class="s-l" data-t="netYear">Netto huur / jaar</div><div class="s-v" id="oYear">–</div></div>
+        </div>
+        <div class="hold-block">
+          <div class="hb-h" id="oHoldH"></div>
+          <div class="hrow"><span data-t="rentTotal">Netto huurinkomsten</span><b id="oRent">–</b></div>
+          <div class="hrow"><span data-t="resaleProfit">Geschatte verkoopwinst</span><b id="oResale">–</b></div>
+          <div class="hrow big"><span data-t="totalReturn">Totaal rendement</span><b id="oTotalRet">–</b></div>
+        </div>
+        <div class="breakdown">
+          <div class="brow"><span data-t="grossYear">Bruto huurinkomsten / jaar</span><b id="oGross">–</b></div>
+          <div class="brow"><span data-t="lessCosts">Af: kosten &amp; beheer</span><b id="oCostAmt">–</b></div>
+          <div class="brow"><span data-t="totalInv">Totale investering</span><b id="oInv">–</b></div>
+        </div>
+        <div class="note-ext" id="oExt"></div>
+      </div>
+    </div>
+    <details class="assump">
+      <summary data-t="assumpTitle">Aannames &amp; transparantie</summary>
+      <ul>
+        <li data-t="a1">Bruto huurinkomsten = nachtprijs × 365 × bezettingsgraad. Alle bedragen in euro's.</li>
+        <li data-t="a2">Netto = bruto minus alle kosten: operationele kosten, verhuurbeheer (15% van de netto-omzet na 3% OTA-commissie), onderhoud en lokale belasting.</li>
+        <li data-t="a3">Cijfers per woningtype zijn gebaseerd op de brochure van MOKA.</li>
+        <li data-t="a4">Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei, bewust conservatief ingeschat. Indicatie, geen garantie.</li>
+      </ul>
+    </details>
+    <div class="scen-wrap" style="margin-top:26px">
+      <div class="scen-h" style="font-size:15px;font-weight:600;color:var(--green-2);margin-bottom:10px" data-t="scenH">Drie scenario's uit de MOKA-brochure</div>
+      <div class="scen" id="scenGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px"></div>
+      <p class="note" data-t="scenNote" style="font-size:12.5px;color:var(--muted);margin-top:14px">Nettorendement per jaar, exclusief verkoopwinst. Schattingen uit de brochure, geen garanties.</p>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-t="howEyebrow">Zo werkt het</div>
+      <h2 data-t="howTitle">Veilig investeren op afstand</h2>
+      <p data-t="howSub">Eerlijk en transparant, van contract tot verhuur.</p>
+    </div>
+    <div class="how">
+      <div class="hcard"><div class="n">01</div><h4 data-t="h1t">Leasehold, goed geregeld</h4><p data-t="h1p">Je least de grond en bezit de villa of het appartement. 30 jaar met contractueel gegarandeerde verlenging van 30 jaar.</p></div>
+      <div class="hcard"><div class="n">02</div><h4 data-t="h2t">Betalen in 4 termijnen</h4><p data-t="h2p">60% bij de notariële ondertekening, 20% na 3 maanden, 10% na 6 maanden en 10% bij sleuteloverdracht. Een aanbetaling van €5.000 reserveert een unit.</p></div>
+      <div class="hcard"><div class="n">03</div><h4 data-t="h3t">Volledig beheer &amp; verhuur</h4><p data-t="h3p">Verhuurbeheer kost 15% van de netto-omzet (na 3% OTA-commissie). Operationele kosten (stroom, water, schoonmaak, onderhoud) bedragen indicatief ± €635 per maand. Jij ontvangt inkomsten en maandelijkse rapportage.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <div class="cta-agent">
+        <img src="/images/ashley.jpg" alt="Ashley Vermoten, Sales Manager UTAMA">
+        <div><div class="cta-agent-name">Ashley Vermoten</div><div class="cta-agent-role" data-t="agentRole">Sales Manager, UTAMA</div></div>
+      </div>
+      <h2 data-t="ctaTitle">Nog 1 unit beschikbaar in MOKA</h2>
+      <p data-t="ctaSub">14 van de 15 units zijn al verkocht. Vraag de laatste Signature Villa aan of stel je vraag direct aan Ashley.</p>
+      <div class="cta-btns">
+        <button type="button" class="btn" onclick="openBrochure()" data-t="heroCta2">Vraag de laatste unit aan</button>
+        <button type="button" class="btn wa-btn" onclick="waDirect()"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg><span data-t="ctaWa">Praat met Ashley via WhatsApp</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    UTAMA · <span data-t="footer">Investeren in Bali-vastgoed, transparant en zorgeloos.</span>
+    <div class="disc" data-t="disc">Deze site geeft indicatieve informatie en geen fiscaal of juridisch advies. Rendementen zijn schattingen, geen garanties. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.</div>
+    <button class="fab-wa" onclick="waDirect()" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.6 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8z"/><path d="M23.4 19.2c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2s-.9 1.2-1.1 1.4c-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg></button>
+  </div>
+</footer>
+
+<div class="modal-ov" id="broModal" onclick="if(event.target===this)closeBrochure()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="x" onclick="closeBrochure()" aria-label="Sluiten">&times;</button>
+    <div class="eb">MOKA, Kedungu</div>
+    <h3 id="mTitle">Vraag de laatste unit aan</h3>
+    <div class="msub" id="mSub">Laat je gegevens achter, dan neemt Ashley snel contact met je op over de laatste beschikbare unit.</div>
+    <form onsubmit="return submitBrochure(event)">
+      <div class="mfield"><label>Naam</label><input id="bmName" type="text" placeholder="Je volledige naam" required></div>
+      <div class="mrow">
+        <div class="mfield"><label>WhatsApp-nummer</label><input id="bmPhone" type="tel" placeholder="+31 6 ..." required></div>
+        <div class="mfield"><label>E-mailadres</label><input id="bmEmail" type="email" placeholder="jij@voorbeeld.com" required></div>
+      </div>
+      <div class="mrow">
+        <div class="mfield"><label>Budget</label>
+          <select id="bmBudget" required>
+            <option value="" disabled selected>Kies je budget</option>
+            <option>Tot &euro;150.000</option>
+            <option>&euro;150.000 - &euro;250.000</option>
+            <option>&euro;250.000 - &euro;350.000</option>
+            <option>&euro;350.000 of meer</option>
+            <option>Nog niet zeker</option>
+          </select>
+        </div>
+        <div class="mfield"><label>Wanneer wil je kopen?</label>
+          <select id="bmWhen" required>
+            <option value="" disabled selected>Kies je horizon</option>
+            <option>Zo snel mogelijk</option>
+            <option>Binnen 3 maanden</option>
+            <option>3 tot 6 maanden</option>
+            <option>6 tot 12 maanden</option>
+            <option>Ik ori&euml;nteer me nog</option>
+          </select>
+        </div>
+      </div>
+      <div class="merr" id="bmErr">Vul je naam, WhatsApp-nummer en e-mailadres in.</div>
+      <button class="btn" style="width:100%;justify-content:center;margin-top:6px" type="submit">Versturen</button>
+      <div class="mtrust">Geen spam. We gebruiken je gegevens alleen om je de juiste informatie te sturen en je vragen te beantwoorden.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", locale:"nl-NL", currency:"EUR", leadEndpoint:"" };
+
+/* MOKA: 15 units, 3 woningtypes. Cijfers geverifieerd tegen de MOKA-brochure (Google Drive, juli 2026). */
+const UNITS = [
+  { key:"villa3",
+    name:{nl:"Signature Villa",en:"Signature Villa"},
+    sub:{nl:"3 slaapkamers · pool villa",en:"3-bedroom pool villa"},
+    price:325000, unitsTotal:7, unitsSold:6,
+    facts:[
+      {l:{nl:"Type",en:"Type"}, v:{nl:"3 ensuite slaapkamers · 3,5 badkamers",en:"3 ensuite bedrooms · 3.5 bathrooms"}},
+      {l:{nl:"Woonoppervlak",en:"Living space"}, v:{nl:"162 m² + 55 m² rooftop (217 m² totaal)",en:"162 m² + 55 m² rooftop (217 m² total)"}},
+      {l:{nl:"Zwembad",en:"Pool"}, v:{nl:"Privé zwembad, 15,5 m²",en:"Private pool, 15.5 m²"}},
+      {l:{nl:"Extra",en:"Extra"}, v:{nl:"Rooftop jacuzzi · eigen bioscoop",en:"Rooftop jacuzzi · built-in cinema"}},
+      {l:{nl:"Oplevering",en:"Completion"}, v:{nl:"Juli 2026",en:"July 2026"}},
+      {l:{nl:"Leasehold",en:"Leasehold"}, v:{nl:"30 + 30 jaar (gegarandeerd)",en:"30 + 30 years (guaranteed)"}}
+    ],
+    highlights:{
+      nl:["Laatste beschikbare unit van de 7 Signature Villa's","Privé zwembad en 55 m² rooftop met jacuzzi","Eigen bioscoop en enclosed living met airco","Master suite met tuin en ligbad onder de sterren","30 + 30 jaar leasehold met gegarandeerde verlenging","Volledig gemeubileerd en direct verhuurklaar"],
+      en:["Last available unit of the 7 Signature Villas","Private pool and 55 m² rooftop with jacuzzi","Built-in cinema and enclosed living with AC","Master suite with garden and stargazing bathtub","30 + 30 year leasehold with guaranteed extension","Fully furnished and rental-ready"]
+    },
+    roi:{ nightly:{min:150,max:240,def:195}, costs:{min:18,max:35,def:25} },
+    scenarios:[
+      {label:{nl:"Voorzichtig",en:"Pessimistic"}, occ:70, nightly:175, roi:10.27, payback:9.7},
+      {label:{nl:"Realistisch",en:"Realistic"}, occ:85, nightly:195, roi:14.34, payback:7.0, current:true},
+      {label:{nl:"Optimistisch",en:"Optimistic"}, occ:95, nightly:225, roi:18.93, payback:5.3}
+    ]
+  },
+  { key:"villa2",
+    name:{nl:"Boutique Villa",en:"Boutique Villa"},
+    sub:{nl:"2 slaapkamers · townhouse met plunge pool",en:"2-bedroom townhouse with plunge pool"},
+    price:175000, unitsTotal:4, unitsSold:4,
+    facts:[
+      {l:{nl:"Type",en:"Type"}, v:{nl:"2 slaapkamers · 1,5 badkamer",en:"2 bedrooms · 1.5 bathrooms"}},
+      {l:{nl:"Woonoppervlak",en:"Living space"}, v:{nl:"70 m² + 36 m² buiten (106 m² totaal)",en:"70 m² + 36 m² outdoor (106 m² total)"}},
+      {l:{nl:"Zwembad",en:"Pool"}, v:{nl:"Privé plunge pool, 4,6 m²",en:"Private plunge pool, 4.6 m²"}},
+      {l:{nl:"Extra",en:"Extra"}, v:{nl:"Tuin, terras en werkplek",en:"Garden, terrace and workspace"}},
+      {l:{nl:"Oplevering",en:"Completion"}, v:{nl:"Augustus 2026",en:"August 2026"}},
+      {l:{nl:"Leasehold",en:"Leasehold"}, v:{nl:"30 + 30 jaar (gegarandeerd)",en:"30 + 30 years (guaranteed)"}}
+    ],
+    highlights:{
+      nl:["Uitverkocht: alle 4 townhouses zijn verkocht","Privé plunge pool en eigen tuin","Compacte, efficiënte lay-out over 2 verdiepingen","Ideaal voor stellen of kleine gezinnen","30 + 30 jaar leasehold met gegarandeerde verlenging","Volledig gemeubileerd en direct verhuurklaar"],
+      en:["Sold out: all 4 townhouses have been sold","Private plunge pool and own garden","Compact, efficient layout across 2 floors","Ideal for couples or small families","30 + 30 year leasehold with guaranteed extension","Fully furnished and rental-ready"]
+    },
+    roi:{ nightly:{min:80,max:150,def:115}, costs:{min:16,max:30,def:22} },
+    scenarios:[
+      {label:{nl:"Voorzichtig",en:"Pessimistic"}, occ:75, nightly:95, roi:11.50, payback:8.7},
+      {label:{nl:"Realistisch",en:"Realistic"}, occ:85, nightly:115, roi:16.87, payback:5.2, current:true},
+      {label:{nl:"Optimistisch",en:"Optimistic"}, occ:95, nightly:135, roi:20.73, payback:4.2}
+    ]
+  },
+  { key:"apt1",
+    name:{nl:"Boutique Apartment",en:"Boutique Apartment"},
+    sub:{nl:"1 slaapkamer · appartement met balkonbad",en:"1-bedroom apartment with balcony bathtub"},
+    price:135000, unitsTotal:4, unitsSold:4,
+    facts:[
+      {l:{nl:"Type",en:"Type"}, v:{nl:"1 slaapkamer · 1 badkamer",en:"1 bedroom · 1 bathroom"}},
+      {l:{nl:"Woonoppervlak",en:"Living space"}, v:{nl:"44,5 m² + 9 m² balkon",en:"44.5 m² + 9 m² balcony"}},
+      {l:{nl:"Extra",en:"Extra"}, v:{nl:"Kitchenette · balkon met buitenbad",en:"Kitchenette · balcony with outdoor bathtub"}},
+      {l:{nl:"Oplevering",en:"Completion"}, v:{nl:"Augustus 2026",en:"August 2026"}},
+      {l:{nl:"Leasehold",en:"Leasehold"}, v:{nl:"30 + 30 jaar (gegarandeerd)",en:"30 + 30 years (guaranteed)"}}
+    ],
+    highlights:{
+      nl:["Uitverkocht: alle 4 appartementen zijn verkocht","Compact en instapklaar, ideaal voor digital nomads","Balkon met eigen buitenbad","Toegang tot café, wellness club en rooftop pool","30 + 30 jaar leasehold met gegarandeerde verlenging","Volledig gemeubileerd en direct verhuurklaar"],
+      en:["Sold out: all 4 apartments have been sold","Compact and move-in ready, ideal for digital nomads","Balcony with its own outdoor bathtub","Access to the café, wellness club and rooftop pool","30 + 30 year leasehold with guaranteed extension","Fully furnished and rental-ready"]
+    },
+    roi:{ nightly:{min:65,max:130,def:95}, costs:{min:16,max:30,def:22} },
+    scenarios:[
+      {label:{nl:"Voorzichtig",en:"Pessimistic"}, occ:70, nightly:80, roi:11.75, payback:10.4},
+      {label:{nl:"Realistisch",en:"Realistic"}, occ:85, nightly:95, roi:17.17, payback:7.1, current:true},
+      {label:{nl:"Optimistisch",en:"Optimistic"}, occ:90, nightly:115, roi:21.83, payback:5.6}
+    ]
+  }
+];
+
+const T={
+ nl:{navProjects:"Projecten",navReturns:"Rendement",navHow:"Zo werkt het",navContact:"Contact",back:"Projecten",
+  heroSub:"Boutique community met eigen café, wellness club en rooftop pool lounge, 600 meter van het strand in Kedungu. Drie woningtypes in één project, volledig gemeubileerd en beheerd.",
+  heroCta1:"Bereken je rendement",heroCta2:"Vraag de laatste unit aan",
+  t1:"units nog beschikbaar",t2:"laatste beschikbare unit",t3:"netto rendement (realistisch)",
+  unitsEyebrow:"Woningtypes",unitsTitle:"15 units, drie manieren om in MOKA te investeren",unitsSub:"MOKA telt 7 Signature Villa's, 4 Boutique Villa's en 4 Boutique Appartementen. Kies een type voor de details en het rendement.",
+  lifeEyebrow:"MOKA leefstijl",lifeTitle:"Meer dan een woning, een boutique community",lifeSub:"Alle eigenaren en gasten hebben gratis toegang tot de gedeelde voorzieningen op het terrein.",
+  l1n:"01",l1t:"MOKA House Café",l1p:"Een levendig café op het terrein, de ontmoetingsplek voor bewoners en gasten.",
+  l2n:"02",l2t:"Wellness & Fitness Club",l2p:"Sportschool en wellnessfaciliteiten, vrij te gebruiken door eigenaren en hun gasten.",
+  l3n:"03",l3t:"Sunset Rooftop & Pool Lounge",l3p:"Gedeeld rooftop zwembad met loungeplekken, populair bij gasten en goed voor de bezetting.",
+  locEyebrow:"Locatie",locTitle:"Waarom Kedungu",locSub:"De opvolger van Canggu en Pererenan, met strikte toeristische bestemmingsplanning.",
+  loc1l:"Strand",loc1v:"600 meter (Kedungu Beach)",loc2l:"Zonering",loc2v:"Pink Zone, strikte toeristische bestemming",
+  loc3l:"Surfen",loc3v:"3 van Bali's beste surfspots vlakbij",loc4l:"Ontwikkeling",loc4v:"Naast projecten van Ciputra Group",
+  loc5l:"Bereikbaarheid",loc5v:"Geplande metrohalte bij Tanah Lot",loc6l:"Groeimarkt",loc6v:"Volgende hotspot na Canggu en Pererenan",
+  calcEyebrow:"Rendement",calcTitle:"Bereken je rendement",calcSub:"De aannames volgen de cijfers uit de MOKA-brochure. Pas ze aan naar jouw scenario. Eerlijk, geen opgeblazen beloftes.",
+  assumpH:"Aannames",fPrice:"Prijs",fNightly:"Gem. nachtprijs",fOcc:"Bezettingsgraad",fCosts:"Kosten & beheer",fHold:"Aanhoudperiode",fGrowth:"Geschatte waardegroei / jaar",
+  expected:"Verwacht rendement",perYear:"Op jaarbasis, netto na alle kosten en beheer.",netYield:"netto rendement / jaar",netMonth:"Netto huur / maand",netYear:"Netto huur / jaar",
+  rentTotal:"Netto huurinkomsten",resaleProfit:"Geschatte verkoopwinst",totalReturn:"Totaal rendement",grossYear:"Bruto huurinkomsten / jaar",lessCosts:"Af: kosten & beheer",totalInv:"Totale investering",
+  assumpTitle:"Aannames & transparantie",
+  a1:"Bruto huurinkomsten = nachtprijs × 365 × bezettingsgraad. Alle bedragen in euro's.",
+  a2:"Netto = bruto minus alle kosten: operationele kosten, verhuurbeheer (15% van de netto-omzet na 3% OTA-commissie), onderhoud en lokale belasting.",
+  a3:"Cijfers per woningtype zijn gebaseerd op de brochure van MOKA.",
+  a4:"Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei, bewust conservatief ingeschat. Indicatie, geen garantie.",
+  scenH:"Drie scenario's uit de MOKA-brochure",scenNote:"Nettorendement per jaar, exclusief verkoopwinst. Schattingen uit de brochure, geen garanties.",
+  howEyebrow:"Zo werkt het",howTitle:"Veilig investeren op afstand",howSub:"Eerlijk en transparant, van contract tot verhuur.",
+  h1t:"Leasehold, goed geregeld",h1p:"Je least de grond en bezit de villa of het appartement. 30 jaar met contractueel gegarandeerde verlenging van 30 jaar.",
+  h2t:"Betalen in 4 termijnen",h2p:"60% bij de notariële ondertekening, 20% na 3 maanden, 10% na 6 maanden en 10% bij sleuteloverdracht. Een aanbetaling van €5.000 reserveert een unit.",
+  h3t:"Volledig beheer & verhuur",h3p:"Verhuurbeheer kost 15% van de netto-omzet (na 3% OTA-commissie). Operationele kosten (stroom, water, schoonmaak, onderhoud) bedragen indicatief ± €635 per maand. Jij ontvangt inkomsten en maandelijkse rapportage.",
+  agentRole:"Sales Manager, UTAMA",
+  ctaTitle:"Nog 1 unit beschikbaar in MOKA",ctaSub:"14 van de 15 units zijn al verkocht. Vraag de laatste Signature Villa aan of stel je vraag direct aan Ashley.",
+  ctaWa:"Praat met Ashley via WhatsApp",
+  footer:"Investeren in Bali-vastgoed, transparant en zorgeloos.",
+  disc:"Deze site geeft indicatieve informatie en geen fiscaal of juridisch advies. Rendementen zijn schattingen, geen garanties. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.",
+  yrs:"jaar",payback:"Terugverdiend in ± {x} jaar (alleen uit huur).",lastUnit:"Laatste unit",soldOut:"Uitverkocht",available:"Nog {x} van {y} beschikbaar",render:"Render volgt",
+  holdH:"Over {x} jaar aanhouden (bij {g}% waardegroei/jaar):",ext:"Leasehold 30 jaar met gegarandeerde verlenging van 30 jaar. Verlengen na 30 jaar kost ± 20% van de aankoopprijs (± {x}). Je kunt de villa ook eerder verkopen.",
+  fill:"Vul je naam, WhatsApp-nummer en e-mailadres in."},
+ en:{navProjects:"Projects",navReturns:"Returns",navHow:"How it works",navContact:"Contact",back:"Projects",
+  heroSub:"Boutique community with its own café, wellness club and rooftop pool lounge, 600 metres from the beach in Kedungu. Three home types in one project, fully furnished and managed.",
+  heroCta1:"Calculate your return",heroCta2:"Ask about the last unit",
+  t1:"units still available",t2:"last available unit",t3:"net yield (realistic)",
+  unitsEyebrow:"Home types",unitsTitle:"15 units, three ways to invest in MOKA",unitsSub:"MOKA has 7 Signature Villas, 4 Boutique Villas and 4 Boutique Apartments. Pick a type for the details and the return.",
+  lifeEyebrow:"MOKA lifestyle",lifeTitle:"More than a home, a boutique community",lifeSub:"All owners and guests get free access to the shared facilities on site.",
+  l1n:"01",l1t:"MOKA House Café",l1p:"A lively café on site, the meeting place for residents and guests.",
+  l2n:"02",l2t:"Wellness & Fitness Club",l2p:"Gym and wellness facilities, free to use for owners and their guests.",
+  l3n:"03",l3t:"Sunset Rooftop & Pool Lounge",l3p:"Shared rooftop pool with lounge seating, popular with guests and good for occupancy.",
+  locEyebrow:"Location",locTitle:"Why Kedungu",locSub:"The successor to Canggu and Pererenan, with strict tourism zoning.",
+  loc1l:"Beach",loc1v:"600 metres (Kedungu Beach)",loc2l:"Zoning",loc2v:"Pink Zone, strict tourism zoning",
+  loc3l:"Surfing",loc3v:"3 of Bali's best surf breaks nearby",loc4l:"Development",loc4v:"Next to Ciputra Group developments",
+  loc5l:"Accessibility",loc5v:"Planned metro stop at Tanah Lot",loc6l:"Growth market",loc6v:"Next hotspot after Canggu and Pererenan",
+  calcEyebrow:"Returns",calcTitle:"Calculate your return",calcSub:"The assumptions follow the figures from the MOKA brochure. Adjust them to your scenario. Honest, no inflated promises.",
+  assumpH:"Assumptions",fPrice:"Price",fNightly:"Avg. nightly rate",fOcc:"Occupancy rate",fCosts:"Costs & management",fHold:"Holding period",fGrowth:"Estimated value growth / year",
+  expected:"Expected return",perYear:"Per year, net of all costs and management.",netYield:"net yield / year",netMonth:"Net rent / month",netYear:"Net rent / year",
+  rentTotal:"Net rental income",resaleProfit:"Estimated resale profit",totalReturn:"Total return",grossYear:"Gross rental income / year",lessCosts:"Less: costs & management",totalInv:"Total investment",
+  assumpTitle:"Assumptions & transparency",
+  a1:"Gross rental income = nightly rate × 365 × occupancy. All amounts in euros.",
+  a2:"Net = gross minus all costs: operating costs, rental management (15% of net revenue after 3% OTA commission), maintenance and local tax.",
+  a3:"Figures per home type are based on the MOKA brochure.",
+  a4:"Resale value on holding uses the chosen annual value growth, deliberately conservative. Indicative, not a guarantee.",
+  scenH:"Three scenarios from the MOKA brochure",scenNote:"Net yield per year, excluding resale profit. Brochure estimates, not guarantees.",
+  howEyebrow:"How it works",howTitle:"Invest safely, remotely",howSub:"Honest and transparent, from contract to rental.",
+  h1t:"Leasehold, properly structured",h1p:"You lease the land and own the villa or apartment. 30 years with a contractually guaranteed 30-year extension.",
+  h2t:"Pay in 4 instalments",h2p:"60% at notary signing, 20% after 3 months, 10% after 6 months and 10% at key handover. A €5,000 deposit reserves a unit.",
+  h3t:"Full management & rental",h3p:"Rental management costs 15% of net revenue (after 3% OTA commission). Operating costs (electricity, water, cleaning, maintenance) are indicatively ± €635 per month. You receive income and monthly reporting.",
+  agentRole:"Sales Manager, UTAMA",
+  ctaTitle:"1 unit still available in MOKA",ctaSub:"14 of the 15 units have already been sold. Ask about the last Signature Villa or reach out to Ashley directly.",
+  ctaWa:"Chat with Ashley on WhatsApp",
+  footer:"Investing in Bali real estate, transparent and hassle-free.",
+  disc:"This site provides indicative information and no tax or legal advice. Returns are estimates, not guarantees. Always have contracts checked by an authorised notary (PPAT) and your own adviser.",
+  yrs:"years",payback:"Paid back in ± {x} years (from rent alone).",lastUnit:"Last unit",soldOut:"Sold out",available:"{x} of {y} still available",render:"Render coming soon",
+  holdH:"Hold for {x} years (at {g}% value growth/year):",ext:"Leasehold 30 years with guaranteed 30-year extension. Extending after 30 years costs ± 20% of the purchase price (± {x}). You can also sell earlier.",
+  fill:"Please enter your name, WhatsApp number and email."}
+};
+let lang="nl", selUnit="villa3";
+const el=id=>document.getElementById(id);
+function money(v){return new Intl.NumberFormat(CONFIG.locale,{style:"currency",currency:CONFIG.currency,maximumFractionDigits:0}).format(Math.round(v));}
+function pct(v){return new Intl.NumberFormat(CONFIG.locale,{style:"percent",minimumFractionDigits:1,maximumFractionDigits:1}).format(v);}
+function tr(s,o){let r=s;for(const k in o)r=r.replace("{"+k+"}",o[k]);return r;}
+function currentUnit(){ return UNITS.find(u=>u.key===selUnit); }
+function imgBlock(cls){return `<div class="g ${cls} ph-img ${cls==='big'?'':'alt'}"><span class="ph-tag">${T[lang].render}</span></div>`;}
+
+function renderUnitSel(){
+  el('unitSel').innerHTML = UNITS.map(u=>{
+    const avail=u.unitsTotal-u.unitsSold;
+    const tagCls = avail>0 ? 'last' : 'sold';
+    const tag = avail>0 ? T[lang].lastUnit : T[lang].soldOut;
+    return `<div class="pbtn ${u.key===selUnit?'on':''}" onclick="selectUnit('${u.key}')"><span class="pv">${u.name[lang]}</span><span class="ps ${tagCls}">${tag} · ${u.unitsTotal} units</span></div>`;
+  }).join("");
+}
+function selectUnit(key){ selUnit=key; renderUnit(); }
+function renderUnit(){
+  const u=currentUnit();
+  const avail=u.unitsTotal-u.unitsSold;
+  el('gallery').innerHTML = imgBlock('big')+imgBlock('')+imgBlock('')+imgBlock('')+imgBlock('');
+  el('uName').textContent=u.name[lang];
+  el('uSub').textContent=u.sub[lang];
+  el('dprice').textContent=money(u.price);
+  el('dstatus').textContent = avail>0 ? tr(T[lang].available,{x:avail,y:u.unitsTotal}) : T[lang].soldOut;
+  el('pill').textContent = avail>0 ? T[lang].lastUnit : T[lang].soldOut;
+  el('facts').innerHTML=u.facts.map(f=>`<div class="fact"><div class="l">${f.l[lang]}</div><div class="v">${f.v[lang]}</div></div>`).join("");
+  el('hl').innerHTML=u.highlights[lang].map(x=>`<div>${x}</div>`).join("");
+  el('tAvail').textContent = tr(lang==='nl'?"{x} van 15":"{x} of 15",{x: UNITS.reduce((s,x)=>s+(x.unitsTotal-x.unitsSold),0)});
+  renderUnitSel();
+  // sync calculator ranges/defaults to this unit
+  el('nightly').min=u.roi.nightly.min; el('nightly').max=u.roi.nightly.max; el('nightly').value=u.roi.nightly.def;
+  el('costs').min=u.roi.costs.min; el('costs').max=u.roi.costs.max; el('costs').value=u.roi.costs.def;
+  el('assumpSub').textContent = (lang==='nl'?"Voorgevuld op de brochure, voor de ":"Pre-filled from the brochure, for the ")+u.name[lang]+".";
+  renderScenarios();
+  calc();
+}
+function renderScenarios(){
+  const u=currentUnit();
+  el('scenGrid').innerHTML = u.scenarios.map(s=>`
+    <div class="scc ${s.current?'cur':''}" style="background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-align:center${s.current?';border-color:var(--terra);box-shadow:0 6px 20px rgba(192,107,58,.12)':''}">
+      <div class="scl" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:${s.current?'var(--terra)':'var(--muted)'}">${s.label[lang]}</div>
+      <div class="scv" style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:${s.current?'var(--terra)':'var(--green)'};margin-top:4px">${s.roi.toFixed(2).replace('.',lang==='nl'?',':'.')}%</div>
+      <div class="scs" style="font-size:12.5px;color:var(--muted);margin-top:4px">${s.occ}% ${lang==='nl'?'bezetting':'occupancy'} · €${s.nightly}/${lang==='nl'?'nacht':'night'}</div>
+      <div class="scb" style="font-size:12px;color:var(--ink);margin-top:8px;font-weight:600">${lang==='nl'?'Terugverdiend in':'Paid back in'} ${s.payback.toFixed(1).replace('.',lang==='nl'?',':'.')} ${T[lang].yrs}</div>
+    </div>`).join("");
+}
+function calc(){
+  const u=currentUnit();
+  const price=u.price, nightly=+el('nightly').value, occ=+el('occ').value/100, costs=+el('costs').value/100, hold=+el('hold').value, growth=+el('growth').value/100;
+  el('vPrice').textContent=money(price);
+  el('vNightly').textContent=money(nightly);
+  el('vOcc').textContent=Math.round(occ*100)+"%";
+  el('vCosts').textContent=Math.round(costs*100)+"%";
+  el('vHold').textContent=hold+" "+T[lang].yrs;
+  el('vGrowth').textContent=Math.round(growth*100)+"%";
+  const gross=nightly*365*occ, costAmt=gross*costs, net=gross-costAmt;
+  const y=price>0?net/price:0, month=net/12, payback=net>0?price/net:0;
+  el('oYield').textContent=pct(y);
+  el('oMonth').textContent=money(month);
+  el('oYear').textContent=money(net);
+  el('oGross').textContent=money(gross);
+  el('oCostAmt').textContent=money(costAmt);
+  el('oInv').textContent=money(price);
+  el('oPayback').textContent=tr(T[lang].payback,{x:payback>0?payback.toFixed(1):"–"});
+  const rentTotal=net*hold, resaleVal=price*Math.pow(1+growth,hold), resaleProfit=resaleVal-price, totalRet=rentTotal+resaleProfit, totalRoi=price>0?totalRet/price:0;
+  el('oHoldH').textContent=tr(T[lang].holdH,{x:hold,g:Math.round(growth*100)});
+  el('oRent').textContent=money(rentTotal);
+  el('oResale').textContent=money(resaleProfit);
+  el('oTotalRet').textContent=money(totalRet)+"  ("+pct(totalRoi)+" ROI)";
+  el('oExt').textContent=tr(T[lang].ext,{x:money(price*0.20)});
+}
+function setLang(l){
+  lang=l; el('btnNL').classList.toggle('on',l==='nl'); el('btnEN').classList.toggle('on',l==='en'); document.documentElement.lang=l;
+  document.querySelectorAll('[data-t]').forEach(e=>{const k=e.getAttribute('data-t'); if(T[l][k]!==undefined)e.textContent=T[l][k];});
+  renderUnit();
+}
+function openBrochure(){ el('broModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeBrochure(){ el('broModal').classList.remove('open'); document.body.style.overflow=''; }
+function submitBrochure(e){
+  e.preventDefault();
+  const name=el('bmName').value.trim(), phone=el('bmPhone').value.trim(), email=el('bmEmail').value.trim();
+  const budget=el('bmBudget').value, when=el('bmWhen').value;
+  if(!name||!phone||!email||!budget||!when){ el('bmErr').style.display='block'; return false; }
+  const u=currentUnit();
+  const lead={ project:"MOKA", unit:u.name.nl, name, phone, email, budget, when };
+  if(CONFIG.leadEndpoint){ try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){} }
+  showBrochureSuccess(name, lead);
+  return false;
+}
+function buildWa(l){
+  const msg="Hi Ashley! Ik heb interesse in MOKA in Kedungu ("+l.unit+").%0A%0A"+
+    "Naam: "+encodeURIComponent(l.name||'-')+"%0A"+
+    "WhatsApp: "+encodeURIComponent(l.phone||'-')+"%0A"+
+    "E-mail: "+encodeURIComponent(l.email||'-')+"%0A"+
+    "Budget: "+encodeURIComponent(l.budget||'-')+"%0A"+
+    "Koophorizon: "+encodeURIComponent(l.when||'-');
+  return "https://wa.me/"+CONFIG.whatsapp+"?text="+msg;
+}
+function showBrochureSuccess(name, lead){
+  const m=document.querySelector('#broModal .modal'); if(!m) return;
+  const first=name?name.split(' ')[0]:'';
+  m.innerHTML='<div class="msuccess">'+
+    '<div class="checkwrap"><svg viewBox="0 0 52 52" class="chk"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>'+
+    '<h3>Gelukt'+(first?', '+first:'')+'!</h3>'+
+    '<p>Ashley neemt snel contact met je op over MOKA. We openen alvast WhatsApp voor je.</p>'+
+    '</div>';
+  launchConfetti();
+  setTimeout(function(){ window.open(buildWa(lead),'_blank'); closeBrochure(); }, 1650);
+}
+function launchConfetti(){
+  const host=el('broModal'); if(!host) return;
+  const colors=['#243F35','#C06B3A','#B0873E','#2E7D5B','#EFE7D8'];
+  for(let i=0;i<80;i++){
+    const c=document.createElement('div'); c.className='confetti';
+    c.style.left=(Math.random()*100)+'%';
+    c.style.background=colors[i%colors.length];
+    c.style.width=(6+Math.random()*6)+'px';
+    c.style.height=(9+Math.random()*9)+'px';
+    c.style.animationDuration=(1.1+Math.random()*1.3)+'s';
+    c.style.animationDelay=(Math.random()*0.3)+'s';
+    host.appendChild(c);
+  }
+}
+function waDirect(){ const msg=(lang==='nl'?"Hi! Ik heb interesse in MOKA in Kedungu.":"Hi! I'm interested in MOKA in Kedungu."); window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg),"_blank"); }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeBrochure(); });
+setLang('nl');
+</script>
+</body>
+</html>

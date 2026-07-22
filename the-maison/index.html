@@ -55,7 +55,7 @@
       <div class="gallery" id="gallery"></div>
       <div class="body">
         <div class="d-head">
-          <div><h2>The Maison</h2><div class="loc">Pererenan, Bali</div><div style="margin-top:8px"><span class="pill" id="pill"></span></div></div>
+          <div><h2>The Maison</h2><div class="loc">Pererenan, Bali</div><div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="pill" id="pill"></span><span class="momentum" id="momentum"></span></div></div>
           <div class="d-price"><div class="p" id="dprice">vanaf €210.000</div><div class="a" data-t="mStatus">In verkoop · oplevering april 2027</div></div>
         </div>
         <div class="facts" id="facts"></div>
@@ -118,6 +118,11 @@
         <li data-t="a4">Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei. Bij leasehold hangt de waarde ook af van de resterende looptijd. Indicatie, geen garantie.</li>
       </ul>
     </details>
+    <div class="scen-wrap">
+      <div class="scen-h" data-t="scenH">Drie scenario's uit de brochure van The Maison</div>
+      <div class="scen" id="scenGrid"></div>
+      <p class="note" data-t="scenNote">Nettorendement per jaar, exclusief verkoopwinst. Schattingen uit de brochure, geen garanties.</p>
+    </div>
   </div>
 </section>
 
@@ -170,7 +175,7 @@ const MAISON = {
     {v:210000, l:{nl:"Nu",en:"Now"}, s:{nl:"huidige prijs",en:"current price"}, current:true},
     {v:225000, l:{nl:"Vanaf 15 aug",en:"From Aug 15"}, s:{nl:"prijs stijgt",en:"price rises"}}
   ],
-  unitsTotal:6, unitsSold:2,
+  unitsTotal:6, unitsSold:2, recentSold:2,
   facts:[
     {l:{nl:"Type",en:"Type"}, v:{nl:"2 ensuite slaapkamers · 2 badkamers",en:"2 ensuite bedrooms · 2 bathrooms"}},
     {l:{nl:"Woonoppervlak",en:"Living space"}, v:{nl:"115 m² (incl. 40 m² rooftop)",en:"115 m² (incl. 40 m² rooftop)"}},
@@ -193,6 +198,11 @@ const MAISON = {
   },
   images:["/the-maison/images/maison-exterior.jpg","/the-maison/images/maison-living.jpg","/the-maison/images/maison-kitchen.jpg","/the-maison/images/maison-outdoor.jpg","/the-maison/images/maison-bathroom.jpg"],
 };
+const SCENARIOS=[
+  {label:{nl:"Voorzichtig",en:"Pessimistic"}, occ:70, nightly:165, roi:12.3, payback:8.1},
+  {label:{nl:"Realistisch",en:"Realistic"}, occ:85, nightly:175, roi:14.7, payback:6.8, current:true},
+  {label:{nl:"Optimistisch",en:"Optimistic"}, occ:90, nightly:205, roi:18.7, payback:5.4}
+];
 
 const T={
  nl:{navProjects:"Projecten",navReturns:"Rendement",navHow:"Zo werkt het",navContact:"Contact",back:"Projecten",
@@ -218,7 +228,10 @@ const T={
   disc:"Deze site geeft indicatieve informatie en geen fiscaal of juridisch advies. Rendementen zijn schattingen, geen garanties. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.",
   yrs:"jaar",payback:"Terugverdiend in ± {x} jaar (alleen uit huur).",available:"Nog {x} van {y} beschikbaar",availShort:"{x} van {y}",render:"Render: voeg je beeld toe",
   holdH:"Over {x} jaar aanhouden (bij {g}% waardegroei/jaar):",ext:"Leasehold 30 jaar met gegarandeerde verlenging van 30 jaar. Verlengen na 30 jaar kost ± 20% van de aankoopprijs (± {x}). Je kunt de villa ook eerder verkopen.",
-  fill:"Vul je naam en je WhatsApp of e-mail in.",okMsg:"Bedankt! We nemen snel contact met je op. Je ontvangt de brochure via WhatsApp.",roiLbl:"ROI"},
+  fill:"Vul je naam en je WhatsApp of e-mail in.",okMsg:"Bedankt! We nemen snel contact met je op. Je ontvangt de brochure via WhatsApp.",roiLbl:"ROI",
+  recentSold:"{x} verkocht in de afgelopen maand",
+  scenH:"Drie scenario's uit de brochure van The Maison",scenNote:"Nettorendement per jaar, exclusief verkoopwinst. Schattingen uit de brochure, geen garanties.",
+  scOcc:"bezetting",scNight:"nacht",scPay:"Terugverdiend in"},
  en:{navProjects:"Projects",navReturns:"Returns",navHow:"How it works",navContact:"Contact",back:"Projects",
   mHeroSub:"Six design villas with 2 bedrooms, a private plunge pool and rooftop lounge, in the heart of Pererenan. Fully furnished and managed, built for strong rental returns.",
   mHeroCta1:"Calculate your return",mHeroCta2:"View full brochure",mt1:"guide price, selling now",mt2:"net yield (realistic)",mt3:"still available",mStatus:"Selling now · completion April 2027",
@@ -242,7 +255,10 @@ const T={
   disc:"This site provides indicative information and no tax or legal advice. Returns are estimates, not guarantees. Always have contracts checked by an authorised notary (PPAT) and your own adviser.",
   yrs:"years",payback:"Paid back in ± {x} years (from rent alone).",available:"{x} of {y} still available",availShort:"{x} of {y}",render:"Render: add your image",
   holdH:"Hold for {x} years (at {g}% value growth/year):",ext:"Leasehold 30 years with guaranteed 30-year extension. Extending after 30 years costs ± 20% of the purchase price (± {x}). You can also sell the villa earlier.",
-  fill:"Please enter your name and WhatsApp or email.",okMsg:"Thanks! We'll be in touch shortly. You'll receive the brochure via WhatsApp.",roiLbl:"ROI"}
+  fill:"Please enter your name and WhatsApp or email.",okMsg:"Thanks! We'll be in touch shortly. You'll receive the brochure via WhatsApp.",roiLbl:"ROI",
+  recentSold:"{x} sold in the past month",
+  scenH:"Three scenarios from The Maison brochure",scenNote:"Net yield per year, excluding resale profit. Brochure estimates, not guarantees.",
+  scOcc:"occupancy",scNight:"night",scPay:"Paid back in"}
 };
 let lang="nl", selPrice=210000;
 const el=id=>document.getElementById(id);
@@ -259,10 +275,20 @@ function renderStatic(){
   el('facts').innerHTML=MAISON.facts.map(f=>`<div class="fact"><div class="l">${f.l[lang]}</div><div class="v">${f.v[lang]}</div></div>`).join("");
   el('hl').innerHTML=MAISON.highlights[lang].map(x=>`<div>${x}</div>`).join("");
   el('pill').textContent=tr(T[lang].available,{x:avail,y:MAISON.unitsTotal});
+  el('momentum').textContent = MAISON.recentSold ? tr(T[lang].recentSold,{x:MAISON.recentSold}) : '';
   el('mAvail').textContent=tr(T[lang].availShort,{x:avail,y:MAISON.unitsTotal});
   el('pricesel').innerHTML=MAISON.prices.map(pr=>`<div class="pbtn ${pr.v===selPrice?'on':''}" onclick="setPrice(${pr.v})"><span class="pv">${money(pr.v)}</span><span class="ps">${pr.l[lang]} · ${pr.s[lang]}</span></div>`).join("");
 }
 function setPrice(v){ selPrice=v; el('dprice').textContent=(lang==='nl'?"vanaf ":"from ")+money(v); renderStatic(); calc(); }
+function renderScenarios(){
+  el('scenGrid').innerHTML = SCENARIOS.map(s=>`
+    <div class="scc ${s.current?'cur':''}">
+      <div class="scl">${s.label[lang]}</div>
+      <div class="scv">${s.roi.toFixed(1).replace('.',lang==='nl'?',':'.')}%</div>
+      <div class="scs">${s.occ}% ${T[lang].scOcc} · €${s.nightly}/${T[lang].scNight}</div>
+      <div class="scb">${T[lang].scPay} ${s.payback.toFixed(1).replace('.',lang==='nl'?',':'.')} ${T[lang].yrs}</div>
+    </div>`).join("");
+}
 
 let last={};
 function calc(){
@@ -294,7 +320,7 @@ function setLang(l){
   document.querySelectorAll('[data-t]').forEach(e=>{const k=e.getAttribute('data-t'); if(T[l][k]!==undefined)e.textContent=T[l][k];});
   document.querySelectorAll('[data-tp]').forEach(e=>{const k=e.getAttribute('data-tp'); if(T[l][k]!==undefined)e.placeholder=T[l][k];});
   el('dprice').textContent=(l==='nl'?"vanaf ":"from ")+money(selPrice);
-  renderStatic(); calc();
+  renderStatic(); calc(); renderScenarios();
 }
 function fb(txt,ok){try{const ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);ok();}catch(e){}}
 function sendLead(via){
@@ -385,6 +411,19 @@ setLang('nl');
   .cta-agent img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.32);flex:none}
   .cta-agent-name{font-size:13.5px;font-weight:600;color:#fff}
   .cta-agent-role{font-size:12px;color:#eee4d4;opacity:.8;margin-top:1px}
+  .momentum{font-size:12px;font-weight:700;color:var(--terra);background:#fbf1e9;border-radius:999px;padding:5px 12px}
+  .scen-wrap{margin-top:26px}
+  .scen-h{font-size:15px;font-weight:600;color:var(--green-2);margin-bottom:10px}
+  .scen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .scc{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-align:center}
+  .scc.cur{border-color:var(--terra);box-shadow:0 6px 20px rgba(192,107,58,.12)}
+  .scl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .scc.cur .scl{color:var(--terra)}
+  .scv{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--green);margin-top:4px}
+  .scc.cur .scv{color:var(--terra)}
+  .scs{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .scb{font-size:12px;color:var(--ink);margin-top:8px;font-weight:600}
+  @media(max-width:820px){.scen{grid-template-columns:1fr}}
   .lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(20,18,14,.93);padding:24px}
   .lb.open{display:flex}
   .lb img{max-width:94vw;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);object-fit:contain}
