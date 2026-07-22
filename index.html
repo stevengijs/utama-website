@@ -35,6 +35,7 @@
   .pcard .avail{text-align:right}
   .pcard .avail .avail-sold{color:var(--terra);font-weight:700;font-size:13px}
   .pcard .avail .avail-left{color:var(--muted);font-weight:500;font-size:11.5px}
+  .pcard .avail .soldout-badge{display:inline-block;background:var(--green);color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.02em;border:1px solid var(--green);border-radius:8px;padding:5px 12px}
   .modal-ov{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(33,30,24,.4);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
   .modal-ov.open{display:flex}
   .modal{background:var(--paper);border:1px solid var(--line);border-radius:18px;max-width:470px;width:100%;padding:30px 30px 26px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.32);max-height:92vh;overflow:auto}
@@ -215,6 +216,8 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/supabase-client.js"></script>
 <script>
 const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", calendly:"", locale:"nl-NL", currency:"EUR" };
 
@@ -249,7 +252,7 @@ const T={
   ctaTitle:"Ontvang de digitale brochure via WhatsApp",ctaSub:"Laat je gegevens achter, dan sturen we je de brochure direct via WhatsApp en bellen we je kort om je vragen te beantwoorden. Een aanbetaling van €5.000 reserveert een unit. Geen spam.",
   ctaBtn:"Verstuur via WhatsApp",ctaEmail:"Of per e-mail",ctaCall:"Plan een gesprek",name:"Je naam",phone:"Je WhatsApp-nummer",email:"Je e-mailadres",
   footer:"Investeren in Bali-vastgoed, transparant en zorgeloos.",
-  from:"vanaf",soldPart:"{sold} van {y} verkocht",leftPart:"nog {x} beschikbaar",soldOutLine:"Volledig uitverkocht ({y} van {y})",recentSold:"{x} verkocht in de {p}",more:"Bekijk project en rendement →",soon:"Volgend project wordt binnenkort onthuld",soonTag:"Binnenkort · nieuw project",
+  from:"vanaf",soldPart:"{sold} van {y} verkocht",leftPart:"nog {x} beschikbaar",soldOutLine:"✓ Volledig uitverkocht ({y} van {y})",recentSold:"{x} verkocht in de {p}",more:"Bekijk project en rendement →",soon:"Volgend project wordt binnenkort onthuld",soonTag:"Binnenkort · nieuw project",
   fill:"Vul je naam en je WhatsApp of e-mail in.",okMsg:"Bedankt! We nemen snel contact met je op. Je ontvangt de brochure via WhatsApp.",
   eaEb:"Vroegtijdige toegang",eaTitle:"Meld je alvast aan voor het volgende project",eaSub:"Laat je gegevens achter, dan ben je een van de eersten die de details en pre-sale prijzen ontvangt zodra het project onthuld wordt.",
   eaBudget:"Budget",eaWhen:"Wanneer wil je kopen?",eaErr:"Vul je naam, WhatsApp-nummer en e-mailadres in.",eaBtn:"Meld je aan",
@@ -270,7 +273,7 @@ const T={
   ctaTitle:"Get the digital brochure via WhatsApp",ctaSub:"Leave your details and we'll send the brochure straight to your WhatsApp and give you a quick call to answer your questions. A €5,000 deposit reserves a unit. No spam.",
   ctaBtn:"Send via WhatsApp",ctaEmail:"Or by email",ctaCall:"Book a call",name:"Your name",phone:"Your WhatsApp number",email:"Your email",
   footer:"Investing in Bali real estate, transparent and hassle-free.",
-  from:"from",soldPart:"{sold} of {y} sold",leftPart:"{x} left",soldOutLine:"Fully sold out ({y} of {y})",recentSold:"{x} sold in the {p}",more:"View project and returns →",soon:"Next project to be revealed soon",soonTag:"Coming soon · new project",
+  from:"from",soldPart:"{sold} of {y} sold",leftPart:"{x} left",soldOutLine:"✓ Fully sold out ({y} of {y})",recentSold:"{x} sold in the {p}",more:"View project and returns →",soon:"Next project to be revealed soon",soonTag:"Coming soon · new project",
   fill:"Please enter your name and WhatsApp or email.",okMsg:"Thanks! We'll be in touch shortly. You'll receive the brochure via WhatsApp.",
   eaEb:"Early access",eaTitle:"Register your interest for the next project",eaSub:"Leave your details and you'll be one of the first to receive the details and pre-sale prices once the project is revealed.",
   eaBudget:"Budget",eaWhen:"When do you want to buy?",eaErr:"Please enter your name, WhatsApp number and email.",eaBtn:"Register interest",
@@ -291,7 +294,7 @@ function renderCards(){
       <div class="${imgCls}" style="${imgStyle}"><span class="badge">${p.status[lang]}</span></div>
       <div class="pinfo">
         <h3>${p.name}</h3><div class="loc">${p.loc[lang]}</div>
-        <div class="prow"><div class="price">${T[lang].from} ${money(p.priceFrom)}</div><div class="avail">${avail>0?`<b class="avail-sold">${tr(T[lang].soldPart,{sold:p.unitsSold,y:p.unitsTotal})}</b><span class="avail-left"> · ${tr(T[lang].leftPart,{x:avail})}</span>`:`<b class="avail-sold">${tr(T[lang].soldOutLine,{y:p.unitsTotal})}</b>`}</div></div>
+        <div class="prow"><div class="price">${T[lang].from} ${money(p.priceFrom)}</div><div class="avail">${avail>0?`<b class="avail-sold">${tr(T[lang].soldPart,{sold:p.unitsSold,y:p.unitsTotal})}</b><span class="avail-left"> · ${tr(T[lang].leftPart,{x:avail})}</span>`:`<b class="soldout-badge">${tr(T[lang].soldOutLine,{y:p.unitsTotal})}</b>`}</div></div>
         ${p.recentSold?`<div class="momentum">${tr(T[lang].recentSold,{x:p.recentSold,p:p.recentPeriod[lang]})}</div>`:''}
         <div class="more">${T[lang].more}</div>
       </div></a>`;
@@ -333,7 +336,7 @@ function submitEarlyAccess(e){
   const budget=el('eaBudget').value, when=el('eaWhen').value;
   if(!name||!phone||!email||!budget||!when){ el('eaErr').style.display='block'; return false; }
   const lead={ project:"Volgend project (early access)", name, phone, email, budget, when };
-  if(CONFIG.leadEndpoint){ try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){} }
+  submitLead({ ...lead, lang }).catch(()=>{});
   showEarlySuccess(name);
   return false;
 }

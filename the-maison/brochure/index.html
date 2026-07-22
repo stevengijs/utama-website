@@ -426,8 +426,10 @@
   <button class="nav next" onclick="stepLb(1)" aria-label="Volgende">&#8250;</button>
   <div class="cap" id="lbCap"></div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/supabase-client.js"></script>
 <script>
-const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", leadEndpoint:"" };
+const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com" };
 const el = id => document.getElementById(id);
 
 function buildWa(l){
@@ -454,7 +456,7 @@ function unlock(e){
   const budget=el('qBudget').value, when=el('qWhen').value;
   if(!name||!phone||!email||!budget||!when){ el('qErr').style.display='block'; return false; }
   const lead={ project:"The Maison", name, phone, email, budget, when };
-  if(CONFIG.leadEndpoint){ try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){} }
+  submitLead({ ...lead, lang:"nl" }).catch(()=>{});
   reveal(lead);
   return false;
 }

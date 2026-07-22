@@ -19,8 +19,15 @@
 <style>
   .unitsel{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}
   .unitsel .pbtn{min-width:150px}
-  .unitsel .pbtn .ps.sold{color:var(--muted)}
+  .unitsel .pbtn{border-width:1px;border-style:solid;border-color:var(--line)}
+  .unitsel .pbtn .ps.sold{color:var(--green);font-weight:800;font-size:12.5px;letter-spacing:.02em}
   .unitsel .pbtn .ps.last{color:var(--terra);font-weight:700}
+  .unitsel .pbtn.is-sold{border-color:var(--green);background:#f2f6f3}
+  .pill.avail{background:var(--terra);color:#fff;display:inline-flex;align-items:center;gap:7px}
+  .pill.avail::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 0 rgba(255,255,255,.6);animation:pulseDot 1.8s ease-in-out infinite}
+  .pill.sold{background:var(--green);color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;padding:7px 16px;border:1px solid var(--green)}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}70%{box-shadow:0 0 0 7px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+  .d-price .a.soldout-stamp{font-size:15px;font-weight:800;color:var(--green);letter-spacing:.01em;background:#f2f6f3;border:1px solid var(--green);border-radius:8px;padding:5px 11px;display:inline-block;margin-top:2px}
   .cta-agent{display:flex;align-items:center;gap:12px;margin-bottom:16px;position:relative;z-index:1}
   .cta-agent img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.32);flex:none}
   .cta-agent-name{font-size:13.5px;font-weight:600;color:#fff}
@@ -314,8 +321,10 @@
   <div class="cap" id="lbCap"></div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/supabase-client.js"></script>
 <script>
-const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", locale:"nl-NL", currency:"EUR", leadEndpoint:"" };
+const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", locale:"nl-NL", currency:"EUR" };
 
 /* MOKA: 15 units, 3 woningtypes. Cijfers geverifieerd tegen de MOKA-brochure (Google Drive, juli 2026). */
 const UNITS = [
@@ -355,6 +364,13 @@ const UNITS = [
     name:{nl:"Boutique Villa",en:"Boutique Villa"},
     sub:{nl:"2 slaapkamers · townhouse met plunge pool",en:"2-bedroom townhouse with plunge pool"},
     price:175000, unitsTotal:4, unitsSold:4,
+    images:[
+      {src:"/images/moka/villa2-exterior.jpg", cap:{nl:"Entree met natuurstenen muur en eigen plunge pool",en:"Entrance with natural stone wall and private plunge pool"}},
+      {src:"/images/moka/villa2-living.jpg", cap:{nl:"Living met ingebouwde tv-wand en boogvormige nissen",en:"Living area with built-in TV wall and arched niches"}},
+      {src:"/images/moka/villa2-dining.jpg", cap:{nl:"Eethoek met zicht op de tuin en het zwembad",en:"Dining nook with a view of the garden and pool"}},
+      {src:"/images/moka/villa2-bedroom.jpg", cap:{nl:"Slaapkamer met balkon en inbouwkast",en:"Bedroom with balcony and built-in wardrobe"}},
+      {src:"/images/moka/villa2-kitchen.jpg", cap:{nl:"Open keuken met marmeren achterwand",en:"Open kitchen with marble backsplash"}}
+    ],
     facts:[
       {l:{nl:"Type",en:"Type"}, v:{nl:"2 slaapkamers · 1,5 badkamer",en:"2 bedrooms · 1.5 bathrooms"}},
       {l:{nl:"Woonoppervlak",en:"Living space"}, v:{nl:"70 m² + 36 m² buiten (106 m² totaal)",en:"70 m² + 36 m² outdoor (106 m² total)"}},
@@ -440,7 +456,7 @@ const T={
   ctaWa:"Praat met Ashley via WhatsApp",
   footer:"Investeren in Bali-vastgoed, transparant en zorgeloos.",
   disc:"Deze site geeft indicatieve informatie en geen fiscaal of juridisch advies. Rendementen zijn schattingen, geen garanties. Laat contracten altijd controleren door een bevoegde notaris (PPAT) en je eigen adviseur.",
-  yrs:"jaar",payback:"Terugverdiend in ± {x} jaar (alleen uit huur).",lastUnit:"Laatste unit",soldOut:"Uitverkocht",available:"{sold} van {y} verkocht · nog {x} beschikbaar",soldOutLine:"Volledig uitverkocht ({y} van {y} verkocht)",render:"Render volgt",
+  yrs:"jaar",payback:"Terugverdiend in ± {x} jaar (alleen uit huur).",lastUnit:"Laatste unit · nog te koop",soldOut:"✓ Uitverkocht",available:"{sold} van {y} verkocht · nog {x} beschikbaar",soldOutLine:"✓ Volledig uitverkocht ({y} van {y} verkocht)",render:"Render volgt",
   holdH:"Over {x} jaar aanhouden (bij {g}% waardegroei/jaar):",ext:"Leasehold 30 jaar met gegarandeerde verlenging van 30 jaar. Verlengen na 30 jaar kost ± 20% van de aankoopprijs (± {x}). Je kunt de villa ook eerder verkopen.",
   fill:"Vul je naam, WhatsApp-nummer en e-mailadres in."},
  en:{navProjects:"Projects",navReturns:"Returns",navHow:"How it works",navContact:"Contact",back:"Projects",
@@ -476,7 +492,7 @@ const T={
   ctaWa:"Chat with Ashley on WhatsApp",
   footer:"Investing in Bali real estate, transparent and hassle-free.",
   disc:"This site provides indicative information and no tax or legal advice. Returns are estimates, not guarantees. Always have contracts checked by an authorised notary (PPAT) and your own adviser.",
-  yrs:"years",payback:"Paid back in ± {x} years (from rent alone).",lastUnit:"Last unit",soldOut:"Sold out",available:"{sold} of {y} sold · {x} left",soldOutLine:"Fully sold out ({y} of {y} sold)",render:"Render coming soon",
+  yrs:"years",payback:"Paid back in ± {x} years (from rent alone).",lastUnit:"Last unit · still for sale",soldOut:"✓ Sold out",available:"{sold} of {y} sold · {x} left",soldOutLine:"✓ Fully sold out ({y} of {y} sold)",render:"Render coming soon",
   holdH:"Hold for {x} years (at {g}% value growth/year):",ext:"Leasehold 30 years with guaranteed 30-year extension. Extending after 30 years costs ± 20% of the purchase price (± {x}). You can also sell earlier.",
   fill:"Please enter your name, WhatsApp number and email."}
 };
@@ -502,7 +518,7 @@ function renderUnitSel(){
     const avail=u.unitsTotal-u.unitsSold;
     const tagCls = avail>0 ? 'last' : 'sold';
     const tag = avail>0 ? T[lang].lastUnit : T[lang].soldOut;
-    return `<div class="pbtn ${u.key===selUnit?'on':''}" onclick="selectUnit('${u.key}')"><span class="pv">${u.name[lang]}</span><span class="ps ${tagCls}">${tag} · ${u.unitsSold}/${u.unitsTotal} ${lang==='nl'?'verkocht':'sold'}</span></div>`;
+    return `<div class="pbtn ${u.key===selUnit?'on':''} ${avail>0?'':'is-sold'}" onclick="selectUnit('${u.key}')"><span class="pv">${u.name[lang]}</span><span class="ps ${tagCls}">${tag} · ${u.unitsSold}/${u.unitsTotal} ${lang==='nl'?'verkocht':'sold'}</span></div>`;
   }).join("");
 }
 function selectUnit(key){ selUnit=key; renderUnit(); }
@@ -514,7 +530,9 @@ function renderUnit(){
   el('uSub').textContent=u.sub[lang];
   el('dprice').textContent=money(u.price);
   el('dstatus').textContent = avail>0 ? tr(T[lang].available,{x:avail,y:u.unitsTotal,sold:u.unitsSold}) : tr(T[lang].soldOutLine,{y:u.unitsTotal});
+  el('dstatus').className = 'a' + (avail>0 ? '' : ' soldout-stamp');
   el('pill').textContent = avail>0 ? T[lang].lastUnit : T[lang].soldOut;
+  el('pill').className = 'pill ' + (avail>0 ? 'avail' : 'sold');
   el('facts').innerHTML=u.facts.map(f=>`<div class="fact"><div class="l">${f.l[lang]}</div><div class="v">${f.v[lang]}</div></div>`).join("");
   el('hl').innerHTML=u.highlights[lang].map(x=>`<div>${x}</div>`).join("");
   el('tAvail').textContent = tr(lang==='nl'?"{x} van 15":"{x} of 15",{x: UNITS.reduce((s,x)=>s+x.unitsSold,0)});
@@ -575,7 +593,7 @@ function submitBrochure(e){
   if(!name||!phone||!email||!budget||!when){ el('bmErr').style.display='block'; return false; }
   const u=currentUnit();
   const lead={ project:"MOKA", unit:u.name.nl, name, phone, email, budget, when };
-  if(CONFIG.leadEndpoint){ try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){} }
+  submitLead({ ...lead, lang }).catch(()=>{});
   showBrochureSuccess(name, lead);
   return false;
 }

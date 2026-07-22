@@ -176,8 +176,10 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/supabase-client.js"></script>
 <script>
-const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", calendly:"", locale:"nl-NL", currency:"EUR", leadEndpoint:"" };
+const CONFIG = { whatsapp:"31624845014", email:"steven@utamabali.com", calendly:"", locale:"nl-NL", currency:"EUR" };
 
 const MAISON = {
   prices:[
@@ -357,7 +359,7 @@ function submitBrochure(e){
   if(!name||!phone||!email||!budget||!when){ el('bmErr').style.display='block'; return false; }
   const lead={ project:"The Maison", name, phone, email, budget, when };
   try{ sessionStorage.setItem('maison_brochure_lead', JSON.stringify(lead)); }catch(err){}
-  if(CONFIG.leadEndpoint){ try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){} }
+  submitLead({ ...lead, lang }).catch(()=>{});
   showBrochureSuccess(name);
   setTimeout(function(){ window.location.href="/the-maison/brochure/"; }, 1650);
   return false;
