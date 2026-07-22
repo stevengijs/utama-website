@@ -321,8 +321,33 @@ function submitBrochure(e){
   const lead={ project:"The Maison", name, phone, email, budget, when };
   try{ sessionStorage.setItem('maison_brochure_lead', JSON.stringify(lead)); }catch(err){}
   if(CONFIG.leadEndpoint){ try{ fetch(CONFIG.leadEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)}); }catch(err){} }
-  window.location.href="/the-maison/brochure/";
+  showBrochureSuccess(name);
+  setTimeout(function(){ window.location.href="/the-maison/brochure/"; }, 1650);
   return false;
+}
+function showBrochureSuccess(name){
+  const m=document.querySelector('#broModal .modal'); if(!m) return;
+  const first=name?name.split(' ')[0]:'';
+  m.innerHTML='<div class="msuccess">'+
+    '<div class="checkwrap"><svg viewBox="0 0 52 52" class="chk"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>'+
+    '<h3>Gelukt'+(first?', '+first:'')+'!</h3>'+
+    '<p>Je persoonlijke brochure van The Maison staat klaar. We openen ’m nu voor je.</p>'+
+    '</div>';
+  launchConfetti();
+}
+function launchConfetti(){
+  const host=el('broModal'); if(!host) return;
+  const colors=['#243F35','#C06B3A','#B0873E','#2E7D5B','#EFE7D8'];
+  for(let i=0;i<80;i++){
+    const c=document.createElement('div'); c.className='confetti';
+    c.style.left=(Math.random()*100)+'%';
+    c.style.background=colors[i%colors.length];
+    c.style.width=(6+Math.random()*6)+'px';
+    c.style.height=(9+Math.random()*9)+'px';
+    c.style.animationDuration=(1.1+Math.random()*1.3)+'s';
+    c.style.animationDelay=(Math.random()*0.3)+'s';
+    host.appendChild(c);
+  }
 }
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeBrochure(); });
 setLang('nl');
@@ -344,6 +369,17 @@ setLang('nl');
   .merr{color:#b5462b;font-size:13px;margin:3px 0 0;display:none}
   .mtrust{margin-top:12px;font-size:12px;color:var(--muted)}
   @media(max-width:520px){ .mrow{grid-template-columns:1fr} }
+  .msuccess{text-align:center;padding:16px 6px 8px}
+  .checkwrap{width:82px;height:82px;margin:4px auto 14px;animation:pop .45s ease}
+  .chk{width:82px;height:82px}
+  .chk circle{fill:none;stroke:var(--ok);stroke-width:3;opacity:.22}
+  .chk path{fill:none;stroke:var(--ok);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .5s .18s ease forwards}
+  .msuccess h3{font-family:'Fraunces',serif;font-weight:600;font-size:26px;margin-bottom:6px}
+  .msuccess p{color:var(--muted);font-size:14.5px;margin:0 auto;max-width:330px}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+  .confetti{position:absolute;top:-12px;border-radius:2px;opacity:.9;z-index:1;animation-name:cfall;animation-timing-function:cubic-bezier(.3,.6,.4,1);animation-fill-mode:forwards}
+  @keyframes cfall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(680deg);opacity:.85}}
 </style>
 <div class="modal-ov" id="broModal" onclick="if(event.target===this)closeBrochure()">
   <div class="modal" role="dialog" aria-modal="true">
