@@ -255,7 +255,7 @@ function imgBlock(cls,label){return `<div class="g ${cls} ph-img ${cls==='big'?'
 function renderStatic(){
   const avail=MAISON.unitsTotal-MAISON.unitsSold;
   el('gallery').innerHTML = (MAISON.images&&MAISON.images.length)
-    ? `<div class="g big" style="background-image:url('${MAISON.images[0]}');background-size:cover;background-position:center"></div>`+[1,2,3,4].map(i=>MAISON.images[i]?`<div class="g" style="background-image:url('${MAISON.images[i]}');background-size:cover;background-position:center"></div>`:imgBlock('','')).join("")
+    ? `<div class="g big" style="background-image:url('${MAISON.images[0]}');background-size:cover;background-position:center" onclick="openLb(0)"></div>`+[1,2,3,4].map(i=>MAISON.images[i]?`<div class="g" style="background-image:url('${MAISON.images[i]}');background-size:cover;background-position:center" onclick="openLb(${i})"></div>`:imgBlock('','')).join("")
     : imgBlock('big',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render)+imgBlock('',T[lang].render);
   el('facts').innerHTML=MAISON.facts.map(f=>`<div class="fact"><div class="l">${f.l[lang]}</div><div class="v">${f.v[lang]}</div></div>`).join("");
   el('hl').innerHTML=MAISON.highlights[lang].map(x=>`<div>${x}</div>`).join("");
@@ -380,6 +380,18 @@ setLang('nl');
   @keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
   .confetti{position:absolute;top:-12px;border-radius:2px;opacity:.9;z-index:1;animation-name:cfall;animation-timing-function:cubic-bezier(.3,.6,.4,1);animation-fill-mode:forwards}
   @keyframes cfall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(680deg);opacity:.85}}
+  .gallery .g{cursor:zoom-in;transition:transform .15s,box-shadow .15s}
+  .gallery .g:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.16)}
+  .lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(20,18,14,.93);padding:24px}
+  .lb.open{display:flex}
+  .lb img{max-width:94vw;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);object-fit:contain}
+  .lb .x{position:absolute;top:16px;right:22px;background:none;border:none;color:#fff;font-size:36px;line-height:1;cursor:pointer;opacity:.85}
+  .lb .x:hover{opacity:1}
+  .lb .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.14);border:none;color:#fff;width:50px;height:50px;border-radius:50%;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .lb .nav:hover{background:rgba(255,255,255,.28)}
+  .lb .prev{left:16px}.lb .next{right:16px}
+  .lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#eee;font-size:13px;opacity:.8}
+  @media(max-width:600px){ .lb .nav{width:42px;height:42px} }
 </style>
 <div class="modal-ov" id="broModal" onclick="if(event.target===this)closeBrochure()">
   <div class="modal" role="dialog" aria-modal="true">
@@ -421,5 +433,19 @@ setLang('nl');
     </form>
   </div>
 </div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+  <button class="x" onclick="closeLb()" aria-label="Sluiten">&times;</button>
+  <button class="nav prev" onclick="stepLb(-1)" aria-label="Vorige">&#8249;</button>
+  <img id="lbImg" src="" alt="The Maison render">
+  <button class="nav next" onclick="stepLb(1)" aria-label="Volgende">&#8250;</button>
+  <div class="cap" id="lbCap"></div>
+</div>
+<script>
+function openLb(i){ if(!MAISON.images||!MAISON.images[i]) return; lbIdx=i; el('lbImg').src=MAISON.images[i]; el('lbCap').textContent=(i+1)+' / '+MAISON.images.length; el('lb').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLb(){ el('lb').classList.remove('open'); document.body.style.overflow=''; }
+function stepLb(d){ const n=MAISON.images.length; lbIdx=(lbIdx+d+n)%n; el('lbImg').src=MAISON.images[lbIdx]; el('lbCap').textContent=(lbIdx+1)+' / '+n; }
+let lbIdx=0;
+document.addEventListener('keydown',function(e){ const lb=el('lb'); if(!lb||!lb.classList.contains('open'))return; if(e.key==='Escape')closeLb(); if(e.key==='ArrowRight')stepLb(1); if(e.key==='ArrowLeft')stepLb(-1); });
+</script>
 </body>
 </html>

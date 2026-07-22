@@ -101,6 +101,49 @@
   .lb .prev{left:16px}.lb .next{right:16px}
   .lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#eee;font-size:13px;opacity:.8}
   @media(max-width:600px){ .lb .nav{width:42px;height:42px} }
+  /* ROI calculator (reuses shared card/calc/results classes from styles.css) */
+  .scen-wrap{margin-top:26px}
+  .scen-h{font-size:15px;font-weight:600;color:var(--green-2);margin-bottom:10px}
+  .scen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .scc{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-align:center}
+  .scc.cur{border-color:var(--terra);box-shadow:0 6px 20px rgba(192,107,58,.12)}
+  .scl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .scc.cur .scl{color:var(--terra)}
+  .scv{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--green);margin-top:4px}
+  .scc.cur .scv{color:var(--terra)}
+  .scs{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .scb{font-size:12px;color:var(--ink);margin-top:8px;font-weight:600}
+  @media(max-width:820px){.scen{grid-template-columns:1fr}}
+  /* team + faq */
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:820px){.team{grid-template-columns:1fr}}
+  .tcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+  .tcard .n{font-family:'Fraunces',serif;color:var(--terra);font-weight:600;font-size:13px;letter-spacing:.05em;text-transform:uppercase}
+  .tcard h4{font-size:16px;margin:6px 0 4px}
+  .tcard p{font-size:13.5px;color:var(--muted);margin:0}
+  .faq details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin-bottom:10px}
+  .faq summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";float:right;color:var(--terra);font-weight:700;font-size:18px}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{margin:10px 0 0;font-size:14px;color:var(--muted);line-height:1.55}
+  /* Ashley in bottom CTA */
+  .bcta .agent{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:16px}
+  .bcta .agent-photo2{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.35)}
+  .bcta .agent-name{font-size:13.5px;font-weight:600;color:#fff}
+  .bcta .agent-role{font-size:12px;color:#eee4d4;opacity:.75;margin-top:1px}
+  /* PDF / print */
+  .pdfbtn{display:inline-flex;align-items:center;gap:7px;background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;font-family:inherit;font-weight:600;font-size:13.5px;border-radius:9px;padding:9px 15px;cursor:pointer}
+  .pdfbtn:hover{background:rgba(255,255,255,.12)}
+  @media print{
+    .bnav,.lb,.gate,#waTop,.pdfbtn{display:none !important}
+    .thanks{background:#fff !important;color:var(--ink) !important;border:1px solid var(--line)}
+    .thanks h3,.thanks p,.thanks p b{color:var(--ink) !important}
+    .bcta{background:#fff !important;color:var(--ink) !important;border:1px solid var(--line)}
+    .bcta h2,.bcta p{color:var(--ink) !important}
+    .results{background:#fff !important;color:var(--ink) !important;border:1px solid var(--line)}
+    .results h3,.big-yield .num,.hrow b,.stat .s-v{color:var(--ink) !important}
+  }
 </style>
 </head>
 <body>
@@ -182,6 +225,7 @@
       <p>Je persoonlijke contact is <b>Ashley Vermoten</b>, Sales Manager bij UTAMA. Ze helpt je graag met je vragen, de plattegronden of het reserveren van een unit. Stuur haar gerust een berichtje.</p>
     </div>
     <a class="wa" id="waTop" target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.8L.5 31.5l7.9-2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>Stuur Ashley een bericht</a>
+    <button class="pdfbtn" onclick="window.print()" type="button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>Download als PDF</button>
   </div>
 
   <div class="bhero">
@@ -236,14 +280,80 @@
     <p class="note">Nog 4 van de 6 units beschikbaar. Een aanbetaling van €5.000 reserveert een unit.</p>
   </div>
 
-  <div class="sec">
-    <h2>Verwacht rendement</h2>
-    <div class="ret">
-      <div class="r"><div class="rv">±€54.300</div><div class="rl">Bruto huur per jaar</div></div>
-      <div class="r hl2"><div class="rv">±€30.900</div><div class="rl">Netto per jaar (na kosten)</div></div>
-      <div class="r"><div class="rv">±14,7%</div><div class="rl">Netto rendement</div></div>
+  <div class="sec" id="calc">
+    <h2>Bereken je rendement</h2>
+    <p class="note" style="margin-top:-8px;margin-bottom:18px">Pas de aannames aan naar jouw eigen scenario. Eerlijk berekend, geen opgeblazen beloftes.</p>
+    <div class="calc">
+      <div class="card">
+        <h3>Aannames</h3>
+        <div class="csub">Voorgevuld op de brochure van The Maison.</div>
+        <div class="field"><label>Prijs (vast)</label><div class="pricesel" id="bPricesel"></div></div>
+        <div class="field"><label><span>Gem. nachtprijs</span> <span class="val" id="bVNightly"></span></label><input type="range" id="bNightly" min="150" max="220" step="5" value="175" oninput="bcalc()"></div>
+        <div class="field"><label><span>Bezettingsgraad</span> <span class="val" id="bVOcc"></span></label><input type="range" id="bOcc" min="60" max="100" step="1" value="85" oninput="bcalc()"></div>
+        <div class="field"><label><span>Kosten &amp; beheer</span> <span class="val" id="bVCosts"></span></label><input type="range" id="bCosts" min="35" max="55" step="1" value="43" oninput="bcalc()"></div>
+        <div class="field"><label><span>Aanhoudperiode</span> <span class="val" id="bVHold"></span></label><input type="range" id="bHold" min="1" max="30" step="1" value="5" oninput="bcalc()"></div>
+        <div class="field"><label><span>Geschatte waardegroei / jaar</span> <span class="val" id="bVGrowth"></span></label><input type="range" id="bGrowth" min="0" max="8" step="1" value="5" oninput="bcalc()"></div>
+      </div>
+      <div class="card results">
+        <h3>Verwacht rendement</h3>
+        <div class="csub">Op jaarbasis, netto na alle kosten en beheer.</div>
+        <div class="big-yield"><div class="num" id="bOYield">–</div><div class="lbl">netto rendement / jaar</div></div>
+        <div class="payback" id="bOPayback"></div>
+        <div class="stat-grid">
+          <div class="stat"><div class="s-l">Netto huur / maand</div><div class="s-v" id="bOMonth">–</div></div>
+          <div class="stat"><div class="s-l">Netto huur / jaar</div><div class="s-v" id="bOYear">–</div></div>
+        </div>
+        <div class="hold-block">
+          <div class="hb-h" id="bOHoldH"></div>
+          <div class="hrow"><span>Netto huurinkomsten</span><b id="bORent">–</b></div>
+          <div class="hrow"><span>Geschatte verkoopwinst</span><b id="bOResale">–</b></div>
+          <div class="hrow big"><span>Totaal rendement</span><b id="bOTotalRet">–</b></div>
+        </div>
+        <div class="breakdown">
+          <div class="brow"><span>Bruto huurinkomsten / jaar</span><b id="bOGross">–</b></div>
+          <div class="brow"><span>Af: kosten &amp; beheer</span><b id="bOCostAmt">–</b></div>
+          <div class="brow"><span>Totale investering</span><b id="bOInv">–</b></div>
+        </div>
+        <div class="note-ext" id="bOExt"></div>
+      </div>
     </div>
-    <p class="note">Indicatie op basis van ± €175 per nacht en 85% bezetting, na beheer- en exploitatiekosten (House of Reservations-model). Rendementen zijn schattingen, geen garanties. <a href="/the-maison#calc" style="color:var(--green);font-weight:600">Reken je eigen scenario door in de calculator.</a></p>
+    <details class="assump">
+      <summary>Aannames &amp; transparantie</summary>
+      <ul>
+        <li>Bruto huurinkomsten = nachtprijs × 365 × bezettingsgraad. Alle bedragen in euro's.</li>
+        <li>Netto = bruto minus alle kosten: beheer, marketing, OTA-fees, schoonmaak, onderhoud, personeel en lokale belasting.</li>
+        <li>Cijfers zijn gebaseerd op de brochure van The Maison (House of Reservations-model, met deels directe boekingen).</li>
+        <li>Verkoopwaarde bij aanhouden gebruikt de gekozen jaarlijkse waardegroei. Bij leasehold hangt de waarde ook af van de resterende looptijd. Indicatie, geen garantie.</li>
+      </ul>
+    </details>
+    <div class="scen-wrap">
+      <div class="scen-h">Drie scenario's uit onze brochure</div>
+      <div class="scen">
+        <div class="scc"><div class="scl">Voorzichtig</div><div class="scv">12,3%</div><div class="scs">70% bezetting · €165/nacht</div><div class="scb">Terugverdiend in 8,1 jaar</div></div>
+        <div class="scc cur"><div class="scl">Realistisch</div><div class="scv">14,7%</div><div class="scs">85% bezetting · €175/nacht</div><div class="scb">Terugverdiend in 6,8 jaar</div></div>
+        <div class="scc"><div class="scl">Optimistisch</div><div class="scv">18,7%</div><div class="scs">90% bezetting · €205/nacht</div><div class="scb">Terugverdiend in 5,4 jaar</div></div>
+      </div>
+      <p class="note">Nettorendement per jaar, per scenario, inclusief beheer- en operationele kosten (House of Reservations-model, deels directe boekingen). Schattingen, geen garanties. Reken hierboven je eigen scenario door.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>In de buurt</h2>
+    <div class="facts">
+      <div class="f"><span class="l">Pererenan Beach</span><span class="v">3 min</span></div>
+      <div class="f"><span class="l">Shelter Pererenan</span><span class="v">2 min</span></div>
+      <div class="f"><span class="l">Woods Pererenan</span><span class="v">2 min</span></div>
+      <div class="f"><span class="l">Bokashi</span><span class="v">2 min</span></div>
+      <div class="f"><span class="l">Alchemy Yoga</span><span class="v">3 min</span></div>
+      <div class="f"><span class="l">St. Ali Bali</span><span class="v">3 min</span></div>
+      <div class="f"><span class="l">Obsidian Gym</span><span class="v">4 min</span></div>
+      <div class="f"><span class="l">Penny Lane</span><span class="v">4 min</span></div>
+      <div class="f"><span class="l">Body Factory Bali</span><span class="v">5 min</span></div>
+      <div class="f"><span class="l">La Brisa Beach Club</span><span class="v">6 min</span></div>
+      <div class="f"><span class="l">Batu Bolong</span><span class="v">8 min</span></div>
+      <div class="f"><span class="l">Finns / Atlas Beach Club</span><span class="v">15 min</span></div>
+    </div>
+    <p class="note">Reistijden per scooter, vanaf The Maison.</p>
   </div>
 
   <div class="sec">
@@ -260,7 +370,46 @@
     <p class="note">Je least de grond (Hak Sewa) en bezit de villa. Standaard 30 jaar met contractueel gegarandeerde verlenging van 30 jaar, vastgelegd in de notariële akte via een bevoegde PPAT.</p>
   </div>
 
+  <div class="sec">
+    <h2>Het team achter The Maison</h2>
+    <div class="team">
+      <div class="tcard"><div class="n">Architectuur</div><h4>Mahez Studio</h4><p>Architectonisch ontwerp gericht op moderne tropische villa's en efficiënte, verhuurvriendelijke lay-outs.</p></div>
+      <div class="tcard"><div class="n">Bouw</div><h4>Bali Prime Construction</h4><p>Duits geleide aannemer met 100+ opgeleverde villa's en appartementen in Bali. Wekelijks bouwoverleg en dagelijkse controle op locatie, met 10 jaar bouwgarantie.</p></div>
+      <div class="tcard"><div class="n">Verhuurbeheer</div><h4>House of Reservations</h4><p>Beheert 250+ villa's in Bali, met 200K+ volgers op Instagram en 1M+ op TikTok. Regelt boekingen, gasten, schoonmaak, onderhoud en rapportage.</p></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Veelgestelde vragen</h2>
+    <div class="faq">
+      <details>
+        <summary>Is leasehold veilig voor buitenlandse investeerders?</summary>
+        <p>Je least de grond (Hak Sewa) en bezit de villa zelf. Standaard 30 jaar, met een contractueel gegarandeerde verlenging van 30 jaar. Alles wordt vastgelegd in de notariële akte via een bevoegde PPAT, inclusief de PBG- en SLF-vergunningen.</p>
+      </details>
+      <details>
+        <summary>Hoe verloopt de betaling als ik niet in Bali woon?</summary>
+        <p>Je betaalt in euro's, gespreid over 4 termijnen gekoppeld aan bouwmijlpalen (30% bij contract, 30% bij casco, 30% bij afbouw, 10% bij sleuteloverdracht). De volledige aankoop kan op afstand geregeld worden, inclusief de notariële afhandeling.</p>
+      </details>
+      <details>
+        <summary>Wie beheert en verhuurt mijn villa?</summary>
+        <p>House of Reservations, een van Bali's grotere rental management-bedrijven (250+ villa's, 200K+ volgers op Instagram, 1M+ op TikTok), regelt boekingen, gasten, schoonmaak, onderhoud en rapportage. Jij ontvangt de huurinkomsten en periodieke rapportages.</p>
+      </details>
+      <details>
+        <summary>Wat gebeurt er als de bouw vertraging oploopt?</summary>
+        <p>De bouw wordt uitgevoerd door Bali Prime Construction, een Duits geleide aannemer met 100+ opgeleverde villa's in Bali. Er is wekelijks bouwoverleg en dagelijkse controle op locatie, met 10 jaar bouwgarantie op het resultaat.</p>
+      </details>
+      <details>
+        <summary>Kan ik mijn villa weer verkopen?</summary>
+        <p>Ja. Je bezit de villa volledig en kunt deze op elk moment doorverkopen. De 30 + 30 jaar leasehold gaat dan over op de nieuwe eigenaar.</p>
+      </details>
+    </div>
+  </div>
+
   <div class="bcta">
+    <div class="agent">
+      <img class="agent-photo2" src="/images/ashley.jpg" alt="Ashley Vermoten, Sales Manager UTAMA">
+      <div><div class="agent-name">Ashley Vermoten</div><div class="agent-role">Sales Manager, UTAMA</div></div>
+    </div>
     <h2>Klaar voor de volgende stap?</h2>
     <p>Ashley Vermoten, Sales Manager bij UTAMA, denkt graag met je mee. Stel je vragen, vraag de plattegronden op of reserveer een unit.</p>
     <div class="row">
@@ -312,6 +461,45 @@ function unlock(e){
 }
 // Kom je via de popup op de teaser? Dan is de lead al bekend en tonen we de brochure direct.
 try{ var _r=sessionStorage.getItem('maison_brochure_lead'); if(_r){ reveal(JSON.parse(_r)); } }catch(e){}
+
+// ROI-calculator
+const BPRICES=[
+  {v:195000, l:"Pre-sale", s:"eerdere fase"},
+  {v:210000, l:"Nu", s:"huidige prijs", current:true},
+  {v:225000, l:"Vanaf 15 aug", s:"prijs stijgt"}
+];
+let bSelPrice=210000;
+function bMoney(v){ return new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Math.round(v)); }
+function bPct(v){ return new Intl.NumberFormat('nl-NL',{style:'percent',minimumFractionDigits:1,maximumFractionDigits:1}).format(v); }
+function renderBPricesel(){
+  el('bPricesel').innerHTML = BPRICES.map(pr=>`<div class="pbtn ${pr.v===bSelPrice?'on':''}" onclick="bSetPrice(${pr.v})"><span class="pv">${bMoney(pr.v)}</span><span class="ps">${pr.l} · ${pr.s}</span></div>`).join("");
+}
+function bSetPrice(v){ bSelPrice=v; renderBPricesel(); bcalc(); }
+function bcalc(){
+  const price=bSelPrice, nightly=+el('bNightly').value, occ=+el('bOcc').value/100, costs=+el('bCosts').value/100, hold=+el('bHold').value, growth=+el('bGrowth').value/100;
+  el('bVNightly').textContent=bMoney(nightly);
+  el('bVOcc').textContent=Math.round(occ*100)+"%";
+  el('bVCosts').textContent=Math.round(costs*100)+"%";
+  el('bVHold').textContent=hold+" jaar";
+  el('bVGrowth').textContent=Math.round(growth*100)+"%";
+  const gross=nightly*365*occ, costAmt=gross*costs, net=gross-costAmt;
+  const y=price>0?net/price:0, month=net/12, payback=net>0?price/net:0;
+  el('bOYield').textContent=bPct(y);
+  el('bOMonth').textContent=bMoney(month);
+  el('bOYear').textContent=bMoney(net);
+  el('bOGross').textContent=bMoney(gross);
+  el('bOCostAmt').textContent=bMoney(costAmt);
+  el('bOInv').textContent=bMoney(price);
+  el('bOPayback').textContent="Terugverdiend in ± "+(payback>0?payback.toFixed(1):"–")+" jaar (alleen uit huur).";
+  const rentTotal=net*hold, resaleVal=price*Math.pow(1+growth,hold), resaleProfit=resaleVal-price, totalRet=rentTotal+resaleProfit, totalRoi=price>0?totalRet/price:0;
+  el('bOHoldH').textContent="Over "+hold+" jaar aanhouden (bij "+Math.round(growth*100)+"% waardegroei/jaar):";
+  el('bORent').textContent=bMoney(rentTotal);
+  el('bOResale').textContent=bMoney(resaleProfit);
+  el('bOTotalRet').textContent=bMoney(totalRet)+"  ("+bPct(totalRoi)+" ROI)";
+  el('bOExt').textContent="Leasehold 30 jaar met gegarandeerde verlenging van 30 jaar. Verlengen na 30 jaar kost ± 20% van de aankoopprijs (± "+bMoney(price*0.20)+"). Je kunt de villa ook eerder verkopen.";
+}
+renderBPricesel();
+bcalc();
 
 // Lightbox: renders klikbaar en groot in beeld
 const GAL=[].slice.call(document.querySelectorAll('.bgal .g'));
