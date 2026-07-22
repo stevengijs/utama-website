@@ -239,7 +239,12 @@ create trigger on_auth_user_created_link_contact
 -- one row per contact with their most recent lead, a running lead count,
 -- and whether they've actually become a paying customer.
 -- ---------------------------------------------------------------------------
-create or replace view public.contacts_overview as
+-- Dropped and recreated (rather than plain CREATE OR REPLACE) because
+-- Postgres refuses to reorder/insert columns into an existing view - only
+-- appending at the end is allowed. Safe to drop: it's a read-only view,
+-- nothing references it, and it's rebuilt on the next line.
+drop view if exists public.contacts_overview;
+create view public.contacts_overview as
 select
   c.id,
   c.email,
