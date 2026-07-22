@@ -83,7 +83,7 @@
           <label data-t="fPrice">Prijs (vast)</label>
           <div class="pricesel" id="pricesel"></div>
         </div>
-        <div class="field"><label><span data-t="fNightly">Gem. nachtprijs</span> <span class="val" id="vNightly"></span></label><input type="range" id="nightly" min="150" max="220" step="5" value="175" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fNightly">Gem. nachtprijs</span> <span class="val" id="vNightly"></span></label><div class="slider-wrap"><input type="range" id="nightly" min="150" max="220" step="5" value="175" oninput="calc()"><div class="slider-pins" id="nightlyPins"></div></div></div>
         <div class="field"><label><span data-t="fOcc">Bezettingsgraad</span> <span class="val" id="vOcc"></span></label><input type="range" id="occ" min="60" max="100" step="1" value="85" oninput="calc()"></div>
         <div class="field"><label><span data-t="fCosts">Kosten &amp; beheer</span> <span class="val" id="vCosts"></span></label><input type="range" id="costs" min="35" max="55" step="1" value="43" oninput="calc()"></div>
         <div class="field"><label><span data-t="fHold">Aanhoudperiode</span> <span class="val" id="vHold"></span></label><input type="range" id="hold" min="1" max="30" step="1" value="5" oninput="calc()"></div>
@@ -347,7 +347,20 @@ function renderScenarios(){
       <div class="scb">${T[lang].scPay} ${payback.toFixed(1).replace('.',lang==='nl'?',':'.')} ${T[lang].yrs}</div>
     </div>`;
   }).join("");
+  renderNightlyPins(SCENARIOS);
 }
+function renderNightlyPins(scenarios){
+  const slider=el('nightly'), pins=el('nightlyPins');
+  if(!slider||!pins) return;
+  const min=+slider.min, max=+slider.max, w=slider.offsetWidth, thumb=20;
+  if(!w) return;
+  pins.innerHTML = scenarios.map((s,i)=>{
+    const p = max>min ? (s.nightly-min)/(max-min) : 0;
+    const x = thumb/2 + p*(w-thumb);
+    return `<div class="pin ${i===selScenario?'cur':''}" style="left:${x}px" data-lbl="${s.label[lang]}" title="${s.label[lang]}: ${money(s.nightly)}" onclick="applyScenario(${i})"></div>`;
+  }).join("");
+}
+window.addEventListener('resize', ()=>renderNightlyPins(SCENARIOS));
 
 let last={};
 function calc(){

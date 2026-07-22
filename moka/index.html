@@ -157,7 +157,7 @@
       <h2 data-t="locTitle">Waarom Kedungu</h2>
       <p data-t="locSub">De opvolger van Canggu en Pererenan, met strikte toeristische bestemmingsplanning.</p>
     </div>
-    <div class="facts">
+    <div class="facts cols3">
       <div class="fact"><div class="l" data-t="loc1l">Strand</div><div class="v" data-t="loc1v">600 meter (Kedungu Beach)</div></div>
       <div class="fact"><div class="l" data-t="loc2l">Zonering</div><div class="v" data-t="loc2v">Pink Zone, strikte toeristische bestemming</div></div>
       <div class="fact"><div class="l" data-t="loc3l">Surfen</div><div class="v" data-t="loc3v">3 van Bali's beste surfspots vlakbij</div></div>
@@ -180,7 +180,7 @@
         <h3 data-t="assumpH">Aannames</h3>
         <div class="csub" id="assumpSub">Voorgevuld op de brochure van MOKA.</div>
         <div class="field"><label><span data-t="fPrice">Prijs</span> <span class="val" id="vPrice"></span></label></div>
-        <div class="field"><label><span data-t="fNightly">Gem. nachtprijs</span> <span class="val" id="vNightly"></span></label><input type="range" id="nightly" min="150" max="220" step="5" value="175" oninput="calc()"></div>
+        <div class="field"><label><span data-t="fNightly">Gem. nachtprijs</span> <span class="val" id="vNightly"></span></label><div class="slider-wrap"><input type="range" id="nightly" min="150" max="220" step="5" value="175" oninput="calc()"><div class="slider-pins" id="nightlyPins"></div></div></div>
         <div class="field"><label><span data-t="fOcc">Bezettingsgraad</span> <span class="val" id="vOcc"></span></label><input type="range" id="occ" min="60" max="100" step="1" value="85" oninput="calc()"></div>
         <div class="field"><label><span data-t="fCosts">Kosten &amp; beheer</span> <span class="val" id="vCosts"></span></label><input type="range" id="costs" min="16" max="35" step="1" value="25" oninput="calc()"></div>
         <div class="field"><label><span data-t="fHold">Aanhoudperiode</span> <span class="val" id="vHold"></span></label><input type="range" id="hold" min="1" max="30" step="1" value="5" oninput="calc()"></div>
@@ -599,7 +599,20 @@ function renderScenarios(){
       <div class="scb" style="font-size:12px;color:var(--ink);margin-top:8px;font-weight:600">${lang==='nl'?'Terugverdiend in':'Paid back in'} ${payback.toFixed(1).replace('.',lang==='nl'?',':'.')} ${T[lang].yrs}</div>
     </div>`;
   }).join("");
+  renderNightlyPins(u.scenarios);
 }
+function renderNightlyPins(scenarios){
+  const slider=el('nightly'), pins=el('nightlyPins');
+  if(!slider||!pins) return;
+  const min=+slider.min, max=+slider.max, w=slider.offsetWidth, thumb=20;
+  if(!w) return;
+  pins.innerHTML = scenarios.map((s,i)=>{
+    const p = max>min ? (s.nightly-min)/(max-min) : 0;
+    const x = thumb/2 + p*(w-thumb);
+    return `<div class="pin ${i===selScenario?'cur':''}" style="left:${x}px" data-lbl="${s.label[lang]}" title="${s.label[lang]}: ${money(s.nightly)}" onclick="applyScenario(${i})"></div>`;
+  }).join("");
+}
+window.addEventListener('resize', ()=>renderNightlyPins(currentUnit().scenarios));
 function calc(){
   const u=currentUnit();
   const price=u.price, nightly=+el('nightly').value, occ=+el('occ').value/100, costs=+el('costs').value/100, hold=+el('hold').value, growth=+el('growth').value/100;
