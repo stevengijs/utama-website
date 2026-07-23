@@ -26,11 +26,12 @@ nav .links a:hover{color:var(--green)}
 .lang button.on{background:var(--green);color:#fff}
 
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(900px 380px at 78% -10%,rgba(192,107,58,.12),transparent 60%),var(--sand)}
-.hero .inner{padding:60px 0 50px;max-width:52ch}
+.hero .inner{padding-top:60px;padding-bottom:50px;max-width:52ch}
 .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:700}
 .hero h1{font-size:clamp(32px,5.2vw,54px);letter-spacing:-.5px;margin:14px 0 14px}
 .hero p{font-size:18px;color:#4c463b;margin:0 0 24px;max-width:46ch}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:560px){.btns{flex-direction:column}.btns .btn{width:100%;max-width:calc(100% - 40px);text-align:center}}
 .btn{border:none;background:var(--terra);color:#fff;font-family:inherit;font-weight:600;font-size:15px;padding:13px 24px;border-radius:11px;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s}
 .btn:hover{background:#a95b2e}
 .btn.sec{background:var(--green)} .btn.sec:hover{background:var(--green-2)}
